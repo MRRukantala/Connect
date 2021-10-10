@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">Connect</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main_app">MainAppActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="toko">Toko</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="layanan">Layanan</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="todo">TODO</string>
+    <string name="daftarkan_diri_anda_dan_gabung_dengan_connect_sekarang_juga">Daftarkan diri Anda dan gabung dengan MarkOI sekarang juga!</string>
+    <string name="sudah_punya_akun">Sudah punya akun? </string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="masukkan_alamat_email_dan_password_anda">Masukkan alamat email dan password Anda</string>
+    <string name="lupa_passsword">Lupa Passsword?</string>
+    <string name="masuk">Masuk</string>
+    <string name="buat_akun_anda">Buat Akun Anda</string>
+    <string name="daftar">Daftar</string>
+    <string name="dengan_mendaftar_anda_menyetujui_syarat_penggunaan_kami">Dengan mendaftar Anda menyetujui</string>
+    <string name="name">Name</string>
+    <string name="content_pernyataan"><![CDATA[Disarankan sebelum mengakses Connect ini lebih jauh, Anda terlebih dahulu membaca dan memahami syarat dan ketentuan yang berlaku. Syarat dan ketentuan berikut adalah ketentuan dalam pengunjungan Situs, isi dan/atau konten, layanan, serta fitur lainnya yang ada di dalam Situs. Dengan mengakses atau menggunakan Situs atau aplikasi lainnya yang disediakan oleh atau dalam Situs, berarti Anda telah memahami dan menyetujui serta terikat dan tunduk dengan segala syarat dan ketentuan yang berlaku di Situs ini.
+
+    \n \n1. DEFINISI Setiap kata atau istilah berikut yang digunakan di dalam Syarat dan Ketentuan ini memiliki arti seperti berikut di bawah, kecuali jika kata atau istilah yang bersangkutan di dalam pemakaiannya dengan tegas menentukan lain
+    \n \n1.1. “Kami”, berarti PT Dwi Cermat Indonesia selaku pemilik dan pengelola Situs serta aplikasi mobile yang bernama Cermati.
+    \n \n1.2. “Anda”, berarti tiap orang yang mengakses Situs dan menggunakan layanan dan jasa yang disediakan oleh Kami.
+    \n \n1.3. “Layanan”, berarti setiap dan keseluruhan jasa serta informasi yang ada pada Situs, termasuk namun tidak terbatas pada informasi yang disediakan, fitur dan layanan aplikasi, dukungan data, serta aplikasi mobile yang Kami sediakan.
+    \n \n1.4. “Pengguna”, berarti tiap orang yang mengakses dan menggunakan layanan dan jasa yang disediakan oleh Kami, termasuk diantaranya Pengguna Belum Terdaftar dan Pengguna Terdaftar.
+    \n \n1.5. Pengguna Belum Terdaftar, berarti tiap orang yang mengakses Situs Kami dan belum melakukan registrasi.
+    \n \n1.6. “Pengguna Terdaftar”, berarti tiap orang yang mengakses dan menggunakan layanan dan jasa yang disediakan oleh Kami, serta telah melakukan registrasi dan memiliki akun pada Situs Kami.
+    \n \n1.7. “Pihak Ketiga”, berarti pihak lainnya, termasuk namun tidak terbatas pihak bank, multifinance, peer to peer lending, broker dan penyedia layanan asuransi, agen penjual efek reksa dana, transfer dana, telekomunikasi yang menyediakan layanannya dalam Situs.
+    \n \n1.8. “Informasi Pribadi”, berarti tiap dan seluruh data pribadi yang diberikan oleh Pengguna di Situs Kami, termasuk namun tidak terbatas pada nama lengkap, tempat dan tanggal lahir, jenis kelamin, alamat, nomor identitas, informasi debitur, kartu keluarga, akta kelahiran, surat nikah, akta, bukti kepemilikan, KTP, NPWP, surat izin usaha, surat penjaminan, data penghasilan, lokasi pengguna, kontak pengguna, serta dokumen dan data pendukung lainnya sebagaimana diminta pada ringkasan pendaftaran akun serta pada ringkasan aplikasi pengajuan.
+    \n \n1.9. “Konten”, berarti teks, data, informasi, angka, gambar, grafik, foto, audio, video, nama pengguna, informasi, aplikasi, tautan, komentar, peringkat, desain, atau materi lainnya yang ditampilkan pada Situs.
+    \n \n1.10. “Situs”, berarti www.cermati.com
+
+    \n \n2. LAYANAN DAN/ATAU JASA Kami memberikan informasi mengenai produk-produk finansial dan/atau perbankan, asuransi, telekomunikasi yang disediakan oleh Pihak Ketiga. Layanan ini memungkinkan Anda untuk dapat melihat, menelaah, membaca, serta membandingkan informasi tersebut.
+    \n \n2.1. Informasi yang terdapat dalam Situs Kami ditampilkan sesuai keadaan kenyataan untuk tujuan informasi umum. Kami berusaha untuk selalu menyediakan dan menampilkan informasi yang terbaru dan akurat, namun Kami tidak menjamin bahwa segala informasi sesuai dengan ketepatan waktu atau relevansi dengan kebutuhan Anda.
+    \n \n2.2. Diharapkan Anda tidak menganggap atau berasumsi bahwa Situs ini dapat dijadikan sebagai saran keuangan dan/atau finansial, atau rekomendasi atas produk serta layanan yang ditampilkan. Informasi di Situs ini disediakan untuk membantu Anda dalam memilih produk atau layanan yang sesuai dengan kebutuhan Anda. Anda sepenuhnya bertanggung jawab atas keputusan terkait pemilihan produk dan layanan, atau dalam menandatangani kontrak berkaitan dengan sebuah produk atau layanan. Dengan memberikan Kami rincian tentang diri pribadi Anda, dianggap Anda mengajukan diri untuk mendapatkan suatu produk atau layanan tertentu.
+    \n \n2.3. Layanan yang Kami berikan tidak bersifat memaksa atau mengikat, serta tidak mengharuskan Anda untuk mengikuti informasi yang tersedia. Tidak ada situasi atau keadaan apapun yang dapat membuat Kami dikenakan tanggung jawab atas kemungkinan kerugian yang Anda alami karena pengambilan keputusan yang dilakukan oleh Anda sendiri terkait tindakan atas informasi produk yang kami sampaikan di Situs.
+    \n \n2.4. Kami memiliki hak untuk kapan saja menampilkan, mengubah, menghapus, menghilangkan, atau menambahkan segala konten yang ditampilkan dalam Situs ini.
+
+    \n \n3. PENGGUNAAN LAYANAN DAN JASA Dengan Anda melanjutkan penggunaan atau pengaksesan Situs ini, berarti Anda telah menyatakan serta menjamin kepada Kami bahwa :
+    \n \n3.1. Anda hanya diperkenankan untuk mengakses dan/atau menggunakan Situs ini untuk keperluan pribadi dan non-komersil, yang berarti bahwa Situs ini hanya boleh diakses dan digunakan secara langsung oleh individu atau bisnis yang sedang mencari produk atau layanan untuk individu atau bisnis tersebut. Akses dan penggunaan Situs diluar dari keperluan pribadi atau non-komersil dilarang keras, dan melanggar Syarat dan Ketentuan ini.
+    \n \n3.2. Anda tidak diperkenankan menggunakan Situs dalam hal sebagai berikut : Untuk menyakiti, menyiksa, mempermalukan, memfitnah, mencemarkan nama baik, mengancam, mengintimidasi atau mengganggu orang atau bisnis lain, atau apapun yang melanggar privasi atau yang Kami anggap cabul, menghina, penuh kebencian, tidak senonoh, tidak patut, tidak pantas, tidak dapat diterima, mendiskriminasikan atau merusak. Dalam cara yang melawan hukum, tindakan penipuan atau tindakan komersil. Melanggar atau menyalahi hak orang lain, termasuk tanpa kecuali : hak paten, merek dagang, hak cipta, rahasia dagang, publisitas, dan hak milik lainnya. Untuk membuat, memeriksa, memperbarui, mengubah atau memperbaiki database, rekaman atau direktori Anda ataupun orang lain. Mengubah atau mengatur ulang bagian apapun dalam Situs ini yang akan mengganggu atau menaruh beban berlebihan pada sistem komunikasi dan teknis kami. Mengunakan kode komputer otomatis, proses, program, robot, net crawler, spider, pemrosesan data, trawling atau kode komputer, proses, program atau sistem screen scraping alternatif. Melanggar Syarat dan Ketentuan, atau petunjuk lainnya yang ada pada Situs.
+    \n \n3.3. Kami tidak bertanggung jawab atas kehilangan akibat kegagalan mengakses Situs, dan metode penggunaan Situs yang diluar kendali Kami.
+    \n \n3.4. Kami tidak bertanggung jawab atau dapat dipersalahkan atas kehilangan atau kerusakan yang diluar perkiraan saat Anda mengakses atau menggunakan Situs ini. Ini termasuk kehilangan penghematan yang diharapkan, kehilangan bisnis atau kesempatan bisnis, kehilangan pemasukan atau keuntungan, atau kehilangan atau kerusakan apapun yang Anda harus alami akibat penggunaan Situs ini.
+
+    \n \n4. HAK INTELEKTUAL PROPERTI Semua Hak Kekayaan Intelektual yang ada di dalam Situs ini adalah milik Kami. Tiap atau keseluruhan informasi dan materi dan konten, termasuk namun tidak terbatas pada tulisan, perangkat lunak, teks, data, grafik, gambar, audio, video, logo, ikon atau kode-kode html dan kode-kode lain yang ada di Situs ini dilarang dipublikasikan, dimodifikasi, disalin, digandakan atau diubah dengan cara apapun di luar area Situs ini tanpa izin dari Kami. Pelanggaran terhadap hak-hak Situs ini dapat ditindak sesuai dengan peraturan yang berlaku. Anda dapat menggunakan informasi atau isi dalam Situs hanya untuk penggunaan pribadi non-komersil. Kecuali ditentukan sebaliknya dan/atau diperbolehkan secara tegas oleh undang-undang hak cipta, maka Pengguna dilarang untuk menyalin, membagikan ulang, mentransmisi ulang, meretas, mempublikasi atau melakukan tindakan eksploitasi komersial dari pengunduhan yang dilakukan tanpa seizin Kami sebagai pemilik Hak Intelektual Properti tersebut. Dalam hal Pengguna telah mendapatkan izin yang diperlukan maka Pengguna dilarang melakukan perubahan atau penghapusan. Pengguna dengan ini menyatakan menerima dan mengetahui bahwa dengan mengunduh materi Hak Intelektual Properti bukan berarti mendapatkan hak kepemilikan atas pengunduhan materi Hak Intelektual Properti tersebut.
+
+    \n \n5. KOMENTAR Jika Anda ingin memberikan komentar, masukan, ataupun sanggahan mengenai tiap atau keseluruhan konten dan informasi dalam Situs, Kami juga menyediakan sarana chat/messaging, kontak email, blog, ataupun media sosial milik Kami. Anda diperbolehkan untuk memberi komentar, dan setuju bahwa jika diperlukan, akan Kami pergunakan untuk kepentingan informasi dan ditampilkan pada Situs Kami. Dan harap diperhatikan bahwa komentar, masukan, atau sanggahan yang Anda berikan tidak boleh bertentangan dengan Syarat dan Ketentuan ini, terutama seperti tercantum dalam poin
+    ]]></string>
+    <string name="content_verif">Connect sedang memverifikasi akun Anda, kami akan beri tahu Anda jika verifikasi selesai.</string>
+    <string name="m_rafli_ruk_antala">M Rafli Ruk\'antala</string>
+    <string name="_21_april_2000">21 April 2000</string>
+    <string name="text_dummy_post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum sit at scelerisque semper amet. Egestas eget volutpat ...</string>
+    <string name="agenda_title_dummy">Seminar Kreasi Pemuda Kota Malang</string>
+    <string name="time_agenda">12 Oktober 2021</string>
+    <string name="lihat_selengkapnya">Lihat Selengkapnya</string>
+    <string name="kirim_berita">Kirim Berita</string>
+    <string name="tulis_berita_disini">Tulis berita disini</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="content_dummy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et mi ipsum est ut. Lacus platea diam a pellentesque ornare egestas in. Amet egestas enim nec, purus tellus, aliquam. \n
+
+        \n Ut feugiat mattis egestas faucibus pellentesque consectetur egestas. Sed nulla augue vulputate sollicitudin. Dignissim urna pellentesque sit in et tempus. Ut sollicitudin habitant elementum amet rutrum natoque. \n
+
+        \n Ac sit malesuada nisl dolor iaculis et tristique aliquam rutrum. Nunc in neque quis lectus aliquam. Nunc ac donec sit euismod eleifend rhoncus dui. Et, massa vulputate nunc platea netus lorem sit netus.</string>
+    <string name="kirim_agenda">Kirim Agenda</string>
+    <string name="nama_kegiatan">Nama Kegiatan</string>
+    <string name="rincian_kegiatan">Rincian Kegiatan</string>
+    <string name="lokasi_kegiatan">Lokasi Kegiatan</string>
+    <string name="connect_sedang_memverifikasi_agenda_anda_kami_akan_beri_tahu_anda_jika_verifikasi_selesai">Connect sedang memverifikasi agenda Anda, kami akan beri tahu Anda jika verifikasi selesai.</string>
+    <string name="dummy_title_product">Tanaman Obat Keluarga Sumatera (1 Lusin)</string>
+    <string name="toko_resmi">Toko Resmi</string>
+    <string name="rekomendasi_kami">Rekomendasi Kami</string>
+    <string name="dummy_product_description">Lorem eu interdum suspendisse convallis. Accumsan egestas orci faucibus nullam gravida. Ut faucibus suspendisse aliquam consequat ut. Nec sit dui arcu tristique vel non sapien. \n \n
+
+        In in sed venenatis, vitae mattis. Eget nam diam, varius tristique consectetur orci. In in iaculis fames sed. Scelerisque aenean at sagittis diam pharetra tempus dui porttitor lectus.
+        \n Phasellus massa gravida tellus egestas sodales suspendisse proin. Urna, in enim arcu, ac. Sit consectetur arcu consectetur etiam posuere ultrices bibendum est sit. In eu, euismod integer ut ullamcorper ut. Erat faucibus vitae potenti lorem faucibus auctor semper. \n
+
+        Viverra integer turpis nibh nam lectus porttitor mauris. Elementum sed aliquet pretium mus dolor velit arcu pretium. Elit vestibulum orci, tristique accumsan vehicula lacinia ac euismod. Pretium mattis tortor mauris semper sed ac nisl nec integer. Ac quis nunc tempor semper massa, viverra fames. \n
+
+        Fringilla sapien libero mollis fringilla amet aliquam sagittis vestibulum, ac. Justo quam phasellus amet pellentesque at in maecenas pellentesque.</string>
+    <string name="name_app">MarkOI</string>
+    <string name="syarat_penggunaan_kami">Syarat Penggunaan kami</string>
+    <string name="email_form_message">Email Error</string>
+    <string name="tambahkan_gambar">Tambahkan Gambar</string>
+    <string name="dd_mm_yyyy">dd / mm / yyyy</string>
+    <string name="time_format">-- : --</string>
+    <string name="jam_mulai">Jam Mulai</string>
+    <string name="menu">Menu</string>
+    <string name="fitur_masih_dalam_pengembangan">Fitur masih dalam pengembangan</string>
+    <string name="mfsyach_gmail_com">mfsyach@gmail.com</string>
+    <string name="belum_ditambahkan">Belum ditambahkan</string>
+    <string name="kota_tinggal_saat_ini">Kota Tinggal Saat Ini</string>
+    <string name="edit_informasi">Edit Informasi</string>
+    <string name="tentang">Tentang</string>
+    <string name="simpan">Simpan</string>
+</resources>

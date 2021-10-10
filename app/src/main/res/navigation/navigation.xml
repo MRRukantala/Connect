@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.connect.splash.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_menuFragment2"
+            app:destination="@id/menuFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.connect.menu.MenuFragment"
+        android:label="menu_fragment"
+        tools:layout="@layout/menu_fragment">
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_signFragment"
+            app:destination="@id/signFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/splashScreenFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_verifFragment"
+            app:destination="@id/verifFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.connect.login.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_verifFragment"
+            app:destination="@id/verifFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainAppActivity"
+            app:destination="@id/mainAppActivity"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_bottomNavigationFragment"
+            app:destination="@id/bottomNavigationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signFragment"
+        android:name="com.example.connect.signup.ui.login.SignFragment"
+        android:label="fragment_sign"
+        tools:layout="@layout/fragment_sign">
+        <action
+            android:id="@+id/action_signFragment_to_ketentuanAppFragment"
+            app:destination="@id/ketentuanAppFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/signFragment" />
+        <action
+            android:id="@+id/action_signFragment_to_verifFragment"
+            app:destination="@id/verifFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ketentuanAppFragment"
+        android:name="com.example.connect.signup.KetentuanAppFragment"
+        android:label="KetentuanAppFragment"
+        tools:layout="@layout/fragment_ketentuan_app" />
+    <fragment
+        android:id="@+id/verifFragment"
+        android:name="com.example.connect.signup.VerifFragment"
+        android:label="VerifFragment"
+        tools:layout="@layout/fragment_verif" />
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="com.example.connect.main.ui.home.news.add.AddNewsFragment"
+        android:label="add_news_fragment"
+        tools:layout="@layout/add_news_fragment" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.connect.main.ui.home.news.NewsFragment"
+        android:label="NewsFragment">
+        <action
+            android:id="@+id/action_newsFragment_to_addNewsFragment"
+            app:destination="@id/addNewsFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainAppActivity"
+        android:name="com.example.connect.main.MainAppActivity"
+        android:label="MainAppActivity" />
+    <fragment
+        android:id="@+id/bottomNavigationFragment"
+        android:name="com.example.connect.coba.BottomNavigationFragment"
+        android:label="fragment_bottom_navigation"
+        tools:layout="@layout/fragment_bottom_navigation" />
+
+</navigation>

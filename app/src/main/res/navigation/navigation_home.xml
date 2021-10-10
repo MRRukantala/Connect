@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.connect.main.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addNewsFragment2"
+            app:destination="@id/addNewsFragment2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addAgendaFragment"
+            app:destination="@id/addAgendaFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewsFragment2"
+        android:name="com.example.connect.main.ui.home.news.add.AddNewsFragment"
+        android:label="add_news_fragment"
+        tools:layout="@layout/add_news_fragment" >
+        <action
+            android:id="@+id/action_addNewsFragment2_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_addNewsFragment2_to_prosesAddingNewsFragment"
+            app:destination="@id/prosesAddingNewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAgendaFragment"
+        android:name="com.example.connect.main.ui.home.agenda.add.AddAgendaFragment"
+        android:label="fragment_add_agenda"
+        tools:layout="@layout/fragment_add_agenda" >
+        <action
+            android:id="@+id/action_addAgendaFragment_to_loadingAddAgendaFragment"
+            app:destination="@id/loadingAddAgendaFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_loading_add_agenda"
+        android:id="@+id/loadingAddAgendaFragment"
+        android:name="com.example.connect.main.ui.home.agenda.LoadingAddAgendaFragment"
+        android:label="LoadingAddAgendaFragment" >
+        <action
+            android:id="@+id/action_loadingAddAgendaFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/prosesAddingNewsFragment"
+        android:name="com.example.connect.main.ui.home.news.add.ProsesAddingNewsFragment"
+        android:label="fragment_proses_adding_news"
+        tools:layout="@layout/fragment_proses_adding_news" >
+        <action
+            android:id="@+id/action_prosesAddingNewsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuOptionFragment"
+        android:name="com.example.connect.main.ui.menu.MainMenuOptionFragment"
+        android:label="main_menu_option_fragment"
+        tools:layout="@layout/main_menu_option_fragment" />
+</navigation>

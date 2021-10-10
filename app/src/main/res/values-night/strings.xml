@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="daftarkan_diri_anda_dan_gabung_dengan_connect_sekarang_juga">Daftarkan diri Anda dan gabung dengan Connect sekarang juga!</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="kirim_berita">Kirim Berita</string>
+    <string name="tulis_berita_disini">Tulis berita disini</string>
+    <string name="kirim_agenda">Kirim Agenda</string>
+    <string name="rincian_kegiatan">Rincian Kegiatan</string>
+    <string name="lokasi_kegiatan">Lokasi Kegiatan</string>
+    <string name="connect_sedang_memverifikasi_agenda_anda_kami_akan_beri_tahu_anda_jika_verifikasi_selesai">Connect sedang memverifikasi agenda Anda, kami akan beri tahu Anda jika verifikasi selesai.</string>
+    <string name="dummy_title_product">Tanaman Obat Keluarga Sumatera (1 Lusin)</string>
+    <string name="toko_resmi">Toko Resmi</string>
+    <string name="rekomendasi_kami">Rekomendasi Kami</string>
+    <string name="name_app">MarkOI</string>
+    <string name="syarat_penggunaan_kami">Syarat Penggunaan kami</string>
+    <string name="email_form_message">Email Error</string>
+    <string name="tambahkan_gambar">Tambahkan Gambar</string>
+    <string name="dd_mm_yyyy">dd / mm / yyyy</string>
+    <string name="jam_mulai">Jam Mulai</string>
+    <string name="menu">Menu</string>
+    <string name="fitur_masih_dalam_pengembangan">Fitur masih dalam pengembangan</string>
+    <string name="mfsyach_gmail_com">mfsyach@gmail.com</string>
+    <string name="belum_ditambahkan">Belum ditambahkan</string>
+    <string name="kota_tinggal_saat_ini">Kota Tinggal Saat Ini</string>
+    <string name="edit_informasi">Edit Informasi</string>
+    <string name="tentang">Tentang</string>
+    <string name="simpan">Simpan</string>
+</resources>
