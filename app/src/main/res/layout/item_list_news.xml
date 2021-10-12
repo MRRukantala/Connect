@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="post"
+            type="com.example.connect.main.ui.home.news.model.Post" />
+
+    </data>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/item_post"
         android:layout_width="match_parent"
@@ -17,7 +25,7 @@
 
             <include
                 android:id="@+id/head_post"
-                layout="@layout/head_item_post"/>
+                layout="@layout/head_item_post" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -26,6 +34,7 @@
                 android:layout_margin="12dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito"
+                android:text="@{post.konten}"
                 android:textColor="@color/content_and_title_color_post_and_agenda"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

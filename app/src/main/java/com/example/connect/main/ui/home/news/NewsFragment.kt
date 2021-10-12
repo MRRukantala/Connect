@@ -14,34 +14,27 @@ import com.example.connect.main.ui.home.HomeFragmentDirections
 
 class NewsFragment : Fragment() {
 
-    lateinit var binding : NewsFragmentBinding
-
-    companion object {
-        fun newInstance() = NewsFragment()
+    lateinit var binding: NewsFragmentBinding
+    private val viewModel: NewsViewModel by lazy {
+        ViewModelProvider(this).get(NewsViewModel::class.java)
     }
 
-    private lateinit var viewModel: NewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.news_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.news_fragment, container, false)
 
         binding.fabNews.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddNewsFragment2())
         }
 
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
-        // TODO: Use the ViewModel
-
     }
 
 }
