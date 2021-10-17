@@ -12,7 +12,7 @@
         android:layout_margin="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/avatar_1_raster" />
+        android:src="@drawable/avatar_1_raster" />
 
     <TextView
         android:id="@+id/name_text_view"
@@ -24,7 +24,7 @@
         android:textColor="@color/content_and_title_color_post_and_agenda"
         app:layout_constraintStart_toEndOf="@+id/circleImageView"
         app:layout_constraintTop_toTopOf="@+id/circleImageView"
-        tools:text="@string/m_rafli_ruk_antala" />
+        android:text="@string/m_rafli_ruk_antala" />
 
     <TextView
         android:id="@+id/date_post"
@@ -36,6 +36,6 @@
         app:layout_constraintStart_toEndOf="@+id/circleImageView"
         app:layout_constraintTop_toBottomOf="@+id/name_text_view"
         app:layout_constraintVertical_bias="0.35000000"
-        tools:text="@string/_21_april_2000" />
+        android:text="@string/_21_april_2000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

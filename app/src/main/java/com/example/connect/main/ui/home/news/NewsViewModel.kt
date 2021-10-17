@@ -1,6 +1,5 @@
 package com.example.connect.main.ui.home.news
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +23,10 @@ class NewsViewModel : ViewModel() {
     val properties: LiveData<List<Post>>
         get() = _properties
 
+    private val _navigateToSelectedNews = MutableLiveData<Post?>()
+    val navigatedToSelectedNews: LiveData<Post?>
+        get() = _navigateToSelectedNews
+
     init {
         getPostProperties()
     }
@@ -31,25 +34,29 @@ class NewsViewModel : ViewModel() {
     private fun getPostProperties() {
         coroutineScope.launch {
             var getPostDeferred = MarkOIApi.retrofitService.getAllKiriman()
-
             try {
                 val result = getPostDeferred.await()
-                if (result.data.size > 0) {
-                    Log.v("DATA", "ADA")
-                    _properties.value = result.data
-                } else {
-                    Log.v("DATA", "GA ADA")
+                when {
+                    result.data.size > 0 -> {
+                        _properties.value = result.data
+                    }
                 }
             } catch (e: Exception) {
-                Log.v("DATA", "ERROR")
                 _status.value = e.toString()
             }
-
         }
     }
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun displayNewsDetails(postProperty: Post) {
+        _navigateToSelectedNews.value = postProperty
+    }
+
+    fun displayNewsDetailsCompelete() {
+        _navigateToSelectedNews.value = null
     }
 }

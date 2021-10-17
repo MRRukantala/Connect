@@ -6,13 +6,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/dp16"
+        android:layout_margin="@dimen/dp24"
         tools:context=".main.ui.menu.info_pendidikan.info.InfoUserFragment">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView2"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:src="@drawable/avatar_1_raster"
@@ -180,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp12"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="62dp"
             android:fontFamily="@font/nunito_sans"
             android:padding="@dimen/dp24"
             android:text="Logout"

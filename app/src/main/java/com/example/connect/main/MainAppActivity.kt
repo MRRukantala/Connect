@@ -34,16 +34,6 @@ class MainAppActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-//        navController = this.findNavController(R.id.nav_host_fragment_activity_main_app)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
-//        appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _,
@@ -52,12 +42,11 @@ class MainAppActivity : AppCompatActivity() {
                 R.id.homeFragment -> navView.visibility = View.VISIBLE
                 R.id.dashboardFragment -> navView.visibility = View.VISIBLE
                 R.id.notificationsFragment -> navView.visibility = View.VISIBLE
-                R.id.mainMenuOptionFragment -> navView.visibility = View.VISIBLE
+                R.id.containerInfoPendidikanFragment -> navView.visibility = View.VISIBLE
                 else -> navView.visibility = View.GONE
             }
         }
 
-//        NavigationUI.setupActionBarWithNavController(this,navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {

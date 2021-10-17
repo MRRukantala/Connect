@@ -26,6 +26,20 @@
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailNewsFragment"
+            app:destination="@id/detailNewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailAgendaFragment"
+            app:destination="@id/detailAgendaFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addNewsFragment2"
@@ -85,4 +99,22 @@
         android:name="com.example.connect.main.ui.menu.MainMenuOptionFragment"
         android:label="main_menu_option_fragment"
         tools:layout="@layout/main_menu_option_fragment" />
+    <fragment
+        android:id="@+id/detailNewsFragment"
+        android:name="com.example.connect.main.ui.home.news.detail.DetailNewsFragment"
+        android:label="DetailNewsFragment"
+        tools:layout="@layout/detail_news_fragment">
+        <argument
+            android:name="selectedNews"
+            app:argType="com.example.connect.main.ui.home.news.model.Post" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailAgendaFragment"
+        android:name="com.example.connect.main.ui.home.agenda.detail.DetailAgendaFragment"
+        android:label="detail_agenda_fragment"
+        tools:layout="@layout/detail_agenda_fragment" >
+        <argument
+            android:name="selectedAgenda"
+            app:argType="com.example.connect.main.ui.home.agenda.model.Agenda" />
+    </fragment>
 </navigation>

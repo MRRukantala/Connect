@@ -1,32 +1,40 @@
 package com.example.connect.main.ui.home.news.detail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.connect.R
+import com.example.connect.databinding.DetailNewsFragmentBinding
 
 class DetailNewsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = DetailNewsFragment()
-    }
-
-    private lateinit var viewModel: DetailNewsViewModel
+    lateinit var binding: DetailNewsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.detail_news_fragment, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailNewsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        binding = DataBindingUtil.inflate(inflater, R.layout.detail_news_fragment, container, false)
+        binding.lifecycleOwner = this
 
+        val viewModelFactory = DetailViewModelFactory(
+            DetailNewsFragmentArgs.fromBundle(requireArguments()).selectedNews,
+            requireNotNull(activity).application
+        )
+
+        binding.viewModel =
+            ViewModelProvider(this, viewModelFactory).get(DetailNewsViewModel::class.java)
+
+        binding.include6.backImage.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        return binding.root
+    }
 }

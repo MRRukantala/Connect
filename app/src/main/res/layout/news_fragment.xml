@@ -10,15 +10,25 @@
             type="com.example.connect.main.ui.home.news.NewsViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F5F5F5"
         tools:context=".main.ui.home.news.NewsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+            android:id="@+id/rcv"
             listPosts="@{viewModel.properties}"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingStart="@dimen/dp8"
+            android:paddingEnd="@dimen/dp8"
+            android:paddingBottom="62dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_list_news" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -27,15 +37,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_marginRight="32dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="82dp"
             android:src="@drawable/pen"
             app:backgroundTint="@color/color_primary"
-            app:layout_constraintBottom_toTopOf="@+id/nav_view"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/white"
             tools:ignore="ContentDescription" />
 
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

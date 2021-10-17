@@ -26,4 +26,5 @@
     <string name="edit_informasi">Edit Informasi</string>
     <string name="tentang">Tentang</string>
     <string name="simpan">Simpan</string>
+    <string name="tidak_ada_internet_n_pastikan_anda_terhubung_internet">Tidak ada Internet \n Pastikan Anda Terhubung Internet</string>
 </resources>

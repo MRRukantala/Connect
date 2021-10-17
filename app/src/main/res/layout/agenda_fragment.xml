@@ -1,15 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.connect.main.ui.home.agenda.AgendaViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F5F5F5"
         tools:context=".main.ui.home.agenda.AgendaFragment">
 
+        <LinearLayout
+            android:id="@+id/nointernet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.45"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/no_internet" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp8"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/tidak_ada_internet_n_pastikan_anda_terhubung_internet"
+                android:textColor="@color/content_and_title_color_post_and_agenda" />
+
+
+        </LinearLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv"
+            listAgendas="@{viewModel.properties}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingStart="@dimen/dp8"
+            android:paddingEnd="@dimen/dp8"
+            android:paddingBottom="62dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_list_agendas" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,16 +74,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:layout_marginEnd="@dimen/dp32"
-            android:layout_marginBottom="@dimen/dp64"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="82dp"
             android:src="@drawable/pen"
             app:backgroundTint="@color/color_primary"
-            app:layout_constraintBottom_toTopOf="@+id/nav_view"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/white"
             tools:ignore="ContentDescription" />
 
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
-import com.example.connect.main.ui.menu.bottomsheet.ItemListDialogFragment
-import com.example.connect.main.ui.menu.info_pendidikan.ContainerInfoPendidikanFragmentDirections
 
 class InfoUserFragment : Fragment() {
 
@@ -28,29 +25,23 @@ class InfoUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val itemModalBottomSheet = ItemListDialogFragment()
 
         binding = DataBindingUtil.inflate(inflater, R.layout.info_user_fragment, container, false)
-
-        binding.buttonAbout.setOnClickListener {
-            findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
+        binding.apply {
+            buttonAbout.setOnClickListener {
+                findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
+            }
+            button5.setOnClickListener {
+                findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_editInfoUserFragment)
+            }
+            logout.setOnClickListener {
+                findNavController().setGraph(R.navigation.navigation)
+            }
         }
 
-        binding.button5.setOnClickListener {
-            findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_editInfoUserFragment)
-        }
-
-        binding.logout.setOnClickListener {
-            findNavController().setGraph(R.navigation.navigation)
-        }
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(InfoUserViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

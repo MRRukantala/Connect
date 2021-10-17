@@ -11,16 +11,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.AgendaFragmentBinding
 import com.example.connect.main.ui.home.HomeFragmentDirections
+import com.example.connect.main.ui.home.agenda.model.AgendaAdapter
+import com.example.connect.utilites.isConnected
 
 class AgendaFragment : Fragment() {
 
     lateinit var binding: AgendaFragmentBinding
-
-    companion object {
-        fun newInstance() = AgendaFragment()
+    private val viewModel: AgendaViewModel by lazy {
+        ViewModelProvider(this).get(AgendaViewModel::class.java)
     }
-
-    private lateinit var viewModel: AgendaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +31,35 @@ class AgendaFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddAgendaFragment())
         }
 
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        when {
+            isConnected(requireContext()) -> {
+                binding.nointernet.visibility = View.GONE
+                binding.viewModel = viewModel
+                binding.rcv.adapter = AgendaAdapter(
+                    AgendaAdapter.OnClickListener {
+                        viewModel.displayAgendaDetail(it)
+                    }
+                )
+            }
+            else -> {
+                binding.nointernet.visibility = View.VISIBLE
+            }
+        }
+
+        viewModel.navigatedToSelectedAgenda.observe(viewLifecycleOwner, {
+            if (null != it) {
+                this.findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToDetailAgendaFragment(it)
+                )
+                viewModel.displayAgendaDetailComplete()
+            }
+        })
+
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AgendaViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

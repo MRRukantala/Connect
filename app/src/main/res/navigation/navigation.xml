@@ -118,19 +118,6 @@
         android:name="com.example.connect.signup.VerifFragment"
         android:label="VerifFragment"
         tools:layout="@layout/fragment_verif" />
-    <fragment
-        android:id="@+id/addNewsFragment"
-        android:name="com.example.connect.main.ui.home.news.add.AddNewsFragment"
-        android:label="add_news_fragment"
-        tools:layout="@layout/add_news_fragment" />
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.example.connect.main.ui.home.news.NewsFragment"
-        android:label="NewsFragment">
-        <action
-            android:id="@+id/action_newsFragment_to_addNewsFragment"
-            app:destination="@id/addNewsFragment" />
-    </fragment>
     <activity
         android:id="@+id/mainAppActivity"
         android:name="com.example.connect.main.MainAppActivity"
