@@ -63,21 +63,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/nunito_sans"
-                    android:text="@{post.created_at}"
                     app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
                     app:layout_constraintStart_toEndOf="@+id/circleImageView"
                     app:layout_constraintTop_toBottomOf="@+id/name_text_view"
                     app:layout_constraintVertical_bias="0.35000000"
+                    app:time="@{post.created_at}"
                     tools:text="@string/_21_april_2000" />
 
                 <TextView
                     android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:fontFamily="@font/nunito"
-                    android:maxLength="15"
                     android:text="@{post.konten}"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:justificationMode="inter_word"
                     android:textAlignment="textStart"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +105,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     app:cardCornerRadius="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -111,10 +113,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView8">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="400dp"
+                        android:layout_height="200dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/post" />
+                        app:imageUrl="@{post.gambar}"
+                        tools:src="@drawable/post" />
 
 
                 </androidx.cardview.widget.CardView>

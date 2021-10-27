@@ -9,22 +9,18 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentSignBinding
 
 class SignFragment : Fragment() {
 
-    private lateinit var loginViewModel: LoginViewModel
-    private var _binding: FragmentSignBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var signViewModel: LoginViewModel
+    lateinit var binding: FragmentSignBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,24 +28,23 @@ class SignFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSignBinding.inflate(inflater, container, false)
-
-        _binding!!.textView30.setOnClickListener {
-            findNavController().navigate(SignFragmentDirections.actionSignFragmentToKetentuanAppFragment())
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign, container, false)
+        binding.apply {
+            textView30.setOnClickListener {
+                findNavController().navigate(SignFragmentDirections.actionSignFragmentToKetentuanAppFragment())
+            }
+            back.backImage.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            lifecycleOwner = viewLifecycleOwner
         }
-
-        binding.back.backImage.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        // signViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
+        signViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         val usernameEditText = binding.username
         val emailEditText = binding.email
@@ -58,7 +53,7 @@ class SignFragment : Fragment() {
         val loginButton = binding.login
         val loadingProgressBar = binding.loading
 
-        loginViewModel.loginFormState.observe(viewLifecycleOwner,
+        signViewModel.loginFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
                 if (loginFormState == null) {
                     return@Observer
@@ -77,17 +72,6 @@ class SignFragment : Fragment() {
                 }
             })
 
-        loginViewModel.loginResult.observe(viewLifecycleOwner,
-            Observer { loginResult ->
-                loginResult ?: return@Observer
-                loadingProgressBar.visibility = View.GONE
-                loginResult.error?.let {
-                    showLoginFailed(it)
-                }
-                loginResult.success?.let {
-                    updateUiWithUser(it)
-                }
-            })
 
         val afterTextChangedListener = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -99,7 +83,7 @@ class SignFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
-                loginViewModel.loginDataChanged(
+                signViewModel.loginDataChanged(
                     usernameEditText.text.toString(),
                     emailEditText.text.toString(),
                     passwordEditText.text.toString()
@@ -112,7 +96,7 @@ class SignFragment : Fragment() {
 
         passwordEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                loginViewModel.login(
+                signViewModel.signUp(
                     usernameEditText.text.toString(),
                     emailEditText.text.toString(),
                     passwordEditText.text.toString()
@@ -123,20 +107,38 @@ class SignFragment : Fragment() {
 
         loginButton.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
-            loginViewModel.login(
+            signViewModel.signUp(
                 usernameEditText.text.toString(),
                 emailEditText.text.toString(),
                 passwordEditText.text.toString()
             )
+
+            signViewModel.loginResult.observe(viewLifecycleOwner, {
+                if (null != it) {
+                    findNavController().navigate(SignFragmentDirections.actionSignFragmentToVerifFragment())
+
+//                    updateUiWithUser()
+                } else {
+                    signViewModel.messageLogin.observe(viewLifecycleOwner, {
+                        when {
+                            it.equals(getString(R.string.email_already)) -> {
+                                showLoginFailed(R.string.email_already)
+                                loadingProgressBar.visibility = View.GONE
+                                signViewModel.messageComplete()
+                            }
+                        }
+                    })
+                }
+            })
         }
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome) + model.displayName
+    private fun updateUiWithUser() {
         // TODO : initiate successful logged in experience
-        val appContext = context?.applicationContext ?: return
-//        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
+//        val appContext = context?.applicationContext ?: return
         findNavController().navigate(SignFragmentDirections.actionSignFragmentToVerifFragment())
+//        signViewModel.messageComplete()
+        requireActivity().finish()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
@@ -146,6 +148,6 @@ class SignFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+//        binding = null
     }
 }

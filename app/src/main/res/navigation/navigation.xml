@@ -24,6 +24,9 @@
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/splashScreenFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_mainAppActivity"
+            app:destination="@id/mainAppActivity" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"

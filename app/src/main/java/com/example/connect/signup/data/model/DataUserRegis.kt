@@ -1,29 +1,30 @@
-package com.example.connect.login.data.model
+package com.example.connect.signup.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import okhttp3.Response
+
 
 @Parcelize
-data class DataUser(
+data class DataUserRegis(
     val id: Int?,
     val name: String,
     val email: String,
-    val email_verified_at: String?,
-    val status: String?,
     val level: String,
+    val status: Int?,
     val created_at: String,
-    val updated_at: String
+    val updated_at: String,
 ) : Parcelable
 
 @Parcelize
 data class response(
     val token: String,
     val token_type: String,
-    val user:   DataUser,
+    val user: DataUserRegis,
 ) : Parcelable
+
 
 data class UserResponse(
     val data: response,
     var message: String?
 )
+

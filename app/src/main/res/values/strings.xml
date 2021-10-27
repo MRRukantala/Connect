@@ -81,7 +81,7 @@
     <string name="lokasi_kegiatan">Lokasi Kegiatan</string>
     <string name="connect_sedang_memverifikasi_agenda_anda_kami_akan_beri_tahu_anda_jika_verifikasi_selesai">Connect sedang memverifikasi agenda Anda, kami akan beri tahu Anda jika verifikasi selesai.</string>
     <string name="dummy_title_product">Tanaman Obat Keluarga Sumatera (1 Lusin)</string>
-    <string name="toko_resmi">Toko Resmi</string>
+    <string name="toko_resmi">Toko MarkOI</string>
     <string name="rekomendasi_kami">Rekomendasi Kami</string>
     <string name="dummy_product_description">Lorem eu interdum suspendisse convallis. Accumsan egestas orci faucibus nullam gravida. Ut faucibus suspendisse aliquam consequat ut. Nec sit dui arcu tristique vel non sapien. \n \n
 
@@ -107,4 +107,6 @@
     <string name="tentang">Tentang</string>
     <string name="simpan">Simpan</string>
     <string name="tidak_ada_internet_n_pastikan_anda_terhubung_internet">Tidak ada Internet \n Pastikan Anda Terhubung Internet</string>
+    <string name="email_already">The email has already been taken.</string>
+    <string name="barang_teratas">5 Barang Teratas</string>
 </resources>

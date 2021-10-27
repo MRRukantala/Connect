@@ -1,11 +1,10 @@
-package com.example.connect.main.ui.dashboard
+package com.example.connect.main.ui.dashboard.store.resmi
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.connect.main.ui.dashboard.modelproductumum.ProductUmum
 import com.example.connect.utilites.MarkOIApi
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class DashboardViewModel(token: String, application: Application) : AndroidViewModel(application) {
+class StoreResmiViewModel(token: String, application: Application) :
+    AndroidViewModel(application) {
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -38,9 +38,7 @@ class DashboardViewModel(token: String, application: Application) : AndroidViewM
         coroutineScope.launch {
             val getAdminProductDeferred = MarkOIApi.retrofitService
                 .getAllProductMarkOI("Bearer " + token)
-
             Log.v("hasil product", getAdminProductDeferred.toString())
-
             try {
                 val result = getAdminProductDeferred.await()
                 Log.v("hasil product", result.data[0].nama_produk)

@@ -1,44 +1,79 @@
 package com.example.connect.main.ui.dashboard
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.connect.R
 import com.example.connect.databinding.FragmentDashboardBinding
+import com.example.connect.login.data.model.response
+import com.example.connect.main.ui.dashboard.store.DashbiardViewModelFactory
+import com.example.connect.main.ui.dashboard.store.ProductAdapter
+import com.example.connect.main.ui.dashboard.store.umum.ProductUmumAdapter
 
 class DashboardFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    lateinit var binding: FragmentDashboardBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_dashboard,
+            container, false
+        )
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val application = requireNotNull(activity).application
+        binding.lifecycleOwner = this
 
-//        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-        return root
+
+        val viewModelDashboard =
+            DashbiardViewModelFactory(
+                    requireActivity()
+                        .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+                        .getString("token", "").toString()
+                , application
+            )
+        val viewModel =
+            ViewModelProvider(this, viewModelDashboard).get(DashboardViewModel::class.java)
+        binding.viewModelTokoMarkOI = viewModel
+        binding.viewModelProductUmum = viewModel
+
+        binding.recyclerView.adapter = ProductAdapter(
+            ProductAdapter.OnClickListener {
+                viewModel.displayNewsDetails(it)
+            }
+        )
+
+        binding.recyclerViewProductUmum.adapter = ProductUmumAdapter(
+            ProductUmumAdapter.OnClickListener{
+                viewModel.displayNewsDetails(it)
+            }
+        )
+
+        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
+            if(null != it){
+                this.findNavController().navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment(it)
+                )
+                viewModel.displayNewsDetailsCompelete()
+            }
+        })
+
+        binding.tvKunjungiToko.setOnClickListener {
+            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToStoreResmiFragment())
+        }
+
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
+

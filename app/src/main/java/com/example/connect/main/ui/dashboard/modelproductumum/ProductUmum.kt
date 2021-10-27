@@ -1,7 +1,10 @@
 package com.example.connect.main.ui.dashboard.modelproductumum
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ProductUmum(
     val id: Int,
     val id_user: Int,
@@ -11,4 +14,4 @@ data class ProductUmum(
     val deskripsi: String,
     val created_at: String,
     val updated_at: String
-)
+) : Parcelable

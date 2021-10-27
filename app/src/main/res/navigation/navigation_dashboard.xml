@@ -9,5 +9,42 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.connect.main.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_storeResmiFragment"
+            app:destination="@id/storeResmiFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.example.connect.main.ui.dashboard.detail.DetailProductFragment"
+        android:label="detail_product_fragment"
+        tools:layout="@layout/detail_product_fragment" >
+        <argument
+            android:name="selectedProductUmum"
+            app:argType="com.example.connect.main.ui.dashboard.modelproductumum.ProductUmum" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeResmiFragment"
+        tools:layout="@layout/fragment_store_resmi"
+        android:name="com.example.connect.main.ui.dashboard.store.resmi.StoreResmiFragment"
+        android:label="StoreResmiFragment" >
+        <action
+            android:id="@+id/action_storeResmiFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

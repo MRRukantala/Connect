@@ -20,13 +20,13 @@ class DetailNewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val application = requireNotNull(activity).application
+
         binding = DataBindingUtil.inflate(inflater, R.layout.detail_news_fragment, container, false)
         binding.lifecycleOwner = this
 
-        val viewModelFactory = DetailViewModelFactory(
-            DetailNewsFragmentArgs.fromBundle(requireArguments()).selectedNews,
-            requireNotNull(activity).application
-        )
+        val newProperty = DetailNewsFragmentArgs.fromBundle(requireArguments()).selectedNews
+        val viewModelFactory = DetailViewModelFactory(newProperty, application)
 
         binding.viewModel =
             ViewModelProvider(this, viewModelFactory).get(DetailNewsViewModel::class.java)

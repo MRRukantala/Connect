@@ -1,5 +1,6 @@
 package com.example.connect.main.ui.home.news
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,6 +37,7 @@ class NewsViewModel : ViewModel() {
             var getPostDeferred = MarkOIApi.retrofitService.getAllKiriman()
             try {
                 val result = getPostDeferred.await()
+                Log.v("image URL", result.data[0].gambar)
                 when {
                     result.data.size > 0 -> {
                         _properties.value = result.data

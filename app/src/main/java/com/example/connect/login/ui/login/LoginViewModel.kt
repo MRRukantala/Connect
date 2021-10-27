@@ -1,39 +1,71 @@
 package com.example.connect.login.ui.login
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.connect.R
-import com.example.connect.login.data.LoginRepository
-import com.example.connect.login.data.Result
+import com.example.connect.login.data.model.DataUser
+import com.example.connect.login.data.model.UserResponse
+import com.example.connect.utilites.MarkOIApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import retrofit2.HttpException
 
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
+    private val _loginResult = MutableLiveData<UserResponse?>()
+    val loginResult: LiveData<UserResponse?> = _loginResult
+
+    private val _messageLogin = MutableLiveData<String>()
+    val messageLogin: LiveData<String?> = _messageLogin
 
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    fun login(username: String, password: String) {
-        // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+    private var _activeUser = MutableLiveData<DataUser>()
+    val activeUser: LiveData<DataUser>
+        get() = _activeUser
 
-        if (result is Result.Success) {
-            _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data.data))
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
+
+    fun login(username: String, password: String) {
+        coroutineScope.launch {
+            // can be launched in a separate asynchronous job
+
+            try {
+                val getData = MarkOIApi.retrofitService.loginAPI(username, password)
+                val result = getData.await()
+
+                _loginResult.value = result
+            } catch (e: HttpException) {
+
+                _loginResult.value = null
+
+                if (e is HttpException && (e!!.code() == 401)) {
+                    var responseBody = e!!.response()?.errorBody()?.string()
+                    val jsonObject = JSONObject(responseBody!!.trim())
+                    var message = jsonObject.getString("message")
+
+                    _messageLogin.value = message
+
+//                    _loginResult.value!!.message = message
+                }
+//                _loginResult.value?.message = e.message().toString()
+
+//
+//                _loginResult.value = result
+            }
         }
     }
+
 
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {
@@ -54,4 +86,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
     }
+
+    fun messageComplete(){
+        _messageLogin.value = null
+    }
+
 }
