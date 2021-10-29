@@ -2,7 +2,6 @@ package com.example.connect.login.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import okhttp3.Response
 
 @Parcelize
 data class DataUser(
@@ -20,7 +19,7 @@ data class DataUser(
 data class response(
     val token: String,
     val token_type: String,
-    val user:   DataUser,
+    val user: DataUser,
 ) : Parcelable
 
 data class UserResponse(

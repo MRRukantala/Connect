@@ -109,4 +109,5 @@
     <string name="tidak_ada_internet_n_pastikan_anda_terhubung_internet">Tidak ada Internet \n Pastikan Anda Terhubung Internet</string>
     <string name="email_already">The email has already been taken.</string>
     <string name="barang_teratas">5 Barang Teratas</string>
+    <string name="please_allow_permission">Please allow permissions</string>
 </resources>

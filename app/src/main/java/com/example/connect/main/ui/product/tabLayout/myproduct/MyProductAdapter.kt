@@ -1,0 +1,58 @@
+package com.example.connect.main.ui.product.tabLayout.myproduct
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.connect.databinding.ItemProductUmumBinding
+import com.example.connect.main.ui.product.model.ProductModel
+
+class MyProductAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<ProductModel, MyProductAdapter.MyProdukViewHolder>(DiffCallback) {
+    object DiffCallback : DiffUtil.ItemCallback<ProductModel>() {
+        override fun areItemsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
+            return oldItem === newItem
+        }
+
+        override fun areContentsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+    }
+
+    class MyProdukViewHolder(private val binding: ItemProductUmumBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(productModel: ProductModel) {
+            binding.productModel = productModel
+            binding.executePendingBindings()
+        }
+
+    }
+
+    class OnClickListener(val clickListener: (productModelProperty: ProductModel) -> Unit) {
+        fun onClick(productModel: ProductModel) = clickListener(productModel)
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MyProdukViewHolder {
+        return MyProdukViewHolder(
+            ItemProductUmumBinding.inflate(
+                LayoutInflater.from(parent.context)
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: MyProdukViewHolder, position: Int) {
+        val property = getItem(position)
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(property)
+        }
+
+        holder.bind(property)
+    }
+}

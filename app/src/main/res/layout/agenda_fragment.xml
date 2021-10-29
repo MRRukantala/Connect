@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.home.agenda.AgendaViewModel" />
+            type="com.example.connect.main.ui.home.tablayout.agenda.AgendaViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F5F5"
-        tools:context=".main.ui.home.agenda.AgendaFragment">
+        tools:context=".main.ui.home.tablayout.agenda.AgendaFragment">
 
         <LinearLayout
             android:id="@+id/nointernet"

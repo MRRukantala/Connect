@@ -6,18 +6,15 @@
     <data>
 
         <variable
-            name="viewModelTokoMarkOI"
-            type="com.example.connect.main.ui.dashboard.DashboardViewModel" />
+            name="viewModelDashboard"
+            type="com.example.connect.main.ui.product.DashboardViewModel" />
 
-        <variable
-            name="viewModelProductUmum"
-            type="com.example.connect.main.ui.dashboard.DashboardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.ui.dashboard.DashboardFragment">
+        tools:context=".main.ui.product.DashboardFragment">
 
         <TextView
             android:id="@+id/textView23"
@@ -26,21 +23,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_bold"
+            android:padding="@dimen/dp12"
             android:text="@string/toko_resmi"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_light"
-            android:text="@string/barang_teratas"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
         <TextView
             android:id="@+id/tv_kunjungi_toko"
@@ -48,7 +35,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/nunito_bold"
+            android:padding="@dimen/dp12"
             android:text="Kunjungi Toko"
             android:textColor="@color/color_primary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,36 +47,33 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_kunjungi_toko"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp">
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    listProductKhusus="@{viewModelTokoMarkOI.properties}"
+                    listProductKhusus="@{viewModelDashboard.properties}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:listitem="@layout/item_product_khusus" />
 
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/nunito_bold"
-                    android:text="@string/rekomendasi_kami"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card"
@@ -119,7 +107,7 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPagerHome"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -131,23 +119,8 @@
         </androidx.core.widget.NestedScrollView>
 
 
-
         <!--
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_product_umum"
-            listProductUmum="@{viewModelProductUmum.properties}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24"
-            app:spanCount="2"
-            tools:listitem="@layout/item_product_umum">
 
-
-        </androidx.recyclerview.widget.RecyclerView>
         -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>

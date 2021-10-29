@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.home.news.detail.DetailNewsViewModel" />
+            type="com.example.connect.main.ui.home.tablayout.news.detail.DetailNewsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,12 +56,13 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/circleImageView"
+                            imageProfile="@{viewModel.selectedNews.photo}"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:layout_margin="12dp"
-                            android:src="@drawable/avatar_1_raster"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@drawable/avatar_1_raster" />
 
                         <TextView
                             android:id="@+id/name_text_view"
@@ -69,24 +71,24 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/nunito"
-                            tools:text="@string/m_rafli_ruk_antala"
-                            android:text="@{String.valueOf(viewModel.selectedNews.id_user)}"
+                            android:text="@{viewModel.selectedNews.name}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                            app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+                            app:layout_constraintTop_toTopOf="@+id/circleImageView"
+                            tools:text="@string/m_rafli_ruk_antala" />
 
                         <TextView
                             android:id="@+id/date_post"
                             android:layout_width="wrap_content"
-                            app:time="@{viewModel.selectedNews.created_at}"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/nunito_sans"
-                            tools:text="@string/_21_april_2000"
                             app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
                             app:layout_constraintStart_toEndOf="@+id/circleImageView"
                             app:layout_constraintTop_toBottomOf="@+id/name_text_view"
-                            app:layout_constraintVertical_bias="0.35000000" />
+                            app:layout_constraintVertical_bias="0.35000000"
+                            app:time="@{viewModel.selectedNews.created_at}"
+                            tools:text="@string/_21_april_2000" />
 
                         <TextView
                             android:id="@+id/textView8"
@@ -94,6 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="12dp"
                             android:fontFamily="@font/nunito"
+                            android:justificationMode="inter_word"
                             android:text="@{viewModel.selectedNews.konten}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +107,7 @@
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
+                            android:layout_height="300dp"
                             android:layout_marginTop="16dp"
                             app:cardCornerRadius="8dp"
                             app:layout_constraintEnd_toEndOf="parent"

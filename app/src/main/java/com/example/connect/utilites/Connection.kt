@@ -6,6 +6,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Environment
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -65,4 +69,36 @@ fun rupiah(number: Int): String{
     val localeID =  Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
     return numberFormat.format(number).toString()
+}
+
+class TabAdapter(
+    list: ArrayList<Fragment>,
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
+    private val fragmentList = list
+    override fun getItemCount(): Int {
+        return fragmentList.size
+    }
+
+    override fun createFragment(position: Int): Fragment {
+        return fragmentList[position]
+    }
+}
+
+class AdapterBottomMenuViewPager(
+    list: ArrayList<Fragment>,
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
+
+    private val list = list
+
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    override fun createFragment(position: Int): Fragment {
+        return list[position]
+    }
 }

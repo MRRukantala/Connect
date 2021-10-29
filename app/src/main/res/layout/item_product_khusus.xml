@@ -8,7 +8,7 @@
 
         <variable
             name="productKhusus"
-            type="com.example.connect.main.ui.dashboard.modelproductumum.ProductUmum" />
+            type="com.example.connect.main.ui.product.model.ProductModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

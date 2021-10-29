@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="post"
-            type="com.example.connect.main.ui.home.news.model.Post" />
+            type="com.example.connect.main.ui.home.tablayout.news.model.Post" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +39,8 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_margin="12dp"
-                    android:src="@drawable/avatar_1_raster"
+                    tools:src="@drawable/avatar_1_raster"
+                    imageProfile="@{post.photo}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,7 +51,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nunito"
-                    android:text="@{String.valueOf(post.id_user)}"
+                    android:text="@{post.name}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintStart_toEndOf="@+id/circleImageView"
                     app:layout_constraintTop_toTopOf="@+id/circleImageView"
@@ -87,20 +87,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/circleImageView"
                     tools:text="@string/text_dummy_post" />
-
-                <!--
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="@string/lihat_selengkapnya"
-                    android:textColor="@color/blue_light"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
-                    -->
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"

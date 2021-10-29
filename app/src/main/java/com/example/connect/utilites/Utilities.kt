@@ -1,22 +1,16 @@
 package com.example.connect.utilites
 
-import android.content.Context
-import android.net.Uri
-import com.example.connect.login.data.model.DataUser
 import com.example.connect.login.data.model.UserResponse
-import com.example.connect.main.ui.dashboard.modelproductumum.ProductResponse
-import com.example.connect.main.ui.dashboard.modelproductumum.ProductUmum
-import com.example.connect.main.ui.home.agenda.model.AgendaResponse
-import com.example.connect.main.ui.home.news.add.AddedResponses
-import com.example.connect.main.ui.home.news.model.Post
-import com.example.connect.main.ui.home.news.model.PostResponse
+import com.example.connect.main.ui.product.model.ProductResponse
+import com.example.connect.main.ui.home.tablayout.agenda.model.AgendaResponse
+import com.example.connect.main.ui.home.tablayout.news.add.AddedResponses
+import com.example.connect.main.ui.home.tablayout.news.model.Post
+import com.example.connect.main.ui.home.tablayout.news.model.PostResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.w3c.dom.Text
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
@@ -27,6 +21,7 @@ private val BASE_URL = "https://umconnect.cahyapro.com/public/api/"
 
 // Path Image
 val GET_PATH_IMAGE = "https://umconnect.cahyapro.com/storage/"
+
 
 // Get Path Login
 const val login = "login"
@@ -90,8 +85,8 @@ interface Utilities {
     @POST(postKiriman)
     fun postKiriman(
         @Header("Authorization") authorization: String,
-        @Part ("gambar", ) gambar: RequestBody,
-        @Part("content") content: String
+        @Part ("gambar" ) gambar: RequestBody,
+        @Part("content") content: RequestBody
         ) : Deferred<AddedResponses>
 
 

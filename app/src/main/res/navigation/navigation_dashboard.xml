@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.connect.main.ui.dashboard.DashboardFragment"
+        android:name="com.example.connect.main.ui.product.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -27,17 +27,17 @@
     </fragment>
     <fragment
         android:id="@+id/detailProductFragment"
-        android:name="com.example.connect.main.ui.dashboard.detail.DetailProductFragment"
+        android:name="com.example.connect.main.ui.product.detail.DetailProductFragment"
         android:label="detail_product_fragment"
         tools:layout="@layout/detail_product_fragment" >
         <argument
             android:name="selectedProductUmum"
-            app:argType="com.example.connect.main.ui.dashboard.modelproductumum.ProductUmum" />
+            app:argType="com.example.connect.main.ui.product.model.ProductModel" />
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"
         tools:layout="@layout/fragment_store_resmi"
-        android:name="com.example.connect.main.ui.dashboard.store.resmi.StoreResmiFragment"
+        android:name="com.example.connect.main.ui.product.resmi.resmi.StoreResmiFragment"
         android:label="StoreResmiFragment" >
         <action
             android:id="@+id/action_storeResmiFragment_to_detailProductFragment"

@@ -8,7 +8,7 @@
 
         <variable
             name="agenda"
-            type="com.example.connect.main.ui.home.agenda.detail.DetailAgendaViewModel" />
+            type="com.example.connect.main.ui.home.tablayout.agenda.detail.DetailAgendaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,12 +35,9 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:context=".main.ui.home.agenda.detail.DetailAgendaFragment">
+                tools:context=".main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
 
 
                 <androidx.cardview.widget.CardView
@@ -65,16 +62,17 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
+                            android:layout_height="400dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
+                                imageUrl="@{agenda.selectedAgenda.photo}"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/post" />
+                                tools:src="@drawable/post" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -116,12 +114,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
                             android:drawablePadding="12dp"
                             android:fontFamily="@font/nunito_sans"
+                            android:gravity="center"
                             android:text="@{agenda.selectedAgenda.tanggal}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
+                            app:drawableLeftCompat="@drawable/ic_baseline_calendar_today_24"
                             app:layout_constraintStart_toStartOf="@+id/textView11"
                             app:layout_constraintTop_toBottomOf="@+id/textView11"
                             tools:text="@string/time_agenda" />
@@ -133,40 +132,34 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="24dp"
-                            android:drawableLeft="@drawable/ic_baseline_access_time_24"
                             android:drawablePadding="12dp"
                             android:fontFamily="@font/nunito_sans"
+                            android:gravity="center"
                             android:text="@{agenda.selectedAgenda.waktu}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
+                            app:drawableLeftCompat="@drawable/ic_baseline_access_time_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/textView12"
                             app:layout_constraintTop_toBottomOf="@+id/textView12"
                             tools:text="09 : 00" />
 
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:src="@drawable/ic_baseline_place_24"
-                            app:layout_constraintEnd_toStartOf="@+id/textView14"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/textView12"
-                            app:layout_constraintTop_toTopOf="@+id/textView12" />
 
                         <TextView
                             android:id="@+id/textView14"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
+                            android:drawableStart="@drawable/ic_baseline_place_24"
+                            android:drawablePadding="12dp"
                             android:fontFamily="@font/nunito_sans"
+                            android:gravity="center"
                             android:text="@{agenda.selectedAgenda.lokasi}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView12"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/imageView"
+                            app:layout_constraintTop_toTopOf="@+id/textView12"
                             tools:text="Universitas Negeri Malang" />
 
 

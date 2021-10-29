@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_margin="@dimen/dp12"
     android:layout_height="match_parent"
-    tools:context=".main.ui.notifications.LayananFragment">
+    tools:context=".main.ui.layanan.fragment.LayananFragment">
 
     <TextView
         android:id="@+id/textView33"

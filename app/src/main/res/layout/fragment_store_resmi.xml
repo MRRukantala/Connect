@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.dashboard.store.resmi.StoreResmiViewModel" />
+            type="com.example.connect.main.ui.product.resmi.resmi.StoreResmiViewModel" />
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +11,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.ui.dashboard.store.resmi.StoreResmiFragment">
+        tools:context=".main.ui.product.resmi.resmi.StoreResmiFragment">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView11"

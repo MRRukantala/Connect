@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="productUmum"
-            type="com.example.connect.main.ui.dashboard.modelproductumum.ProductUmum" />
+            name="productModel"
+            type="com.example.connect.main.ui.product.model.ProductModel" />
 
     </data>
 
@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{productUmum.gambar}"
+                    app:imageUrl="@{productModel.gambar}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito_sans"
                     android:maxLines="3"
-                    android:text="@{productUmum.nama_produk}"
+                    android:text="@{productModel.nama_produk}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
                     android:fontFamily="@font/nunito_sans"
                     android:textColor="@color/color_primary"
                     android:textStyle="bold"
-                    app:currerncy="@{productUmum.harga}"
+                    app:currerncy="@{productModel.harga}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView22"
                     app:layout_constraintTop_toBottomOf="@+id/textView22"
