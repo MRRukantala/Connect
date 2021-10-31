@@ -1,21 +1,20 @@
-package com.example.connect.main.ui.home.tablayout.news.model
+package com.example.connect.main.ui.layanan
 
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
-data class PostResponse(
-    val data: List<Post>,
-    val message: String? = null
+data class Layanan(
+    val data: List<DataLayanan>,
+    val message: String?
 )
 
 @Parcelize
-data class Post(
+data class DataLayanan(
     val id: Int,
     val id_user: Int,
-    val name: String,
-    @Json(name = "photo") val photo : String,
     @Json(name = "gambar") val gambar: String,
+    val judul: String,
     val konten: String,
     val created_at: String,
     val updated_at: String

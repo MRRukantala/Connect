@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.ProductUmumFragmentBinding
+import com.example.connect.main.ui.product.DashboardFragmentDirections
 
 class ProductUmumFragment : Fragment() {
 
@@ -22,6 +24,7 @@ class ProductUmumFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.product_umum_fragment, container, false)
         binding.lifecycleOwner = this
+
 
         val application = requireNotNull(activity).application
         val factory =
@@ -36,11 +39,20 @@ class ProductUmumFragment : Fragment() {
         val viewModel = ViewModelProvider(this, factory).get(ProductUmumViewModel::class.java)
         binding.viewModel = viewModel
 
-        binding.recyclerViewProductUmum.adapter = ProductUmumAdapter(
-            ProductUmumAdapter.OnClickListener{
+        binding.recyclerViewProductUmum.adapter = Adapter(
+            Adapter.OnClickListener{
                 viewModel.displayNewsDetails(it)
             }
         )
+
+        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
+            if (null != it) {
+                this.findNavController().navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment(it)
+                )
+                viewModel.displayNewsDetailsCompelete()
+            }
+        })
 
         return binding.root
     }

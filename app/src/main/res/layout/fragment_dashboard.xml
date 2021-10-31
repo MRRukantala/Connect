@@ -45,6 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -54,70 +55,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_kunjungi_toko"
             app:layout_constraintVertical_bias="0.0">
+            -->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_kunjungi_toko">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                listProductKhusus="@{viewModelDashboard.properties}"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_product_khusus" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    listProductKhusus="@{viewModelDashboard.properties}"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#F5F5F5"
+                app:cardElevation="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutHome"
+                    style="@style/Widget.MaterialComponents.TabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_margin="@dimen/dp8"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/item_product_khusus" />
+                    app:tabGravity="fill"
+                    app:tabIndicator="@drawable/rounded_tab_drawable"
+                    app:tabIndicatorGravity="stretch"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#F5F5F5"
-                    app:cardElevation="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+            </androidx.cardview.widget.CardView>
 
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tabLayoutHome"
-                        style="@style/Widget.MaterialComponents.TabLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dp8"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tabGravity="fill"
-                        app:tabIndicator="@drawable/rounded_tab_drawable"
-                        app:tabIndicatorGravity="stretch"
-                        app:tabSelectedTextColor="@android:color/white"
-                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerHome"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPagerHome"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <!--
         </androidx.core.widget.NestedScrollView>
-
+-->
 
         <!--
 

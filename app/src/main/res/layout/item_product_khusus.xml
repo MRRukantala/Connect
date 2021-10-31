@@ -19,10 +19,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
             app:cardCornerRadius="@dimen/dp12"
             app:cardElevation="@dimen/dp6"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +37,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView2"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="130dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
@@ -48,7 +48,7 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="140dp"
+                        android:layout_width="120dp"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/post"
@@ -66,10 +66,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/nunito_sans"
-                    android:maxLines="3"
+                    android:maxLines="2"
                     android:text="@{productKhusus.nama_produk}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toEndOf="@+id/cardView2"
@@ -81,18 +81,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="19dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/nunito_sans"
-                    tools:text="Rp. 24.000"
-                    app:currerncy="@{productKhusus.harga}"
                     android:textColor="@color/color_primary"
                     android:textStyle="bold"
+                    app:currerncy="@{productKhusus.harga}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView22"
-                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView22"
+                    tools:text="Rp. 24.000" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

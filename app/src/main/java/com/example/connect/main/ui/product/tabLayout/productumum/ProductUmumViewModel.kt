@@ -40,15 +40,12 @@ class ProductUmumViewModel(token: String, application: Application) :
             val getAdminProductDeferred = MarkOIApi.retrofitService
                 .getAllProductMarkOI("Bearer " + token)
 
-//            Log.v("hasil product umum", getAdminProductDeferred.toString())
-
             try {
                 val result = getAdminProductDeferred.await()
 
                 when {
-                    result.data.data.size > 0 -> {
-                        Log.v("hasil product umum", result.data.data[0].deskripsi)
-                        _properties.value = result.data.data
+                    result.data.size > 0 -> {
+                        _properties.value = result.data
                     }
                 }
             } catch (e: Exception) {

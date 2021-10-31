@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.connect.databinding.ItemListMyProductBinding
 import com.example.connect.databinding.ItemProductUmumBinding
 import com.example.connect.main.ui.product.model.ProductModel
 
-class MyProductAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<ProductModel, MyProductAdapter.MyProdukViewHolder>(DiffCallback) {
+class Adapter(private val onClickListener: OnClickListener) :
+    ListAdapter<ProductModel, Adapter.MyProdukViewHolder>(DiffCallback) {
     object DiffCallback : DiffUtil.ItemCallback<ProductModel>() {
         override fun areItemsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
             return oldItem === newItem
@@ -21,7 +22,7 @@ class MyProductAdapter(private val onClickListener: OnClickListener) :
 
     }
 
-    class MyProdukViewHolder(private val binding: ItemProductUmumBinding) :
+    class MyProdukViewHolder(private val binding: ItemListMyProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(productModel: ProductModel) {
@@ -40,7 +41,7 @@ class MyProductAdapter(private val onClickListener: OnClickListener) :
         viewType: Int
     ): MyProdukViewHolder {
         return MyProdukViewHolder(
-            ItemProductUmumBinding.inflate(
+            ItemListMyProductBinding.inflate(
                 LayoutInflater.from(parent.context)
             )
         )

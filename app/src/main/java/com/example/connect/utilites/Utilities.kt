@@ -6,6 +6,7 @@ import com.example.connect.main.ui.home.tablayout.agenda.model.AgendaResponse
 import com.example.connect.main.ui.home.tablayout.news.add.AddedResponses
 import com.example.connect.main.ui.home.tablayout.news.model.Post
 import com.example.connect.main.ui.home.tablayout.news.model.PostResponse
+import com.example.connect.main.ui.layanan.Layanan
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -30,7 +31,11 @@ const val login = "login"
 const val register = "register"
 
 // Get Path Product MarkOI
-const val productMarkOI = "produk"
+const val productMarkOI = "produk-public"
+const val productByIdUser = "produk-id/{id}"
+
+// Get Path Product MarkOI
+const val layanan = "layanan-public"
 
 // Get Path Kiriman
 const val getKiriman = "kiriman-public"
@@ -100,6 +105,17 @@ interface Utilities {
         @Header("Authorization") authorization: String
     ) : Deferred<ProductResponse>
 
+    // API GET PRODUCT BY ID USER
+    @GET(productByIdUser)
+    fun getProductByIdUser(
+        @Path("id") id : Int
+    ) : Deferred<ProductResponse>
+
+    // API GET ALL LAYANAN
+    @GET(layanan)
+    fun getAllLayanan(
+        @Header("Authorization") authorization: String
+    ) : Deferred<Layanan>
 
 }
 

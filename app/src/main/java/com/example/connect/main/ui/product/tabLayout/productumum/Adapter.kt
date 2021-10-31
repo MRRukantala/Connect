@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemProductUmumBinding
 import com.example.connect.main.ui.product.model.ProductModel
 
-class ProductUmumAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<ProductModel, ProductUmumAdapter.ProductUmumViewHolder>(DiffCallback) {
+class Adapter(private val onClickListener: OnClickListener) :
+    ListAdapter<ProductModel, Adapter.ProductUmumViewHolder>(DiffCallback) {
 
     class ProductUmumViewHolder(private val binding: ItemProductUmumBinding) :
         RecyclerView.ViewHolder(binding.root) {

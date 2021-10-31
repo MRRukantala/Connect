@@ -43,8 +43,8 @@ class StoreResmiViewModel(token: String, application: Application) :
                 val result = getAdminProductDeferred.await()
 //                Log.v("hasil product", result.data[0].nama_produk)
                 when {
-                    result.data.data.size > 0 -> {
-                        _properties.value = result.data.data
+                    result.data.size > 0 -> {
+                        _properties.value = result.data
                     }
                 }
             } catch (e: Exception) {

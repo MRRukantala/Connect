@@ -12,12 +12,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.connect.R
 import com.example.connect.main.ui.product.model.ProductModel
-import com.example.connect.main.ui.product.tabLayout.productumum.ProductUmumAdapter
 import com.example.connect.main.ui.home.tablayout.agenda.model.Agenda
 import com.example.connect.main.ui.home.tablayout.agenda.AgendaAdapter
 import com.example.connect.main.ui.home.tablayout.news.model.Post
+import com.example.connect.main.ui.layanan.DataLayanan
 import com.example.connect.main.ui.product.Adapter
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @BindingAdapter("listPosts")
 fun bindRecyclerViewListPosts(
@@ -51,7 +54,25 @@ fun bindRecyclerViewListProductUmum(
     recyclerView: RecyclerView,
     data: List<ProductModel>?
 ) {
-    val adapter = recyclerView.adapter as ProductUmumAdapter
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.product.tabLayout.productumum.Adapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listMyProduk")
+fun bindRecyclerViewListMyProduk(
+    recyclerView: RecyclerView,
+    data: List<ProductModel>?
+) {
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.product.tabLayout.myproduct.Adapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listLayanan")
+fun bindRecyclerViewListLayanan(
+    recyclerView: RecyclerView,
+    data: List<DataLayanan>?
+) {
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.layanan.Adapter
     adapter.submitList(data)
 }
 
@@ -90,11 +111,21 @@ fun imageProfile(imgView: ImageView, imgUrl: String?) {
 @SuppressLint("SimpleDateFormat")
 @BindingAdapter("time")
 fun time(textViewTime: TextView, time: String) {
-    Log.v("GMANA SIH",    time.toString())
     textViewTime.setText(
         getTimeAgo(
             SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time)
         )
+    )
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("SimpleDateFormat")
+@BindingAdapter("timestampToDate")
+fun timestampToDate(textViewTime: TextView, time: String) {
+    val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time)
+
+    textViewTime.setText(
+        "Dibuat : " + SimpleDateFormat("yyyy-MMMM-dd").format(date).toString()
     )
 }
 

@@ -41,13 +41,14 @@ class DashboardViewModel(token: String, application: Application) : AndroidViewM
             try {
                 val result = getAdminProductDeferred.await()
                 when {
-                    result.data.data.size > 0 -> {
-                        _properties.value = result.data.data
+
+                    result.data.size > 0 -> {
+                        _properties.value = result.data
                     }
                 }
             } catch (e: Exception) {
                 _status.value = e.toString()
-                Log.v("Error produk", e.toString())
+                Log.e("PRODUK", e.toString())
             }
         }
     }

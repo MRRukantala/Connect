@@ -1,10 +1,11 @@
-package com.example.connect.main.ui.product.tabLayout.myproduct
+package com.example.connect.main.ui.layanan
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.connect.main.ui.product.model.ProductModel
 import com.example.connect.utilites.MarkOIApi
 import kotlinx.coroutines.CoroutineScope
@@ -12,9 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MyProductViewModel(idUser: Int, application: Application) :
-    AndroidViewModel(application) {
-
+class LayananViewModel(token: String, application: Application) : AndroidViewModel(application) {
 
     private val _status = MutableLiveData<String>()
     val status: LiveData<String>
@@ -23,42 +22,37 @@ class MyProductViewModel(idUser: Int, application: Application) :
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private var _properties = MutableLiveData<List<ProductModel>>()
-    val properties: LiveData<List<ProductModel>>
-        get() = _properties
+    private var _properties =MutableLiveData<List<DataLayanan>>()
+    val properties: LiveData<List<DataLayanan>>
+    get() = _properties
 
-    private val _navigateToSelectedNews = MutableLiveData<ProductModel?>()
-    val navigatedToSelectedNews: LiveData<ProductModel?>
+    private val _navigateToSelectedNews = MutableLiveData<DataLayanan?>()
+    val navigatedToSelectedNews: LiveData<DataLayanan?>
         get() = _navigateToSelectedNews
 
     init {
-        getProductProperties(idUser)
+        getProductProperties(token)
     }
 
-    private fun getProductProperties(idUser: Int) {
+    private fun getProductProperties(token: String) {
         coroutineScope.launch {
             val getAdminProductDeferred = MarkOIApi.retrofitService
-                .getProductByIdUser(idUser)
-
+                .getAllLayanan("Bearer " + token)
 
             try {
                 val result = getAdminProductDeferred.await()
-
                 when {
-
                     result.data.size > 0 -> {
-                        Log.v("MY PRODUK", result.data.size.toString())
                         _properties.value = result.data
                     }
                 }
             } catch (e: Exception) {
                 _status.value = e.toString()
-                Log.v("Error produk", e.toString())
             }
         }
     }
 
-    fun displayNewsDetails(productProperty: ProductModel) {
+    fun displayNewsDetails(productProperty: DataLayanan) {
         _navigateToSelectedNews.value = productProperty
     }
 
@@ -70,5 +64,4 @@ class MyProductViewModel(idUser: Int, application: Application) :
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }

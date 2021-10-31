@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentStoreResmiBinding
 import com.example.connect.main.ui.product.DashboardFragmentDirections
-import com.example.connect.main.ui.product.tabLayout.productumum.ProductUmumAdapter
+import com.example.connect.main.ui.product.tabLayout.productumum.Adapter
 
 class StoreResmiFragment : Fragment() {
 
@@ -45,8 +45,8 @@ class StoreResmiFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.recyclerView.adapter = ProductUmumAdapter(
-            ProductUmumAdapter.OnClickListener {
+        binding.recyclerView.adapter = Adapter(
+            Adapter.OnClickListener {
                 viewModel.displayNewsDetails(it)
             }
         )
