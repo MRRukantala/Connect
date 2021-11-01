@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentNotificationsBinding
 
@@ -36,16 +37,23 @@ class LayananFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.recyclerView2.adapter = Adapter(
-            Adapter.OnClickistener{
+            Adapter.OnClickistener {
                 viewModel.displayNewsDetails(it)
             }
         )
 
+        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
+            if (null != it) {
+                this.findNavController().navigate(
+                    LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment(
+                        it
+                    )
+                )
+                viewModel.displayNewsDetailsCompelete()
+            }
+        })
+
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-//        binding = null
-    }
 }

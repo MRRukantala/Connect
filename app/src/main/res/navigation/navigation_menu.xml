@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/containerInfoPendidikanFragment"
-        android:name="com.example.connect.main.ui.menu.info_pendidikan.ContainerInfoPendidikanFragment"
+        android:name="com.example.connect.main.ui.menu.info_pendidikan.ContainerInfo"
         android:label="ContainerInfoPendidikanFragment"
         tools:layout="@layout/container_info_pendidikan_fragment">
         <action
@@ -91,6 +91,14 @@
         <action
             android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
             app:destination="@id/containerInfoPendidikanFragment" />
+        <argument
+            android:name="DataHold"
+            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />
     </fragment>
     <include app:graph="@navigation/navigation" />
+    <fragment
+        android:id="@+id/formPendidikanFragment"
+        android:name="com.example.connect.main.ui.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
+        android:label="form_pendidikan_fragment"
+        tools:layout="@layout/form_pendidikan_fragment" />
 </navigation>

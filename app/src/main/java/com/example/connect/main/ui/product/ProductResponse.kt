@@ -1,10 +1,8 @@
 package com.example.connect.main.ui.product.model
 
 import android.os.Parcelable
-import com.example.connect.login.data.model.DataUser
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import org.json.JSONObject
 
 class ProductResponse(
     val data: List<ProductModel>

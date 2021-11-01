@@ -39,13 +39,9 @@ class MyProductViewModel(idUser: Int, application: Application) :
         coroutineScope.launch {
             val getAdminProductDeferred = MarkOIApi.retrofitService
                 .getProductByIdUser(idUser)
-
-
             try {
                 val result = getAdminProductDeferred.await()
-
                 when {
-
                     result.data.size > 0 -> {
                         Log.v("MY PRODUK", result.data.size.toString())
                         _properties.value = result.data

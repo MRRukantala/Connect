@@ -110,4 +110,10 @@
     <string name="email_already">The email has already been taken.</string>
     <string name="barang_teratas">5 Barang Teratas</string>
     <string name="please_allow_permission">Please allow permissions</string>
+    <string name="jurusan_bidang_yang_ditekuni">Jurusan / Bidang yang ditekuni</string>
+    <string name="instansi">Instansi</string>
+    <string name="tahun_lulus">Tahun Lulus</string>
+    <string name="hapus_informasi">Hapus Informasi</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="harga">Harga</string>
 </resources>

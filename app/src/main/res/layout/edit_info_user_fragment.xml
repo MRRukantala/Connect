@@ -3,24 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="binding"
+            type="com.example.connect.main.ui.menu.info_pendidikan.info.edit.EditInfoUserViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/dp16"
-        tools:context=".main.ui.menu.info_pendidikan.info.InfoUserFragment">
+        android:layout_margin="@dimen/dp16">
+
+        <include
+            android:id="@+id/include9"
+            layout="@layout/component_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView2"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
+            android:padding="@dimen/dp12"
             android:src="@drawable/avatar_1_raster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/include9" />
 
         <TextView
             android:id="@+id/textView35"
@@ -42,7 +56,8 @@
             android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_sans"
-            android:text="@string/mfsyach_gmail_com"
+            tools:text="@string/mfsyach_gmail_com"
+            android:text="@{binding.selectedNews.name}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView35" />
 

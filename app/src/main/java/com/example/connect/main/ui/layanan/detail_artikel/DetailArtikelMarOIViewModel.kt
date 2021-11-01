@@ -1,7 +1,22 @@
 package com.example.connect.main.ui.layanan.detail_artikel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.connect.main.ui.layanan.DataLayanan
 
-class DetailArtikelMarOIViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class DetailArtikelMarOIViewModel(
+    dataLayanan: DataLayanan,
+    app: Application
+) : AndroidViewModel(app) {
+
+    private val _selectedLayanan = MutableLiveData<DataLayanan>()
+    val selectedLayanan: LiveData<DataLayanan>
+        get() = _selectedLayanan
+
+    init {
+        _selectedLayanan.value = dataLayanan
+    }
+
 }

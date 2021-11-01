@@ -129,6 +129,15 @@ fun timestampToDate(textViewTime: TextView, time: String) {
     )
 }
 
+@BindingAdapter("emptyornot")
+fun emptyornot(textViewTime: TextView, value : String?){
+    if(value == null || value == "" || value == " "){
+        textViewTime.setText("Belum Ditambahkan")
+    } else {
+        textViewTime.setText(value.toString())
+    }
+}
+
 @BindingAdapter("currerncy")
 fun currency(textView: TextView, nominal: Int){
     textView.setText(rupiah(nominal))

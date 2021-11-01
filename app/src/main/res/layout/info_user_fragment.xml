@@ -3,153 +3,156 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.connect.main.ui.menu.info_pendidikan.info.InfoUserViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/dp24"
         tools:context=".main.ui.menu.info_pendidikan.info.InfoUserFragment">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView2"
             android:layout_width="84dp"
+            imageProfile="@{viewModel.properties.data.get(0).photo}"
             android:layout_height="84dp"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:src="@drawable/avatar_1_raster"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView48"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textSize="@dimen/sp16"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/circleImageView2"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView2"
-            app:layout_constraintTop_toTopOf="@+id/circleImageView2"
+            android:text="@{viewModel.properties.data.get(0).name}"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageView2"
+            app:layout_constraintStart_toStartOf="@+id/circleImageView2"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView2"
             tools:text="Rukantala" />
 
         <TextView
             android:id="@+id/textView35"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:text="@string/email"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
         <TextView
             android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_sans"
-            android:text="@string/mfsyach_gmail_com"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView35" />
+            app:layout_constraintStart_toStartOf="@+id/textView35"
+            app:layout_constraintTop_toBottomOf="@+id/textView35"
+            tools:text="@string/mfsyach_gmail_com" />
 
         <TextView
             android:id="@+id/textView37"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:text="No Kontak"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView36"
             app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
         <TextView
             android:id="@+id/textView38"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/belum_ditambahkan"
+            app:emptyornot="@{viewModel.properties.data.get(0).wa}"
+            app:layout_constraintStart_toStartOf="@+id/textView37"
             app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
         <TextView
             android:id="@+id/textView39"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:text="@string/kota_tinggal_saat_ini"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView38"
             app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
         <TextView
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="8dp"
+            tools:text="@string/belum_ditambahkan"
+            app:emptyornot="@{viewModel.properties.data.get(0).domisili}"
             android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView37"
             app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
         <TextView
             android:id="@+id/textView41"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:text="Tanggal Lahir"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
         <TextView
             android:id="@+id/textView42"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/belum_ditambahkan"
+            app:emptyornot="@{viewModel.properties.data.get(0).tgl_lahir}"
+            app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
         <TextView
             android:id="@+id/textView43"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:text="Jenis Kelamin"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
         <TextView
             android:id="@+id/textView44"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
             android:layout_marginTop="8dp"
+            tools:text="@string/belum_ditambahkan"
+            app:emptyornot="@{viewModel.properties.data.get(0).jenis_kelamin}"
             android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
         <Button
