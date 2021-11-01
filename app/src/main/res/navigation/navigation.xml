@@ -85,9 +85,6 @@
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/splashScreenFragment"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_loginFragment_to_bottomNavigationFragment"
-            app:destination="@id/bottomNavigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/signFragment"
@@ -125,10 +122,5 @@
         android:id="@+id/mainAppActivity"
         android:name="com.example.connect.main.MainAppActivity"
         android:label="MainAppActivity" />
-    <fragment
-        android:id="@+id/bottomNavigationFragment"
-        android:name="com.example.connect.coba.BottomNavigationFragment"
-        android:label="fragment_bottom_navigation"
-        tools:layout="@layout/fragment_bottom_navigation" />
 
 </navigation>

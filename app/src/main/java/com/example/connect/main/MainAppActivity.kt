@@ -16,7 +16,6 @@ class MainAppActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainAppBinding
     private lateinit var navController: NavController
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +45,8 @@ class MainAppActivity : AppCompatActivity() {
                 else -> navView.visibility = View.GONE
             }
         }
-
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration)
-    }
 
 }
 

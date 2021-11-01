@@ -15,10 +15,6 @@ class MenuFragment : Fragment() {
 
     private lateinit var binding: MenuFragmentBinding
 
-    companion object {
-        fun newInstance() = MenuFragment()
-    }
-
     private lateinit var viewModel: MenuViewModel
 
     override fun onCreateView(

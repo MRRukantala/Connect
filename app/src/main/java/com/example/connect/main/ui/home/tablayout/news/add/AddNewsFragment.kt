@@ -67,13 +67,13 @@ class AddNewsFragment : Fragment() {
             }
         }
 
-        binding.include3.root.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.include3.root.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
 
-        binding.fabNews.setOnClickListener {
-            findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
-        }
+//        binding.fabNews.setOnClickListener {
+//            findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
+//        }
 
         binding.include3.backImage.setOnClickListener {
             findNavController().popBackStack()
@@ -135,7 +135,7 @@ class AddNewsFragment : Fragment() {
         kontent.addTextChangedListener(afterTextChangedListener)
 
         buttonUpload.setOnClickListener {
-//            viewModel.posting(loggedIn().data.token, requestBody!!, kontent.toString())
+            findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
         }
     }
 

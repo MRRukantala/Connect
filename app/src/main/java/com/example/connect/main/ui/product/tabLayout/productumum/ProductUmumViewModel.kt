@@ -38,7 +38,7 @@ class ProductUmumViewModel(token: String, application: Application) :
     private fun getProductProperties(token: String) {
         coroutineScope.launch {
             val getAdminProductDeferred = MarkOIApi.retrofitService
-                .getAllProductMarkOI("Bearer " + token)
+                .getAllProductByAdmin("Bearer " + token, 2)
 
             try {
                 val result = getAdminProductDeferred.await()

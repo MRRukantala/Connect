@@ -37,7 +37,7 @@ class StoreResmiViewModel(token: String, application: Application) :
     private fun getProductProperties(token: String) {
         coroutineScope.launch {
             val getAdminProductDeferred = MarkOIApi.retrofitService
-                .getAllProductMarkOI("Bearer " + token)
+                .getAllProductByAdmin("Bearer " + token, 1)
             Log.v("hasil product", getAdminProductDeferred.toString())
             try {
                 val result = getAdminProductDeferred.await()

@@ -51,10 +51,14 @@ class StoreResmiFragment : Fragment() {
             }
         )
 
+        binding.include10.backImage.setOnClickListener {
+            findNavController().navigate(StoreResmiFragmentDirections.actionStoreResmiFragmentToDashboardFragment())
+        }
+
         viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
             if(null != it){
                 this.findNavController().navigate(
-                    DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment(it)
+                    StoreResmiFragmentDirections.actionStoreResmiFragmentToDetailProductFragment(it)
                 )
                 viewModel.displayNewsDetailsCompelete()
             }

@@ -36,6 +36,7 @@ const val profile = "profil/{id}"
 // Get Path Product MarkOI
 const val productMarkOI = "produk-public"
 const val productByIdUser = "produk-id/{id}"
+const val level = "produk-lv/{id}"
 
 // Get Path Product MarkOI
 const val layanan = "layanan-public"
@@ -116,9 +117,17 @@ interface Utilities {
         @Header("Authorization") authorization: String
     ): Deferred<ProductResponse>
 
+    // API GET ALL PRODUK BY ADMIN LEVEL
+    @GET(level)
+    fun getAllProductByAdmin(
+        @Header("Authorization") authorization: String,
+        @Path("id") id: Int
+    ) : Deferred<ProductResponse>
+
     // API GET PRODUCT BY ID USER
     @GET(productByIdUser)
     fun getProductByIdUser(
+        @Header("Authorization") authorization: String,
         @Path("id") id: Int
     ): Deferred<ProductResponse>
 

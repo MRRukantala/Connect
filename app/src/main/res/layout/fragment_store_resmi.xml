@@ -1,57 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
             type="com.example.connect.main.ui.product.resmi.resmi.StoreResmiViewModel" />
     </data>
     
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".main.ui.product.resmi.resmi.StoreResmiFragment">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView11"
-            android:layout_width="62dp"
-            android:layout_height="62dp"
+        <include
+            android:id="@+id/include10"
+            layout="@layout/component_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            app:cardBackgroundColor="@color/color_primary"
-            app:cardCornerRadius="@dimen/dp8"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include10" />
 
 
         <TextView
+            android:id="@+id/textView52"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_marginStart="24dp"
             android:fontFamily="@font/nunito_sans"
-
             android:text="MarkOI Store"
             android:textColor="@color/content_and_title_color_post_and_agenda"
             android:textSize="@dimen/sp14"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView11"
-            app:layout_constraintStart_toEndOf="@+id/cardView11"
-            app:layout_constraintTop_toTopOf="@+id/cardView11" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
+            listProductUmum="@{viewModel.properties}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            listProductUmum="@{viewModel.properties}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView11"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
             app:spanCount="2"
             tools:listitem="@layout/item_product_umum" />
 

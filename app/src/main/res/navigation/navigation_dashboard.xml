@@ -9,7 +9,7 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.connect.main.ui.product.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment"
@@ -24,21 +24,28 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addMyProdukFragment"
+            app:destination="@id/addMyProdukFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailProductFragment"
         android:name="com.example.connect.main.ui.product.detail.DetailProductFragment"
         android:label="detail_product_fragment"
-        tools:layout="@layout/detail_product_fragment" >
+        tools:layout="@layout/detail_product_fragment">
         <argument
             android:name="selectedProductUmum"
             app:argType="com.example.connect.main.ui.product.model.ProductModel" />
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"
-        tools:layout="@layout/fragment_store_resmi"
         android:name="com.example.connect.main.ui.product.resmi.resmi.StoreResmiFragment"
-        android:label="StoreResmiFragment" >
+        android:label="StoreResmiFragment"
+        tools:layout="@layout/fragment_store_resmi">
         <action
             android:id="@+id/action_storeResmiFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment"
@@ -46,5 +53,40 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_storeResmiFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMyProdukFragment"
+        android:name="com.example.connect.main.ui.product.tabLayout.myproduct.add.AddMyProdukFragment"
+        android:label="AddMyProdukFragment"
+        tools:layout="@layout/add_my_produk_fragment">
+        <action
+            android:id="@+id/action_addMyProdukFragment_to_prosesAddMyProdukFragment"
+            app:destination="@id/prosesAddMyProdukFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/prosesAddMyProdukFragment"
+        android:name="com.example.connect.main.ui.product.tabLayout.myproduct.add.ProsesAddMyProdukFragment"
+        android:label="ProsesAddMyProdukFragment"
+        tools:layout="@layout/fragment_proses_add_my_produk">
+        <action
+            android:id="@+id/action_prosesAddMyProdukFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

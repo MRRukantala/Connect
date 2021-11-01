@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MyProductViewModel(idUser: Int, application: Application) :
+class MyProductViewModel(token: String, idUser: Int, application: Application) :
     AndroidViewModel(application) {
 
 
@@ -32,13 +32,14 @@ class MyProductViewModel(idUser: Int, application: Application) :
         get() = _navigateToSelectedNews
 
     init {
-        getProductProperties(idUser)
+        getProductProperties(token ,idUser)
     }
 
-    private fun getProductProperties(idUser: Int) {
+    private fun getProductProperties(token: String, idUser: Int) {
+        Log.v("MY ID", idUser.toString())
         coroutineScope.launch {
             val getAdminProductDeferred = MarkOIApi.retrofitService
-                .getProductByIdUser(idUser)
+                .getProductByIdUser(token ,idUser)
             try {
                 val result = getAdminProductDeferred.await()
                 when {

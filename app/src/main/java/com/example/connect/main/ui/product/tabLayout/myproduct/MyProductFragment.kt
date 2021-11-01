@@ -30,6 +30,9 @@ class MyProductFragment : Fragment() {
             MyProductViewModelFactory(
                 requireActivity()
                     .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+                    .getString("token", "").toString(),
+                requireActivity()
+                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
                     .getInt("id", -1),
                 application
             )
@@ -50,6 +53,10 @@ class MyProductFragment : Fragment() {
                 viewModel.displayNewsDetails(it)
             }
         )
+
+        binding.fabNews.setOnClickListener {
+            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
+        }
 
         viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
             if (null != it) {

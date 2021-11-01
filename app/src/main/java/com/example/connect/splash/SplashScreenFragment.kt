@@ -48,8 +48,8 @@ class SplashScreenFragment : Fragment() {
                     findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToMainAppActivity())
                 }
             }
-            Log.v("CEK ID", loggedIn().data.user.id.toString())
-            Log.v("CEK TOKEN", loggedIn().data.token)
+//            Log.v("CEK ID", loggedIn().data.user.id.toString())
+//            Log.v("CEK TOKEN", loggedIn().data.token)
         } else {
             toastConnection(requireContext())
         }
