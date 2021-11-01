@@ -2,7 +2,6 @@ package com.example.connect.utilites
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -18,9 +17,6 @@ import com.example.connect.main.ui.home.tablayout.news.model.Post
 import com.example.connect.main.ui.layanan.DataLayanan
 import com.example.connect.main.ui.product.Adapter
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 @BindingAdapter("listPosts")
 fun bindRecyclerViewListPosts(

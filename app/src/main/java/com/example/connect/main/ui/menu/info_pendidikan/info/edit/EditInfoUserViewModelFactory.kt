@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.connect.main.ui.menu.info_pendidikan.MySubData
-import com.example.connect.main.ui.menu.info_pendidikan.info.InfoUserViewModel
-import com.example.connect.main.ui.product.tabLayout.myproduct.MyProductViewModel
 
 class EditInfoUserViewModelFactory(
     private val idUser: Int,

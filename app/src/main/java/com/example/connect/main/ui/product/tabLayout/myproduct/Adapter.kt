@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemListMyProductBinding
-import com.example.connect.databinding.ItemProductUmumBinding
 import com.example.connect.main.ui.product.model.ProductModel
 
 class Adapter(private val onClickListener: OnClickListener) :

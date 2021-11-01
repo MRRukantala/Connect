@@ -14,15 +14,11 @@
             android:id="@+id/action_containerInfoPendidikanFragment_to_itemListDialogFragment"
             app:destination="@id/itemListDialogFragment" />
         <action
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
-            android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
-            app:destination="@id/editInfoUserFragment" />
-        <action
             android:id="@+id/action_containerInfoPendidikanFragment_to_navigation"
             app:destination="@id/navigation" />
+        <action
+            android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
+            app:destination="@id/editInfoUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"

@@ -1,6 +1,5 @@
 package com.example.connect.login.ui.login
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

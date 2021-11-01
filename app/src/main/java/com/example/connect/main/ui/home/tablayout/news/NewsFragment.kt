@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.NewsFragmentBinding
 import com.example.connect.main.ui.home.HomeFragmentDirections
-import com.example.connect.main.ui.home.tablayout.news.Adapter
 
 class NewsFragment : Fragment() {
 

@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okhttp3.RequestBody
-import java.io.File
 import java.lang.Exception
 
 class AddNewsViewModel : ViewModel() {

@@ -5,8 +5,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -30,7 +28,6 @@ import com.example.connect.login.data.model.DataUser
 import com.example.connect.login.data.model.UserResponse
 import kotlinx.android.synthetic.main.fragment_sign.view.*
 import java.io.*
-import java.nio.file.Files
 import java.util.*
 
 

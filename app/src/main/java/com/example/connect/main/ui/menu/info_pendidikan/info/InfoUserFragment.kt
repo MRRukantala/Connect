@@ -14,7 +14,6 @@ import com.example.connect.MainActivity
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
 import com.example.connect.main.ui.menu.info_pendidikan.ContainerInfoDirections
-import com.example.connect.main.ui.menu.info_pendidikan.info.edit.EditInfoUserViewModelFactory
 import com.example.connect.splash.SplashScreenFragmentDirections
 
 class InfoUserFragment : Fragment() {
@@ -52,7 +51,9 @@ class InfoUserFragment : Fragment() {
                 findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
             }
             button5.setOnClickListener {
-                findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(viewModel.properties.value!!.data[0]))
+                findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(
+                    viewModel.properties.value!!.data[0]
+                ))
             }
             logout.setOnClickListener {
                 keluar()

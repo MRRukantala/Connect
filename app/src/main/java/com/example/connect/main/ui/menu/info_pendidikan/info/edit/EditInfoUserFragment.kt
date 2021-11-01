@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.EditInfoUserFragmentBinding
 
@@ -40,9 +39,9 @@ class EditInfoUserFragment : Fragment() {
         )
 
         binding.binding = ViewModelProvider(this, viewModelFactory).get(EditInfoUserViewModel::class.java)
-        binding.include9.backImage.setOnClickListener {
-            findNavController().popBackStack()
-        }
+//        binding.include9.backImage.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
 
         return binding.root
     }
