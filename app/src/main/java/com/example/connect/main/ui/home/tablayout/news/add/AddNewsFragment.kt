@@ -5,9 +5,7 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,36 +17,35 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.AddNewsFragmentBinding
 import com.example.connect.login.data.model.DataUser
 import com.example.connect.login.data.model.UserResponse
-import kotlinx.android.synthetic.main.fragment_sign.view.*
-import java.io.*
-import java.util.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import java.io.File
 
 
 class AddNewsFragment : Fragment() {
 
     lateinit var binding: AddNewsFragmentBinding
-
     private val REQUEST_CODE = 100
-    private var imageUri: Uri? = null
 
-    companion object {
-        fun newInstance() = AddNewsFragment()
+    private val viewModel: AddNewsViewModel by lazy {
+        ViewModelProvider(this).get(AddNewsViewModel::class.java)
     }
-
-    private lateinit var viewModel: AddNewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.add_news_fragment, container, false)
+
+        viewModel.image.observe(viewLifecycleOwner, {
+            Log.v("GMANA", it.toString())
+        })
         binding.fabAddImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
@@ -67,155 +64,113 @@ class AddNewsFragment : Fragment() {
             }
         }
 
-//        binding.include3.root.setOnClickListener {
-//            findNavController().popBackStack()
-//        }
-
-//        binding.fabNews.setOnClickListener {
-//            findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
-//        }
-
         binding.include3.backImage.setOnClickListener {
             findNavController().popBackStack()
         }
+
 
         return binding.root
     }
 
     private fun selectImageFromGallery() {
         val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        gallery.setType("image/*")
+        gallery.type = "image/*"
         startActivityForResult(gallery, REQUEST_CODE)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(AddNewsViewModel::class.java)
-
-
-        val image = binding.imgAddPost
-        val kontent = binding.editText
         val buttonUpload = binding.fabNews
 
         binding.cancelImagePost.setOnClickListener {
             binding.apply {
                 cardAddPost.visibility = View.GONE
-//                imgAddPost.setImageURI(null)
-                imageUri = null
-                viewModel.postKirimanDataChanged(imageUri.toString(), kontent.toString())
+                imgAddPost.setImageURI(null)
+                viewModel.imageNull()
                 fabAddImage.text = "Tambahkan Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }
         }
 
+        viewModel.image.observe(viewLifecycleOwner, {
+            Log.v("IMAGE", it.toString())
+            viewModel.postKirimanDataChanged()
+        })
 
+        viewModel.content.observe(viewLifecycleOwner, {
+            Log.v("CONTENT", it.toString())
+            viewModel.postKirimanDataChanged()
+        })
 
-        viewModel.postKirimanState.observe(viewLifecycleOwner, Observer { postKirimanState ->
-            if (postKirimanState == null) {
-                return@Observer
+        viewModel.value.observe(viewLifecycleOwner, {
+//            if(it.isDataValid){
+            if(it!!.isDataValid){
+                buttonUpload.isEnabled = true
+
+//                buttonUpload.setOnClickListener {
+//                    viewModel.posting(
+//                        requireActivity()
+//                            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+//                            .getString("token", "").toString(),
+//                        viewModel.,
+//                        viewModel.content
+//
+//                    )
+//                }
+            } else {
+                buttonUpload.isEnabled = false
             }
-
-            postKirimanState.contentError?.let {
-                kontent.error = getString(it)
-            }
-
-            buttonUpload.isEnabled = postKirimanState.isDataValid
-
         })
 
         val afterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
             override fun afterTextChanged(p0: Editable?) {
-                Log.v("DATA KONTENT", imageUri.toString() + kontent.text.toString())
-                viewModel.postKirimanDataChanged(imageUri.toString(), kontent.text.toString())
+                if(p0?.length!!.equals(0)){
+                    viewModel.contentNull()
+                }  else {
+                    viewModel.content(p0.toString())
+                }
+
             }
         }
-        kontent.addTextChangedListener(afterTextChangedListener)
 
-        buttonUpload.setOnClickListener {
-            findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
-        }
+        binding.editText.addTextChangedListener(afterTextChangedListener)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 
-            imageUri = data?.data
+            var file = data?.data
+            var requestBodyFile = RequestBody.create(MediaType.parse("image/*"), File(file!!.path))
 
             binding.apply {
+                viewModel.image(requestBodyFile)
+                imgAddPost.setImageURI(file)
+                cardAddPost.visibility = View.VISIBLE
+                fabAddImage.text = "Ganti Gambar"
+                fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
+            }
+        } else {
+            binding.apply {
+                cardAddPost.visibility = View.GONE
+                imgAddPost.setImageURI(data?.data)
 
-                try {
-                    val bitmap = MediaStore.Images.Media.getBitmap(
-                        requireActivity().contentResolver,
-                        imageUri
-                    )
-//                    val path =saveImage(bitmap)
-//                    val file =File(path)
-                    val wallpaperDirectory = File(Environment.getExternalStorageDirectory().path + "/MarkOI/")
-                    wallpaperDirectory.mkdir()
-
-                    val of = File(wallpaperDirectory, imageUri!!.path)
-                    try {
-                        val fos = FileOutputStream(of)
-                    } catch (e: FileNotFoundException) {
-                        e.printStackTrace()
-                    }
-                    cardAddPost.visibility = View.VISIBLE
-                    imgAddPost.setImageBitmap(bitmap)
-                    fabAddImage.text = "Ganti Gambar"
-                    fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_SHORT).show()
-                }
+                cardAddPost.visibility = View.GONE
+                imgAddPost.setImageURI(null)
+                viewModel.imageNull()
+                fabAddImage.text = "Tambahkan Gambar"
+                fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }
 
-        } else {
-            imageUri = data?.data
-            binding.cardAddPost.visibility = View.GONE
-            binding.imgAddPost.setImageURI(imageUri)
         }
     }
-
-    /*
-    private fun saveImage(bitmap: Bitmap) : String {
-        val bytes = ByteArrayOutputStream()
-        Log.v("PAAAATH", context.getExternalFilesDir() + "/" + "MarkOI")
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val wallpaperDirectory = File(
-            Environment.getExternalStorageDirectory().path
-        )
-
-        if (!wallpaperDirectory.exists()) {
-
-            wallpaperDirectory.mkdirs()
-            Log.v("Buat folder", wallpaperDirectory.absolutePath)
-        }
-
-        return ""
-
-//        try {
-//            val f = File(
-//                wallpaperDirectory, Calendar.getInstance()
-//                    .timeInMillis.toString() + ".jpg"
-//            )
-//            f.createNewFile()
-//            val fo = FileOutputStream(f)
-//            fo.write(bytes.toByteArray())
-//            MediaScannerConnection.scanFile(requireContext(), arrayOf(f.path), arrayOf("image/jpeg"), null)
-//            fo.close()
-//            return f.absolutePath
-//        } catch (e1: IOException) {
-//            e1.printStackTrace()
-//        }
-//        return ""
-    }
-
-     */
-
 
     fun loggedIn(): UserResponse {
         val sharedPreferences = requireActivity()

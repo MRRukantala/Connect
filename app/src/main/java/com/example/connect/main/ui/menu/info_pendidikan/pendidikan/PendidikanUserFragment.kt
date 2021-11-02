@@ -1,15 +1,17 @@
 package com.example.connect.main.ui.menu.info_pendidikan.pendidikan
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.PendidikanUserFragmentBinding
+import com.example.connect.main.ui.menu.info_pendidikan.ContainerInfoDirections
 import com.example.connect.main.ui.menu.info_pendidikan.info.Adapter
 
 class PendidikanUserFragment : Fragment() {
@@ -21,7 +23,8 @@ class PendidikanUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.pendidikan_user_fragment, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.pendidikan_user_fragment, container, false)
         binding.lifecycleOwner = this
 
         val application = requireNotNull(activity).application
@@ -41,20 +44,22 @@ class PendidikanUserFragment : Fragment() {
 
 
         binding.rv.adapter = Adapter(
-            Adapter.OnClickistener{
+            Adapter.OnClickListener {
                 viewModel.displayNewsDetails(it)
             }
         )
 
+        binding.fabNews.setOnClickListener {
+            findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment())
+        }
+
         binding.apply {
             viewModel.properties.observe(viewLifecycleOwner, {
-                if(it.size != 0){
+                if (it.size != 0) {
                     binding.lottieAnimationView.visibility = View.GONE
                 }
             })
         }
-
-        binding.rv.adapter =
 
         return binding.root
     }

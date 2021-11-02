@@ -19,6 +19,10 @@
         <action
             android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
             app:destination="@id/editInfoUserFragment" />
+        <action
+
+            android:id="@+id/action_containerInfoPendidikanFragment_to_formPendidikanFragment"
+            app:destination="@id/formPendidikanFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
@@ -96,5 +100,19 @@
         android:id="@+id/formPendidikanFragment"
         android:name="com.example.connect.main.ui.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
         android:label="form_pendidikan_fragment"
-        tools:layout="@layout/form_pendidikan_fragment" />
+        tools:layout="@layout/form_pendidikan_fragment" >
+        <argument
+            android:name="pendidikanSelected"
+            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
+            app:destination="@id/containerInfoPendidikanFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>
