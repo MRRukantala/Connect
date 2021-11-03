@@ -104,8 +104,7 @@
         <argument
             android:name="pendidikanSelected"
             app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <action
             android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
             app:destination="@id/containerInfoPendidikanFragment"
@@ -113,6 +112,7 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/containerInfoPendidikanFragment"
             app:popUpToInclusive="false" />
     </fragment>
 </navigation>

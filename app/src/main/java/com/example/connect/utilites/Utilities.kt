@@ -7,6 +7,7 @@ import com.example.connect.main.ui.home.tablayout.news.model.Post
 import com.example.connect.main.ui.home.tablayout.news.model.PostResponse
 import com.example.connect.main.ui.layanan.Layanan
 import com.example.connect.main.ui.menu.info_pendidikan.MyData
+import com.example.connect.main.ui.menu.info_pendidikan.message
 import com.example.connect.main.ui.product.model.ProductResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -23,6 +24,9 @@ private val BASE_URL = "https://umconnect.cahyapro.com/public/api/"
 // Path Image
 val GET_PATH_IMAGE = "https://umconnect.cahyapro.com/storage/"
 
+
+// Get Path POST Pendidikan
+const val pendidikan = "pendidikan"
 
 // Get Path Login
 const val login = "login"
@@ -137,6 +141,26 @@ interface Utilities {
         @Header("Authorization") authorization: String
     ): Deferred<Layanan>
 
+
+    //API POST PENDIDIKAN
+    @FormUrlEncoded
+    @POST(pendidikan)
+    fun postPendidikan(
+        @Header("Authorization") authorization: String,
+        @Field("instansi") instansi: String,
+        @Field("jenjang") jenjang: String,
+        @Field("fakultas") fakultas: String,
+        @Field("jurusan") jurusan: String,
+        @Field("tahun_masuk") tahun_masuk: String,
+        @Field("tahun_keluar") tahun_keluar: String
+    ) : Deferred<message>
+
+    // API DELETE PENDIDIKAN
+    @DELETE("pendidikan/{id}")
+    fun deletePendidikan(
+        @Header("Authorization") authorization: String,
+        @Path("id") id: Int,
+    ) : Deferred<message>
 }
 
 object MarkOIApi {

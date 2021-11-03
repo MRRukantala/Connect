@@ -116,4 +116,7 @@
     <string name="hapus_informasi">Hapus Informasi</string>
     <string name="nama_produk">Nama Produk</string>
     <string name="harga">Harga</string>
+    <string name="tahun_masuk">Tahun Masuk</string>
+    <string name="jenjang">Jenjang</string>
+    <string name="fakultas">Fakultas</string>
 </resources>

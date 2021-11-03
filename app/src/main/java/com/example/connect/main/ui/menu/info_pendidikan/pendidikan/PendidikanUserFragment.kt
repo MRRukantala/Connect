@@ -50,7 +50,7 @@ class PendidikanUserFragment : Fragment() {
         )
 
         binding.fabNews.setOnClickListener {
-            findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment())
+            findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(null))
         }
 
         binding.apply {
@@ -60,6 +60,15 @@ class PendidikanUserFragment : Fragment() {
                 }
             })
         }
+
+        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
+            if(null != it){
+                this.findNavController().navigate(
+                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(it)
+                )
+            }
+
+        })
 
         return binding.root
     }

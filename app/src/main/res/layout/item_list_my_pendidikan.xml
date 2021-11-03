@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="binding"
             type="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan" />
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="374dp"
+            android:layout_width="380dp"
             android:layout_height="121dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -38,6 +39,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/nunito_sans"
+                    android:text="@{binding.jurusan}"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nunito_sans"
+                    android:text="@{binding.instansi}"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toEndOf="@+id/textView50"
                     app:layout_constraintTop_toBottomOf="@+id/textView49"
@@ -62,6 +65,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nunito_sans"
+                    android:text="@{binding.jenjang}"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView49"
@@ -74,13 +78,27 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nunito_sans"
-                    android:textColor="@color/black"
+                    android:text="@{binding.tahun_masuk}"
+                    android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView50"
+                    tools:text="2018" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="@{binding.tahun_masuk}"
+                    android:textColor="@color/content_and_title_color_post_and_agenda"
+                    app:layout_constraintStart_toEndOf="@+id/textView51"
                     app:layout_constraintTop_toBottomOf="@+id/textView50"
                     tools:text="2018" />
 
 
                 <ImageButton
+                    android:id="@+id/imageButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"

@@ -15,6 +15,7 @@ import com.example.connect.main.ui.home.tablayout.agenda.model.Agenda
 import com.example.connect.main.ui.home.tablayout.agenda.AgendaAdapter
 import com.example.connect.main.ui.home.tablayout.news.model.Post
 import com.example.connect.main.ui.layanan.DataLayanan
+import com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan
 import com.example.connect.main.ui.product.Adapter
 import java.text.SimpleDateFormat
 
@@ -69,6 +70,15 @@ fun bindRecyclerViewListLayanan(
     data: List<DataLayanan>?
 ) {
     val adapter = recyclerView.adapter as com.example.connect.main.ui.layanan.Adapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listPendidikan")
+fun bindRecyclerViewListPendidikan(
+    recyclerView: RecyclerView,
+    data: List<MySubPendidikan>?
+) {
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.menu.info_pendidikan.info.Adapter
     adapter.submitList(data)
 }
 

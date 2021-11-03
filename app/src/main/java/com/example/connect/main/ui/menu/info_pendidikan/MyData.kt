@@ -32,3 +32,7 @@ data class MySubPendidikan(
     val tahun_masuk: String,
     val tahun_keluar: String
 ) : Parcelable
+
+data class message(
+    val message: String
+)

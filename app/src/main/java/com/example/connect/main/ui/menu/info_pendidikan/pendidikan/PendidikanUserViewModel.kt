@@ -44,7 +44,7 @@ class PendidikanUserViewModel(idUser: Int, token: String, application: Applicati
                 val result = getAdminProductDeferred.await()
                 Log.v("BANYAK", result.data[0].pendidikan!!.size.toString())
                 when {
-                    result.data!!.size > 0 -> {
+                    result.data.size > 0 -> {
                         _properties.value = result.data[0].pendidikan!!
                     }
                 }
