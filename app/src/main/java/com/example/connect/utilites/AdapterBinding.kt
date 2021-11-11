@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.connect.R
-import com.example.connect.main.ui.product.model.ProductModel
-import com.example.connect.main.ui.home.tablayout.agenda.model.Agenda
+import com.example.connect.database.SaveProductData
 import com.example.connect.main.ui.home.tablayout.agenda.AgendaAdapter
+import com.example.connect.main.ui.home.tablayout.agenda.model.Agenda
 import com.example.connect.main.ui.home.tablayout.news.model.Post
 import com.example.connect.main.ui.layanan.DataLayanan
 import com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan
 import com.example.connect.main.ui.product.Adapter
+import com.example.connect.main.ui.product.model.ProductModel
 import java.text.SimpleDateFormat
 
 @BindingAdapter("listPosts")
@@ -82,6 +83,15 @@ fun bindRecyclerViewListPendidikan(
     adapter.submitList(data)
 }
 
+@BindingAdapter("listKeranjang")
+fun bindRecyclerViewListKeranjang(
+    recyclerView: RecyclerView,
+    data: List<SaveProductData>?
+) {
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.product.keranjang.Adapter
+    adapter.submitList(data)
+}
+
 
 
 @BindingAdapter("imageUrl")
@@ -143,6 +153,7 @@ fun emptyornot(textViewTime: TextView, value : String?){
         textViewTime.setText(value.toString())
     }
 }
+
 
 @BindingAdapter("currerncy")
 fun currency(textView: TextView, nominal: Int){

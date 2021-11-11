@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 
 class FormPendidikanViewModel : ViewModel() {
 
+    val _state = MutableLiveData<state>()
+
     private val _pendidikanForm = MutableLiveData<PendidikanState>()
     val pendidikanForm: LiveData<PendidikanState>
         get() = _pendidikanForm
@@ -35,22 +37,27 @@ class FormPendidikanViewModel : ViewModel() {
         id: Int
     ) {
         coroutineScope.launch {
+            _state.postValue(state.LOADING)
             val delete =  MarkOIApi.retrofitService.deletePendidikan("Bearer " + token, id)
             try {
+                _state.postValue(state.SUCCESS)
                 val resul = delete.await()
                 Log.v("HASIL", resul.message)
                 _deleted.value = resul
             } catch (e: Exception){
                 e.message.toString()
+                _state.postValue(state.ERROR)
                 Log.v("HASIL", e.message.toString())
             }
         }
     }
 
+
     fun input(
         token: String, instansi: String, jenjang: String, fakultas: String, jurusan: String,
         tahunMasuk: String, tahunKeluar: String
     ) {
+        _state.postValue(state.LOADING)
         Log.v("DATA", token + instansi + jenjang + fakultas + jurusan + tahunMasuk + tahunKeluar)
         coroutineScope.launch {
 
@@ -66,9 +73,11 @@ class FormPendidikanViewModel : ViewModel() {
 
 
             try {
+                _state.postValue(state.SUCCESS)
                 val result = input.await()
                 Log.v("HASIL", result.toString())
             } catch (e: Exception){
+                _state.postValue(state.ERROR)
                 Log.v("ERROR PESAN", e.message.toString())
                 e.toString()
             }
@@ -114,3 +123,9 @@ data class PendidikanState(
     val tahunKeluar: Int? = null,
     val isDataValid : Boolean = false
 )
+
+enum class state{
+    SUCCESS,
+    LOADING,
+    ERROR
+}

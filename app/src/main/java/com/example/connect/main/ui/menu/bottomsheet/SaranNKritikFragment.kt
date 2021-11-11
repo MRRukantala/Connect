@@ -1,19 +1,19 @@
 package com.example.connect.main.ui.menu.bottomsheet
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.SaranNKritikFragmentBinding
 
 class SaranNKritikFragment : Fragment() {
 
-    lateinit var binding : SaranNKritikFragmentBinding
+    lateinit var binding: SaranNKritikFragmentBinding
 
     companion object {
         fun newInstance() = SaranNKritikFragment()
@@ -26,10 +26,15 @@ class SaranNKritikFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.saran_n_kritik_fragment, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.saran_n_kritik_fragment, container, false)
 
         binding.send.setOnClickListener {
             findNavController().navigate(SaranNKritikFragmentDirections.actionSaranNKritikFragmentToSaranTerimaKasihFragment())
+        }
+
+        binding.include11.backImage.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         return binding.root

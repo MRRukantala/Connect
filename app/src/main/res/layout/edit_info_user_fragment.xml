@@ -4,187 +4,220 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="binding"
             type="com.example.connect.main.ui.menu.info_pendidikan.info.edit.EditInfoUserViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/dp16">
 
-        <include
-            android:id="@+id/include9"
-            layout="@layout/component_back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView2"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginTop="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="@dimen/dp12"
-            android:src="@drawable/avatar_1_raster"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include9" />
-
-        <TextView
-            android:id="@+id/textView35"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="@string/email"
-            android:textColor="@color/content_and_title_color_post_and_agenda"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textView36"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_sans"
-            tools:text="@string/mfsyach_gmail_com"
-            android:text="@{binding.selectedNews.name}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView35" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView37"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="No Kontak"
-            android:textColor="@color/content_and_title_color_post_and_agenda"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView36" />
-
-        <EditText
-            android:id="@+id/textView38"
-            android:layout_width="370dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView37" />
-
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="@string/kota_tinggal_saat_ini"
-            android:textColor="@color/content_and_title_color_post_and_agenda"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView38" />
-
-        <EditText
-            android:id="@+id/textView40"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView39" />
-
-        <TextView
-            android:id="@+id/textView41"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="Tanggal Lahir"
-            android:textColor="@color/content_and_title_color_post_and_agenda"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView40" />
-
-        <EditText
-            android:id="@+id/textView42"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="@string/belum_ditambahkan"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView41" />
-
-        <TextView
-            android:id="@+id/textView43"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_sans"
-            android:text="Jenis Kelamin"
-            android:textColor="@color/content_and_title_color_post_and_agenda"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView42" />
-
-        <RadioGroup
-            android:id="@+id/textView44"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@+id/textView43"
-            app:layout_constraintTop_toBottomOf="@+id/textView43">
-
-            <RadioButton
+            <include
+                android:id="@+id/include9"
+                layout="@layout/component_back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_sans"
-                android:paddingLeft="@dimen/dp12"
-                android:paddingRight="@dimen/dp24"
-                android:text="Laki - laki"
-                android:textColor="@color/content_and_title_color_post_and_agenda" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-            <RadioButton
+            <Button
+                android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/dp12"
-                android:paddingRight="@dimen/dp24"
-                android:text="Perempuan"
-                android:textColor="@color/content_and_title_color_post_and_agenda" />
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/simpan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </RadioGroup>
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include9">
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/simpan"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView44" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView2"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_marginTop="8dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="@dimen/dp12"
+                        android:src="@drawable/avatar_1_raster"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="NIM"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textView36"
+                        emptyornot="@{binding.selectedNews.nim}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:inputType="number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView35"
+                        tools:text="NIM" />
+
+                    <TextView
+                        android:id="@+id/textView37"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="No Kontak (menggunakan +62)"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+                    <EditText
+                        android:id="@+id/textView38"
+                        emptyornot="@{binding.selectedNews.wa}"
+                        android:layout_width="370dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:inputType="phone"
+                        android:hint="62+"
+                        android:text="@string/belum_ditambahkan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                    <TextView
+                        android:id="@+id/textView39"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="@string/kota_tinggal_saat_ini"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+                    <EditText
+                        android:id="@+id/textView40"
+                        emptyornot="@{binding.selectedNews.domisili}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="@string/belum_ditambahkan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+                    <TextView
+                        android:id="@+id/textView41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="Tanggal Lahir"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+                    <TextView
+                        android:id="@+id/textView42"
+                        emptyornot="@{binding.selectedNews.tgl_lahir}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:paddingTop="@dimen/dp16"
+                        android:paddingRight="@dimen/dp16"
+                        android:paddingBottom="@dimen/dp16"
+                        android:text="@string/belum_ditambahkan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text="Jenis Kelamin"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+                    <RadioGroup
+                        android:id="@+id/rg"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@+id/textView43"
+                        app:layout_constraintTop_toBottomOf="@+id/textView43">
+
+                        <RadioButton
+                            android:id="@+id/rl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_sans"
+                            android:paddingLeft="@dimen/dp12"
+                            android:paddingRight="@dimen/dp24"
+                            android:text="Laki - laki"
+                            android:textColor="@color/content_and_title_color_post_and_agenda" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <RadioButton
+                            android:id="@+id/rp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/dp12"
+                            android:paddingRight="@dimen/dp24"
+                            android:text="Perempuan"
+                            android:textColor="@color/content_and_title_color_post_and_agenda" />
+
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </layout>

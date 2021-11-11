@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_sans"
             android:text="Layanan"
             android:textColor="@color/black"
@@ -54,9 +54,10 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Layanan Masih Dalam Pengembangan"
+            android:text="@string/mohon_maaf_layanan_masih_kosong_n_dan_layanan_masih_dalam_pengembangan"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

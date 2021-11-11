@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,15 +26,18 @@ class MyProductFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.my_product_fragment, container, false)
         binding.lifecycleOwner = this
 
+        val token = requireActivity()
+            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+            .getString("token", "").toString()
+        val id = requireActivity()
+            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+            .getInt("id", -1)
+
         val application = requireNotNull(activity).application
         val factory =
             MyProductViewModelFactory(
-                requireActivity()
-                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                    .getString("token", "").toString(),
-                requireActivity()
-                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                    .getInt("id", -1),
+                token,
+                id,
                 application
             )
 
@@ -55,7 +59,17 @@ class MyProductFragment : Fragment() {
         )
 
         binding.fabNews.setOnClickListener {
-            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
+            viewModel.wa.observe(viewLifecycleOwner, {
+                if(null != it){
+                    findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
+                } else if(it == "" && it == " "){
+                    Toast.makeText(requireContext(), "Maaf Anda harus mengisi no wa dulu", Toast.LENGTH_LONG).show()
+                } else{
+                    Toast.makeText(requireContext(), "Maaf Anda harus mengisi no wa dulu", Toast.LENGTH_LONG).show()
+                }
+            })
+
+
         }
 
         viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
@@ -69,5 +83,7 @@ class MyProductFragment : Fragment() {
 
         return binding.root
     }
+
+
 
 }

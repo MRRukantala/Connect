@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.DetailNewsFragmentBinding
 
+
 class DetailNewsFragment : Fragment() {
 
     lateinit var binding: DetailNewsFragmentBinding
@@ -28,11 +29,16 @@ class DetailNewsFragment : Fragment() {
         val newProperty = DetailNewsFragmentArgs.fromBundle(requireArguments()).selectedNews
         val viewModelFactory = DetailViewModelFactory(newProperty, application)
 
+
         binding.viewModel =
             ViewModelProvider(this, viewModelFactory).get(DetailNewsViewModel::class.java)
 
         binding.include6.backImage.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.cardImage.setOnClickListener {
+            findNavController().navigate(DetailNewsFragmentDirections.actionDetailNewsFragmentToImageOpener(newProperty.gambar))
         }
 
         return binding.root

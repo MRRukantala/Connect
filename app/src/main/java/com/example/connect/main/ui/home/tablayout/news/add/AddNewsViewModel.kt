@@ -9,7 +9,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
+
 
 class AddNewsViewModel : ViewModel() {
     // TODO: Implement the ViewModel
@@ -18,12 +21,22 @@ class AddNewsViewModel : ViewModel() {
     val value: LiveData<PostKirimanFormState?>
         get() = _value
 
-    private val _image = MutableLiveData<RequestBody?>()
-    val image: LiveData<RequestBody?>
+    val state = MutableLiveData<AddNewsState>()
+
+    private val _image = MutableLiveData<MultipartBody.Part?>()
+    val image: LiveData<MultipartBody.Part?>
         get() = _image
 
-    fun image(requestBody: RequestBody) {
-        _image.value = requestBody
+    fun image(part: MultipartBody.Part) {
+        _image.postValue(part)
+    }
+
+    private val _idUser = MutableLiveData<String>()
+    val idUser : LiveData<String?>
+    get() = _idUser
+
+    fun idUser(id: String){
+        _idUser.value = id
     }
 
     private val _content = MutableLiveData<String?>()
@@ -46,20 +59,33 @@ class AddNewsViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
-    fun posting(token: String, imageUri: RequestBody, content: RequestBody) {
-        Log.v("POST DATA", token + imageUri + content)
+    fun posting(token: String) {
+        Log.v("POST DATA", token  + content)
+        val content: RequestBody = RequestBody.create(
+            "text/plain".toMediaTypeOrNull(),
+            _content.value ?: ""
+        )
+        val idUser: RequestBody = RequestBody.create(
+            "text/plain".toMediaTypeOrNull(),
+            _idUser.value ?: ""
+        )
         coroutineScope.launch {
             var post = MarkOIApi.retrofitService.postKiriman(
-                "Bearer " + token, imageUri, content
+                "Bearer $token", idUser,_image.value, content
             )
-
+            state.postValue(AddNewsState.LOADING)
             try {
                 post.await()
                 Log.v("POST", "BERHASIL")
-//                _post.value = result
+                state.postValue(AddNewsState.SUCCESS)
             } catch (e: Exception) {
-                Log.v("GAGAL", e.message.toString())
-                Log.v("POST", "GAGAL")
+                if (!e.message.equals("Required value 'id_user' missing at \$")) {
+                    Log.v("GAGAL", e.message.toString())
+                    Log.v("POST", "GAGAL")
+                    state.postValue(AddNewsState.ERROR)
+                } else {
+                    state.postValue(AddNewsState.SUCCESS)
+                }
             }
         }
     }
@@ -75,13 +101,7 @@ class AddNewsViewModel : ViewModel() {
     data class PostKirimanFormState(
         val isDataValid: Boolean = false
     )
-//
-//    private fun isContentAny(content: String): Boolean {
-//        return content.isNotBlank()
-//    }
-//
-//    private fun isImageAny(image: RequestBody): Boolean {
-//        return image.equals("null")
-//    }
 }
+
+enum class AddNewsState{ SUCCESS, LOADING, ERROR }
 

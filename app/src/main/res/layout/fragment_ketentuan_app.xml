@@ -36,6 +36,7 @@
             android:layout_marginTop="16dp"
             android:paddingStart="@dimen/dp24"
             android:paddingRight="24dp"
+            android:paddingBottom="@dimen/dp24"
             app:layout_constraintTop_toBottomOf="@+id/textView31">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,22 +44,18 @@
                 android:layout_height="match_parent"
                 tools:context=".signup.KetentuanAppFragment">
 
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/nunito_sans"
-                    android:textColor="@color/content_and_title_color_post_and_agenda"
-                    android:text="@string/content_pernyataan" />
+                    android:text="@string/content_pernyataan"
+                    android:textColor="@color/content_and_title_color_post_and_agenda" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </layout>

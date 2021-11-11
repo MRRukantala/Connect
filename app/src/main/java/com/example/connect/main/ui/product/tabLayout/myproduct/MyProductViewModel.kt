@@ -20,6 +20,10 @@ class MyProductViewModel(token: String, idUser: Int, application: Application) :
     val status: LiveData<String>
         get() = _status
 
+    private val _wa = MutableLiveData<String?>()
+    val wa: LiveData<String?>
+    get() = _wa
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -33,6 +37,22 @@ class MyProductViewModel(token: String, idUser: Int, application: Application) :
 
     init {
         getProductProperties(token ,idUser)
+        getWa(token, idUser)
+    }
+
+    fun getWa(token: String ,idUser: Int){
+        coroutineScope.launch {
+            val getData = MarkOIApi.retrofitService.getMyProfile(
+                "Bearer $token",
+                idUser
+            )
+            try {
+                val result = getData.await()
+                _wa.value = result.data[0].wa
+            } catch (e: Exception){
+                e.message.toString()
+            }
+        }
     }
 
     private fun getProductProperties(token: String, idUser: Int) {

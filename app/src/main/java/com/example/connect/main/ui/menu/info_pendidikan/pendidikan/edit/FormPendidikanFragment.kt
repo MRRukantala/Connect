@@ -1,17 +1,18 @@
 package com.example.connect.main.ui.menu.info_pendidikan.pendidikan.edit
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FormPendidikanFragmentBinding
@@ -19,41 +20,41 @@ import com.example.connect.databinding.FormPendidikanFragmentBinding
 class FormPendidikanFragment : Fragment() {
 
     lateinit var binding: FormPendidikanFragmentBinding
-    lateinit var viewModel : FormPendidikanViewModel
+    lateinit var viewModel: FormPendidikanViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.form_pendidikan_fragment, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.form_pendidikan_fragment, container, false)
         viewModel = ViewModelProvider(this).get(FormPendidikanViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
 
         val data = FormPendidikanFragmentArgs.fromBundle(requireArguments()).pendidikanSelected
-        val token =  requireActivity()
+        val token = requireActivity()
             .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
             .getString("token", "").toString()
 
-        Log.v("ID", data!!.id.toString() + token)
+        Log.v("ID", data?.id.toString() + token)
 
         val instansitv = binding.instansi
         val jenjangtv = binding.jenjang
         val fakultastv = binding.fakultas
         val jurusantv = binding.jurusan
-        val tahunmasuktv=binding.tahunMasuk
+        val tahunmasuktv = binding.tahunMasuk
         val tahunlulustv = binding.tahunLulus
 
         viewModel.pendidikanForm.observe(viewLifecycleOwner,
-            Observer {
-                pendidikanFormState ->
-                if(pendidikanFormState == null) {
+            Observer { pendidikanFormState ->
+                if (pendidikanFormState == null) {
                     return@Observer
-            }
+                }
 
                 binding.btnSimpan.isEnabled = pendidikanFormState.isDataValid
                 pendidikanFormState.instansi?.let {
-                        instansitv.error = getString(it)
+                    instansitv.error = getString(it)
                 }
                 pendidikanFormState.jenjang?.let {
                     jenjangtv.error = getString(it)
@@ -70,7 +71,7 @@ class FormPendidikanFragment : Fragment() {
                 pendidikanFormState.tahunKeluar?.let {
                     tahunlulustv.error = getString(it)
                 }
-        })
+            })
 
         val afterTextChangedListener = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -102,7 +103,7 @@ class FormPendidikanFragment : Fragment() {
 
         binding.btnSimpan.setOnClickListener {
             viewModel.input(
-               token,
+                token,
                 instansitv.text.toString(),
                 jenjangtv.text.toString(),
                 fakultastv.text.toString(),
@@ -115,7 +116,7 @@ class FormPendidikanFragment : Fragment() {
 
 
 
-        if(data == null){
+        if (data == null) {
             binding.btnHapus.visibility = View.GONE
         } else {
             binding.btnHapus.visibility = View.VISIBLE
@@ -133,7 +134,7 @@ class FormPendidikanFragment : Fragment() {
         }
 
         viewModel.deleted.observe(viewLifecycleOwner, {
-            if(null != it){
+            if (null != it) {
                 findNavController().navigate(FormPendidikanFragmentDirections.actionFormPendidikanFragmentToContainerInfoPendidikanFragment())
             }
         })
@@ -142,6 +143,20 @@ class FormPendidikanFragment : Fragment() {
         binding.include8.backImage.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        viewModel._state.observe(viewLifecycleOwner, {
+            when (it) {
+                state.SUCCESS -> {
+                    Toast.makeText(context, "Berhasil", Toast.LENGTH_SHORT).show()
+                }
+                state.LOADING -> {
+                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+                }
+                state.ERROR -> {
+                    Toast.makeText(context, "Gagal", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
 
 

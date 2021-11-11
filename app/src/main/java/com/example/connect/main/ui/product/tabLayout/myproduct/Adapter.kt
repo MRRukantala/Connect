@@ -10,6 +10,7 @@ import com.example.connect.main.ui.product.model.ProductModel
 
 class Adapter(private val onClickListener: OnClickListener) :
     ListAdapter<ProductModel, Adapter.MyProdukViewHolder>(DiffCallback) {
+
     object DiffCallback : DiffUtil.ItemCallback<ProductModel>() {
         override fun areItemsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
             return oldItem === newItem

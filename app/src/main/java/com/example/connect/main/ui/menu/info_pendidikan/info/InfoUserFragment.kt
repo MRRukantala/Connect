@@ -23,9 +23,10 @@ class InfoUserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.info_user_fragment, container, false)
+
         binding.lifecycleOwner = this
 
         val application = requireNotNull(activity).application
@@ -42,9 +43,6 @@ class InfoUserFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this, factory).get(InfoUserViewModel::class.java)
         binding.viewModel = viewModel
-
-        binding.apply {
-        }
 
         binding.apply {
             buttonAbout.setOnClickListener {

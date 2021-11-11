@@ -13,12 +13,12 @@ data class MySubData(
     val id: Int,
     val id_user: Int,
     val name: String?,
-    val nim: String? = "Belum Ditambahkan",
-    val tgl_lahir: String? = "Belum Ditambahkan",
-    val wa: String? = "Belum Ditambahkan",
-    val domisili: String? = "Belum Ditambahkan",
+    val nim: String? ,
+    val tgl_lahir: String? ,
+    val wa: String? ,
+    val domisili: String? ,
     @Json(name = "photo") val photo: String?,
-    val jenis_kelamin: String? = "Belum Ditambahkan",
+    val jenis_kelamin: String? ,
     val pendidikan: List<MySubPendidikan>?
 ) : Parcelable
 

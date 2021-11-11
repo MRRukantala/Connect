@@ -1,6 +1,7 @@
 package com.example.connect.utilites
 
 import com.example.connect.login.data.model.UserResponse
+import com.example.connect.main.ui.home.tablayout.agenda.add.ResponseAddedAgenda
 import com.example.connect.main.ui.home.tablayout.agenda.model.AgendaResponse
 import com.example.connect.main.ui.home.tablayout.news.add.AddedResponses
 import com.example.connect.main.ui.home.tablayout.news.model.Post
@@ -9,14 +10,22 @@ import com.example.connect.main.ui.layanan.Layanan
 import com.example.connect.main.ui.menu.info_pendidikan.MyData
 import com.example.connect.main.ui.menu.info_pendidikan.message
 import com.example.connect.main.ui.product.model.ProductResponse
+import com.example.connect.signup.data.model.response
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
+import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
 import okhttp3.RequestBody
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
+import java.sql.Date
+import java.sql.Time
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 // Base URL
 private val BASE_URL = "https://umconnect.cahyapro.com/public/api/"
@@ -44,6 +53,7 @@ const val level = "produk-lv/{id}"
 
 // Get Path Product MarkOI
 const val layanan = "layanan-public"
+const val postProduct = "produk"
 
 // Get Path Kiriman
 const val getKiriman = "kiriman-public"
@@ -52,15 +62,26 @@ const val postKiriman = "api-kiriman"
 
 // Get Path Agenda
 const val getAgenda = "agenda-public"
+const val postAgenda= "agenda"
 
 
 val moshi = Moshi
     .Builder()
-    .add(KotlinJsonAdapterFactory()).build()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+fun myHttpClient(): OkHttpClient {
+    val builder = OkHttpClient().newBuilder()
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+    return builder.build()
+}
+
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
-    .addCallAdapterFactory(CoroutineCallAdapterFactory()).baseUrl(BASE_URL).build()
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(myHttpClient())
+    .baseUrl(BASE_URL).build()
 
 interface Utilities {
 
@@ -92,6 +113,20 @@ interface Utilities {
     )
             : Deferred<MyData>
 
+    // UPDATE MY PROFILE
+    @Multipart
+    @POST("profil/{id_user}")
+    fun updateMyProfile(
+        @Header("Authorization") authorization: String,
+        @Part("jenis_kelamin") jenis_kelamin : RequestBody?,
+        @Part("nim") nim : RequestBody?,
+        @Part("tgl_lahir") tanggal_lahir : RequestBody?,
+        @Part("domisili") domisili: RequestBody?,
+        @Part("wa") wa : RequestBody?,
+        @Part image: MultipartBody.Part?,
+        @Path("id_user") id_user: Int,
+        @QueryMap _method : Map<String, String>
+    ) : Deferred<message>
 
     // API GET ALL KIRIMAN(POSTS)
     @GET(getKiriman)
@@ -106,14 +141,42 @@ interface Utilities {
     @POST(postKiriman)
     fun postKiriman(
         @Header("Authorization") authorization: String,
-        @Part("gambar") gambar: RequestBody,
-        @Part("content") content: RequestBody
+        @Part("id_profil") id: RequestBody,
+        @Part starImage: MultipartBody.Part?,
+        @Part("konten") content: RequestBody
     ): Deferred<AddedResponses>
+
+    // API POST PRODUCT
+    @Multipart
+    @POST(postProduct)
+    fun postProduct(
+        @Header("Authorization") authorization: String,
+        @Part image: MultipartBody.Part?,
+        @Part ("harga") harga: Int?,
+        @Part("nama_produk") nama_produk: RequestBody?,
+        @Part("deskripsi") description: RequestBody?
+    ) : Deferred<message>
 
 
     // API GET ALL AGENDA(AGENDAS)
     @GET(getAgenda)
     fun getAllAgenda(): Deferred<AgendaResponse>
+
+    // API POST AGENDA
+    @Multipart
+    @POST(postAgenda)
+    fun postAgenda(
+        @Header("Authorization") authorization: String,
+        @Part ("title") title : RequestBody?,
+        @Part ("lokasi") lokasi : RequestBody?,
+        @Part ("tanggal") tanggal : RequestBody?,
+        @Part ("waktu") waktu : RequestBody?,
+        @Part ("konten") konten : RequestBody?,
+        @Part image  : MultipartBody.Part?,
+        @Part ("status") status: Int?
+//        ,
+//        @Part ("id_user") id_user: RequestBody
+    ): Deferred<message>
 
     // API GET ALL PRODUCT
     @GET(productMarkOI)

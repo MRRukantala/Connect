@@ -28,9 +28,10 @@ class DetailArtikelMarOIFragment : Fragment() {
         )
         binding.lifecycleOwner = this
 
+        val data = DetailArtikelMarOIFragmentArgs.fromBundle(requireArguments()).selectedArtikelMarkOI
+
         val viewModelFactory = DetailArtikelMarkOIViewModelFactory(
-            DetailArtikelMarOIFragmentArgs.fromBundle(requireArguments())
-                .selectedArtikelMarkOI,
+            data,
             requireNotNull(activity).application
         )
 
@@ -38,6 +39,10 @@ class DetailArtikelMarOIFragment : Fragment() {
 
         binding.include4.backImage.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.cardView8.setOnClickListener {
+            findNavController().navigate(DetailArtikelMarOIFragmentDirections.actionDetailArtikelMarOIFragmentToImageOpener3(data.gambar))
         }
 
         return binding.root

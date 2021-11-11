@@ -97,6 +97,9 @@
         <argument
             android:name="selectedNews"
             app:argType="com.example.connect.main.ui.home.tablayout.news.model.Post" />
+        <action
+            android:id="@+id/action_detailNewsFragment_to_imageOpener"
+            app:destination="@id/imageOpener" />
     </fragment>
     <fragment
         android:id="@+id/detailAgendaFragment"
@@ -106,6 +109,9 @@
         <argument
             android:name="selectedAgenda"
             app:argType="com.example.connect.main.ui.home.tablayout.agenda.model.Agenda" />
+        <action
+            android:id="@+id/action_detailAgendaFragment_to_imageOpener"
+            app:destination="@id/imageOpener" />
     </fragment>
     <fragment
         android:id="@+id/loadingAddAgendaFragment"
@@ -120,5 +126,14 @@
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageOpener"
+        android:name="com.example.connect.utilites.ImageOpener"
+        android:label="fragment_image_opener"
+        tools:layout="@layout/fragment_image_opener" >
+        <argument
+            android:name="link"
+            app:argType="string" />
     </fragment>
 </navigation>

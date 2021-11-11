@@ -24,14 +24,20 @@ import com.example.connect.databinding.AddNewsFragmentBinding
 import com.example.connect.login.data.model.DataUser
 import com.example.connect.login.data.model.UserResponse
 import okhttp3.MediaType
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import android.R.string.no
+import android.database.Cursor
+import android.net.Uri
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import java.lang.Exception
 
 
 class AddNewsFragment : Fragment() {
 
     lateinit var binding: AddNewsFragmentBinding
-    private val REQUEST_CODE = 100
+    private val REQUEST_CODE = 101
 
     private val viewModel: AddNewsViewModel by lazy {
         ViewModelProvider(this).get(AddNewsViewModel::class.java)
@@ -43,15 +49,12 @@ class AddNewsFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.add_news_fragment, container, false)
 
-        viewModel.image.observe(viewLifecycleOwner, {
-            Log.v("GMANA", it.toString())
-        })
         binding.fabAddImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )
-                != PackageManager.PERMISSION_DENIED
+                == PackageManager.PERMISSION_DENIED
             ) {
                 Toast.makeText(
                     requireContext(),
@@ -82,6 +85,10 @@ class AddNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val buttonUpload = binding.fabNews
+        val sharedPreferences = requireActivity()
+            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        val id = sharedPreferences.getString("id_user", "")
 
         binding.cancelImagePost.setOnClickListener {
             binding.apply {
@@ -94,30 +101,43 @@ class AddNewsFragment : Fragment() {
         }
 
         viewModel.image.observe(viewLifecycleOwner, {
-            Log.v("IMAGE", it.toString())
             viewModel.postKirimanDataChanged()
         })
 
         viewModel.content.observe(viewLifecycleOwner, {
-            Log.v("CONTENT", it.toString())
             viewModel.postKirimanDataChanged()
         })
 
+        buttonUpload.setOnClickListener {
+            viewModel.idUser(id.toString())
+            viewModel.posting(
+                token = token ?: "",
+            )
+        }
+
+        viewModel.state.observe(viewLifecycleOwner, {
+            when(it){
+                AddNewsState.SUCCESS -> {
+                    Toast.makeText(context, "Success image upload", Toast.LENGTH_SHORT).show()
+                    buttonUpload.isEnabled = true
+                    findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
+                }
+                AddNewsState.LOADING -> {
+                    buttonUpload.isEnabled = false
+                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+                    binding.loading.visibility = View.VISIBLE
+                }
+                AddNewsState.ERROR -> {
+                    binding.loading.visibility = View.GONE
+                    Toast.makeText(context, "Failure image upload", Toast.LENGTH_SHORT).show()
+                    buttonUpload.isEnabled = true
+                }
+            }
+        })
+
         viewModel.value.observe(viewLifecycleOwner, {
-//            if(it.isDataValid){
             if(it!!.isDataValid){
                 buttonUpload.isEnabled = true
-
-//                buttonUpload.setOnClickListener {
-//                    viewModel.posting(
-//                        requireActivity()
-//                            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-//                            .getString("token", "").toString(),
-//                        viewModel.,
-//                        viewModel.content
-//
-//                    )
-//                }
             } else {
                 buttonUpload.isEnabled = false
             }
@@ -147,12 +167,20 @@ class AddNewsFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 
-            var file = data?.data
-            var requestBodyFile = RequestBody.create(MediaType.parse("image/*"), File(file!!.path))
+            var imageURI = data?.data
+
+            var file = File(data?.data?.let { getRealPathFromURI(this.requireContext(), it) })
+
+            val filePart = MultipartBody.Part.createFormData(
+                "gambar", file.name, RequestBody.create(
+                    "image/*".toMediaTypeOrNull(), file
+                )
+            )
+
 
             binding.apply {
-                viewModel.image(requestBodyFile)
-                imgAddPost.setImageURI(file)
+                viewModel.image(filePart)
+                imgAddPost.setImageURI(imageURI)
                 cardAddPost.visibility = View.VISIBLE
                 fabAddImage.text = "Ganti Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
@@ -172,30 +200,19 @@ class AddNewsFragment : Fragment() {
         }
     }
 
-    fun loggedIn(): UserResponse {
-        val sharedPreferences = requireActivity()
-            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-
-        val sharedPreferencesDataUser = DataUser(
-            sharedPreferences.getInt("id", -1),
-            sharedPreferences.getString("name", "").toString(),
-            sharedPreferences.getString("email", "").toString(),
-            sharedPreferences.getString("email_verified_at", "").toString(),
-            sharedPreferences.getString("status", ""),
-            sharedPreferences.getString("level", "").toString(),
-            sharedPreferences.getString("created_at", "").toString(),
-            sharedPreferences.getString("updated_at", "").toString()
-        )
-
-        val sharedPreferencesResponse = com.example.connect.login.data.model.response(
-            sharedPreferences.getString("token", "").toString(),
-            sharedPreferences.getString("token_type", "").toString(),
-            sharedPreferencesDataUser
-        )
-
-        return UserResponse(
-            sharedPreferencesResponse,
-            "null"
-        )
+    private fun getRealPathFromURI(context: Context, contentUri: Uri): String? {
+        var cursor: Cursor? = null
+        return try {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+            val column_index: Int = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            cursor.getString(column_index)
+        } catch (e: Exception) {
+            Log.e("", "getRealPathFromURI Exception : $e")
+            ""
+        } finally {
+            cursor?.close()
+        }
     }
 }

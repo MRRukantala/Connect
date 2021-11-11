@@ -26,5 +26,17 @@
         <argument
             android:name="selectedArtikelMarkOI"
             app:argType="com.example.connect.main.ui.layanan.DataLayanan" />
+        <action
+            android:id="@+id/action_detailArtikelMarOIFragment_to_imageOpener3"
+            app:destination="@id/imageOpener3" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageOpener3"
+        tools:layout="@layout/fragment_image_opener"
+        android:name="com.example.connect.utilites.ImageOpener"
+        android:label="ImageOpener" >
+        <argument
+            android:name="link"
+            app:argType="string" />
     </fragment>
 </navigation>

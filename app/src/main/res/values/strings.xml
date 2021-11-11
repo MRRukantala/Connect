@@ -22,7 +22,6 @@
     <string name="sudah_punya_akun">Sudah punya akun? </string>
     <string name="buat_akun">Buat Akun</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
     <string name="masukkan_alamat_email_dan_password_anda">Masukkan alamat email dan password Anda</string>
     <string name="lupa_passsword">Lupa Passsword?</string>
     <string name="masuk">Masuk</string>
@@ -119,4 +118,8 @@
     <string name="tahun_masuk">Tahun Masuk</string>
     <string name="jenjang">Jenjang</string>
     <string name="fakultas">Fakultas</string>
+    <string name="password">Password</string>
+    <string name="mohon_maaf_layanan_masih_kosong_n_dan_layanan_masih_dalam_pengembangan">Mohon maaf layanan masih kosong \n dan layanan masih dalam pengembangan</string>
+    <string name="mohon_maaf_masih_dalam_pengembangan">Mohon maaf fitur ini \n masih dalam pengembangan</string>
+    <string name="kirim">Kirim</string>
 </resources>

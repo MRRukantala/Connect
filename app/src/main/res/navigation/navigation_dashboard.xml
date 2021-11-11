@@ -40,6 +40,16 @@
         <argument
             android:name="selectedProductUmum"
             app:argType="com.example.connect.main.ui.product.model.ProductModel" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_keranjangFragment"
+            app:destination="@id/keranjangFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_imageOpener2"
+            app:destination="@id/imageOpener2" />
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"
@@ -88,5 +98,39 @@
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/keranjangFragment"
+        android:name="com.example.connect.main.ui.product.keranjang.KeranjangFragment"
+        android:label="KeranjangFragment"
+        tools:layout="@layout/fragment_keranjang">
+        <action
+            android:id="@+id/action_keranjangFragment_to_detailSavedProductFragment"
+            app:destination="@id/detailSavedProductFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/keranjangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSavedProductFragment"
+        android:name="com.example.connect.main.ui.product.keranjang.detail.DetailSavedProductFragment"
+        android:label="DetailSavedProductFragment"
+        tools:layout="@layout/detail_saved_product_fragment" >
+        <argument
+            android:name="idSelectedSavedProduct"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_detailSavedProductFragment_to_imageOpener2"
+            app:destination="@id/imageOpener2" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageOpener2"
+        android:name="com.example.connect.utilites.ImageOpener"
+        android:label="ImageOpener" >
+        <argument
+            android:name="link"
+            app:argType="string" />
     </fragment>
 </navigation>
