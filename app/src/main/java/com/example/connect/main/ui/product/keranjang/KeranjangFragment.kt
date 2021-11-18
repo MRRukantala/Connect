@@ -55,9 +55,7 @@ class KeranjangFragment : Fragment() {
         }, Adapter.OnClickCall {
             if(it.wa!!.equals(null)){
                 Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
-            }
-
-            if(it.wa!!.length < 10){
+            } else if(it.wa!!.length < 10){
                 Toast.makeText(requireContext(), "No hp salah", Toast.LENGTH_SHORT).show()
             } else {
                 val packageManager = requireActivity().packageManager
@@ -76,10 +74,10 @@ class KeranjangFragment : Fragment() {
 
 
 
-        keranjangViewModel.navigateToDetail.observe(viewLifecycleOwner, { id ->
+        keranjangViewModel.navigateToDetail.observe(viewLifecycleOwner, {
             findNavController().navigate(
                 KeranjangFragmentDirections.actionKeranjangFragmentToDetailSavedProductFragment(
-                    id
+                    it
                 )
             )
         })

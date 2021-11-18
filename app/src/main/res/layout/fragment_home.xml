@@ -6,32 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".main.ui.home.HomeFragment">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include12"
+        layout="@layout/component_more_vert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="16dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#F5F5F5"
+        app:cardElevation="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayoutHome"
-                android:layout_width="match_parent"
-                style="@style/Widget.MaterialComponents.TabLayout"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabGravity="fill"
-                android:layout_margin="@dimen/dp8"
-                app:tabIndicator="@drawable/rounded_tab_drawable"
-                app:tabIndicatorGravity="stretch"
-                app:tabSelectedTextColor="@android:color/white"
-                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
-
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutHome"
+            style="@style/Widget.MaterialComponents.TabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabGravity="fill"
+            app:tabIndicator="@drawable/rounded_tab_drawable"
+            app:tabIndicatorGravity="stretch"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
 
     </androidx.cardview.widget.CardView>
@@ -45,8 +69,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

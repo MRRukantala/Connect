@@ -79,7 +79,7 @@ fun bindRecyclerViewListPendidikan(
     recyclerView: RecyclerView,
     data: List<MySubPendidikan>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.menu.info_pendidikan.info.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.menu.info_pendidikan.pendidikan.Adapter
     adapter.submitList(data)
 }
 
@@ -89,6 +89,15 @@ fun bindRecyclerViewListKeranjang(
     data: List<SaveProductData>?
 ) {
     val adapter = recyclerView.adapter as com.example.connect.main.ui.product.keranjang.Adapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listMyNews")
+fun bindRecyclerViewMyNews(
+    recyclerView: RecyclerView,
+    data: List<Post>?
+) {
+    val adapter = recyclerView.adapter as com.example.connect.main.ui.home.tablayout.news.mynews.Adapter
     adapter.submitList(data)
 }
 

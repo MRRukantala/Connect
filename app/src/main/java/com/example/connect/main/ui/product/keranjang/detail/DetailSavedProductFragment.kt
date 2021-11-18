@@ -39,9 +39,6 @@ class DetailSavedProductFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.detail_saved_product_fragment, container, false)
 
         binding.viewModel = viewModel
-        binding.include7.backImage.setOnClickListener {
-            findNavController().popBackStack()
-        }
         binding.lifecycleOwner = this
 
         binding.button2.setOnClickListener {
@@ -61,5 +58,11 @@ class DetailSavedProductFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        binding.include7.backImage.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
 }

@@ -40,9 +40,7 @@ class DetailAgendaFragment : Fragment() {
 
         binding.cardView.setOnClickListener {
             findNavController().navigate(
-                DetailNewsFragmentDirections.actionDetailNewsFragmentToImageOpener(
-                    selected.photo
-                )
+                DetailAgendaFragmentDirections.actionDetailAgendaFragmentToImageOpener(selected.photo)
             )
         }
         return binding.root

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="post"
             type="com.example.connect.main.ui.home.tablayout.news.model.Post" />
@@ -16,104 +17,129 @@
         android:clickable="true"
         android:focusable="true">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/item_post"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="@dimen/dp12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/item_post"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/dp12"
+                app:cardElevation="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/circleImageView"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_margin="12dp"
-                    tools:src="@drawable/avatar_1_raster"
-                    imageProfile="@{post.photo}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/name_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nunito"
-                    android:text="@{post.name}"
-                    android:textColor="@color/content_and_title_color_post_and_agenda"
-                    app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                    app:layout_constraintTop_toTopOf="@+id/circleImageView"
-                    tools:text="@string/m_rafli_ruk_antala" />
-
-                <TextView
-                    android:id="@+id/date_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nunito_sans"
-                    app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-                    app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                    app:layout_constraintTop_toBottomOf="@+id/name_text_view"
-                    app:layout_constraintVertical_bias="0.35000000"
-                    app:time="@{post.created_at}"
-                    tools:text="@string/_21_april_2000" />
-
-                <TextView
-                    android:id="@+id/textView8"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:fontFamily="@font/nunito"
-                    android:text="@{post.konten}"
-                    android:ellipsize="end"
-                    android:maxLines="5"
-                    android:justificationMode="inter_word"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/content_and_title_color_post_and_agenda"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/circleImageView"
-                    tools:text="@string/text_dummy_post" />
+                    android:layout_height="match_parent">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8">
+                    <include
+                        android:id="@+id/more"
+                        android:visibility="gone"
+                        layout="@layout/component_more_vert_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView" />
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView"
+                        imageProfile="@{post.photo}"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/avatar_1_raster" />
+
+                    <TextView
+                        android:id="@+id/name_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="@{post.name}"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                        app:layout_constraintTop_toTopOf="@+id/circleImageView"
+                        tools:text="@string/m_rafli_ruk_antala" />
+
+                    <TextView
+                        android:id="@+id/date_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/nunito_sans"
+                        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                        app:layout_constraintTop_toBottomOf="@+id/name_text_view"
+                        app:layout_constraintVertical_bias="0.35000000"
+                        app:time="@{post.created_at}"
+                        tools:text="@string/_21_april_2000" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/nunito"
+                        android:justificationMode="inter_word"
+                        android:maxLines="5"
+                        android:text="@{post.konten}"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/content_and_title_color_post_and_agenda"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/circleImageView"
+                        tools:text="@string/text_dummy_post" />
+
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="400dp"
                         android:layout_height="200dp"
-                        android:scaleType="centerCrop"
-                        app:imageUrl="@{post.gambar}"
-                        tools:src="@drawable/post" />
+                        android:layout_marginTop="20dp"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+                        <ImageView
+                            android:layout_width="400dp"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            app:imageUrl="@{post.gambar}"
+                            tools:src="@drawable/post" />
 
 
-                </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

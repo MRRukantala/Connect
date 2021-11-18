@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemListMyPendidikanBinding
 import com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan
 
-class Adapter(private val onClickListener: OnClickListener) :
+class Adapter(private val onClickListener: OnClickListener, private val onClickEditListener: OnClickEditListener) :
     ListAdapter<MySubPendidikan, Adapter.ViewHolder>(DiffCallback) {
 
     object DiffCallback : DiffUtil.ItemCallback<MySubPendidikan>() {
@@ -29,14 +29,19 @@ class Adapter(private val onClickListener: OnClickListener) :
         fun onClick(property: MySubPendidikan) = clickListener(property)
     }
 
+    class OnClickEditListener(val clickListener: (property: MySubPendidikan) -> Unit) {
+        fun onClick(property: MySubPendidikan) = clickListener(property)
+    }
+
     class ViewHolder(private val binding: ItemListMyPendidikanBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        val editButton = binding.imageButton3
 
         fun bind(property: MySubPendidikan) {
             binding.binding = property
             binding.executePendingBindings()
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -51,6 +56,10 @@ class Adapter(private val onClickListener: OnClickListener) :
         val property = getItem(position)
 
         holder.itemView.setOnClickListener {
+            onClickEditListener.onClick(property)
+        }
+
+        holder.editButton.setOnClickListener {
             onClickListener.onClick(property)
         }
 

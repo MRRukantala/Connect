@@ -40,6 +40,20 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_myAgendaFragment"
+            app:destination="@id/myAgendaFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_myNewsFragment"
+            app:destination="@id/myNewsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addNewsFragment2"
@@ -131,9 +145,19 @@
         android:id="@+id/imageOpener"
         android:name="com.example.connect.utilites.ImageOpener"
         android:label="fragment_image_opener"
-        tools:layout="@layout/fragment_image_opener" >
+        tools:layout="@layout/fragment_image_opener">
         <argument
             android:name="link"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/myAgendaFragment"
+        android:name="com.example.connect.main.ui.home.tablayout.agenda.myagenda.MyAgendaFragment"
+        android:label="my_agenda_fragment"
+        tools:layout="@layout/my_agenda_fragment" />
+    <fragment
+        android:id="@+id/myNewsFragment"
+        android:name="com.example.connect.main.ui.home.tablayout.news.mynews.MyNewsFragment"
+        android:label="my_news_fragment"
+        tools:layout="@layout/my_news_fragment" />
 </navigation>

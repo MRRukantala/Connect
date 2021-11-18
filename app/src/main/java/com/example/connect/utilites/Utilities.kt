@@ -59,6 +59,7 @@ const val postProduct = "produk"
 const val getKiriman = "kiriman-public"
 const val getDetailKiriman = "api-kiriman/{id}"
 const val postKiriman = "api-kiriman"
+const val getKirimanByIdUser = "kiriman-id/{id}"
 
 // Get Path Agenda
 const val getAgenda = "agenda-public"

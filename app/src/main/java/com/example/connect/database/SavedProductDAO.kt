@@ -18,9 +18,6 @@ interface SavedProductDAO {
     @Query("SELECT * FROM saved_product_data where idSaveProductData = :key")
     fun get(key: Long): SaveProductData
 
-//    @Query("DELETE  from saved_product_data where idSaveProductData = :key")
-//    fun deleteById(key: Long): SaveProductData
-
     @Query("SELECT * FROM saved_product_data where id_user = :key ")
     fun getByIdUser(key: Int): LiveData<List<SaveProductData>>
 
@@ -28,5 +25,5 @@ interface SavedProductDAO {
     fun getProductById(key: Long) : LiveData<SaveProductData>
 
     @Query("DELETE FROM saved_product_data WHERE idSaveProductData = :key")
-    suspend fun deleteItem(key: Long)
+    fun deleteItem(key: Long)
 }

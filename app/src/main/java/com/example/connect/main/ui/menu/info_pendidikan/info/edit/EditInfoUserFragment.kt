@@ -49,14 +49,14 @@ class EditInfoUserFragment : Fragment() {
     ): View? {
 
 
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.edit_info_user_fragment, container, false)
+        binding.lifecycleOwner = this
+
 
         datePicker = DatePickerHelper(requireActivity())
 
         val application = requireNotNull(activity).application
-
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.edit_info_user_fragment, container, false)
-        binding.lifecycleOwner = this
 
         val token = requireActivity()
             .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
@@ -249,6 +249,7 @@ class EditInfoUserFragment : Fragment() {
                     val monthStr = if (month < 10) "0${month}" else "${month}"
 
                     val date = LocalDate.of(year, month, dayStr.toInt())
+                    Log.v("DATE", date.toString())
 
                     val basic = date.format(DateTimeFormatter.BASIC_ISO_DATE)
                     ViewModel!!.tanggal_lahir(basic)

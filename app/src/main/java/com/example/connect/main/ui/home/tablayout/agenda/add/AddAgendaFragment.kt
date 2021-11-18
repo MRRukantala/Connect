@@ -225,45 +225,11 @@ class AddAgendaFragment : Fragment() {
                     viewModel.lokasiKegitan(p0.toString())
                 }
             }
-
-        }
-        /**
-        val tanggalKegiatanTextChangedListener = object : TextWatcher{
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
         }
 
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+        binding.include3.backImage.setOnClickListener {
+            findNavController().popBackStack()
         }
-
-        override fun afterTextChanged(p0: Editable?) {
-        if (p0?.length!!.equals(0)) {
-        viewModel.tanggalKegiatanNull()
-        } else {
-        viewModel.tanggalKegitan(p0.toString())
-        }
-        }
-        }
-        val waktuKegiatanTextChangedListener = object : TextWatcher{
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-        }
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-        }
-
-        @RequiresApi(Build.VERSION_CODES.O)
-        override fun afterTextChanged(p0: Editable?) {
-        if (p0?.length!!.equals(0)) {
-        viewModel.waktuKegiatanNull()
-        } else {
-        viewModel.waktuKegiatan(p0.toString())
-        }
-        }
-        }
-         **/
 
         binding.editText.addTextChangedListener(namaKegiatanafterTextChangedListener)
         binding.editText2.addTextChangedListener(rincianKegiatanTextChangedListener)
