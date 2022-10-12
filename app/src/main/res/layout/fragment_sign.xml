@@ -11,7 +11,7 @@
         android:paddingTop="@dimen/fragment_vertical_margin"
         android:paddingRight="@dimen/fragment_horizontal_margin"
         android:paddingBottom="@dimen/fragment_vertical_margin"
-        tools:context=".signup.ui.login.SignFragment">
+        tools:context=".presentation.signup.ui.login.SignFragment">
 
         <include
             android:id="@+id/back"

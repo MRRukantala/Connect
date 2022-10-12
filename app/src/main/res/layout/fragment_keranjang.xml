@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.ui.product.keranjang.KeranjangFragment">
+        tools:context=".presentation.main.ui.product.keranjang.KeranjangFragment">
 
         <include
             android:id="@+id/include7"

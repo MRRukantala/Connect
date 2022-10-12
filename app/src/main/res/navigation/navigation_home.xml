@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.connect.main.ui.home.HomeFragment"
+        android:name="com.example.connect.presentation.main.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNewsFragment2"
-        android:name="com.example.connect.main.ui.home.tablayout.news.add.AddNewsFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.news.add.AddNewsFragment"
         android:label="add_news_fragment"
         tools:layout="@layout/add_news_fragment">
         <action
@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/addAgendaFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.agenda.add.AddAgendaFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.agenda.add.AddAgendaFragment"
         android:label="fragment_add_agenda"
         tools:layout="@layout/fragment_add_agenda">
         <action
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/prosesAddingNewsFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.news.add.ProsesAddingNewsFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.news.add.ProsesAddingNewsFragment"
         android:label="fragment_proses_adding_news"
         tools:layout="@layout/fragment_proses_adding_news">
         <action
@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.news.detail.DetailNewsFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.news.detail.DetailNewsFragment"
         android:label="DetailNewsFragment"
         tools:layout="@layout/detail_news_fragment">
         <argument
@@ -117,7 +117,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailAgendaFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment"
         android:label="detail_agenda_fragment"
         tools:layout="@layout/detail_agenda_fragment">
         <argument
@@ -129,7 +129,7 @@
     </fragment>
     <fragment
         android:id="@+id/loadingAddAgendaFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.agenda.add.LoadingAddAgendaFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.agenda.add.LoadingAddAgendaFragment"
         android:label="LoadingAddAgendaFragment">
         <action
             android:id="@+id/action_loadingAddAgendaFragment_to_homeFragment"
@@ -152,12 +152,12 @@
     </fragment>
     <fragment
         android:id="@+id/myAgendaFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.agenda.myagenda.MyAgendaFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.agenda.myagenda.MyAgendaFragment"
         android:label="my_agenda_fragment"
         tools:layout="@layout/my_agenda_fragment" />
     <fragment
         android:id="@+id/myNewsFragment"
-        android:name="com.example.connect.main.ui.home.tablayout.news.mynews.MyNewsFragment"
+        android:name="com.example.connect.presentation.main.ui.home.tablayout.news.mynews.MyNewsFragment"
         android:label="my_news_fragment"
         tools:layout="@layout/my_news_fragment" />
 </navigation>

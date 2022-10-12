@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:context=".main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
+                tools:context=".presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
 
 
                 <androidx.cardview.widget.CardView

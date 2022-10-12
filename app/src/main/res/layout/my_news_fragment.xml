@@ -14,7 +14,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.ui.home.tablayout.news.mynews.MyNewsFragment">
+    tools:context=".presentation.main.ui.home.tablayout.news.mynews.MyNewsFragment">
 
     <include
         android:id="@+id/back"

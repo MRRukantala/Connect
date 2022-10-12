@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.connect.R
-import com.example.connect.database.SaveProductData
-import com.example.connect.main.ui.home.tablayout.agenda.AgendaAdapter
-import com.example.connect.main.ui.home.tablayout.agenda.model.Agenda
-import com.example.connect.main.ui.home.tablayout.news.model.Post
-import com.example.connect.main.ui.layanan.DataLayanan
-import com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan
-import com.example.connect.main.ui.product.Adapter
-import com.example.connect.main.ui.product.model.ProductModel
+import com.example.connect.data.database.SaveProductData
+import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaAdapter
+import com.example.connect.presentation.main.ui.home.tablayout.agenda.model.Agenda
+import com.example.connect.presentation.main.ui.home.tablayout.news.model.Post
+import com.example.connect.presentation.main.ui.layanan.DataLayanan
+import com.example.connect.presentation.main.ui.menu.info_pendidikan.MySubPendidikan
+import com.example.connect.presentation.main.ui.product.Adapter
+import com.example.connect.presentation.main.ui.product.model.ProductModel
 import java.text.SimpleDateFormat
 
 @BindingAdapter("listPosts")
@@ -25,7 +25,7 @@ fun bindRecyclerViewListPosts(
     recyclerView: RecyclerView,
     data: List<Post>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.home.tablayout.news.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.Adapter
     adapter.submitList(data)
 }
 
@@ -52,7 +52,7 @@ fun bindRecyclerViewListProductUmum(
     recyclerView: RecyclerView,
     data: List<ProductModel>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.product.tabLayout.productumum.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.productumum.Adapter
     adapter.submitList(data)
 }
 
@@ -61,7 +61,7 @@ fun bindRecyclerViewListMyProduk(
     recyclerView: RecyclerView,
     data: List<ProductModel>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.product.tabLayout.myproduct.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.myproduct.Adapter
     adapter.submitList(data)
 }
 
@@ -70,7 +70,7 @@ fun bindRecyclerViewListLayanan(
     recyclerView: RecyclerView,
     data: List<DataLayanan>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.layanan.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.layanan.Adapter
     adapter.submitList(data)
 }
 
@@ -79,7 +79,7 @@ fun bindRecyclerViewListPendidikan(
     recyclerView: RecyclerView,
     data: List<MySubPendidikan>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.menu.info_pendidikan.pendidikan.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.Adapter
     adapter.submitList(data)
 }
 
@@ -88,7 +88,7 @@ fun bindRecyclerViewListKeranjang(
     recyclerView: RecyclerView,
     data: List<SaveProductData>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.product.keranjang.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.keranjang.Adapter
     adapter.submitList(data)
 }
 
@@ -97,7 +97,7 @@ fun bindRecyclerViewMyNews(
     recyclerView: RecyclerView,
     data: List<Post>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.main.ui.home.tablayout.news.mynews.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.mynews.Adapter
     adapter.submitList(data)
 }
 

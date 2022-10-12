@@ -2,7 +2,7 @@ package com.example.connect
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.connect.login.data.model.UserResponse
+import com.example.connect.presentation.login.data.model.UserResponse
 import com.example.connect.utilites.MarkOIApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

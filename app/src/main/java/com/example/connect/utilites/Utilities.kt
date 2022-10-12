@@ -1,16 +1,14 @@
 package com.example.connect.utilites
 
-import com.example.connect.login.data.model.UserResponse
-import com.example.connect.main.ui.home.tablayout.agenda.add.ResponseAddedAgenda
-import com.example.connect.main.ui.home.tablayout.agenda.model.AgendaResponse
-import com.example.connect.main.ui.home.tablayout.news.add.AddedResponses
-import com.example.connect.main.ui.home.tablayout.news.model.Post
-import com.example.connect.main.ui.home.tablayout.news.model.PostResponse
-import com.example.connect.main.ui.layanan.Layanan
-import com.example.connect.main.ui.menu.info_pendidikan.MyData
-import com.example.connect.main.ui.menu.info_pendidikan.message
-import com.example.connect.main.ui.product.model.ProductResponse
-import com.example.connect.signup.data.model.response
+import com.example.connect.presentation.login.data.model.UserResponse
+import com.example.connect.presentation.main.ui.home.tablayout.agenda.model.AgendaResponse
+import com.example.connect.presentation.main.ui.home.tablayout.news.add.AddedResponses
+import com.example.connect.presentation.main.ui.home.tablayout.news.model.Post
+import com.example.connect.presentation.main.ui.home.tablayout.news.model.PostResponse
+import com.example.connect.presentation.main.ui.layanan.Layanan
+import com.example.connect.presentation.main.ui.menu.info_pendidikan.MyData
+import com.example.connect.presentation.main.ui.menu.info_pendidikan.message
+import com.example.connect.presentation.main.ui.product.model.ProductResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -22,10 +20,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
-import java.sql.Date
-import java.sql.Time
-import java.time.LocalDate
-import java.time.LocalDateTime
 
 // Base URL
 private val BASE_URL = "https://umconnect.cahyapro.com/public/api/"
@@ -103,7 +97,7 @@ interface Utilities {
         @Field("email") email: String,
         @Field("password") password: String,
         @Field("level") level: Int = 2
-    ): Deferred<com.example.connect.signup.data.model.UserResponse>
+    ): Deferred<com.example.connect.presentation.signup.data.model.UserResponse>
 
 
     // GET MY PROFILE

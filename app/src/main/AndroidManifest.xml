@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Connect"
         tools:targetApi="m">
         <activity
-            android:name="com.example.connect.main.MainAppActivity"
+            android:name="com.example.connect.presentation.main.MainAppActivity"
             android:exported="true"
             android:label="@string/title_activity_main_app"
             android:theme="@style/Theme.Connect.NoActionBar"/>

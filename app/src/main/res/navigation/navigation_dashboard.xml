@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.connect.main.ui.product.DashboardFragment"
+        android:name="com.example.connect.presentation.main.ui.product.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailProductFragment"
-        android:name="com.example.connect.main.ui.product.detail.DetailProductFragment"
+        android:name="com.example.connect.presentation.main.ui.product.detail.DetailProductFragment"
         android:label="detail_product_fragment"
         tools:layout="@layout/detail_product_fragment">
         <argument
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"
-        android:name="com.example.connect.main.ui.product.resmi.resmi.StoreResmiFragment"
+        android:name="com.example.connect.presentation.main.ui.product.resmi.resmi.StoreResmiFragment"
         android:label="StoreResmiFragment"
         tools:layout="@layout/fragment_store_resmi">
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/addMyProdukFragment"
-        android:name="com.example.connect.main.ui.product.tabLayout.myproduct.add.AddMyProdukFragment"
+        android:name="com.example.connect.presentation.main.ui.product.tabLayout.myproduct.add.AddMyProdukFragment"
         android:label="AddMyProdukFragment"
         tools:layout="@layout/add_my_produk_fragment">
         <action
@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/prosesAddMyProdukFragment"
-        android:name="com.example.connect.main.ui.product.tabLayout.myproduct.add.ProsesAddMyProdukFragment"
+        android:name="com.example.connect.presentation.main.ui.product.tabLayout.myproduct.add.ProsesAddMyProdukFragment"
         android:label="ProsesAddMyProdukFragment"
         tools:layout="@layout/fragment_proses_add_my_produk">
         <action
@@ -101,7 +101,7 @@
     </fragment>
     <fragment
         android:id="@+id/keranjangFragment"
-        android:name="com.example.connect.main.ui.product.keranjang.KeranjangFragment"
+        android:name="com.example.connect.presentation.main.ui.product.keranjang.KeranjangFragment"
         android:label="KeranjangFragment"
         tools:layout="@layout/fragment_keranjang">
         <action
@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailSavedProductFragment"
-        android:name="com.example.connect.main.ui.product.keranjang.detail.DetailSavedProductFragment"
+        android:name="com.example.connect.presentation.main.ui.product.keranjang.detail.DetailSavedProductFragment"
         android:label="DetailSavedProductFragment"
         tools:layout="@layout/detail_saved_product_fragment" >
         <argument

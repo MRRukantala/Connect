@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".main.MainAppFragment">
+        tools:context=".presentation.main.MainAppFragment">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_con"

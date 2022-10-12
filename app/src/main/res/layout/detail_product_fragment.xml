@@ -51,7 +51,7 @@
                 android:layout_marginLeft="@dimen/dp12"
                 android:layout_marginTop="@dimen/dp12"
                 android:layout_marginRight="@dimen/dp12"
-                tools:context=".main.ui.product.detail.DetailProductFragment">
+                tools:context=".presentation.main.ui.product.detail.DetailProductFragment">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
