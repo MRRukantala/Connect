@@ -2,6 +2,7 @@ package com.example.connect.presentation.main.ui.product
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.connect.domain.entity.ProductEntity
 import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumState
@@ -19,25 +20,25 @@ class DashboardViewModelTerbaru @Inject constructor(
     private val _state = MutableStateFlow<DashboardState>(DashboardState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<Any>("")
+    private val _data = MutableStateFlow<List<ProductEntity>>(mutableListOf())
     val data get() = _data
 
     private fun loading() {
         _state.value = DashboardState.Loading()
     }
 
-    private fun success(dashboardEntity: SementaraEntity){
+    private fun success(dashboardEntity: List<ProductEntity>){
         _state.value = DashboardState.Success(dashboardEntity)
         _data.value = dashboardEntity
     }
 
-    private fun error(dashboardEntity: SementaraEntity){
+    private fun error(dashboardEntity: List<ProductEntity>){
         _state.value = DashboardState.Error(dashboardEntity)
     }
 
-    fun register(){
+    fun productByViewModel(id:Int){
         viewModelScope.launch {
-            useCase.register()
+            useCase.getProductByAdmin(id)
                 .onStart { loading()
 
                 }.catch {
@@ -56,6 +57,6 @@ sealed class DashboardState {
     object Init : DashboardState()
 
     data class Loading(val loading: Boolean = true) : DashboardState()
-    data class Success(val dashboardEntity: SementaraEntity) : DashboardState()
-    data class Error(val response: SementaraEntity) : DashboardState()
+    data class Success(val dashboardEntity: List<ProductEntity>) : DashboardState()
+    data class Error(val response: List<ProductEntity>) : DashboardState()
 }

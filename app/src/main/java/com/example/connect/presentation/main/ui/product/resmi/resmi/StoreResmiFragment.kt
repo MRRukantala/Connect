@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentStoreResmiBinding
-import com.example.connect.presentation.main.ui.product.tabLayout.productumum.Adapter
+import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
 
 class StoreResmiFragment : Fragment() {
 
@@ -32,36 +32,36 @@ class StoreResmiFragment : Fragment() {
         val application = requireNotNull(activity).application
         binding.lifecycleOwner = this
 
-        val viewModelStoreResmiFragment =
-            StoreResmiViewModelFactory(
-                requireActivity()
-                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                    .getString("token", "").toString(), application
-            )
+//        val viewModelStoreResmiFragment =
+//            StoreResmiViewModelFactory(
+//                requireActivity()
+//                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+//                    .getString("token", "").toString(), application
+//            )
+//
+//        val viewModel = ViewModelProvider(this, viewModelStoreResmiFragment)
+//            .get(StoreResmiViewModel::class.java)
 
-        val viewModel = ViewModelProvider(this, viewModelStoreResmiFragment)
-            .get(StoreResmiViewModel::class.java)
-
-        binding.viewModel = viewModel
-
-        binding.recyclerView.adapter = Adapter(
-            Adapter.OnClickListener {
-                viewModel.displayNewsDetails(it)
-            }
-        )
+//        binding.viewModel = viewModel
+//
+//        binding.recyclerView.adapter = ProductUmumAdapter(
+//            ProductUmumAdapter.OnClickListener {
+//                viewModel.displayNewsDetails(it)
+//            }
+//        )
 
         binding.include10.backImage.setOnClickListener {
             findNavController().navigate(StoreResmiFragmentDirections.actionStoreResmiFragmentToDashboardFragment())
         }
 
-        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
-            if(null != it){
-                this.findNavController().navigate(
-                    StoreResmiFragmentDirections.actionStoreResmiFragmentToDetailProductFragment(it)
-                )
-                viewModel.displayNewsDetailsCompelete()
-            }
-        })
+//        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
+//            if(null != it){
+//                this.findNavController().navigate(
+//                    StoreResmiFragmentDirections.actionStoreResmiFragmentToDetailProductFragment(it)
+//                )
+//                viewModel.displayNewsDetailsCompelete()
+//            }
+//        })
 
         return binding.root
 

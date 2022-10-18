@@ -108,9 +108,9 @@
         android:name="com.example.connect.presentation.main.ui.home.tablayout.news.detail.DetailNewsFragment"
         android:label="DetailNewsFragment"
         tools:layout="@layout/detail_news_fragment">
-        <argument
-            android:name="selectedNews"
-            app:argType="com.example.connect.main.ui.home.tablayout.news.model.Post" />
+<!--        <argument-->
+<!--            android:name="selectedNews"-->
+<!--            app:argType="com.example.connect.main.ui.home.tablayout.news.model.Post" />-->
         <action
             android:id="@+id/action_detailNewsFragment_to_imageOpener"
             app:destination="@id/imageOpener" />
@@ -120,9 +120,9 @@
         android:name="com.example.connect.presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment"
         android:label="detail_agenda_fragment"
         tools:layout="@layout/detail_agenda_fragment">
-        <argument
-            android:name="selectedAgenda"
-            app:argType="com.example.connect.main.ui.home.tablayout.agenda.model.Agenda" />
+<!--        <argument-->
+<!--            android:name="selectedAgenda"-->
+<!--            app:argType="com.example.connect.main.ui.home.tablayout.agenda.model.Agenda" />-->
         <action
             android:id="@+id/action_detailAgendaFragment_to_imageOpener"
             app:destination="@id/imageOpener" />

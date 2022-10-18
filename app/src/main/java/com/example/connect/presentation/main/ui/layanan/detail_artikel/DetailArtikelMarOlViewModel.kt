@@ -2,9 +2,8 @@ package com.example.connect.presentation.main.ui.layanan.detail_artikel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.entity.LayananEntity
 import com.example.connect.domain.usecase.UseCase
-import com.example.connect.presentation.RegisterActivityState
 import com.example.connect.utilites.base.Result
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
@@ -14,37 +13,37 @@ import javax.inject.Inject
 
 class DetailArtikelMarOlViewModel @Inject constructor(
     private val useCase: UseCase
-):ViewModel(){
+) : ViewModel() {
     private val _state = MutableStateFlow<DetailArtikelMarOlState>(DetailArtikelMarOlState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<Any>("")
+    private val _data = MutableStateFlow<LayananEntity?>(null)
     val data get() = _data
 
     private fun loading() {
         _state.value = DetailArtikelMarOlState.Loading()
     }
 
-    private fun success(detailArtikelEntity: SementaraEntity){
+    private fun success(detailArtikelEntity: LayananEntity) {
         _state.value = DetailArtikelMarOlState.Success(detailArtikelEntity)
-        _data.value = detailArtikelEntity
     }
 
-    private fun error(detailArtikelEntity: SementaraEntity){
+    private fun error(detailArtikelEntity: LayananEntity) {
         _state.value = DetailArtikelMarOlState.Error(detailArtikelEntity)
     }
 
-    fun register(){
+    fun detailLayanan(id: Int) {
         viewModelScope.launch {
-            useCase.register()
-                .onStart { loading()
+            useCase.getDetailLayanan(id)
+                .onStart {
+                    loading()
 
                 }.catch {
 
-                }.collect{ result ->
-                    when(result){
+                }.collect { result ->
+                    when (result) {
                         is Result.Success -> success(result.data)
-                        is Result.Error -> { }
+                        is Result.Error -> {}
                     }
                 }
         }
@@ -55,6 +54,6 @@ sealed class DetailArtikelMarOlState {
     object Init : DetailArtikelMarOlState()
 
     data class Loading(val loading: Boolean = true) : DetailArtikelMarOlState()
-    data class Success(val detailArtikelEntity: SementaraEntity) : DetailArtikelMarOlState()
-    data class Error(val response: SementaraEntity) : DetailArtikelMarOlState()
+    data class Success(val detailArtikelEntity: LayananEntity) : DetailArtikelMarOlState()
+    data class Error(val response: LayananEntity) : DetailArtikelMarOlState()
 }

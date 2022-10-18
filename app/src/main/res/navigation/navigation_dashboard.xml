@@ -37,9 +37,9 @@
         android:name="com.example.connect.presentation.main.ui.product.detail.DetailProductFragment"
         android:label="detail_product_fragment"
         tools:layout="@layout/detail_product_fragment">
-        <argument
-            android:name="selectedProductUmum"
-            app:argType="com.example.connect.main.ui.product.model.ProductModel" />
+<!--        <argument-->
+<!--            android:name="selectedProductUmum"-->
+<!--            app:argType="com.example.connect.main.ui.product.model.ProductModel" />-->
         <action
             android:id="@+id/action_detailProductFragment_to_keranjangFragment"
             app:destination="@id/keranjangFragment"

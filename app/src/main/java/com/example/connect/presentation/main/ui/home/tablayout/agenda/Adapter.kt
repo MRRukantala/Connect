@@ -6,49 +6,54 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemListAgendasBinding
-import com.example.connect.presentation.main.ui.home.tablayout.agenda.model.Agenda
+import com.example.connect.domain.entity.AgendaEntity
 
-class AgendaAdapter(
-    private val onClickListener: OnClickListener,
-) : ListAdapter<Agenda, AgendaAdapter.AgendaViewHolder>(DiffCallback) {
-    object DiffCallback : DiffUtil.ItemCallback<Agenda>() {
-        override fun areItemsTheSame(oldItem: Agenda, newItem: Agenda): Boolean {
-            return oldItem === newItem
-        }
+class AgendaAdapter(val onclickListener: OnclickListener) :
+    ListAdapter<AgendaEntity, AgendaAdapter.ViewHolder>(
+        DiffCallback
+    ) {
 
-        override fun areContentsTheSame(oldItem: Agenda, newItem: Agenda): Boolean {
-            return oldItem.id == newItem.id
-        }
+    inner class ViewHolder(
+        private var binding: ItemListAgendasBinding,
 
-    }
-
-    class AgendaViewHolder(private var binding: ItemListAgendasBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(agenda: Agenda) {
-            binding.agenda = agenda
+        ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: AgendaEntity) {
+            binding.agenda = data
             binding.executePendingBindings()
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): AgendaViewHolder {
-        return AgendaViewHolder(ItemListAgendasBinding.inflate(LayoutInflater.from(parent.context), null, false))
+    object DiffCallback : DiffUtil.ItemCallback<AgendaEntity>() {
+        override fun areItemsTheSame(oldItem: AgendaEntity, newItem: AgendaEntity) =
+            oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: AgendaEntity, newItem: AgendaEntity) =
+            oldItem.id == newItem.id
     }
 
-    override fun onBindViewHolder(holder: AgendaViewHolder, position: Int) {
-        val agendaProperty = getItem(position)
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemListAgendasBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val agendaItem = getItem(position)
+        holder.bind(agendaItem)
         holder.itemView.setOnClickListener {
-            onClickListener.onClick(agendaProperty)
+            onclickListener.onClick(agendaItem)
         }
-
-        holder.bind(agendaProperty)
     }
 
-    class OnClickListener(val clickListener: (agendaProperty: Agenda) -> Unit) {
-        fun onClick(agenda: Agenda) = clickListener(agenda)
+    class OnclickListener(
+        val clickListener: (entity: AgendaEntity) ->
+        Unit
+    ) {
+        fun onClick(entity: AgendaEntity) = clickListener(entity)
     }
-
 }

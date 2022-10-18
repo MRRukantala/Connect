@@ -1,6 +1,6 @@
 package com.example.connect.utilites.network
 
-import com.example.bossku.utils.app.SharedPreferences
+import com.example.connect.utilites.app.SharedPreferences
 import okhttp3.Interceptor
 import okhttp3.Response
 

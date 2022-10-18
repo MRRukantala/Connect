@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.example.connect.main.ui.layanan.DataLayanan" />
+            name="data"
+            type="com.example.connect.domain.entity.LayananEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/post"
-                        app:imageUrl="@{viewModel.gambar}" />
+                        app:imageUrl="@{data.gambar}" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -59,7 +59,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito_sans"
                     android:maxLines="3"
-                    android:text="@{viewModel.judul}"
+                    android:text="@{data.judul}"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito_sans"
                     android:maxLines="3"
-                    android:text="@{viewModel.konten}"
+                    android:text="@{data.konten}"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

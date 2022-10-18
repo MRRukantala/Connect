@@ -2,28 +2,29 @@ package com.example.connect.data.api
 
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseObjectWrapper
+import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.request.PendidikanRequest
 import com.example.connect.data.model.request.RegisterRequest
 import com.example.connect.data.model.response.*
-import com.example.connect.presentation.main.ui.home.tablayout.agenda.model.AgendaResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiClient {
-
+    //AUTH
     @POST("login")
     suspend fun loginAPI(
         @Body loginRequest: LoginRequest
-    ): Response<ResponseObjectWrapper<LoginResponse>>
+    ): Response<ResponseObjectWrapperSementara<LoginResponse>>
 
     @POST("register")
     suspend fun register(
         @Body registerRequest: RegisterRequest
     ): Response<ResponseObjectWrapper<RegisterResponse>>
 
+    //Profile
     @GET("profil/{id}")
     suspend fun getProfile(
         @Path("id_user") id: Int
@@ -43,9 +44,44 @@ interface ApiClient {
         @QueryMap _method: Map<String, String>
     ): Response<ResponseObjectWrapper<ProfileResponse>>
 
+    //Agenda
+
+    // API GET ALL AGENDA(AGENDAS)
+    @GET("agenda-public")
+    suspend fun getAllAgenda(): Response<ResponseListWrapper<com.example.connect.data.model.response.AgendaResponse>>
+
+    @GET("agenda-id/{id}")
+    suspend fun getAgendaByIdUser(
+        @Path("id") id: Int
+    ): Response<ResponseListWrapper<AgendaResponse>>
+
+    @GET("agenda-public/{id}")
+    suspend fun getDetailAgenda(
+        @Path("id") id: Int
+    ):Response<ResponseObjectWrapper<AgendaResponse>>
+
+    // API POST AGENDA
+    @Multipart
+    @POST("agenda")
+    suspend fun postAgenda(
+        @Part("title") title: RequestBody?,
+        @Part("lokasi") lokasi: RequestBody?,
+        @Part("tanggal") tanggal: RequestBody?,
+        @Part("waktu") waktu: RequestBody?,
+        @Part("konten") konten: RequestBody?,
+        @Part image: MultipartBody.Part?,
+        @Part("status") status: RequestBody?
+    ): Response<ResponseObjectWrapper<AgendaResponse>>
+
+    //news
     @GET("kiriman-public")
     suspend fun getAllKiriman():
             Response<ResponseListWrapper<KirimanResponse>>
+
+    @GET("kiriman-id/{id}")
+    suspend fun getKirimanByIdUser(
+        @Path("id") id: Int
+    ): Response<ResponseListWrapper<KirimanResponse>>
 
     @GET("api-kiriman/{id}")
     suspend fun getDetailKiriman(
@@ -57,66 +93,52 @@ interface ApiClient {
     @POST("api-kiriman/{id}")
     suspend fun postKiriman(
         @Header("Authorization") authorization: String,
-        @Part("id_profil") id: RequestBody,
-        @Part starImage: MultipartBody.Part?,
+        @Part("image") starImage: MultipartBody.Part?,
         @Part("konten") content: RequestBody
     ): Response<ResponseObjectWrapper<AgendaResponse>>
+
+    //Layanan
+    // API GET ALL LAYANAN
+    @GET("layanan-public")
+    suspend fun getAllLayanan(
+    ): Response<ResponseListWrapper<LayananResponse>>
+
+    @GET("layanan/{id}")
+    suspend fun getDetailLayanan(
+        @Path("id") id: Int
+    ):Response<ResponseObjectWrapper<LayananResponse>>
+
+    //product
 
     // API POST PRODUCT
     @Multipart
     @POST("produk")
     suspend fun postProduct(
         @Header("Authorization") authorization: String,
-        @Part image: MultipartBody.Part?,
+        @Part("gambar") image: MultipartBody.Part?,
         @Part("harga") harga: Int?,
         @Part("nama_produk") nama_produk: RequestBody?,
         @Part("deskripsi") description: RequestBody?
     ): Response<ResponseObjectWrapper<com.example.connect.data.model.response.ProductResponse>>
 
-
-    // API GET ALL AGENDA(AGENDAS)
-    @GET("agenda-public")
-    suspend fun getAllAgenda(): Response<ResponseListWrapper<com.example.connect.data.model.response.AgendaResponse>>
-
-    // API POST AGENDA
-    @Multipart
-    @POST("agenda")
-    suspend fun postAgenda(
-        @Header("Authorization") authorization: String,
-        @Part("title") title: RequestBody?,
-        @Part("lokasi") lokasi: RequestBody?,
-        @Part("tanggal") tanggal: RequestBody?,
-        @Part("waktu") waktu: RequestBody?,
-        @Part("konten") konten: RequestBody?,
-        @Part image: MultipartBody.Part?,
-        @Part("status") status: Int?
-    ): Response<ResponseObjectWrapper<com.example.connect.data.model.response.AgendaResponse>>
-
     // API GET ALL PRODUCT
     @GET("produk-public")
     suspend fun getAllProductMarkOI(
-        @Header("Authorization") authorization: String
-    ): Response<ResponseListWrapper<com.example.connect.data.model.response.ProductResponse>>
+    ): Response<ResponseListWrapper<ProductResponse>>
 
     // API GET ALL PRODUK BY ADMIN LEVEL
     @GET("produk-lv/{id}")
     suspend fun getAllProductByAdmin(
-        @Header("Authorization") authorization: String,
         @Path("id") id: Int
-    ): Response<ResponseListWrapper<com.example.connect.data.model.response.ProductResponse>>
+    ): Response<ResponseListWrapper<ProductResponse>>
 
     // API GET PRODUCT BY ID USER
     @GET("produk-id/{id}")
     suspend fun getProductByIdUser(
-        @Header("Authorization") authorization: String,
         @Path("id") id: Int
-    ): Response<ResponseListWrapper<com.example.connect.data.model.response.ProductResponse>>
+    ): Response<ResponseListWrapper<ProductResponse>>
 
-    // API GET ALL LAYANAN
-    @GET("layanan-public")
-    suspend fun getAllLayanan(
-        @Header("Authorization") authorization: String
-    ): Response<ResponseListWrapper<LayananResponse>>
+
 
 
     //API POST PENDIDIKAN

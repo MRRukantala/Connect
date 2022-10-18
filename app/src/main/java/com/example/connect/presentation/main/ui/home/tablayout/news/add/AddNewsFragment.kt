@@ -35,9 +35,7 @@ class AddNewsFragment : Fragment() {
     lateinit var binding: AddNewsFragmentBinding
     private val REQUEST_CODE = 101
 
-    private val viewModel: AddNewsViewModel by lazy {
-        ViewModelProvider(this).get(AddNewsViewModel::class.java)
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,73 +88,17 @@ class AddNewsFragment : Fragment() {
             binding.apply {
                 cardAddPost.visibility = View.GONE
                 imgAddPost.setImageURI(null)
-                viewModel.imageNull()
+
                 fabAddImage.text = "Tambahkan Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }
         }
 
-        viewModel.image.observe(viewLifecycleOwner, {
-            viewModel.postKirimanDataChanged()
-        })
 
-        viewModel.content.observe(viewLifecycleOwner, {
-            viewModel.postKirimanDataChanged()
-        })
 
-        buttonUpload.setOnClickListener {
-            viewModel.idUser(id.toString())
-            viewModel.posting(
-                token = token ?: "",
-            )
-        }
 
-        viewModel.state.observe(viewLifecycleOwner, {
-            when(it){
-                AddNewsState.SUCCESS -> {
-                    Toast.makeText(context, "Success image upload", Toast.LENGTH_SHORT).show()
-                    buttonUpload.isEnabled = true
-                    findNavController().navigate(AddNewsFragmentDirections.actionAddNewsFragment2ToProsesAddingNewsFragment())
-                }
-                AddNewsState.LOADING -> {
-                    buttonUpload.isEnabled = false
-                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
-                    binding.loading.visibility = View.VISIBLE
-                }
-                AddNewsState.ERROR -> {
-                    binding.loading.visibility = View.GONE
-                    Toast.makeText(context, "Failure image upload", Toast.LENGTH_SHORT).show()
-                    buttonUpload.isEnabled = true
-                }
-            }
-        })
 
-        viewModel.value.observe(viewLifecycleOwner, {
-            if(it!!.isDataValid){
-                buttonUpload.isEnabled = true
-            } else {
-                buttonUpload.isEnabled = false
-            }
-        })
 
-        val afterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-                    viewModel.contentNull()
-                }  else {
-                    viewModel.content(p0.toString())
-                }
-
-            }
-        }
-
-        binding.editText.addTextChangedListener(afterTextChangedListener)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -175,7 +117,7 @@ class AddNewsFragment : Fragment() {
 
 
             binding.apply {
-                viewModel.image(filePart)
+
                 imgAddPost.setImageURI(imageURI)
                 cardAddPost.visibility = View.VISIBLE
                 fabAddImage.text = "Ganti Gambar"
@@ -188,7 +130,7 @@ class AddNewsFragment : Fragment() {
 
                 cardAddPost.visibility = View.GONE
                 imgAddPost.setImageURI(null)
-                viewModel.imageNull()
+
                 fabAddImage.text = "Tambahkan Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }

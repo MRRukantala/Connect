@@ -2,6 +2,7 @@ package com.example.connect.presentation.main.ui.product.tabLayout.myproduct
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.connect.domain.entity.ProductEntity
 import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.add.AddMyProductState
@@ -18,25 +19,24 @@ class MyProductViewModelTerbaru @Inject constructor(
     private val _state = MutableStateFlow<MyProductState>(MyProductState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<Any>("")
+    private val _data = MutableStateFlow<List<ProductEntity>>(mutableListOf())
     val data get() = _data
 
     private fun loading() {
         _state.value = MyProductState.Loading()
     }
 
-    private fun success(myProductEntity: SementaraEntity){
+    private fun success(myProductEntity: List<ProductEntity>){
         _state.value = MyProductState.Success(myProductEntity)
-        _data.value = myProductEntity
     }
 
-    private fun error(myProductEntity: SementaraEntity){
+    private fun error(myProductEntity: List<ProductEntity>){
         _state.value = MyProductState.Error(myProductEntity)
     }
 
-    fun register(){
+    fun getAllProductByUser(id:Int){
         viewModelScope.launch {
-            useCase.register()
+            useCase.getAllProductByUser(id)
                 .onStart { loading()
 
                 }.catch {
@@ -55,6 +55,6 @@ sealed class MyProductState {
     object Init : MyProductState()
 
     data class Loading(val loading: Boolean = true) : MyProductState()
-    data class Success(val myProductEntity: SementaraEntity) : MyProductState()
-    data class Error(val response: SementaraEntity) : MyProductState()
+    data class Success(val myProductEntity: List<ProductEntity>) : MyProductState()
+    data class Error(val response: List<ProductEntity>) : MyProductState()
 }

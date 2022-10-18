@@ -1,40 +1,79 @@
 package com.example.connect.presentation.login
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.data.model.request.LoginRequest
+import com.example.connect.domain.entity.LoginEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
-import kotlinx.coroutines.flow.*
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LoginViewModel @Inject constructor(
+@HiltViewModel
+class LoginViewModelTerbaru @Inject constructor(
     private val useCase: UseCase
 ):ViewModel() {
 
-    private val _state = MutableStateFlow<LoginState>(LoginState.Init)
-    val state get() = _state
+    private var _email = MutableLiveData<String?>("")
+    val email: LiveData<String?> get() = _email
 
-    private val _data = MutableStateFlow<Any>("")
-    val data get() = _data
+    private var _password = MutableLiveData<String?>("")
+    val password: LiveData<String?> get() = _password
+
+    private fun setEmail(value: String) {
+        _email.value = value
+    }
+
+    private fun setNullEmail() {
+        _email.value = null
+    }
+
+    private fun setPassword(value: String?) {
+        _password.value = value
+    }
+
+    private fun setNullPassword() {
+        _password.value = null
+    }
+
+    fun setAllFieldNull() {
+        setNullEmail()
+        setNullPassword()
+    }
+
+    fun setAllField(valueEmail: String, valuePassword: String) {
+        setEmail(valueEmail)
+        setPassword(valuePassword)
+    }
+
+    private val _state =  MutableStateFlow<LoginState>(LoginState.Init)
+    val state: Flow<LoginState> get() = _state
 
     private fun loading() {
         _state.value = LoginState.Loading()
     }
 
-    private fun success(loginEntity: SementaraEntity){
+    private fun success(loginEntity: LoginEntity){
         _state.value = LoginState.Success(loginEntity)
-        _data.value = loginEntity
     }
 
-    private fun error(registerEntity: SementaraEntity){
-        _state.value = LoginState.Error(registerEntity)
+    private fun error(loginEntity: LoginEntity){
+        _state.value = LoginState.Error(loginEntity)
     }
 
-    fun register(){
+    fun login(){
+        val loginRequest = LoginRequest(
+            _email.value.toString(), _password.value.toString()
+        )
         viewModelScope.launch {
-            useCase.register()
+            useCase.login(loginRequest)
                 .onStart { loading()
 
                 }.catch {
@@ -51,8 +90,7 @@ class LoginViewModel @Inject constructor(
 
 sealed class LoginState {
     object Init : LoginState()
-
     data class Loading(val loading: Boolean = true) : LoginState()
-    data class Success(val loginEntity: SementaraEntity) : LoginState()
-    data class Error(val response: SementaraEntity) : LoginState()
+    data class Success(val loginEntity: LoginEntity) : LoginState()
+    data class Error(val response: LoginEntity) : LoginState()
 }

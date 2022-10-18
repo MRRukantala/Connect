@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.UseCase
-import com.example.connect.presentation.RegisterActivityState
 import com.example.connect.utilites.base.Result
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch

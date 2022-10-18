@@ -11,28 +11,28 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.connect.R
 import com.example.connect.data.database.SaveProductData
+import com.example.connect.domain.entity.*
 import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaAdapter
-import com.example.connect.presentation.main.ui.home.tablayout.agenda.model.Agenda
-import com.example.connect.presentation.main.ui.home.tablayout.news.model.Post
-import com.example.connect.presentation.main.ui.layanan.DataLayanan
-import com.example.connect.presentation.main.ui.menu.info_pendidikan.MySubPendidikan
-import com.example.connect.presentation.main.ui.product.Adapter
-import com.example.connect.presentation.main.ui.product.model.ProductModel
+import com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
+import com.example.connect.presentation.main.ui.product.ProductAdapter
+import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyProductAdapter
 import java.text.SimpleDateFormat
+
+const val GET_PATH_IMAGE = "https://umconnect.cahyapro.com/storage/"
 
 @BindingAdapter("listPosts")
 fun bindRecyclerViewListPosts(
     recyclerView: RecyclerView,
-    data: List<Post>?
+    data: List<KirimanEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("listAgendas")
 fun bindRecyclerViewListAgenas(
     recyclerView: RecyclerView,
-    data: List<Agenda>?
+    data: List<AgendaEntity>?
 ) {
     val adapter = recyclerView.adapter as AgendaAdapter
     adapter.submitList(data)
@@ -41,47 +41,47 @@ fun bindRecyclerViewListAgenas(
 @BindingAdapter("listProductKhusus")
 fun bindRecyclerViewListProductKhusus(
     recyclerView: RecyclerView,
-    data: List<ProductModel>?
+    data: List<ProductEntity>?
 ) {
-    val adapter = recyclerView.adapter as Adapter
+    val adapter = recyclerView.adapter as ProductAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("listProductUmum")
 fun bindRecyclerViewListProductUmum(
     recyclerView: RecyclerView,
-    data: List<ProductModel>?
+    data: List<ProductEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.productumum.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("listMyProduk")
 fun bindRecyclerViewListMyProduk(
     recyclerView: RecyclerView,
-    data: List<ProductModel>?
+    data: List<ProductEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.myproduct.Adapter
+    val adapter = recyclerView.adapter as MyProductAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("listLayanan")
 fun bindRecyclerViewListLayanan(
     recyclerView: RecyclerView,
-    data: List<DataLayanan>?
+    data: List<LayananEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.layanan.Adapter
+    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.layanan.LayananAdapter
     adapter.submitList(data)
 }
 
-@BindingAdapter("listPendidikan")
-fun bindRecyclerViewListPendidikan(
-    recyclerView: RecyclerView,
-    data: List<MySubPendidikan>?
-) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.Adapter
-    adapter.submitList(data)
-}
+//@BindingAdapter("listPendidikan")
+//fun bindRecyclerViewListPendidikan(
+//    recyclerView: RecyclerView,
+//    data: List<PendidikanEntity>?
+//) {
+//    val adapter = recyclerView.adapter as
+//    adapter.submitList(data)
+//}
 
 @BindingAdapter("listKeranjang")
 fun bindRecyclerViewListKeranjang(
@@ -95,9 +95,9 @@ fun bindRecyclerViewListKeranjang(
 @BindingAdapter("listMyNews")
 fun bindRecyclerViewMyNews(
     recyclerView: RecyclerView,
-    data: List<Post>?
+    data: List<KirimanEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.mynews.Adapter
+    val adapter = recyclerView.adapter as NewsAdapter
     adapter.submitList(data)
 }
 

@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.connect.presentation.login.ui.login.LoginFragment"
+        android:name="com.example.connect.presentation.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action

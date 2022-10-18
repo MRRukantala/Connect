@@ -47,7 +47,7 @@ ListAdapter<SaveProductData, Adapter.ViewHolder>(DiffCallback){
         val buttonCall = binding.call
 
         fun bind(SaveProductData: SaveProductData){
-            binding.viewModel = SaveProductData
+//            binding.viewModel = SaveProductData
             binding.executePendingBindings()
         }
     }

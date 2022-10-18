@@ -91,9 +91,9 @@
         <action
             android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
             app:destination="@id/containerInfoPendidikanFragment" />
-        <argument
-            android:name="DataHold"
-            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />
+<!--        <argument-->
+<!--            android:name="DataHold"-->
+<!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->
     </fragment>
     <include app:graph="@navigation/navigation" />
     <fragment
@@ -101,10 +101,10 @@
         android:name="com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
         android:label="form_pendidikan_fragment"
         tools:layout="@layout/form_pendidikan_fragment" >
-        <argument
-            android:name="pendidikanSelected"
-            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan"
-            app:nullable="true" />
+<!--        <argument-->
+<!--            android:name="pendidikanSelected"-->
+<!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan"-->
+<!--            app:nullable="true" />-->
         <action
             android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
             app:destination="@id/containerInfoPendidikanFragment"

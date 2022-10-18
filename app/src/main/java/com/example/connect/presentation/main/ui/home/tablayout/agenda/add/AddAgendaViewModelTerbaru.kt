@@ -1,7 +1,12 @@
 package com.example.connect.presentation.main.ui.home.tablayout.agenda.add
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.connect.data.model.request.AgendaRequest
+import com.example.connect.domain.entity.PostAgendaEntity
 import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
@@ -9,34 +14,93 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 import javax.inject.Inject
 
 class AddAgendaViewModelTerbaru @Inject constructor(
     private val useCase: UseCase
 ):ViewModel() {
 
+    private var _title = MutableLiveData<String?>()
+    val nama: LiveData<String?> get() = _title
+
+    private var _lokasi = MutableLiveData<String?>()
+    val lokasi: LiveData<String?> get() = _lokasi
+
+    private var _tanggal = MutableLiveData<String?>()
+    val tanggal: LiveData<String?> get() = _tanggal
+
+    private var _waktu = MutableLiveData<String?>()
+    val waktu: LiveData<String?> get() = _waktu
+
+    private var _konten = MutableLiveData<String?>()
+    val konten: LiveData<String?> get() = _konten
+
+    private var _image = MutableLiveData<File?>()
+    val image: LiveData<File?> get() = _image
+
+    private var _status = MutableLiveData<String?>()
+    val status: LiveData<String?> get() = _status
+
     private val _state = MutableStateFlow<AddAgendaDataState>(AddAgendaDataState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<Any>("")
-    val data get() = _data
+
 
     private fun loading() {
         _state.value = AddAgendaDataState.Loading()
     }
 
-    private fun success(addAgendaEntity: SementaraEntity){
+    private fun success(addAgendaEntity: PostAgendaEntity){
         _state.value = AddAgendaDataState.Success(addAgendaEntity)
-        _data.value = addAgendaEntity
     }
 
-    private fun error(addAgendaEntity: SementaraEntity){
+    private fun error(addAgendaEntity: PostAgendaEntity){
         _state.value = AddAgendaDataState.Error(addAgendaEntity)
     }
 
-    fun register(){
+    fun createImagePart(file: File?, name: String): MultipartBody.Part {
+        val body = file?.asRequestBody("image/*".toMediaTypeOrNull())
+        Log.v("GAMBAR", file.toString())
+        return if (file == null) MultipartBody.Part.createFormData(
+            "photo",
+            file?.name ?: ""
+        ) else MultipartBody.Part.createFormData("photo", file.name, body!!)
+    }
+
+    fun createPart(value: String): RequestBody = value.toRequestBody()
+
+    fun setStatus(data:String){
+        _status.value = data
+    }
+
+    fun setWaktuKegiatan(data:String){
+        _waktu.value = data
+    }
+
+    fun setTanggal(data:String){
+        _tanggal.value = data
+    }
+
+    fun postAgenda(){
+        val agendaRequest = AgendaRequest(
+
+            createPart(_title.value.toString()),
+            createPart(_lokasi.value.toString()),
+            createPart(_tanggal.value.toString()),
+            createPart(_waktu.value.toString()),
+            createPart(_konten.value.toString()),
+            createImagePart(_image.value, "photo"),
+            createPart(_status.value.toString()),
+
+        )
         viewModelScope.launch {
-            useCase.register()
+            useCase.postAgenda(agendaRequest)
                 .onStart { loading()
 
                 }.catch {
@@ -57,6 +121,6 @@ sealed class AddAgendaDataState {
     object Init : AddAgendaDataState()
 
     data class Loading(val loading: Boolean = true) : AddAgendaDataState()
-    data class Success(val addAgendaEntity: SementaraEntity) : AddAgendaDataState()
-    data class Error(val response: SementaraEntity) : AddAgendaDataState()
+    data class Success(val addAgendaEntity: PostAgendaEntity) : AddAgendaDataState()
+    data class Error(val response: PostAgendaEntity) : AddAgendaDataState()
 }

@@ -37,7 +37,6 @@ class EditInfoUserFragment : Fragment() {
     lateinit var binding: EditInfoUserFragmentBinding
     private val REQUEST_CODE = 101
     lateinit var datePicker: DatePickerHelper
-    var ViewModel: EditInfoUserViewModel? = null
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -60,21 +59,21 @@ class EditInfoUserFragment : Fragment() {
             .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
             .getString("token", "").toString()
 
-        val data = EditInfoUserFragmentArgs.fromBundle(requireArguments()).dataHold
+//        val data = EditInfoUserFragmentArgs.fromBundle(requireArguments()).dataHold
 
-        val viewModelFactory = EditInfoUserViewModelFactory(
-            requireActivity()
-                .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                .getInt("id", -1),
-            token,
-            application,
-            data
-        )
+//        val viewModelFactory = EditInfoUserViewModelFactory(
+//            requireActivity()
+//                .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+//                .getInt("id", -1),
+//            token,
+//            application,
+////            data
+//        )
 
 
 
-        ViewModel = ViewModelProvider(this, viewModelFactory).get(EditInfoUserViewModel::class.java)
-        binding.binding = ViewModel
+//        ViewModel = ViewModelProvider(this, viewModelFactory).get(EditInfoUserViewModel::class.java)
+//        binding.binding = ViewModel
 
         binding.include9.backImage.setOnClickListener {
             findNavController().popBackStack()
@@ -86,21 +85,21 @@ class EditInfoUserFragment : Fragment() {
 
         binding.button5.setOnClickListener {
 
-            ViewModel!!.updatedProfile(token = token)
+
         }
 
         binding.rg.setOnCheckedChangeListener { radioGroup, i ->
             when(radioGroup.checkedRadioButtonId){
-                R.id.rl -> ViewModel!!.jenis_kelamin("Laki - Laki")
-                R.id.rp -> ViewModel!!.jenis_kelamin("Perempuan")
+//                R.id.rl -> ViewModel!!.jenis_kelamin("Laki - Laki")
+//                R.id.rp -> ViewModel!!.jenis_kelamin("Perempuan")
             }
         }
 
-        if(data.jenis_kelamin.equals("Laki - Laki")){
-            binding.rl.isChecked = true
-        } else if(data.jenis_kelamin.equals("Perempuan")){
-            binding.rp.isChecked = true
-        }
+//        if(data.jenis_kelamin.equals("Laki - Laki")){
+//            binding.rl.isChecked = true
+//        } else if(data.jenis_kelamin.equals("Perempuan")){
+//            binding.rp.isChecked = true
+//        }
 
 
         binding.textView42.setOnClickListener {
@@ -120,7 +119,7 @@ class EditInfoUserFragment : Fragment() {
                 if(p0?.length!!.equals(0)){
 
                 }  else {
-                    ViewModel!!.nim(p0.toString())
+//                    ViewModel!!.nim(p0.toString())
                 }
             }
 
@@ -140,7 +139,7 @@ class EditInfoUserFragment : Fragment() {
                 if(p0?.length!!.equals(0)){
 
                 }  else {
-                    ViewModel!!.wa(p0.toString())
+//                    ViewModel!!.wa(p0.toString())
 
                 }
             }
@@ -161,7 +160,7 @@ class EditInfoUserFragment : Fragment() {
                 if(p0?.length!!.equals(0)){
 
                 }  else {
-                    ViewModel!!.domisili(p0.toString())
+//                    ViewModel!!.domisili(p0.toString())
 
                 }
             }
@@ -170,19 +169,19 @@ class EditInfoUserFragment : Fragment() {
         binding.textView40.addTextChangedListener(domisiliChangeListener)
 
 
-        ViewModel!!.state.observe(viewLifecycleOwner, {
-            when(it){
-                EditProfilState.SUCCESS -> {
-                    Toast.makeText(context, "Edit Data Berhasil", Toast.LENGTH_SHORT).show()
-                  }
-                EditProfilState.LOADING -> {
-                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
-                 }
-                EditProfilState.ERROR -> {
-                    Toast.makeText(context, "Edit Data Gagal", Toast.LENGTH_SHORT).show()
-                 }
-            }
-        })
+//        ViewModel!!.state.observe(viewLifecycleOwner, {
+//            when(it){
+//                EditProfilState.SUCCESS -> {
+//                    Toast.makeText(context, "Edit Data Berhasil", Toast.LENGTH_SHORT).show()
+//                  }
+//                EditProfilState.LOADING -> {
+//                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+//                 }
+//                EditProfilState.ERROR -> {
+//                    Toast.makeText(context, "Edit Data Gagal", Toast.LENGTH_SHORT).show()
+//                 }
+//            }
+//        })
 
         return binding.root
     }
@@ -208,7 +207,7 @@ class EditInfoUserFragment : Fragment() {
                     "image/*".toMediaTypeOrNull(), file
                 )
             )
-            ViewModel!!.image(filePart)
+//            ViewModel!!.image(filePart)
             binding.circleImageView2.setImageURI(imageURI)
         }
     }
@@ -250,7 +249,7 @@ class EditInfoUserFragment : Fragment() {
                     Log.v("DATE", date.toString())
 
                     val basic = date.format(DateTimeFormatter.BASIC_ISO_DATE)
-                    ViewModel!!.tanggal_lahir(basic)
+//                    ViewModel!!.tanggal_lahir(basic)
 
                     binding.textView42.text = "${year} - ${monthStr} - ${dayStr}"
                 }

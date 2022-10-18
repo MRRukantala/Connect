@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.home.tablayout.news.mynews.MyNewsViewModel" />
+            type="com.example.connect.presentation.main.ui.home.tablayout.news.mynews.MyNewsViewModelTerbaru" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
         tools:listitem="@layout/item_list_news"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginTop="8dp"
-        listMyNews="@{viewModel.properties}"
+        listMyNews="@{viewModel.data}"
         android:layout_marginBottom="@dimen/dp64"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

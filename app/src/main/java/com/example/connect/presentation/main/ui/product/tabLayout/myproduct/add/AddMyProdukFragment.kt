@@ -35,9 +35,9 @@ class AddMyProdukFragment : Fragment() {
     lateinit var binding: AddMyProdukFragmentBinding
     private val REQUEST_CODE = 101
 
-    private val viewModel : AddMyProdukViewModel by lazy {
-        ViewModelProvider(this).get(AddMyProdukViewModel::class.java)
-    }
+//    private val viewModel : AddMyProdukViewModel by lazy {
+//        ViewModelProvider(this).get(AddMyProdukViewModel::class.java)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,13 +90,13 @@ class AddMyProdukFragment : Fragment() {
                 )
             )
 
-            binding.apply {
-                viewModel.image(filePart)
-                imgAddPost.setImageURI(imageURI)
-                cardAddPost.visibility = View.VISIBLE
-                fabAddImage.text = "Ganti Gambar"
-                fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
-            }
+//            binding.apply {
+//                viewModel.image(filePart)
+//                imgAddPost.setImageURI(imageURI)
+//                cardAddPost.visibility = View.VISIBLE
+//                fabAddImage.text = "Ganti Gambar"
+//                fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
+//            }
         } else {
             binding.apply {
                 cardAddPost.visibility = View.GONE
@@ -104,7 +104,7 @@ class AddMyProdukFragment : Fragment() {
 
                 cardAddPost.visibility = View.GONE
                 imgAddPost.setImageURI(null)
-                viewModel.imageNull()
+//                viewModel.imageNull()
                 fabAddImage.text = "Tambahkan Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }
@@ -138,118 +138,118 @@ class AddMyProdukFragment : Fragment() {
             binding.apply {
                 cardAddPost.visibility = View.GONE
                 imgAddPost.setImageURI(null)
-                viewModel.imageNull()
+//                viewModel.imageNull()
                 fabAddImage.text = "Tambahkan Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }
         }
 
-        viewModel.image.observe(viewLifecycleOwner, {
-            viewModel.postProdukDataChanged()
-        })
-        viewModel.nama_product.observe(viewLifecycleOwner,{
-            viewModel.postProdukDataChanged()
-        })
-        viewModel.harga.observe(viewLifecycleOwner,{
-            viewModel.postProdukDataChanged()
-        })
-        viewModel.deskripsi.observe(viewLifecycleOwner,{
-            viewModel.postProdukDataChanged()
-        })
+//        viewModel.image.observe(viewLifecycleOwner, {
+//            viewModel.postProdukDataChanged()
+//        })
+//        viewModel.nama_product.observe(viewLifecycleOwner,{
+//            viewModel.postProdukDataChanged()
+//        })
+//        viewModel.harga.observe(viewLifecycleOwner,{
+//            viewModel.postProdukDataChanged()
+//        })
+//        viewModel.deskripsi.observe(viewLifecycleOwner,{
+//            viewModel.postProdukDataChanged()
+//        })
+//
+//        buttonUpload.setOnClickListener {
+//
+//            viewModel.posting(
+//                token = token ?: ""
+//            )
+//        }
 
-        buttonUpload.setOnClickListener {
 
-            viewModel.posting(
-                token = token ?: ""
-            )
-        }
+//        viewModel.state.observe(viewLifecycleOwner, {
+//            when(it){
+//                AddProdukState.SUCCESS -> {
+//                    Toast.makeText(context, "Success image upload", Toast.LENGTH_SHORT).show()
+//                    buttonUpload.isEnabled = true
+//                    findNavController().navigate(AddMyProdukFragmentDirections.actionAddMyProdukFragmentToProsesAddMyProdukFragment())
+//                }
+//                AddProdukState.LOADING -> {
+//                    buttonUpload.isEnabled = false
+//                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+//                    binding.loading.visibility = View.VISIBLE
+//                }
+//                AddProdukState.ERROR -> {
+//                    binding.loading.visibility = View.GONE
+//                    Toast.makeText(context, "Failure image upload", Toast.LENGTH_SHORT).show()
+//                    buttonUpload.isEnabled = true
+//                }
+//            }
+//        })
 
+//        viewModel.value.observe(viewLifecycleOwner, {
+//            if(it!!.isDataValid){
+//                buttonUpload.isEnabled = true
+//            } else {
+//                buttonUpload.isEnabled = false
+//            }
+//        })
 
-        viewModel.state.observe(viewLifecycleOwner, {
-            when(it){
-                AddProdukState.SUCCESS -> {
-                    Toast.makeText(context, "Success image upload", Toast.LENGTH_SHORT).show()
-                    buttonUpload.isEnabled = true
-                    findNavController().navigate(AddMyProdukFragmentDirections.actionAddMyProdukFragmentToProsesAddMyProdukFragment())
-                }
-                AddProdukState.LOADING -> {
-                    buttonUpload.isEnabled = false
-                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
-                    binding.loading.visibility = View.VISIBLE
-                }
-                AddProdukState.ERROR -> {
-                    binding.loading.visibility = View.GONE
-                    Toast.makeText(context, "Failure image upload", Toast.LENGTH_SHORT).show()
-                    buttonUpload.isEnabled = true
-                }
-            }
-        })
+//        val DeskripsiafterTextChangedListener = object : TextWatcher {
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                if(p0?.length!!.equals(0)){
+//                    viewModel.deskripsiProductNull()
+//
+//                }  else {
+//                    viewModel.deskripsi(p0.toString())
+//
+//                }
+//            }
+//        }
+//        val hargaProdukAfterChangedLister = object  : TextWatcher {
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                if(p0?.length!!.equals(0)){
+//                    viewModel.hargaNull()
+//                }  else {
+//                    viewModel.harga("$p0".toInt())
+//                }
+//            }
+//
+//        }
+//        val namaProukAfterChangedListener = object : TextWatcher {
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                if(p0?.length!!.equals(0)){
+//                    viewModel.namaProductNull()
+//                }  else {
+//                    viewModel.namaProduct(p0.toString())
+//                }
+//            }
+//
+//        }
 
-        viewModel.value.observe(viewLifecycleOwner, {
-            if(it!!.isDataValid){
-                buttonUpload.isEnabled = true
-            } else {
-                buttonUpload.isEnabled = false
-            }
-        })
-
-        val DeskripsiafterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-                    viewModel.deskripsiProductNull()
-
-                }  else {
-                    viewModel.deskripsi(p0.toString())
-
-                }
-            }
-        }
-        val hargaProdukAfterChangedLister = object  : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-                    viewModel.hargaNull()
-                }  else {
-                    viewModel.harga("$p0".toInt())
-                }
-            }
-
-        }
-        val namaProukAfterChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-                    viewModel.namaProductNull()
-                }  else {
-                    viewModel.namaProduct(p0.toString())
-                }
-            }
-
-        }
-
-        binding.namaProduk.addTextChangedListener(namaProukAfterChangedListener)
-        binding.harga.addTextChangedListener(hargaProdukAfterChangedLister)
-        binding.Detail.addTextChangedListener(DeskripsiafterTextChangedListener)
+//        binding.namaProduk.addTextChangedListener(namaProukAfterChangedListener)
+//        binding.harga.addTextChangedListener(hargaProdukAfterChangedLister)
+//        binding.Detail.addTextChangedListener(DeskripsiafterTextChangedListener)
     }
 
 

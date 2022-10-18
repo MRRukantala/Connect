@@ -19,7 +19,7 @@ import com.example.connect.databinding.FragmentSignBinding
 
 class SignFragment : Fragment() {
 
-    private lateinit var signViewModel: LoginViewModel
+//    private lateinit var signViewModel: LoginViewModel
     lateinit var binding: FragmentSignBinding
 
     override fun onCreateView(
@@ -44,7 +44,7 @@ class SignFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // signViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
-        signViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+//        signViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         val usernameEditText = binding.username
         val emailEditText = binding.email
@@ -53,84 +53,84 @@ class SignFragment : Fragment() {
         val loginButton = binding.login
         val loadingProgressBar = binding.loading
 
-        signViewModel.loginFormState.observe(viewLifecycleOwner,
-            Observer { loginFormState ->
-                if (loginFormState == null) {
-                    return@Observer
-                }
-                loginButton.isEnabled = loginFormState.isDataValid
-                loginFormState.usernameError?.let {
-                    usernameEditText.error = getString(it)
-                }
+//        signViewModel.loginFormState.observe(viewLifecycleOwner,
+//            Observer { loginFormState ->
+//                if (loginFormState == null) {
+//                    return@Observer
+//                }
+//                loginButton.isEnabled = loginFormState.isDataValid
+//                loginFormState.usernameError?.let {
+//                    usernameEditText.error = getString(it)
+//                }
+//
+//                loginFormState.emailError?.let {
+//                    emailEditText.error = getString(it)
+//                }
+//
+//                loginFormState.passwordError?.let {
+//                    passwordEditText.error = getString(it)
+//                }
+//            })
 
-                loginFormState.emailError?.let {
-                    emailEditText.error = getString(it)
-                }
 
-                loginFormState.passwordError?.let {
-                    passwordEditText.error = getString(it)
-                }
-            })
+//        val afterTextChangedListener = object : TextWatcher {
+//            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+//                // ignore
+//            }
+//
+//            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+//                // ignore
+//            }
+//
+////            override fun afterTextChanged(s: Editable) {
+////                signViewModel.loginDataChanged(
+////                    usernameEditText.text.toString(),
+////                    emailEditText.text.toString(),
+////                    passwordEditText.text.toString()
+////                )
+////            }
+//        }
+//        usernameEditText.addTextChangedListener(afterTextChangedListener)
+//        emailEditText.addTextChangedListener(afterTextChangedListener)
+//        passwordEditText.addTextChangedListener(afterTextChangedListener)
 
+//        passwordEditText.setOnEditorActionListener { _, actionId, _ ->
+//            if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                signViewModel.signUp(
+//                    usernameEditText.text.toString(),
+//                    emailEditText.text.toString(),
+//                    passwordEditText.text.toString()
+//                )
+//            }
+//            false
+//        }
 
-        val afterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // ignore
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                // ignore
-            }
-
-            override fun afterTextChanged(s: Editable) {
-                signViewModel.loginDataChanged(
-                    usernameEditText.text.toString(),
-                    emailEditText.text.toString(),
-                    passwordEditText.text.toString()
-                )
-            }
-        }
-        usernameEditText.addTextChangedListener(afterTextChangedListener)
-        emailEditText.addTextChangedListener(afterTextChangedListener)
-        passwordEditText.addTextChangedListener(afterTextChangedListener)
-
-        passwordEditText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                signViewModel.signUp(
-                    usernameEditText.text.toString(),
-                    emailEditText.text.toString(),
-                    passwordEditText.text.toString()
-                )
-            }
-            false
-        }
-
-        loginButton.setOnClickListener {
-            loadingProgressBar.visibility = View.VISIBLE
-            signViewModel.signUp(
-                usernameEditText.text.toString(),
-                emailEditText.text.toString(),
-                passwordEditText.text.toString()
-            )
-
-            signViewModel.loginResult.observe(viewLifecycleOwner, {
-                if (null != it) {
-                    findNavController().navigate(SignFragmentDirections.actionSignFragmentToVerifFragment())
-
-//                    updateUiWithUser()
-                } else {
-                    signViewModel.messageLogin.observe(viewLifecycleOwner, {
-                        when {
-                            it.equals(getString(R.string.email_already)) -> {
-                                showLoginFailed(R.string.email_already)
-                                loadingProgressBar.visibility = View.GONE
-                                signViewModel.messageComplete()
-                            }
-                        }
-                    })
-                }
-            })
-        }
+//        loginButton.setOnClickListener {
+//            loadingProgressBar.visibility = View.VISIBLE
+//            signViewModel.signUp(
+//                usernameEditText.text.toString(),
+//                emailEditText.text.toString(),
+//                passwordEditText.text.toString()
+//            )
+//
+//            signViewModel.loginResult.observe(viewLifecycleOwner, {
+//                if (null != it) {
+//                    findNavController().navigate(SignFragmentDirections.actionSignFragmentToVerifFragment())
+//
+////                    updateUiWithUser()
+//                } else {
+//                    signViewModel.messageLogin.observe(viewLifecycleOwner, {
+//                        when {
+//                            it.equals(getString(R.string.email_already)) -> {
+//                                showLoginFailed(R.string.email_already)
+//                                loadingProgressBar.visibility = View.GONE
+//                                signViewModel.messageComplete()
+//                            }
+//                        }
+//                    })
+//                }
+//            })
+//        }
     }
 
     private fun updateUiWithUser() {

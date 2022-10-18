@@ -13,8 +13,6 @@ import com.example.connect.databinding.MyAgendaFragmentBinding
 
 class MyAgendaFragment : Fragment() {
 
-
-    private lateinit var viewModel: MyAgendaViewModel
     lateinit var binding: MyAgendaFragmentBinding
 
     override fun onCreateView(
@@ -27,14 +25,6 @@ class MyAgendaFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MyAgendaViewModel::class.java)
 
-
-        binding.back.backImage.setOnClickListener {
-            findNavController().popBackStack()
-        }
-    }
 
 }

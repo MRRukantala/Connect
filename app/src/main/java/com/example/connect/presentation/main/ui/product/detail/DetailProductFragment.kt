@@ -34,8 +34,8 @@ class DetailProductFragment : Fragment() {
             inflater, R.layout.detail_product_fragment, container, false
         )
 
-        val productUmumProperty =
-            DetailProductFragmentArgs.fromBundle(requireArguments()).selectedProductUmum
+//        val productUmumProperty =
+//            DetailProductFragmentArgs.fromBundle(requireArguments()).selectedProductUmum
 
         val id = requireActivity()
             .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
@@ -43,49 +43,49 @@ class DetailProductFragment : Fragment() {
 
         val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
 
-        val viewModelFactory = DetailProductViewModelFactory(id, dataSource, productUmumProperty, application)
+//        val viewModelFactory = DetailProductViewModelFactory(id, dataSource, productUmumProperty, application)
 
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(DetailProductViewModel::class.java)
+//        val viewModel = ViewModelProvider(this, viewModelFactory).get(DetailProductViewModel::class.java)
 
-        binding.viewModel = viewModel
+//        binding.viewModel = viewModel
 
 
         binding.include7.backImage.setOnClickListener {
             findNavController().popBackStack()
         }
 
-        binding.button2.setOnClickListener {
-            val packageManager = requireActivity().packageManager
-            val i = Intent(Intent.ACTION_VIEW)
-
-            val url = "http://api.whatsapp.com/send?phone=${productUmumProperty.wa}&text=" +
-                    URLEncoder.encode("Halo saya ingin bertanya terkait produk ${productUmumProperty.nama_produk}")
-            i.setPackage("com.whatsapp")
-            i.data = Uri.parse(url)
-
-            if(i.resolveActivity(packageManager)!= null) {
-                startActivity(i)
-            }
-        }
+//        binding.button2.setOnClickListener {
+//            val packageManager = requireActivity().packageManager
+//            val i = Intent(Intent.ACTION_VIEW)
+//
+//            val url = "http://api.whatsapp.com/send?phone=${productUmumProperty.wa}&text=" +
+//                    URLEncoder.encode("Halo saya ingin bertanya terkait produk ${productUmumProperty.nama_produk}")
+//            i.setPackage("com.whatsapp")
+//            i.data = Uri.parse(url)
+//
+//            if(i.resolveActivity(packageManager)!= null) {
+//                startActivity(i)
+//            }
+//        }
 
         binding.includ8.backImage.setOnClickListener {
             findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToKeranjangFragment())
         }
 
-        binding.cardView3.setOnClickListener {
-            findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(productUmumProperty.gambar))
-        }
+//        binding.cardView3.setOnClickListener {
+//            findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(productUmumProperty.gambar))
+//        }
 
-        viewModel.state.observe(viewLifecycleOwner, {
-            when(it){
-                AddProdukState.SUCCESS -> {
-                    Toast.makeText(context, "Produk Berhasil Disimpan", Toast.LENGTH_SHORT).show()
-                }
-                AddProdukState.ERROR -> {
-                    Toast.makeText(context, "Produkt Gagal Disimpan", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
+//        viewModel.state.observe(viewLifecycleOwner, {
+//            when(it){
+//                AddProdukState.SUCCESS -> {
+//                    Toast.makeText(context, "Produk Berhasil Disimpan", Toast.LENGTH_SHORT).show()
+//                }
+//                AddProdukState.ERROR -> {
+//                    Toast.makeText(context, "Produkt Gagal Disimpan", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        })
 
 
 

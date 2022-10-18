@@ -6,43 +6,67 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.DetailAgendaFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class DetailAgendaFragment : Fragment() {
 
     lateinit var binding: DetailAgendaFragmentBinding
-
+    private val viewModel: DetailAgendaViewModelTerbaru by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.detail_agenda_fragment, container, false)
-        binding.lifecycleOwner = this
+        binding = DetailAgendaFragmentBinding.inflate(inflater, container, false)
 
-        val selected = DetailAgendaFragmentArgs.fromBundle(requireArguments()).selectedAgenda
-        val viewModelFactory = DetailViewModelFactory(
-            selected,
-            requireNotNull(activity).application
-        )
-
-        binding.agenda =
-            ViewModelProvider(this, viewModelFactory).get(DetailAgendaViewModel::class.java)
+        binding.agenda = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.include6.backImage.setOnClickListener {
             findNavController().popBackStack()
         }
 
         binding.cardView.setOnClickListener {
-            findNavController().navigate(
-                DetailAgendaFragmentDirections.actionDetailAgendaFragmentToImageOpener(selected.photo)
-            )
+
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.detailAgenda(5)
+
+        observe()
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: DetailAgendaState) {
+        when(state){
+            is DetailAgendaState.Loading ->{
+
+            }
+
+            is DetailAgendaState.Success ->{
+
+            }
+        }
+
     }
 
 

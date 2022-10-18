@@ -41,10 +41,10 @@ class ImageOpener : Fragment() {
 
         val newProperty = ImageOpenerArgs.fromBundle(requireArguments()).link
 
-        binding.binding = ViewModelProvider(
-            this,
-            ImageOpenerViewModelFactory(newProperty, application)
-        ).get(ImageOpenerViewModel::class.java)
+//        binding.binding = ViewModelProvider(
+//            this,
+//            ImageOpenerViewModelFactory(newProperty, application)
+//        ).get(ImageOpenerViewModel::class.java)
 
 
 

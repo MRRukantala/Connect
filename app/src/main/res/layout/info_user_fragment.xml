@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.menu.info_pendidikan.info.InfoUserViewModel" />
+            type="com.example.connect.presentation.main.ui.menu.info_pendidikan.info.InfoUserViewModelTerbaru" />
     </data>
 
 
@@ -22,7 +22,7 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleImageView2"
-                imageProfile="@{viewModel.properties.data.get(0).photo}"
+                imageProfile="@{viewModel.data.foto}"
                 android:layout_width="84dp"
                 android:layout_height="84dp"
                 android:layout_marginTop="24dp"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nunito_sans"
-                android:text="@{viewModel.properties.data.get(0).name}"
+                android:text="@{viewModel.data.name}"
                 android:textColor="@color/content_and_title_color_post_and_agenda"
                 android:textSize="@dimen/sp16"
                 android:textStyle="bold"
@@ -65,10 +65,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.properties.data.get(0).nim}"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView35"
-                tools:text="@string/mfsyach_gmail_com" />
+                tools:text="aaa"/>
 
             <TextView
                 android:id="@+id/textView37"
@@ -88,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.properties.data.get(0).wa}"
+                app:emptyornot="@{viewModel.data.nomerHp}"
                 app:layout_constraintStart_toStartOf="@+id/textView37"
                 app:layout_constraintTop_toBottomOf="@+id/textView37"
                 tools:text="@string/belum_ditambahkan" />
@@ -111,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.properties.data.get(0).domisili}"
+                app:emptyornot="@{viewModel.data.dommisili}"
                 app:layout_constraintStart_toStartOf="@+id/textView37"
                 app:layout_constraintTop_toBottomOf="@+id/textView39"
                 tools:text="@string/belum_ditambahkan" />
@@ -134,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.properties.data.get(0).tgl_lahir}"
+                app:emptyornot="@{viewModel.data.tglLahir}"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView41"
                 tools:text="@string/belum_ditambahkan" />
@@ -157,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.properties.data.get(0).jenis_kelamin}"
+                app:emptyornot="@{viewModel.data.jenisKelamin}"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView43"
                 tools:text="@string/belum_ditambahkan" />

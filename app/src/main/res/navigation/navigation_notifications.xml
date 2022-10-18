@@ -23,9 +23,9 @@
         android:name="com.example.connect.presentation.main.ui.layanan.detail_artikel.DetailArtikelMarOIFragment"
         android:label="detail_artikel_mar_o_i_fragment"
         tools:layout="@layout/detail_artikel_mar_o_i_fragment" >
-        <argument
-            android:name="selectedArtikelMarkOI"
-            app:argType="com.example.connect.main.ui.layanan.DataLayanan" />
+<!--        <argument-->
+<!--            android:name="selectedArtikelMarkOI"-->
+<!--            app:argType="com.example.connect.main.ui.layanan.DataLayanan" />-->
         <action
             android:id="@+id/action_detailArtikelMarOIFragment_to_imageOpener3"
             app:destination="@id/imageOpener3" />

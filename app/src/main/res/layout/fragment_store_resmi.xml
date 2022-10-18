@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable
-            name="viewModel"
-            type="com.example.connect.main.ui.product.resmi.resmi.StoreResmiViewModel" />
+
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +52,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
-            listProductUmum="@{viewModel.properties}"
+
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"

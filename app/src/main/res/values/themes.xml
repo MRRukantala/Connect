@@ -32,5 +32,15 @@
         <item name="android:background">@color/white</item>
     </style>
 
+    <style name="shimmer">
+        <item name="background">@drawable/bg_shimmer</item>
+    </style>
+
+    <style name="shimmer.title">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">@dimen/dp20</item>
+    </style>
+    <style name="Toolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
 
 </resources>

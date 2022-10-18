@@ -28,30 +28,30 @@ class DetailSavedProductFragment : Fragment() {
         val arguments = DetailSavedProductFragmentArgs.fromBundle(requireArguments())
 
         val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
-        val viewModelFactory = DetailSavedProductViewModelFactory(arguments.idSelectedSavedProduct, dataSource)
+//        val viewModelFactory = DetailSavedProductViewModelFactory(arguments.idSelectedSavedProduct, dataSource)
 
-        val viewModel = ViewModelProvider(
-            this, viewModelFactory
-        ).get(DetailSavedProductViewModel::class.java)
+//        val viewModel = ViewModelProvider(
+//            this, viewModelFactory
+//        ).get(DetailSavedProductViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.detail_saved_product_fragment, container, false)
 
-        binding.viewModel = viewModel
+//        binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.button2.setOnClickListener {
-            val packageManager = requireActivity().packageManager
-            val i = Intent(Intent.ACTION_VIEW)
-
-            val url = "http://api.whatsapp.com/send?phone=+62895613383420&text=" +
-                    URLEncoder.encode("Halo saya ingin bertanya terkait produk ${viewModel.getData().value!!.nama_produk}")
-            i.setPackage("com.whatsapp")
-            i.data = Uri.parse(url)
-
-            if(i.resolveActivity(packageManager)!= null) {
-                startActivity(i)
-            }
-        }
+//        binding.button2.setOnClickListener {
+//            val packageManager = requireActivity().packageManager
+//            val i = Intent(Intent.ACTION_VIEW)
+//
+//            val url = "http://api.whatsapp.com/send?phone=+62895613383420&text=" +
+//                    URLEncoder.encode("Halo saya ingin bertanya terkait produk ${viewModel.getData().value!!.nama_produk}")
+//            i.setPackage("com.whatsapp")
+//            i.data = Uri.parse(url)
+//
+//            if(i.resolveActivity(packageManager)!= null) {
+//                startActivity(i)
+//            }
+//        }
 
         return binding.root
     }

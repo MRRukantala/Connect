@@ -11,5 +11,5 @@ data class AgendaRequest(
     @Part("waktu") val waktu: RequestBody?,
     @Part("konten") val konten: RequestBody?,
     @Part("image") val image: MultipartBody.Part?,
-    @Part("status") val status: Int?
+    @Part("status") val status: RequestBody?
 )

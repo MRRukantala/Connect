@@ -6,58 +6,69 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.AgendaFragmentBinding
 import com.example.connect.presentation.main.ui.home.HomeFragmentDirections
 import com.example.connect.utilites.isConnected
-
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+@AndroidEntryPoint
 class AgendaFragment : Fragment() {
 
     lateinit var binding: AgendaFragmentBinding
-    private val viewModel: AgendaViewModel by lazy {
-        ViewModelProvider(this).get(AgendaViewModel::class.java)
-    }
+    private val viewModel: AgendaViewModelTerbaru by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.agenda_fragment, container, false)
+        binding = AgendaFragmentBinding.inflate(inflater, container, false)
 
         binding.fabAgendas.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddAgendaFragment())
         }
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        when {
-            isConnected(requireContext()) -> {
-                binding.nointernet.visibility = View.GONE
-                binding.viewModel = viewModel
-                binding.rcv.adapter = AgendaAdapter(
-                    AgendaAdapter.OnClickListener {
-                        viewModel.displayAgendaDetail(it)
-                    }
-                )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.agenda()
+        observe()
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+
+        binding.rcv.adapter = AgendaAdapter(
+            AgendaAdapter.OnclickListener{
+                runCatching {
+
+                }
             }
-            else -> {
-                binding.nointernet.visibility = View.VISIBLE
-            }
+        )
+    }
+
+    private fun handleState(state: AgendaState) {
+
+        when(state){
+            is AgendaState.Loading ->{}
+            is AgendaState.Success ->{}
+
         }
 
-        viewModel.navigatedToSelectedAgenda.observe(viewLifecycleOwner, {
-            if (null != it) {
-                this.findNavController().navigate(
-                    HomeFragmentDirections.actionHomeFragmentToDetailAgendaFragment(it)
-                )
-                viewModel.displayAgendaDetailComplete()
-            }
-        })
-
-        return binding.root
     }
 
 

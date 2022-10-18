@@ -2,16 +2,18 @@ package com.example.connect.presentation.main.ui.home.tablayout.agenda.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.connect.domain.entity.AgendaEntity
 import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.UseCase
-import com.example.connect.presentation.RegisterActivityState
 import com.example.connect.utilites.base.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class DetailAgendaViewModelTerbaru @Inject constructor(
     private val useCase: UseCase
 ):ViewModel() {
@@ -19,25 +21,24 @@ class DetailAgendaViewModelTerbaru @Inject constructor(
     private val _state = MutableStateFlow<DetailAgendaState>(DetailAgendaState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<Any>("")
+    private val _data = MutableStateFlow<AgendaEntity?>(null)
     val data get() = _data
 
     private fun loading() {
         _state.value = DetailAgendaState.Loading()
     }
 
-    private fun success(agendaEntity: SementaraEntity){
+    private fun success(agendaEntity: AgendaEntity){
         _state.value = DetailAgendaState.Success(agendaEntity)
-        _data.value = agendaEntity
     }
 
-    private fun error(registerEntity: SementaraEntity){
+    private fun error(registerEntity: AgendaEntity){
         _state.value = DetailAgendaState.Error(registerEntity)
     }
 
-    fun register(){
+    fun detailAgenda(id:Int){
         viewModelScope.launch {
-            useCase.register()
+            useCase.getDetailAgenda(id)
                 .onStart { loading()
 
                 }.catch {
@@ -57,6 +58,6 @@ sealed class DetailAgendaState {
     object Init : DetailAgendaState()
 
     data class Loading(val loading: Boolean = true) : DetailAgendaState()
-    data class Success(val detailAgendaEntity: SementaraEntity) : DetailAgendaState()
-    data class Error(val response: SementaraEntity) : DetailAgendaState()
+    data class Success(val detailAgendaEntity: AgendaEntity) : DetailAgendaState()
+    data class Error(val response: AgendaEntity) : DetailAgendaState()
 }

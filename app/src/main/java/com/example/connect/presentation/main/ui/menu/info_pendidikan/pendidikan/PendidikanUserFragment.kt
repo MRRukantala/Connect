@@ -1,17 +1,13 @@
 package com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.PendidikanUserFragmentBinding
-import com.example.connect.presentation.main.ui.menu.info_pendidikan.ContainerInfoDirections
 
 class PendidikanUserFragment : Fragment() {
 
@@ -27,49 +23,20 @@ class PendidikanUserFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val application = requireNotNull(activity).application
-        val factory =
-            PendidikanViewModelFactory(
-                requireActivity()
-                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                    .getInt("id", -1),
-                requireActivity()
-                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                    .getString("token", "").toString(),
-                application
-            )
-
-        val viewModel = ViewModelProvider(this, factory).get(PendidikanUserViewModel::class.java)
-        binding.viewModel = viewModel
 
 
-        binding.rv.adapter = Adapter(
-            com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.Adapter.OnClickListener {
-                viewModel.displayNewsDetails(it)
-            },
 
-            com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.Adapter.OnClickEditListener{
-                viewModel.displayNewsDetails(it)
-            }
-        )
+
+
+
+
 
         binding.fabNews.setOnClickListener {
-            findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(null))
+
         }
 
-        binding.apply {
-            viewModel.properties.observe(viewLifecycleOwner, {
-                if (it.size != 0) {
-                    binding.lottieAnimationView.visibility = View.GONE
-                }
-            })
-        }
-        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
-            if(null != it){
-                this.findNavController().navigate(
-                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(it)
-                )
-            }
-        })
+
+
         return binding.root
     }
 }

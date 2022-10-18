@@ -1,24 +1,26 @@
 package com.example.connect.presentation.main.ui.product
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.connect.R
 import com.example.connect.databinding.FragmentDashboardBinding
 import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyProductFragment
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumFragment
 import com.example.connect.utilites.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class DashboardFragment : Fragment() {
 
     lateinit var binding: FragmentDashboardBinding
+    private val viewModel: DashboardViewModelTerbaru by viewModels()
 
     val name = arrayOf(
         "Produk Publik",
@@ -30,9 +32,8 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
+        binding = FragmentDashboardBinding.inflate(
             inflater,
-            R.layout.fragment_dashboard,
             container, false
         )
 
@@ -55,38 +56,58 @@ class DashboardFragment : Fragment() {
         }.attach()
 
         val application = requireNotNull(activity).application
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        val viewModelDashboard =
-            ProductViewModelFactory(
-                requireActivity()
-                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-                    .getString("token", "").toString(), application
-            )
-        val viewModel =
-            ViewModelProvider(this, viewModelDashboard).get(DashboardViewModel::class.java)
+//        val viewModelDashboard =
+//            ProductViewModelFactory(
+//                requireActivity()
+//                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
+//                    .getString("token", "").toString(), application
+//            )
+//        val viewModel =
+//            ViewModelProvider(this, viewModelDashboard).get(DashboardViewModel::class.java)
         binding.viewModelDashboard = viewModel
 
-        binding.recyclerView.adapter = Adapter(
-            Adapter.OnClickListener {
-                viewModel.displayNewsDetails(it)
+        binding.recyclerView.adapter = ProductAdapter(
+            ProductAdapter.OnclickListener {
+//                viewModel.displayNewsDetails(it)
             }
         )
 
-        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
-            if (null != it) {
-                this.findNavController().navigate(
-                    DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment(it)
-                )
-                viewModel.displayNewsDetailsCompelete()
-            }
-        })
+//        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
+//            if (null != it) {
+//                this.findNavController().navigate(
+//                    DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment(it)
+//                )
+//                viewModel.displayNewsDetailsCompelete()
+//            }
+//        })
 
         binding.tvKunjungiToko.setOnClickListener {
             findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToStoreResmiFragment())
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.productByViewModel(2)
+        observe()
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: DashboardState) {
+        when (state) {
+            is DashboardState.Loading -> {}
+            is DashboardState.Success -> {}
+        }
     }
 
 }

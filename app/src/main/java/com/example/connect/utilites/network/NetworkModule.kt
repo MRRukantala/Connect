@@ -1,7 +1,7 @@
 package com.example.connect.utilites.network
 
-import com.example.bossku.utils.app.SharedPreferences
 import com.example.connect.BuildConfig
+import com.example.connect.utilites.app.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

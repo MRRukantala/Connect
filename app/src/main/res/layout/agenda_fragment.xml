@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.home.tablayout.agenda.AgendaViewModel" />
+            type="com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaViewModelTerbaru" />
 
     </data>
 
@@ -56,7 +56,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
-            listAgendas="@{viewModel.properties}"
+            listAgendas="@{viewModel.data}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -67,7 +67,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include12"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_list_agendas" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

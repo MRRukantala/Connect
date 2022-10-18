@@ -7,7 +7,7 @@
 
         <variable
             name="post"
-            type="com.example.connect.main.ui.home.tablayout.news.model.Post" />
+            type="com.example.connect.domain.entity.KirimanEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/circleImageView"
-                        imageProfile="@{post.photo}"
+                        imageProfile="@{post.fotoUser}"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_margin="12dp"
@@ -72,7 +72,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito"
-                        android:text="@{post.name}"
+                        android:text="@{post.nama}"
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -92,7 +92,7 @@
                         app:layout_constraintStart_toEndOf="@+id/circleImageView"
                         app:layout_constraintTop_toBottomOf="@+id/name_text_view"
                         app:layout_constraintVertical_bias="0.35000000"
-                        app:time="@{post.created_at}"
+                        app:time="@{post.tglUpdate}"
                         tools:text="@string/_21_april_2000" />
 
                     <TextView
@@ -128,7 +128,7 @@
                             android:layout_width="400dp"
                             android:layout_height="200dp"
                             android:scaleType="centerCrop"
-                            app:imageUrl="@{post.gambar}"
+                            app:imageUrl="@{post.fotoKonten}"
                             tools:src="@drawable/post" />
 
 

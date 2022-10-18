@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+<!--    <data>-->
 
-        <variable
-            name="viewModel"
-            type="com.example.connect.main.ui.product.keranjang.detail.DetailSavedProductViewModel" />
-    </data>
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.example.connect.main.ui.product.keranjang.detail.DetailSavedProductViewModel" />-->
+<!--    </data>-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +64,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            app:imageUrl="@{viewModel.data.gambar}"
+
                             tools:src="@drawable/post" />
 
                     </androidx.cardview.widget.CardView>
@@ -78,7 +78,7 @@
                         android:textColor="@color/color_primary"
                         android:textSize="@dimen/sp18"
                         android:textStyle="bold"
-                        app:currerncy="@{viewModel.data.harga}"
+
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cardView3"
                         tools:text="Rp. 900.000" />
@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="@{viewModel.data.nama_produk}"
+
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="@{viewModel.data.deskripsi}"
+
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView27"

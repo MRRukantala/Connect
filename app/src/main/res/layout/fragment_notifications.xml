@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.layanan.LayananViewModel" />
+            type="com.example.connect.presentation.main.ui.layanan.LayananViewModelTerbaru" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -34,7 +34,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView2"
-                listLayanan="@{viewModel.properties}"
+                listLayanan="@{viewModel.data}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"

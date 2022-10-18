@@ -2,9 +2,8 @@ package com.example.connect.presentation.main.ui.home.tablayout.news.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.entity.KirimanEntity
 import com.example.connect.domain.usecase.UseCase
-import com.example.connect.presentation.RegisterActivityState
 import com.example.connect.utilites.base.Result
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
@@ -18,25 +17,24 @@ class DetailNewsViewModelTerbaru @Inject constructor(
     private val _state = MutableStateFlow<DetailNewsState>(DetailNewsState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<Any>("")
+    private val _data = MutableStateFlow<KirimanEntity?>(null)
     val data get() = _data
 
     private fun loading() {
         _state.value = DetailNewsState.Loading()
     }
 
-    private fun success(registerEntity: SementaraEntity){
-        _state.value = DetailNewsState.Success(registerEntity)
-        _data.value = registerEntity
+    private fun success(detailNewsEntity: KirimanEntity){
+        _state.value = DetailNewsState.Success(detailNewsEntity)
     }
 
-    private fun error(registerEntity: SementaraEntity){
-        _state.value = DetailNewsState.Error(registerEntity)
+    private fun error(detailNewsEntity: KirimanEntity){
+        _state.value = DetailNewsState.Error(detailNewsEntity)
     }
 
-    fun register(){
+    fun detailNews(id:Int){
         viewModelScope.launch {
-            useCase.register()
+            useCase.getDetailKiriman(id)
                 .onStart { loading()
 
                 }.catch {
@@ -55,6 +53,6 @@ sealed class DetailNewsState {
     object Init : DetailNewsState()
 
     data class Loading(val loading: Boolean = true) : DetailNewsState()
-    data class Success(val detailNewsEntity: SementaraEntity) : DetailNewsState()
-    data class Error(val response: SementaraEntity) : DetailNewsState()
+    data class Success(val detailNewsEntity: KirimanEntity) : DetailNewsState()
+    data class Error(val response: KirimanEntity) : DetailNewsState()
 }

@@ -11,6 +11,5 @@ data class ProfileRequest(
     @Part("tgl_lahir") val tanggal_lahir: RequestBody?,
     @Part("domisili") val domisili: RequestBody?,
     @Part("wa") val wa: RequestBody?,
-    @Part("image") val image: MultipartBody.Part?,
-    @Path("id_user") val id_user: Int,
+    @Part("image") val image: MultipartBody.Part?
 )

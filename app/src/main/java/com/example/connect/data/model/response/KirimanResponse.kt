@@ -1,14 +1,33 @@
 package com.example.connect.data.model.response
 
-import com.squareup.moshi.Json
+
+import com.example.connect.domain.entity.KirimanEntity
+import com.google.gson.annotations.SerializedName
 
 data class KirimanResponse(
-    val id: Int,
-    val id_user: Int,
-    val name: String,
-    @Json(name = "photo") val photo : String,
-    @Json(name = "gambar") val gambar: String,
-    val konten: String,
-    val created_at: String,
-    val updated_at: String
-)
+    @SerializedName("id")
+    val id: Int? = 0,
+    @SerializedName("id_user")
+    val idUser: Int? = 0,
+    @SerializedName("name")
+    val name: String? = "",
+    @SerializedName("photo")
+    val photo: String? = "",
+    @SerializedName("gambar")
+    val gambar: String? = "",
+    @SerializedName("konten")
+    val konten: String? = "",
+    @SerializedName("created_at")
+    val createdAt: String? = "",
+    @SerializedName("updated_at")
+    val updatedAt: String? = ""
+) {
+    fun toKirimanEntity() = KirimanEntity(
+        id ?: 0,
+        photo.orEmpty(),
+        name.orEmpty(),
+        konten.orEmpty(),
+        gambar.orEmpty(),
+        createdAt.orEmpty()
+    )
+}

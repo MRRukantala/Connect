@@ -1,53 +1,78 @@
 package com.example.connect.presentation.main.ui.home.tablayout.news.mynews
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.MyNewsFragmentBinding
+import com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class MyNewsFragment : Fragment() {
 
-    private val viewModel : MyNewsViewModel by lazy {
-        ViewModelProvider(this).get(MyNewsViewModel::class.java)
-    }
+
+
     lateinit var binding : MyNewsFragmentBinding
+    private val viewModel : MyNewsViewModelTerbaru by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.my_news_fragment, container, false)
-        binding.lifecycleOwner = this
+        binding = MyNewsFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        binding.rcv.adapter = Adapter(
-            Adapter.OnClickListener{
+        binding.rcv.adapter = NewsAdapter(
+            NewsAdapter.OnclickListener{
+                runCatching {
 
-            },
-            Adapter.OnClickMoreListener{
-
+                }
             }
         )
 
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.kirimanByUser(52)
+        observe()
+    }
 
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
 
-        binding.back.backImage.setOnClickListener {
-            findNavController().popBackStack()
+    private fun handleState(state: MyNewsState) {
+
+        when(state){
+            is MyNewsState.Loading ->{}
+            is MyNewsState.Success ->{}
         }
 
-
     }
+
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//
+//
+//        binding.back.backImage.setOnClickListener {
+//            findNavController().popBackStack()
+//        }
+//
+//
+//    }
 
 }
