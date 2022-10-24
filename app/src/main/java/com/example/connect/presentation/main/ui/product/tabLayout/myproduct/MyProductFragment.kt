@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.connect.databinding.MyProductFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-
+@AndroidEntryPoint
 class MyProductFragment : Fragment() {
 
     lateinit var binding: MyProductFragmentBinding
@@ -52,6 +54,7 @@ class MyProductFragment : Fragment() {
 //                }
 //            })
 //        }
+
         binding.recyclerViewMyProduk.adapter = MyProductAdapter(
             MyProductAdapter.OnclickListener {
 //                viewModel.displayNewsDetails(it)
@@ -95,7 +98,7 @@ class MyProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getAllProductByUser(54)
+        viewModel.getAllProductByUser(52)
 
         observe()
     }
@@ -110,7 +113,10 @@ class MyProductFragment : Fragment() {
 
         when (state) {
             is MyProductState.Loading -> {}
-            is MyProductState.Success -> {}
+            is MyProductState.Success -> {
+                binding.recyclerViewMyProduk.isVisible = true
+                binding.empty.isVisible = false
+            }
         }
 
     }

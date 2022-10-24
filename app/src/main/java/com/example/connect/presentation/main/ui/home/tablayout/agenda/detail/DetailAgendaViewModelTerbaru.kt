@@ -30,6 +30,7 @@ class DetailAgendaViewModelTerbaru @Inject constructor(
 
     private fun success(agendaEntity: AgendaEntity){
         _state.value = DetailAgendaState.Success(agendaEntity)
+        _data.value = agendaEntity
     }
 
     private fun error(registerEntity: AgendaEntity){

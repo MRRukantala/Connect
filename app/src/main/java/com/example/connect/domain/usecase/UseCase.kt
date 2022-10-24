@@ -1,6 +1,7 @@
 package com.example.connect.domain.usecase
 
 import com.example.connect.data.auth.ResponseListWrapper
+import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.AgendaRequest
@@ -36,7 +37,7 @@ class UseCase @Inject constructor(
     }
 
     suspend fun getAllKiriman():
-    Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>{
+    Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>>{
         return repository.getAllKiriman()
     }
 
@@ -84,6 +85,7 @@ class UseCase @Inject constructor(
     Flow<Result<PostAgendaEntity, ResponseObjectWrapper<AgendaResponse>>>{
         return repository.postAgenda(agendaRequest)
     }
+
 
     //belom diperbaiki
     suspend fun register(): Flow<Result<SementaraEntity, ResponseObjectWrapper<RegisterResponse>>> {

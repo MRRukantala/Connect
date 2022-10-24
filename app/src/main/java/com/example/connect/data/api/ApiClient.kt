@@ -1,6 +1,7 @@
 package com.example.connect.data.api
 
 import com.example.connect.data.auth.ResponseListWrapper
+import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.LoginRequest
@@ -76,7 +77,7 @@ interface ApiClient {
     //news
     @GET("kiriman-public")
     suspend fun getAllKiriman():
-            Response<ResponseListWrapper<KirimanResponse>>
+            Response<ResponseListWrapperSementara<KirimanResponse>>
 
     @GET("kiriman-id/{id}")
     suspend fun getKirimanByIdUser(

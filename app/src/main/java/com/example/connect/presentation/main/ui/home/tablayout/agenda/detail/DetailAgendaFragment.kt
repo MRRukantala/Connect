@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.connect.R
 import com.example.connect.databinding.DetailAgendaFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -45,7 +42,7 @@ class DetailAgendaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.detailAgenda(5)
+        viewModel.detailAgenda(63)
 
         observe()
     }
@@ -57,12 +54,12 @@ class DetailAgendaFragment : Fragment() {
     }
 
     private fun handleState(state: DetailAgendaState) {
-        when(state){
-            is DetailAgendaState.Loading ->{
+        when (state) {
+            is DetailAgendaState.Loading -> {
 
             }
 
-            is DetailAgendaState.Success ->{
+            is DetailAgendaState.Success -> {
 
             }
         }

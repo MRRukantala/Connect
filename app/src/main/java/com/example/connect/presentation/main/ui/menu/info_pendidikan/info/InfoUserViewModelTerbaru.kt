@@ -29,6 +29,7 @@ class InfoUserViewModelTerbaru @Inject constructor(
 
     private fun success(infoUserEntity: ProfileEntity){
         _state.value = InfoUserViewModelState.Success(infoUserEntity)
+        _data.value = infoUserEntity
     }
 
     private fun error(infoUserEntity: ProfileEntity){

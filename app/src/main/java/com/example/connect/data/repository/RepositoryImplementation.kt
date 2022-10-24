@@ -1,7 +1,9 @@
 package com.example.connect.data.repository
 
+import android.util.Log
 import com.example.connect.data.api.ApiClient
 import com.example.connect.data.auth.ResponseListWrapper
+import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.AgendaRequest
@@ -73,7 +75,7 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
+    override suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
         return  flow {
             val response = apiClient.getAllKiriman()
             delay(800)
@@ -82,9 +84,12 @@ class RepositoryImplementation @Inject constructor(
                 val data = mutableListOf<KirimanEntity>()
                 body?.forEach {
                     data.add(it.toKirimanEntity())
+                    Log.v("VIEWMODEL_BERITA", response.toString())
                 }
 
                 emit(Result.Success(data))
+            }else{
+                Log.v("VIEWMODEL_BERITA", response.toString())
             }
         }
     }
@@ -125,7 +130,9 @@ class RepositoryImplementation @Inject constructor(
                 val data = mutableListOf<LayananEntity>()
                 body?.forEach { data.add(it.toLayananEntity()) }
                 emit(Result.Success(data))
+                Log.v("VIEWMODE_LAYANAN", response.toString())
             } else {
+                Log.v("VIEWMODE_LAYANAN", response.toString())
             }
         }
     }
@@ -195,7 +202,10 @@ class RepositoryImplementation @Inject constructor(
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
                 emit(Result.Success(data))
+                Log.v("VIEWMODE_PRODUCT_USER", response.toString())
             }else{
+
+                Log.v("VIEWMODE_PRODUCT_USER", response.toString())
 
             }
         }
@@ -216,7 +226,9 @@ class RepositoryImplementation @Inject constructor(
             if (response.isSuccessful) {
                 val registerEntity = response.body()?.data?.toPosAgendaEntity()
                 emit(Result.Success(registerEntity!!))
+                Log.v("VIEWMODEL", response.toString())
             } else {
+                Log.v("VIEWMODEL", response.toString())
 
             }
         }

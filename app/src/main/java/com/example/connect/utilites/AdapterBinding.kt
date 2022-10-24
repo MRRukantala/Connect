@@ -5,10 +5,11 @@ import android.os.Build
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import coil.load
+import coil.request.ImageRequest
 import com.example.connect.R
 import com.example.connect.data.database.SaveProductData
 import com.example.connect.domain.entity.*
@@ -18,14 +19,15 @@ import com.example.connect.presentation.main.ui.product.ProductAdapter
 import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyProductAdapter
 import java.text.SimpleDateFormat
 
-const val GET_PATH_IMAGE = "https://umconnect.cahyapro.com/storage/"
+const val GET_PATH_IMAGE = "https://megha.desa-pintar.com/storage/"
 
 @BindingAdapter("listPosts")
 fun bindRecyclerViewListPosts(
     recyclerView: RecyclerView,
     data: List<KirimanEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
+    val adapter =
+        recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
     adapter.submitList(data)
 }
 
@@ -52,7 +54,8 @@ fun bindRecyclerViewListProductUmum(
     recyclerView: RecyclerView,
     data: List<ProductEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
+    val adapter =
+        recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
     adapter.submitList(data)
 }
 
@@ -70,7 +73,8 @@ fun bindRecyclerViewListLayanan(
     recyclerView: RecyclerView,
     data: List<LayananEntity>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.layanan.LayananAdapter
+    val adapter =
+        recyclerView.adapter as com.example.connect.presentation.main.ui.layanan.LayananAdapter
     adapter.submitList(data)
 }
 
@@ -88,7 +92,8 @@ fun bindRecyclerViewListKeranjang(
     recyclerView: RecyclerView,
     data: List<SaveProductData>?
 ) {
-    val adapter = recyclerView.adapter as com.example.connect.presentation.main.ui.product.keranjang.Adapter
+    val adapter =
+        recyclerView.adapter as com.example.connect.presentation.main.ui.product.keranjang.Adapter
     adapter.submitList(data)
 }
 
@@ -102,32 +107,31 @@ fun bindRecyclerViewMyNews(
 }
 
 
-
 @BindingAdapter("imageUrl")
 fun imagePost(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
-        Glide.with(imgView.context)
-            .load(GET_PATH_IMAGE + imgUrl)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image)
-            )
-            .into(imgView)
+        val imageUrl = ImageRequest.Builder(imgView.context)
+            .data("${GET_PATH_IMAGE}${it.toUri()}")
+            .allowHardware(false)
+            .build()
+        imgView.load("${imageUrl.data}") {
+            placeholder(R.drawable.loading_animation)
+            this.error(R.drawable.ic_broken_image)
+        }
     }
 }
 
 @BindingAdapter("imageProfile")
 fun imageProfile(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
-        Glide.with(imgView.context)
-            .load(GET_PATH_IMAGE + imgUrl)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.avatar_1_raster)
-            )
-            .into(imgView)
+        val imageUrl = ImageRequest.Builder(imgView.context)
+            .data("${GET_PATH_IMAGE}${it.toUri()}")
+            .allowHardware(false)
+            .build()
+        imgView.load("${imageUrl.data}") {
+            placeholder(R.drawable.loading_animation)
+            this.error(R.drawable.avatar_1_raster)
+        }
     }
 }
 
@@ -155,8 +159,8 @@ fun timestampToDate(textViewTime: TextView, time: String) {
 }
 
 @BindingAdapter("emptyornot")
-fun emptyornot(textViewTime: TextView, value : String?){
-    if(value == null || value == "" || value == " "){
+fun emptyornot(textViewTime: TextView, value: String?) {
+    if (value == null || value == "" || value == " ") {
         textViewTime.setText("Belum Ditambahkan")
     } else {
         textViewTime.setText(value.toString())
@@ -165,6 +169,6 @@ fun emptyornot(textViewTime: TextView, value : String?){
 
 
 @BindingAdapter("currerncy")
-fun currency(textView: TextView, nominal: Int){
+fun currency(textView: TextView, nominal: Int) {
     textView.setText(rupiah(nominal))
 }

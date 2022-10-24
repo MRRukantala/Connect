@@ -9,10 +9,14 @@
             type="com.example.connect.presentation.main.ui.home.tablayout.news.NewsViewModel" />
     </data>
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F5F5">
+
+
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +31,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_news"
-
+                listMyNews="@{viewModel.data}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -36,6 +40,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/item_list_news" />

@@ -2,7 +2,6 @@ package com.example.connect.presentation.main.ui.home.tablayout.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.connect.domain.entity.AgendaEntity
 import com.example.connect.domain.entity.KirimanEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
@@ -22,26 +21,28 @@ class NewsViewModel @Inject constructor(
     private val _state = MutableStateFlow<NewsState>(NewsState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<List<AgendaEntity>>(mutableListOf())
-    val data: StateFlow<List<AgendaEntity>> get() = _data
+    private val _data = MutableStateFlow<List<KirimanEntity>>(mutableListOf())
+    val data: StateFlow<List<KirimanEntity>> get() = _data
 
     private fun loading() {
         _state.value = NewsState.Loading()
     }
 
     private fun success(kirimanEntity: List<KirimanEntity>) {
+        _data.value = kirimanEntity
         _state.value = NewsState.Success(kirimanEntity)
     }
 
-    fun agenda() {
+    fun berita() {
         viewModelScope.launch {
             useCase.getAllKiriman()
-                .onStart {
-                    loading()
-
-                }.catch {
-
-                }.collect { result ->
+//                .onStart {
+//                    loading()
+//
+//                }.catch {
+//
+//                }
+                .collect { result ->
                     when (result) {
                         is Result.Success -> success(result.data)
                         is Result.Error -> {}

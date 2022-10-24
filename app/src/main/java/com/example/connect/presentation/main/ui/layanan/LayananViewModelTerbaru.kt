@@ -28,6 +28,7 @@ class LayananViewModelTerbaru @Inject constructor(
 
     private fun success(layananEntity: List<LayananEntity>){
         _state.value = LayananState.Success(layananEntity)
+        _data.value = layananEntity
 
     }
 

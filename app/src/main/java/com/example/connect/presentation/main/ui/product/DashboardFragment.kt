@@ -14,9 +14,11 @@ import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyPr
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumFragment
 import com.example.connect.utilites.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class DashboardFragment : Fragment() {
 
     lateinit var binding: FragmentDashboardBinding

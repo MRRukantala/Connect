@@ -7,12 +7,13 @@ import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumState
 import com.example.connect.utilites.base.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class DashboardViewModelTerbaru @Inject constructor(
     private val useCase: UseCase
 ):ViewModel() {

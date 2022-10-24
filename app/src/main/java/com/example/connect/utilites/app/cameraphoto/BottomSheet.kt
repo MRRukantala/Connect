@@ -208,7 +208,7 @@ class BottomSheet(
             photoFile?.also {
                 val photoURI: Uri = FileProvider.getUriForFile(
                     requireContext(),
-                    "com.example.bossku.fileprovider",
+                    "com.example.connect.fileprovider",
                     it
                 )
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)

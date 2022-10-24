@@ -29,6 +29,7 @@ class MyNewsViewModelTerbaru @Inject constructor(
 
     private fun success(myNewsEntity: List<KirimanEntity>){
         _state.value = MyNewsState.Success(myNewsEntity)
+        _data.value = myNewsEntity
     }
 
     private fun error(myNewsEntity: List<KirimanEntity>){

@@ -13,8 +13,9 @@ import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaFrag
 import com.example.connect.presentation.main.ui.home.tablayout.news.NewsFragment
 import com.example.connect.utilites.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null

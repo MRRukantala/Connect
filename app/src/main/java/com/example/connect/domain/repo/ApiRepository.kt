@@ -1,6 +1,7 @@
 package com.example.connect.domain.repo
 
 import com.example.connect.data.auth.ResponseListWrapper
+import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.AgendaRequest
@@ -20,7 +21,7 @@ interface ApiRepository {
 
     suspend fun getDetailAgenda(id: Int): Flow<Result<AgendaEntity, ResponseObjectWrapper<AgendaResponse>>>
 
-    suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>
+    suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>>
 
     suspend fun getKirimanByIdUser(
         id: Int

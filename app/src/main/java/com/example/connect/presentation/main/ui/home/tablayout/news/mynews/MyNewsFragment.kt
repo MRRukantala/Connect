@@ -13,9 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.MyNewsFragmentBinding
 import com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-
+@AndroidEntryPoint
 class MyNewsFragment : Fragment() {
 
 
@@ -58,7 +59,8 @@ class MyNewsFragment : Fragment() {
     private fun handleState(state: MyNewsState) {
 
         when(state){
-            is MyNewsState.Loading ->{}
+            is MyNewsState.Loading ->{
+            }
             is MyNewsState.Success ->{}
         }
 

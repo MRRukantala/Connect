@@ -5,13 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.AgendaEntity
 import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class AgendaViewModelTerbaru @Inject constructor(
     private val useCase: UseCase
 ) : ViewModel() {
@@ -28,6 +29,7 @@ class AgendaViewModelTerbaru @Inject constructor(
 
     private fun success(agendaEntity: List<AgendaEntity>) {
         _state.value = AgendaState.Success(agendaEntity)
+        _data.value = agendaEntity
     }
 
     fun agenda() {

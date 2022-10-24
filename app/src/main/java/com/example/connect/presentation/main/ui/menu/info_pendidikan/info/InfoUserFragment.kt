@@ -17,8 +17,9 @@ import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
 import com.example.connect.presentation.main.ui.menu.info_pendidikan.ContainerInfoDirections
 import com.example.connect.presentation.splash.SplashScreenFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-
+@AndroidEntryPoint
 class InfoUserFragment : Fragment() {
 
     lateinit var binding: InfoUserFragmentBinding

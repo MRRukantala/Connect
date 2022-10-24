@@ -52,7 +52,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/containerImgPhoto"
             app:layout_constraintTop_toTopOf="@id/containerImgPhoto"
-            tools:text="@string/label_ktp" />
+            tools:text="Agenda" />
 
         <TextView
             android:id="@+id/tvUploadPhoto"
@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="label_data_harus_diisi"
+            android:text="data harus diisi"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/tvPhotoTitle"
             app:layout_constraintTop_toBottomOf="@id/tvUploadPhoto"

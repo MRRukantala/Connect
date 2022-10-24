@@ -7,6 +7,7 @@ import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class MyAgendaViewModel @Inject constructor(
     val state get() = _state
 
     private val _data = MutableStateFlow<List<AgendaEntity>>(mutableListOf())
-    val data get() = _data
+    val data: StateFlow<List<AgendaEntity>> get() = _data
 
     private fun loading() {
         _state.value = AgendaByUserState.Loading()
