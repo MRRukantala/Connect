@@ -58,7 +58,7 @@ class AddAgendaViewModelTerbaru @Inject constructor(
         _state.value = AddAgendaDataState.Loading()
     }
 
-    private fun success(addAgendaEntity: PostAgendaEntity){
+    private fun success(addAgendaEntity: List<PostAgendaEntity>){
         _state.value = AddAgendaDataState.Success(addAgendaEntity)
     }
 
@@ -146,11 +146,11 @@ class AddAgendaViewModelTerbaru @Inject constructor(
         )
         viewModelScope.launch {
             useCase.postAgenda(agendaRequest)
-//                .onStart { loading()
-//
-//                }.catch {
-//
-//                }
+                .onStart { loading()
+
+                }.catch {
+
+                }
                 .collect{ result ->
                     when(result){
                         is Result.Success -> success(result.data)
@@ -167,6 +167,6 @@ sealed class AddAgendaDataState {
     object Init : AddAgendaDataState()
 
     data class Loading(val loading: Boolean = true) : AddAgendaDataState()
-    data class Success(val addAgendaEntity: PostAgendaEntity) : AddAgendaDataState()
+    data class Success(val addAgendaEntity: List<PostAgendaEntity>) : AddAgendaDataState()
     data class Error(val response: PostAgendaEntity) : AddAgendaDataState()
 }

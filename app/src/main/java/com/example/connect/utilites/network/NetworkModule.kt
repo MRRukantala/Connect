@@ -2,6 +2,8 @@ package com.example.connect.utilites.network
 
 import com.example.connect.BuildConfig
 import com.example.connect.utilites.app.SharedPreferences
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,9 +21,12 @@ object NetworkModule {
     @Singleton
     @Provides
 
+
+
     fun provideRetrofit(okHttp: OkHttpClient) : Retrofit {
         return Retrofit.Builder().apply {
-            addConverterFactory(GsonConverterFactory.create())
+            addConverterFactory(GsonConverterFactory
+                .create())
             client(okHttp)
             baseUrl(BuildConfig.API_BASE_URL)
         }.build()

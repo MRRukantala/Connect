@@ -72,7 +72,7 @@ interface ApiClient {
         @Part("konten") konten: RequestBody?,
         @Part image: MultipartBody.Part?,
         @Part("status") status: RequestBody?
-    ): Response<ResponseObjectWrapper<AgendaResponse>>
+    ): Response<ResponseListWrapper<AgendaResponse>>
 
     //news
     @GET("kiriman-public")
@@ -91,12 +91,11 @@ interface ApiClient {
 
     // API POST KIRIMAN
     @Multipart
-    @POST("api-kiriman/{id}")
+    @POST("api-kiriman")
     suspend fun postKiriman(
-        @Header("Authorization") authorization: String,
         @Part("image") starImage: MultipartBody.Part?,
         @Part("konten") content: RequestBody
-    ): Response<ResponseObjectWrapper<AgendaResponse>>
+    ): Response<ResponseObjectWrapper<PostKirimanResponse>>
 
     //Layanan
     // API GET ALL LAYANAN

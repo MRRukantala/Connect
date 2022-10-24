@@ -18,12 +18,12 @@ data class AgendaResponse(
     val title: String? = "",
     @SerializedName("lokasi")
     val lokasi: String? = "",
-    @SerializedName("konten")
-    val konten: String? = "",
-    @SerializedName("waktu")
-    val waktu: String? = "",
     @SerializedName("tanggal")
     val tanggal: String? = "",
+    @SerializedName("waktu")
+    val waktu: String? = "",
+    @SerializedName("konten")
+    val konten: String? = "",
     @SerializedName("status")
     val status: String? = "",
     @SerializedName("updated_at")

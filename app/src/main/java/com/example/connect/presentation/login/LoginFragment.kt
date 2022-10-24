@@ -15,12 +15,18 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.FragmentLoginBinding
+import com.example.connect.domain.entity.LoginEntity
+import com.example.connect.utilites.app.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
+
+    @Inject
+    lateinit var pref: SharedPreferences
 
     private lateinit var binding: FragmentLoginBinding
     val viewModel: LoginViewModelTerbaru by viewModels()
@@ -103,8 +109,21 @@ class LoginFragment : Fragment() {
             }
             is LoginState.Success ->{
                 Log.v("DATA", "Sukses")
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToMainAppActivity())
+                loginSuccessHandler(state.loginEntity)
+
+
             }
+        }
+    }
+
+    fun goToMain(token: String) {
+        pref.saveToken(token)
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToMainAppActivity())
+    }
+
+    private fun loginSuccessHandler(loginEntity: LoginEntity) {
+        if (loginEntity.token.isNotEmpty()) {
+            goToMain(loginEntity.token)
         }
     }
 }

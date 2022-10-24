@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -28,12 +27,8 @@ import com.example.connect.R
 import com.example.connect.databinding.FragmentAddAgendaBinding
 import com.example.connect.utilites.DatePickerHelper
 import com.example.connect.utilites.TimePickerHelper
-import com.example.connect.utilites.app.UploadCallbackWithCrop
-import com.example.connect.utilites.app.cameraphoto.BottomSheet
-import com.example.connect.utilites.photo.adjustImageRotation
-import com.example.connect.utilites.photo.getBase64
+import com.example.connect.utilites.app.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_add_agenda.view.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -41,9 +36,12 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddAgendaFragment : Fragment() {
+    @Inject
+    lateinit var pref: SharedPreferences
     lateinit var binding: FragmentAddAgendaBinding
     private val viewModel: AddAgendaViewModelTerbaru by viewModels()
     lateinit var datePicker: DatePickerHelper
@@ -136,20 +134,13 @@ class AddAgendaFragment : Fragment() {
             it?.addTextChangedListener(textWatcher)
         }
 
-//        binding.cancelImagePost.setOnClickListener {
-//            binding.apply {
-//                cardView6.visibility = View.GONE
-//                addImageAgenda.setImageURI(null)
-//                fabAddImage.text = "Tambahkan Gambar"
-//                fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
-//            }
-//        }
 
         etTitle.setText(viewModel.nama.value)
         etKonten.setText(viewModel.konten.value)
         etLokasi.setText(viewModel.lokasi.value)
 
         viewModel.setStatus("1")
+        Log.v("TOKEN", pref.getToken())
 
         binding.cancelImagePost.setOnClickListener {
             binding.apply {
@@ -167,9 +158,6 @@ class AddAgendaFragment : Fragment() {
     }
 
 
-
-
-
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
@@ -181,9 +169,11 @@ class AddAgendaFragment : Fragment() {
         when (state) {
             is AddAgendaDataState.Loading -> {
                 Log.v("DATA", "loading")
+                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
             }
             is AddAgendaDataState.Success -> {
                 Log.v("DATA", "Sukses")
+                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
             }
         }
 

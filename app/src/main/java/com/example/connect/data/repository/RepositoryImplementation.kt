@@ -7,6 +7,7 @@ import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.AgendaRequest
+import com.example.connect.data.model.request.KirimanRequest
 import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.response.*
 import com.example.connect.domain.entity.*
@@ -43,6 +44,7 @@ class RepositoryImplementation @Inject constructor(
                 val data = mutableListOf<AgendaEntity>()
                 body?.forEach { data.add(it.toAgendaEntity()) }
                 emit(Result.Success(data))
+                Log.v("VIEWMODEL_AGENDA", response.body()?.data?.get(1).toString())
             } else {
             }
         }
@@ -211,7 +213,7 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun postAgenda(agendaRequest: AgendaRequest): Flow<Result<PostAgendaEntity, ResponseObjectWrapper<AgendaResponse>>> {
+    override suspend fun postAgenda(agendaRequest: AgendaRequest): Flow<Result<List<PostAgendaEntity>, ResponseListWrapper<AgendaResponse>>> {
         return flow {
             val response = apiClient.postAgenda(
                 agendaRequest.title,
@@ -224,11 +226,31 @@ class RepositoryImplementation @Inject constructor(
             )
             delay(1000)
             if (response.isSuccessful) {
-                val registerEntity = response.body()?.data?.toPosAgendaEntity()
-                emit(Result.Success(registerEntity!!))
-                Log.v("VIEWMODEL", response.toString())
+                val postAgendaEntity = response.body()?.data
+                val data = mutableListOf<PostAgendaEntity>()
+                postAgendaEntity?.forEach { data.add(it.toPosAgendaEntity()) }
+                emit(Result.Success(data))
+                Log.v("VIEWMODEL POST DATA", response.toString())
             } else {
-                Log.v("VIEWMODEL", response.toString())
+                Log.v("VIEWMODEL POST DATA", response.toString())
+
+            }
+        }
+
+
+    }
+
+    override suspend fun postKiriman(kirimanRequest: KirimanRequest): Flow<Result<PostKirimanEntity, ResponseObjectWrapper<PostKirimanResponse>>> {
+        return flow {
+            val response = apiClient.postKiriman(
+                kirimanRequest.starImage,
+                kirimanRequest.content
+            )
+            delay(1000)
+            if (response.isSuccessful) {
+                val postKirimanEntity = response.body()?.data?.toPostKirimanEntity()
+                emit(Result.Success(postKirimanEntity!!))
+            } else {
 
             }
         }
@@ -250,9 +272,7 @@ class RepositoryImplementation @Inject constructor(
 
 
 
-    override suspend fun postKiriman(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>> {
-        TODO("Not yet implemented")
-    }
+
 
     override suspend fun postProduct(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>> {
         TODO("Not yet implemented")

@@ -26,14 +26,46 @@ import okhttp3.RequestBody
 import java.io.File
 import android.database.Cursor
 import android.net.Uri
+import android.widget.EditText
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import com.example.connect.presentation.main.ui.home.tablayout.agenda.add.AddAgendaDataState
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.lang.Exception
 
-
+@AndroidEntryPoint
 class AddNewsFragment : Fragment() {
 
     lateinit var binding: AddNewsFragmentBinding
+    private val viewModel:AddNewsViewModelTerbaru by viewModels()
     private val REQUEST_CODE = 101
+
+    private lateinit var etKonten:EditText
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (s?.isEmpty() == true) {
+                viewModel.setAllFieldNull()
+            } else {
+                viewModel.setAllField(
+                    binding.editText.text.toString()
+
+                )
+            }
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+
+            binding.fabNews.isEnabled = true
+
+        }
+    }
 
 
 
@@ -41,7 +73,10 @@ class AddNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.add_news_fragment, container, false)
+        binding = AddNewsFragmentBinding.inflate(inflater , container, false)
+        viewModel.setAllFieldNull()
+
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.fabAddImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
@@ -65,6 +100,11 @@ class AddNewsFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        with(binding) {
+            etKonten = editText!!
+
+        }
+
 
         return binding.root
     }
@@ -78,11 +118,14 @@ class AddNewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val buttonUpload = binding.fabNews
-        val sharedPreferences = requireActivity()
-            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("token", "")
-        val id = sharedPreferences.getString("id_user", "")
+        observe()
+
+        listOf(etKonten).forEach {
+            it?.addTextChangedListener(textWatcher)
+
+        }
+
+        etKonten.setText(viewModel.konten.value)
 
         binding.cancelImagePost.setOnClickListener {
             binding.apply {
@@ -94,10 +137,34 @@ class AddNewsFragment : Fragment() {
             }
         }
 
+        binding.fabNews.setOnClickListener {
+            viewModel.postKiriman()
+        }
 
 
 
 
+
+
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: PostNewsState) {
+        when(state){
+            is PostNewsState.Loading -> {
+                Log.v("DATA", "loading")
+                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+            }
+            is PostNewsState.Success -> {
+                Log.v("DATA", "Sukses")
+                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 

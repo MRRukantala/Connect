@@ -5,6 +5,7 @@ import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.AgendaRequest
+import com.example.connect.data.model.request.KirimanRequest
 import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.response.*
 import com.example.connect.domain.entity.*
@@ -41,14 +42,16 @@ interface ApiRepository {
 
     suspend fun getProductByIdUser(id:Int):Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>
 
-    suspend fun postAgenda(agendaRequest: AgendaRequest): Flow<Result<PostAgendaEntity, ResponseObjectWrapper<AgendaResponse>>>
+    suspend fun postAgenda(agendaRequest: AgendaRequest): Flow<Result<List<PostAgendaEntity>, ResponseListWrapper<AgendaResponse>>>
+
+    suspend fun postKiriman(kirimanRequest: KirimanRequest): Flow<Result<PostKirimanEntity, ResponseObjectWrapper<PostKirimanResponse>>>
 
     //belom diperbaiki
     suspend fun register(): Flow<Result<SementaraEntity, ResponseObjectWrapper<RegisterResponse>>>
 
     suspend fun updateMyProfile(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>>
 
-    suspend fun postKiriman(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>>
+
 
     suspend fun postProduct(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>>
 

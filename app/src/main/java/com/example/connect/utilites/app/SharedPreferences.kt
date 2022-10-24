@@ -19,6 +19,10 @@ class SharedPreferences(private val context: Context) {
         put(ROLE_ID, roleId)
     }
 
+    fun saveToken(token: String) {
+        put(PREF_TOKEN, token)
+    }
+
     fun getToken() = get(PREF_TOKEN, String::class.java)
 
     fun getRoleId() = get(ROLE_ID, Int::class.java)
