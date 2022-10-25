@@ -101,7 +101,7 @@ class AddNewsFragment : Fragment() {
         }
 
         with(binding) {
-            etKonten = editText!!
+            etKonten = editText
 
         }
 
@@ -182,6 +182,8 @@ class AddNewsFragment : Fragment() {
                 )
             )
 
+            viewModel.saveImage(filePart)
+
 
             binding.apply {
 
@@ -197,7 +199,7 @@ class AddNewsFragment : Fragment() {
 
                 cardAddPost.visibility = View.GONE
                 imgAddPost.setImageURI(null)
-
+                viewModel.saveImageNull()
                 fabAddImage.text = "Tambahkan Gambar"
                 fabAddImage.setIconResource(R.drawable.ic_baseline_swap_vert_24)
             }

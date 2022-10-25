@@ -74,7 +74,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textView36"
+                        android:id="@+id/edit_nim"
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -97,10 +97,10 @@
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                        app:layout_constraintTop_toBottomOf="@+id/edit_nim" />
 
                     <EditText
-                        android:id="@+id/textView38"
+                        android:id="@+id/edit_wa"
 
                         android:layout_width="370dp"
                         android:layout_height="48dp"
@@ -124,10 +124,10 @@
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+                        app:layout_constraintTop_toBottomOf="@+id/edit_wa" />
 
                     <EditText
-                        android:id="@+id/textView40"
+                        android:id="@+id/edit_lokasi"
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+                        app:layout_constraintTop_toBottomOf="@+id/edit_lokasi" />
 
                     <TextView
                         android:id="@+id/textView42"

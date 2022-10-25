@@ -6,7 +6,7 @@ import retrofit2.http.Part
 
 data class ProductRequest(
     @Part("gambar") val image: MultipartBody.Part?,
-    @Part("harga") val harga: RequestBody?,
-    @Part("nama_produk") val nama_produk: RequestBody?,
+    @Part("harga") val harga: Int?,
+    @Part("nama_produk") val namaProduk: RequestBody?,
     @Part("deskripsi") val description: RequestBody?
 )

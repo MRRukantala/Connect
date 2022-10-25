@@ -15,15 +15,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.EditInfoUserFragmentBinding
+import com.example.connect.presentation.main.ui.home.tablayout.agenda.add.AddAgendaDataState
 import com.example.connect.utilites.DatePickerHelper
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -32,14 +41,41 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+@AndroidEntryPoint
 class EditInfoUserFragment : Fragment() {
 
     lateinit var binding: EditInfoUserFragmentBinding
+    private val viewModel:EditInfoUserViewModelTerbaru by viewModels()
     private val REQUEST_CODE = 101
     lateinit var datePicker: DatePickerHelper
 
+    private lateinit var etNim: EditText
+    private lateinit var etWa: EditText
+    private lateinit var etDomisili: EditText
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (s?.isEmpty() == true) {
+                viewModel.setAllFieldNull()
+            } else {
+                viewModel.setAllField(
+                    binding.editNim.text.toString(),
+                    binding.editWa.text.toString(),
+                    binding.editLokasi.text.toString()
+                )
+            }
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+
+            binding.button5.isEnabled = true
+
+        }
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,33 +83,13 @@ class EditInfoUserFragment : Fragment() {
 
 
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.edit_info_user_fragment, container, false)
-        binding.lifecycleOwner = this
+            EditInfoUserFragmentBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.setAllFieldNull()
 
 
         datePicker = DatePickerHelper(requireActivity())
 
-        val application = requireNotNull(activity).application
-
-        val token = requireActivity()
-            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-            .getString("token", "").toString()
-
-//        val data = EditInfoUserFragmentArgs.fromBundle(requireArguments()).dataHold
-
-//        val viewModelFactory = EditInfoUserViewModelFactory(
-//            requireActivity()
-//                .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-//                .getInt("id", -1),
-//            token,
-//            application,
-////            data
-//        )
-
-
-
-//        ViewModel = ViewModelProvider(this, viewModelFactory).get(EditInfoUserViewModel::class.java)
-//        binding.binding = ViewModel
 
         binding.include9.backImage.setOnClickListener {
             findNavController().popBackStack()
@@ -89,99 +105,23 @@ class EditInfoUserFragment : Fragment() {
         }
 
         binding.rg.setOnCheckedChangeListener { radioGroup, i ->
-            when(radioGroup.checkedRadioButtonId){
-//                R.id.rl -> ViewModel!!.jenis_kelamin("Laki - Laki")
-//                R.id.rp -> ViewModel!!.jenis_kelamin("Perempuan")
+            when (radioGroup.checkedRadioButtonId) {
+                R.id.rl -> viewModel.setJenisKelamin("Laki - Laki")
+                R.id.rp -> viewModel.setJenisKelamin("Perempuan")
             }
         }
 
-//        if(data.jenis_kelamin.equals("Laki - Laki")){
-//            binding.rl.isChecked = true
-//        } else if(data.jenis_kelamin.equals("Perempuan")){
-//            binding.rp.isChecked = true
-//        }
+        if(viewModel.jenisKelamin.value.equals("Laki - Laki")){
+            binding.rl.isChecked = true
+        } else if(viewModel.jenisKelamin.value.equals("Perempuan")){
+            binding.rp.isChecked = true
+        }
 
 
         binding.textView42.setOnClickListener {
             showDatePickerDialog()
         }
 
-        val nimTextChangeListener = object  : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-
-                }  else {
-//                    ViewModel!!.nim(p0.toString())
-                }
-            }
-
-        }
-        binding.textView36.addTextChangedListener(nimTextChangeListener)
-
-        val noKontakChangeListener = object : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-
-                }  else {
-//                    ViewModel!!.wa(p0.toString())
-
-                }
-            }
-
-        }
-        binding.textView38.addTextChangedListener(noKontakChangeListener)
-
-        val domisiliChangeListener = object : TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if(p0?.length!!.equals(0)){
-
-                }  else {
-//                    ViewModel!!.domisili(p0.toString())
-
-                }
-            }
-
-        }
-        binding.textView40.addTextChangedListener(domisiliChangeListener)
-
-
-//        ViewModel!!.state.observe(viewLifecycleOwner, {
-//            when(it){
-//                EditProfilState.SUCCESS -> {
-//                    Toast.makeText(context, "Edit Data Berhasil", Toast.LENGTH_SHORT).show()
-//                  }
-//                EditProfilState.LOADING -> {
-//                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
-//                 }
-//                EditProfilState.ERROR -> {
-//                    Toast.makeText(context, "Edit Data Gagal", Toast.LENGTH_SHORT).show()
-//                 }
-//            }
-//        })
 
         return binding.root
     }
@@ -191,7 +131,6 @@ class EditInfoUserFragment : Fragment() {
         gallery.type = "image/*"
         startActivityForResult(gallery, REQUEST_CODE)
     }
-
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -207,7 +146,7 @@ class EditInfoUserFragment : Fragment() {
                     "image/*".toMediaTypeOrNull(), file
                 )
             )
-//            ViewModel!!.image(filePart)
+            viewModel.savePhoto(filePart)
             binding.circleImageView2.setImageURI(imageURI)
         }
     }
@@ -249,11 +188,51 @@ class EditInfoUserFragment : Fragment() {
                     Log.v("DATE", date.toString())
 
                     val basic = date.format(DateTimeFormatter.BASIC_ISO_DATE)
-//                    ViewModel!!.tanggal_lahir(basic)
+                    viewModel.setTglLahir(basic)
 
                     binding.textView42.text = "${year} - ${monthStr} - ${dayStr}"
                 }
             })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        observe()
+        listOf(etNim, etWa, etDomisili).forEach{
+
+            it.addTextChangedListener(textWatcher)
+
+        }
+
+        etNim.setText(viewModel.nim.value)
+        etWa.setText(viewModel.wa.value)
+        etDomisili.setText(viewModel.domisili.value)
+
+        binding.button5.setOnClickListener {
+            viewModel.editProfile(52)
+        }
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: EditInfoUserState) {
+
+        when (state) {
+            is EditInfoUserState.Loading -> {
+                Log.v("DATA", "loading")
+                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+            }
+            is EditInfoUserState.Success -> {
+                Log.v("DATA", "Sukses")
+                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 }
 

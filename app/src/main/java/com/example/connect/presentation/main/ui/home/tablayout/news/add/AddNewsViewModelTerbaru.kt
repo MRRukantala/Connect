@@ -78,11 +78,11 @@ class AddNewsViewModelTerbaru @Inject constructor(
         )
         viewModelScope.launch {
             useCase.posKiriman(kirimanRequest)
-//                .onStart { loading()
-//
-//                }.catch {
-//
-//                }
+                .onStart { loading()
+
+                }.catch {
+
+                }
                 .collect{ result ->
                     when(result){
                         is Result.Success -> success(result.data)

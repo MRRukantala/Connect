@@ -4,9 +4,7 @@ import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
-import com.example.connect.data.model.request.AgendaRequest
-import com.example.connect.data.model.request.KirimanRequest
-import com.example.connect.data.model.request.LoginRequest
+import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
 import com.example.connect.domain.entity.*
 import com.example.connect.domain.repo.ApiRepository
@@ -90,6 +88,16 @@ class UseCase @Inject constructor(
     suspend fun posKiriman(kirimanRequest: KirimanRequest):
     Flow<Result<PostKirimanEntity, ResponseObjectWrapper<PostKirimanResponse>>>{
         return repository.postKiriman(kirimanRequest)
+    }
+
+    suspend fun posProduct(productRequest: ProductRequest):
+    Flow<Result<List<PostProductEntity>, ResponseListWrapper<PostProductResponse>>>{
+        return repository.postProduct(productRequest)
+    }
+
+    suspend fun editProfile(profileRequest: ProfileRequest, id:Int, method:Map<String, String>):
+    Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>{
+        return repository.updateMyProfile(profileRequest, id, method)
     }
 
 

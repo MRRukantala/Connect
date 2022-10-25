@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.MyProductFragmentBinding
+import com.example.connect.presentation.main.ui.product.DashboardFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -60,6 +62,10 @@ class MyProductFragment : Fragment() {
 //                viewModel.displayNewsDetails(it)
             }
         )
+
+        binding.fabNews.setOnClickListener{
+            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
+        }
 //
 //        binding.fabNews.setOnClickListener {
 //            viewModel.wa.observe(viewLifecycleOwner, {

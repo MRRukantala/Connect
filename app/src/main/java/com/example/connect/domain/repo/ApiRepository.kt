@@ -4,9 +4,7 @@ import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseListWrapperSementara
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
-import com.example.connect.data.model.request.AgendaRequest
-import com.example.connect.data.model.request.KirimanRequest
-import com.example.connect.data.model.request.LoginRequest
+import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
 import com.example.connect.domain.entity.*
 import kotlinx.coroutines.flow.Flow
@@ -46,14 +44,19 @@ interface ApiRepository {
 
     suspend fun postKiriman(kirimanRequest: KirimanRequest): Flow<Result<PostKirimanEntity, ResponseObjectWrapper<PostKirimanResponse>>>
 
+    suspend fun postProduct(productRequest: ProductRequest): Flow<Result<List<PostProductEntity>, ResponseListWrapper<PostProductResponse>>>
+
+    suspend fun updateMyProfile(profileRequest: ProfileRequest, id:Int, method:Map<String, String>):
+            Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>
+
     //belom diperbaiki
     suspend fun register(): Flow<Result<SementaraEntity, ResponseObjectWrapper<RegisterResponse>>>
 
-    suspend fun updateMyProfile(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>>
 
 
 
-    suspend fun postProduct(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>>
+
+
 
 
 

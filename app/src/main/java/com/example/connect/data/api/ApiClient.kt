@@ -34,7 +34,6 @@ interface ApiClient {
     @Multipart
     @POST("profil/{id_user}")
     suspend fun updateMyProfile(
-        @Header("Authorization") authorization: String,
         @Part("jenis_kelamin") jenis_kelamin: RequestBody?,
         @Part("nim") nim: RequestBody?,
         @Part("tgl_lahir") tanggal_lahir: RequestBody?,
@@ -43,7 +42,7 @@ interface ApiClient {
         @Part image: MultipartBody.Part?,
         @Path("id_user") id_user: Int,
         @QueryMap _method: Map<String, String>
-    ): Response<ResponseObjectWrapper<ProfileResponse>>
+    ): Response<ResponseObjectWrapper<EditProfileResponse>>
 
     //Agenda
 
@@ -93,7 +92,7 @@ interface ApiClient {
     @Multipart
     @POST("api-kiriman")
     suspend fun postKiriman(
-        @Part("image") starImage: MultipartBody.Part?,
+        @Part starImage: MultipartBody.Part?,
         @Part("konten") content: RequestBody
     ): Response<ResponseObjectWrapper<PostKirimanResponse>>
 
@@ -114,12 +113,11 @@ interface ApiClient {
     @Multipart
     @POST("produk")
     suspend fun postProduct(
-        @Header("Authorization") authorization: String,
-        @Part("gambar") image: MultipartBody.Part?,
+        @Part image: MultipartBody.Part?,
         @Part("harga") harga: Int?,
-        @Part("nama_produk") nama_produk: RequestBody?,
+        @Part("nama_produk") namaProduk: RequestBody?,
         @Part("deskripsi") description: RequestBody?
-    ): Response<ResponseObjectWrapper<com.example.connect.data.model.response.ProductResponse>>
+    ): Response<ResponseListWrapper<PostProductResponse>>
 
     // API GET ALL PRODUCT
     @GET("produk-public")
