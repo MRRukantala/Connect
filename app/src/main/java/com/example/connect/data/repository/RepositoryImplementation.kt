@@ -8,7 +8,11 @@ import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
+import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
+import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import com.example.connect.domain.entity.*
+import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
+import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import com.example.connect.domain.repo.ApiRepository
 import com.example.connect.utilites.base.Result
 import kotlinx.coroutines.delay
@@ -90,11 +94,12 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
+
     override suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
-        return  flow {
+        return flow {
             val response = apiClient.getAllKiriman()
             delay(800)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<KirimanEntity>()
                 body?.forEach {
@@ -103,7 +108,7 @@ class RepositoryImplementation @Inject constructor(
                 }
 
                 emit(Result.Success(data))
-            }else{
+            } else {
                 Log.v("VIEWMODEL_BERITA", response.toString())
             }
         }
@@ -165,17 +170,17 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun getProfile(id:Int): Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>> {
+    override suspend fun getProfile(id: Int): Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>> {
         return flow {
             val response = apiClient.getProfile(id)
             delay(800)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<ProfileEntity>()
                 body?.forEach { data.add(it.toProfileEntity()) }
                 emit(Result.Success(data))
                 Log.v("VIEWMODE_GET_USER", response.toString())
-            }else{
+            } else {
                 Log.v("VIEWMODE_GET_USER", response.toString())
                 response.message()
 
@@ -187,12 +192,12 @@ class RepositoryImplementation @Inject constructor(
         return flow {
             val response = apiClient.getAllProductByAdmin(id)
             delay(800)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
                 emit(Result.Success(data))
-            }else{
+            } else {
 
             }
         }
@@ -202,12 +207,12 @@ class RepositoryImplementation @Inject constructor(
         return flow {
             val response = apiClient.getAllProductMarkOI()
             delay(800)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
                 emit(Result.Success(data))
-            }else{
+            } else {
 
             }
         }
@@ -217,15 +222,41 @@ class RepositoryImplementation @Inject constructor(
         return flow {
             val response = apiClient.getProductByIdUser(id)
             delay(800)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
                 emit(Result.Success(data))
-                Log.v("VIEWMODE_PRODUCT_USER", response.toString())
-            }else{
+            } else {
+            }
+        }
+    }
 
-                Log.v("VIEWMODE_PRODUCT_USER", response.toString())
+    override suspend fun getAllPlaylist(): Flow<Result<List<PlaylistELearningEntity>, ResponseListWrapper<PlaylistElearningResponse>>> {
+        return flow {
+            val response = apiClient.getPlaylist()
+            delay(800)
+            if (response.isSuccessful) {
+                val body = response.body()?.data
+                val data = mutableListOf<PlaylistELearningEntity>()
+                body?.forEach { data.add(it.toPlaylistELearningEntity()) }
+                emit(Result.Success(data))
+            } else {
+
+            }
+        }
+    }
+
+    override suspend fun getAllVideoELearning(id: Int): Flow<Result<List<VideoELearningEntity>, ResponseListWrapper<VideoELearningResponse>>> {
+        return flow {
+            val response = apiClient.getVideoPlaylist(id)
+            delay(800)
+            if (response.isSuccessful) {
+                val body = response.body()?.data
+                val data = mutableListOf<VideoELearningEntity>()
+                body?.forEach { data.add(it.toVideoELearningEntity()) }
+                emit(Result.Success(data))
+            } else {
 
             }
         }
@@ -327,30 +358,6 @@ class RepositoryImplementation @Inject constructor(
 
 
     //belom diperbaiki
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     override suspend fun postPendidikan(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>> {

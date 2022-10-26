@@ -8,6 +8,8 @@ import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.request.PendidikanRequest
 import com.example.connect.data.model.request.RegisterRequest
 import com.example.connect.data.model.response.*
+import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
+import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -58,7 +60,7 @@ interface ApiClient {
     @GET("agenda-public/{id}")
     suspend fun getDetailAgenda(
         @Path("id") id: Int
-    ):Response<ResponseObjectWrapper<AgendaResponse>>
+    ): Response<ResponseObjectWrapper<AgendaResponse>>
 
     // API POST AGENDA
     @Multipart
@@ -105,7 +107,7 @@ interface ApiClient {
     @GET("layanan/{id}")
     suspend fun getDetailLayanan(
         @Path("id") id: Int
-    ):Response<ResponseObjectWrapper<LayananResponse>>
+    ): Response<ResponseObjectWrapper<LayananResponse>>
 
     //product
 
@@ -137,8 +139,6 @@ interface ApiClient {
     ): Response<ResponseListWrapper<ProductResponse>>
 
 
-
-
     //API POST PENDIDIKAN
     @POST("pendidikan")
     suspend fun postPendidikan(
@@ -152,5 +152,15 @@ interface ApiClient {
         @Header("Authorization") authorization: String,
         @Path("id") id: Int,
     ): Response<ResponseObjectWrapper<PendidikanResponse>>
+
+    // API PLAYLIST E LEARNING
+    @GET("playlist-elearning")
+    suspend fun getPlaylist(): Response<ResponseListWrapper<PlaylistElearningResponse>>
+
+    // API VIDEO E LEARNING
+    @GET("video-elearning")
+    suspend fun getVideoPlaylist(
+        @Path("id") id: Int
+    ): Response<ResponseListWrapper<VideoELearningResponse>>
 
 }
