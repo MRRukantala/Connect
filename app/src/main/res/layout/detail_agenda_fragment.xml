@@ -8,7 +8,7 @@
 
         <variable
             name="agenda"
-            type="com.example.connect.main.ui.home.tablayout.agenda.detail.DetailAgendaViewModel" />
+            type="com.example.connect.presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaViewModelTerbaru" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:context=".main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
+                tools:context=".presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
 
 
                 <androidx.cardview.widget.CardView
@@ -69,10 +69,10 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                imageUrl="@{agenda.selectedAgenda.photo}"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
+                                app:imageUrl="@{agenda.data.gambar}"
                                 tools:src="@drawable/post" />
 
                         </androidx.cardview.widget.CardView>
@@ -85,7 +85,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             android:fontFamily="@font/nunito_sans"
-                            android:text="@{agenda.selectedAgenda.title}"
+                            android:text="@{agenda.data.judul}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +101,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="16dp"
                             android:fontFamily="@font/nunito_sans"
-                            android:text="@{agenda.selectedAgenda.konten}"
+                            android:text="@{agenda.data.konten}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +118,7 @@
                             android:drawablePadding="12dp"
                             android:fontFamily="@font/nunito_sans"
                             android:gravity="center"
-                            android:text="@{agenda.selectedAgenda.tanggal}"
+                            android:text="@{agenda.data.tanggal}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
                             app:drawableLeftCompat="@drawable/ic_baseline_calendar_today_24"
@@ -136,7 +136,7 @@
                             android:drawablePadding="12dp"
                             android:fontFamily="@font/nunito_sans"
                             android:gravity="center"
-                            android:text="@{agenda.selectedAgenda.waktu}"
+                            android:text="@{agenda.data.waktu}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
                             app:drawableLeftCompat="@drawable/ic_baseline_access_time_24"
@@ -155,7 +155,7 @@
                             android:drawablePadding="12dp"
                             android:fontFamily="@font/nunito_sans"
                             android:gravity="center"
-                            android:text="@{agenda.selectedAgenda.lokasi}"
+                            android:text="@{agenda.data.lokasi}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="@+id/textView12"

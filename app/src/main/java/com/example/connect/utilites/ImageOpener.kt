@@ -5,17 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.connect.R
-import com.example.connect.databinding.FragmentImageOpenerBinding
-import android.graphics.BitmapFactory
-import android.view.ScaleGestureDetector
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import java.net.URL
+import com.example.connect.R
+import com.example.connect.databinding.FragmentImageOpenerBinding
 
 
 class ImageOpener : Fragment() {
@@ -41,13 +34,10 @@ class ImageOpener : Fragment() {
 
         val newProperty = ImageOpenerArgs.fromBundle(requireArguments()).link
 
-        binding.binding = ViewModelProvider(
-            this,
-            ImageOpenerViewModelFactory(newProperty, application)
-        ).get(ImageOpenerViewModel::class.java)
-
-
-
+//        binding.binding = ViewModelProvider(
+//            this,
+//            ImageOpenerViewModelFactory(newProperty, application)
+//        ).get(ImageOpenerViewModel::class.java)
 
 
         return binding.root

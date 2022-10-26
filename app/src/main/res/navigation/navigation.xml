@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.example.connect.splash.SplashScreenFragment"
+        android:name="com.example.connect.presentation.splash.SplashScreenFragment"
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.connect.menu.MenuFragment"
+        android:name="com.example.connect.presentation.menu.MenuFragment"
         android:label="menu_fragment"
         tools:layout="@layout/menu_fragment">
         <action
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.connect.login.ui.login.LoginFragment"
+        android:name="com.example.connect.presentation.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/signFragment"
-        android:name="com.example.connect.signup.ui.login.SignFragment"
+        android:name="com.example.connect.presentation.signup.SignFragment"
         android:label="fragment_sign"
         tools:layout="@layout/fragment_sign">
         <action
@@ -110,17 +110,17 @@
     </fragment>
     <fragment
         android:id="@+id/ketentuanAppFragment"
-        android:name="com.example.connect.signup.KetentuanAppFragment"
+        android:name="com.example.connect.presentation.signup.KetentuanAppFragment"
         android:label="KetentuanAppFragment"
         tools:layout="@layout/fragment_ketentuan_app" />
     <fragment
         android:id="@+id/verifFragment"
-        android:name="com.example.connect.signup.VerifFragment"
+        android:name="com.example.connect.presentation.signup.VerifFragment"
         android:label="VerifFragment"
         tools:layout="@layout/fragment_verif" />
     <activity
         android:id="@+id/mainAppActivity"
-        android:name="com.example.connect.main.MainAppActivity"
+        android:name="com.example.connect.presentation.main.MainAppActivity"
         android:label="MainAppActivity" />
 
 </navigation>

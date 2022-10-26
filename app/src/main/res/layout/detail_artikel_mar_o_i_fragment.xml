@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.layanan.detail_artikel.DetailArtikelMarOIViewModel" />
+            type="com.example.connect.presentation.main.ui.layanan.detail_artikel.DetailArtikelMarOlViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.ui.layanan.detail_artikel.DetailArtikelMarOIFragment">
+        tools:context=".presentation.main.ui.layanan.detail_artikel.DetailArtikelMarOIFragment">
 
         <include
             android:id="@+id/include4"
@@ -54,7 +54,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            imageUrl="@{viewModel.selectedLayanan.gambar}"
+
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
@@ -69,7 +69,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="@{viewModel.selectedLayanan.judul}"
+
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
-                        android:text="@{viewModel.selectedLayanan.konten}"
+
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView10"

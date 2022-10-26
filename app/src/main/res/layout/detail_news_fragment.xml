@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.home.tablayout.news.detail.DetailNewsViewModel" />
+            type="com.example.connect.presentation.main.ui.home.tablayout.news.detail.DetailNewsViewModelTerbaru" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/circleImageView"
-                            imageProfile="@{viewModel.selectedNews.photo}"
+                            imageProfile="@{viewModel.data.fotoUser}"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:layout_margin="12dp"
@@ -71,7 +71,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/nunito"
-                            android:text="@{viewModel.selectedNews.name}"
+                            android:text="@{viewModel.data.nama}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             app:layout_constraintStart_toEndOf="@+id/circleImageView"
                             app:layout_constraintTop_toTopOf="@+id/circleImageView"
@@ -87,7 +87,7 @@
                             app:layout_constraintStart_toEndOf="@+id/circleImageView"
                             app:layout_constraintTop_toBottomOf="@+id/name_text_view"
                             app:layout_constraintVertical_bias="0.35000000"
-                            app:time="@{viewModel.selectedNews.created_at}"
+                            app:time="@{viewModel.data.tglUpdate}"
                             tools:text="@string/_21_april_2000" />
 
                         <TextView
@@ -97,7 +97,7 @@
                             android:layout_margin="12dp"
                             android:fontFamily="@font/nunito"
                             android:justificationMode="inter_word"
-                            android:text="@{viewModel.selectedNews.konten}"
+                            android:text="@{viewModel.data.konten}"
                             android:textColor="@color/content_and_title_color_post_and_agenda"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +119,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                app:imageUrl="@{viewModel.selectedNews.gambar}"
+                                app:imageUrl="@{viewModel.data.fotoKonten}"
                                 tools:src="@drawable/post" />
 
 

@@ -7,19 +7,19 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.main.ui.product.tabLayout.productumum.ProductUmumViewModel" />
+            type="com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumViewModelTerbaru" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.ui.product.tabLayout.productumum.ProductUmumFragment">
+        tools:context=".presentation.main.ui.product.tabLayout.productumum.ProductUmumFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_product_umum"
-            listProductUmum="@{viewModel.properties}"
+            listProductUmum="@{viewModel.data}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

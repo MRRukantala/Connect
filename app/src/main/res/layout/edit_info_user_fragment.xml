@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+<!--    <data>-->
 
-        <variable
-            name="binding"
-            type="com.example.connect.main.ui.menu.info_pendidikan.info.edit.EditInfoUserViewModel" />
-    </data>
+<!--        <variable-->
+<!--            name="binding"-->
+<!--            type="com.example.connect.main.ui.menu.info_pendidikan.info.edit.EditInfoUserViewModel" />-->
+<!--    </data>-->
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +55,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:padding="@dimen/dp12"
-                        imageProfile="@{binding.selectedNews.photo}"
+
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -74,8 +74,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textView36"
-                        emptyornot="@{binding.selectedNews.nim}"
+                        android:id="@+id/edit_nim"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp12"
@@ -97,11 +97,11 @@
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                        app:layout_constraintTop_toBottomOf="@+id/edit_nim" />
 
                     <EditText
-                        android:id="@+id/textView38"
-                        emptyornot="@{binding.selectedNews.wa}"
+                        android:id="@+id/edit_wa"
+
                         android:layout_width="370dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="@dimen/dp12"
@@ -124,11 +124,11 @@
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+                        app:layout_constraintTop_toBottomOf="@+id/edit_wa" />
 
                     <EditText
-                        android:id="@+id/textView40"
-                        emptyornot="@{binding.selectedNews.domisili}"
+                        android:id="@+id/edit_lokasi"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp12"
@@ -149,11 +149,11 @@
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+                        app:layout_constraintTop_toBottomOf="@+id/edit_lokasi" />
 
                     <TextView
                         android:id="@+id/textView42"
-                        emptyornot="@{binding.selectedNews.tgl_lahir}"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp12"

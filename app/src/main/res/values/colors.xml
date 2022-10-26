@@ -12,5 +12,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DC3545</color>
+    <color name="grey_cf">#CACCCF</color>
     <color name="blue_primary">#44599c</color>
+    <color name="red_error">#B00020</color>
+    <color name="red50">#A03B3B</color>
+    <color name="grey_c4">#424242</color>
 </resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.main.ui.product.keranjang.KeranjangFragment">
+
+
+        <include
+            android:id="@+id/include1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/shimmer_item_list_save_product"/>
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/shimmer_item_list_save_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/include1" />
+
+        <include
+            android:id="@+id/include3"
+            layout="@layout/shimmer_item_list_save_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+        <include
+            android:id="@+id/include4"
+            layout="@layout/shimmer_item_list_save_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/include3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -18,6 +18,8 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="todo">TODO</string>
+    <color name="black1">#424242</color>
+    <string name="label_error">Terjadi Kesalahan</string>
     <string name="daftarkan_diri_anda_dan_gabung_dengan_connect_sekarang_juga">Daftarkan diri Anda dan gabung dengan MarkOI sekarang juga!</string>
     <string name="sudah_punya_akun">Sudah punya akun? </string>
     <string name="buat_akun">Buat Akun</string>
@@ -29,6 +31,7 @@
     <string name="daftar">Daftar</string>
     <string name="dengan_mendaftar_anda_menyetujui_syarat_penggunaan_kami">Dengan mendaftar Anda menyetujui</string>
     <string name="name">Name</string>
+    <string name="label_photo_taken_time">Foto diambil jam %s </string>
     <string name="content_pernyataan"><![CDATA[Disarankan sebelum mengakses Connect ini lebih jauh, Anda terlebih dahulu membaca dan memahami syarat dan ketentuan yang berlaku. Syarat dan ketentuan berikut adalah ketentuan dalam pengunjungan Situs, isi dan/atau konten, layanan, serta fitur lainnya yang ada di dalam Situs. Dengan mengakses atau menggunakan Situs atau aplikasi lainnya yang disediakan oleh atau dalam Situs, berarti Anda telah memahami dan menyetujui serta terikat dan tunduk dengan segala syarat dan ketentuan yang berlaku di Situs ini.
 
     \n \n1. DEFINISI Setiap kata atau istilah berikut yang digunakan di dalam Syarat dan Ketentuan ini memiliki arti seperti berikut di bawah, kecuali jika kata atau istilah yang bersangkutan di dalam pemakaiannya dengan tegas menentukan lain

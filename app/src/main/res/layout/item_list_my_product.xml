@@ -7,7 +7,7 @@
 
         <variable
             name="productModel"
-            type="com.example.connect.main.ui.product.model.ProductModel" />
+            type="com.example.connect.domain.entity.ProductEntity" />
 
     </data>
 
@@ -54,7 +54,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nunito_sans"
                     android:maxLines="3"
-                    android:text="@{productModel.nama_produk}"
+                    android:text="@{productModel.nama}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toStartOf="@+id/imageView"
                     app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView22"
                     app:layout_constraintTop_toBottomOf="@+id/textView24"
-                    app:timestampToDate="@{productModel.created_at}"
+
                     tools:text="Dibuat : 21-04-3000" />
 
 

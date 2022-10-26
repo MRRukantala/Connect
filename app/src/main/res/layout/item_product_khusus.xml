@@ -8,7 +8,7 @@
 
         <variable
             name="productKhusus"
-            type="com.example.connect.main.ui.product.model.ProductModel" />
+            type="com.example.connect.domain.entity.ProductEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,7 +70,7 @@
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/nunito_sans"
                     android:maxLines="2"
-                    android:text="@{productKhusus.nama_produk}"
+                    android:text="@{productKhusus.nama}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toEndOf="@+id/cardView2"
                     app:layout_constraintHorizontal_bias="0.0"
