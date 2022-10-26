@@ -22,7 +22,7 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleImageView2"
-                imageProfile="@{viewModel.data.foto}"
+                imageProfile="@{viewModel.data.get(0).foto}"
                 android:layout_width="84dp"
                 android:layout_height="84dp"
                 android:layout_marginTop="24dp"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nunito_sans"
-                android:text="@{viewModel.data.name}"
+                android:text="@{viewModel.data.get(0).name}"
                 android:textColor="@color/content_and_title_color_post_and_agenda"
                 android:textSize="@dimen/sp16"
                 android:textStyle="bold"
@@ -64,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:text="@{viewModel.data.get(0).nim}"
                 android:fontFamily="@font/nunito_sans"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView35"
@@ -87,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.data.nomerHp}"
+                app:emptyornot="@{viewModel.data.get(0).nomerHp}"
                 app:layout_constraintStart_toStartOf="@+id/textView37"
                 app:layout_constraintTop_toBottomOf="@+id/textView37"
                 tools:text="@string/belum_ditambahkan" />
@@ -110,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.data.dommisili}"
+                app:emptyornot="@{viewModel.data.get(0).dommisili}"
                 app:layout_constraintStart_toStartOf="@+id/textView37"
                 app:layout_constraintTop_toBottomOf="@+id/textView39"
                 tools:text="@string/belum_ditambahkan" />
@@ -133,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.data.tglLahir}"
+                app:emptyornot="@{viewModel.data.get(0).tglLahir}"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView41"
                 tools:text="@string/belum_ditambahkan" />
@@ -156,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.data.jenisKelamin}"
+                app:emptyornot="@{viewModel.data.get(0).jenisKelamin}"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView43"
                 tools:text="@string/belum_ditambahkan" />

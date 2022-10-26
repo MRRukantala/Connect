@@ -15,11 +15,12 @@ import com.example.connect.data.database.SaveProductData
 import com.example.connect.domain.entity.*
 import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaAdapter
 import com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
+import com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.PendidikanAdapter
 import com.example.connect.presentation.main.ui.product.ProductAdapter
 import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyProductAdapter
 import java.text.SimpleDateFormat
 
-const val GET_PATH_IMAGE = "https://megha.desa-pintar.com/storage/"
+const val GET_PATH_IMAGE = "https://megha.desa-pintar.com/markol/public/storage/"
 
 @BindingAdapter("listPosts")
 fun bindRecyclerViewListPosts(
@@ -37,6 +38,15 @@ fun bindRecyclerViewListAgenas(
     data: List<AgendaEntity>?
 ) {
     val adapter = recyclerView.adapter as AgendaAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listPendidikan")
+fun bindRecyclerViewListPendidikan(
+    recyclerView: RecyclerView,
+    data: List<PendidikanEntity>?
+) {
+    val adapter = recyclerView.adapter as PendidikanAdapter
     adapter.submitList(data)
 }
 

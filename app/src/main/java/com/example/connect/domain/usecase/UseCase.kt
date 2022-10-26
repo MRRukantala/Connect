@@ -61,7 +61,7 @@ class UseCase @Inject constructor(
     }
 
     suspend fun getProfile(id:Int):
-    Flow<Result<ProfileEntity, ResponseObjectWrapper<ProfileResponse>>>{
+    Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>>{
         return repository.getProfile(id)
     }
 
@@ -100,9 +100,11 @@ class UseCase @Inject constructor(
         return repository.updateMyProfile(profileRequest, id, method)
     }
 
+    suspend fun register(registerRequest: RegisterRequest): Flow<Result<RegisterEntity, ResponseObjectWrapper<RegisterResponse>>> {
+        return repository.register(registerRequest)
+    }
+
 
     //belom diperbaiki
-    suspend fun register(): Flow<Result<SementaraEntity, ResponseObjectWrapper<RegisterResponse>>> {
-        return repository.register()
-    }
+
 }

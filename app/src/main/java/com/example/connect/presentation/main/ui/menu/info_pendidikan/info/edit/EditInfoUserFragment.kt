@@ -18,17 +18,13 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.EditInfoUserFragmentBinding
-import com.example.connect.presentation.main.ui.home.tablayout.agenda.add.AddAgendaDataState
 import com.example.connect.utilites.DatePickerHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -45,7 +41,7 @@ import java.util.*
 class EditInfoUserFragment : Fragment() {
 
     lateinit var binding: EditInfoUserFragmentBinding
-    private val viewModel:EditInfoUserViewModelTerbaru by viewModels()
+    private val viewModel: EditInfoUserViewModelTerbaru by viewModels()
     private val REQUEST_CODE = 101
     lateinit var datePicker: DatePickerHelper
 
@@ -111,15 +107,21 @@ class EditInfoUserFragment : Fragment() {
             }
         }
 
-        if(viewModel.jenisKelamin.value.equals("Laki - Laki")){
+        if (viewModel.jenisKelamin.value.equals("Laki - Laki")) {
             binding.rl.isChecked = true
-        } else if(viewModel.jenisKelamin.value.equals("Perempuan")){
+        } else if (viewModel.jenisKelamin.value.equals("Perempuan")) {
             binding.rp.isChecked = true
         }
 
 
         binding.textView42.setOnClickListener {
             showDatePickerDialog()
+        }
+
+        with(binding) {
+            etNim = editNim
+            etDomisili = editLokasi
+            etWa = editWa
         }
 
 
@@ -199,7 +201,7 @@ class EditInfoUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observe()
-        listOf(etNim, etWa, etDomisili).forEach{
+        listOf(etNim, etWa, etDomisili).forEach {
 
             it.addTextChangedListener(textWatcher)
 

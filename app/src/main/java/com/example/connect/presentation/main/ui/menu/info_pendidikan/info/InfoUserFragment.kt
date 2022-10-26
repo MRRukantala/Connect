@@ -3,11 +3,14 @@ package com.example.connect.presentation.main.ui.menu.info_pendidikan.info
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
@@ -15,7 +18,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.MainActivity
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
+import com.example.connect.presentation.main.ui.home.tablayout.agenda.add.AddAgendaDataState
 import com.example.connect.presentation.main.ui.menu.info_pendidikan.ContainerInfoDirections
+import com.example.connect.presentation.main.ui.menu.info_pendidikan.info.edit.EditInfoUserFragmentDirections
 import com.example.connect.presentation.splash.SplashScreenFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
@@ -23,7 +28,7 @@ import kotlinx.coroutines.flow.onEach
 class InfoUserFragment : Fragment() {
 
     lateinit var binding: InfoUserFragmentBinding
-    private val viewModel: InfoUserViewModelTerbaru by viewModels()
+    private val viewModel: InfoUserViewModelTerbaru by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,11 +60,11 @@ class InfoUserFragment : Fragment() {
                 findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
             }
             button5.setOnClickListener {
-//                findNavController().navigate(
-//                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(
-//                        viewModel.properties.value!!.data[0]
-//                    )
-//                )
+                findNavController().navigate(
+                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(
+
+                    )
+                )
             }
             logout.setOnClickListener {
                 keluar()
@@ -83,8 +88,14 @@ class InfoUserFragment : Fragment() {
     private fun handleState(state: InfoUserViewModelState) {
 
         when(state){
-            is InfoUserViewModelState.Loading ->{}
-            is InfoUserViewModelState.Success ->{}
+            is InfoUserViewModelState.Loading -> {
+                Log.v("DATA", "loading")
+                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+            }
+            is InfoUserViewModelState.Success -> {
+                Log.v("DATA", "Sukses")
+                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+            }
         }
 
     }

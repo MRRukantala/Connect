@@ -35,6 +35,8 @@ data class ProfileResponse(
             tglLahir.orEmpty(),
             jenisKelamin.orEmpty(),
             photo.orEmpty(),
+            nim.orEmpty(),
             pendidikan.map { it!!.toPendidikanEntity() }
+
         )
 }

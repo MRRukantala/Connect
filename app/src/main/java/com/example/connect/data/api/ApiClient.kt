@@ -26,10 +26,10 @@ interface ApiClient {
     ): Response<ResponseObjectWrapper<RegisterResponse>>
 
     //Profile
-    @GET("profil/{id}")
+    @GET("profil/{id_user}")
     suspend fun getProfile(
         @Path("id_user") id: Int
-    ): Response<ResponseObjectWrapper<ProfileResponse>>
+    ): Response<ResponseListWrapper<ProfileResponse>>
 
     @Multipart
     @POST("profil/{id_user}")

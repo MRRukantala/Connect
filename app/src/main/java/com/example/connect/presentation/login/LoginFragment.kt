@@ -1,6 +1,5 @@
 package com.example.connect.presentation.login
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -102,12 +101,12 @@ class LoginFragment : Fragment() {
             .launchIn(lifecycleScope)
     }
 
-    private fun handleState(state: LoginState){
-        when(state){
-            is LoginState.Loading ->{
+    private fun handleState(state: LoginState) {
+        when (state) {
+            is LoginState.Loading -> {
                 Log.v("DATA", "loading")
             }
-            is LoginState.Success ->{
+            is LoginState.Success -> {
                 Log.v("DATA", "Sukses")
                 loginSuccessHandler(state.loginEntity)
 

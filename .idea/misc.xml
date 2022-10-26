@@ -47,7 +47,7 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_proses_add_my_produk.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_proses_adding_news.xml" value="0.13360507246376813" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_saran_terima_kasih.xml" value="0.1234375" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_sign.xml" value="0.1234375" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_sign.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_splash_screen.xml" value="0.13360507246376813" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_store_resmi.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_verif.xml" value="0.12083333333333333" />
@@ -56,7 +56,7 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/ic_download.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/info_user_fragment.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_agendas.xml" value="0.20416666666666666" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_my_pendidikan.xml" value="0.14175724637681159" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_my_pendidikan.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_my_product.xml" value="0.33" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_news.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_purchase.xml" value="0.1234375" />
@@ -76,7 +76,7 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/my_news_fragment.xml" value="0.1" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/my_product_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/news_fragment.xml" value="0.17789291882556132" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/pendidikan_user_fragment.xml" value="0.300561797752809" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/pendidikan_user_fragment.xml" value="0.15" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/product_umum_fragment.xml" value="0.18854166666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/saran_n_kritik_fragment.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_detail_agenda_fragment.xml" value="0.2" />

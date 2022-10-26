@@ -33,6 +33,21 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
+    override suspend fun register(registerRequest: RegisterRequest): Flow<Result<RegisterEntity, ResponseObjectWrapper<RegisterResponse>>> {
+        return flow {
+            val response = apiClient.register(registerRequest)
+            delay(1500)
+            if (response.isSuccessful) {
+                val registerEntity = response.body()?.data?.toRegisterEntity()
+                emit(Result.Success(registerEntity!!))
+                Log.v("VIEWMODEL_REGISTER", response.body()?.data.toString())
+            } else {
+                Log.v("VIEWMODEL_REGISTER", response.body()?.data.toString())
+
+            }
+        }
+    }
+
     override suspend fun getAllAgenda(): Flow<Result<List<AgendaEntity>, ResponseListWrapper<AgendaResponse>>> {
         return flow {
             val response = apiClient.getAllAgenda()
@@ -150,15 +165,20 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun getProfile(id:Int): Flow<Result<ProfileEntity, ResponseObjectWrapper<ProfileResponse>>> {
+    override suspend fun getProfile(id:Int): Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>> {
         return flow {
             val response = apiClient.getProfile(id)
             delay(800)
             if (response.isSuccessful){
                 val body = response.body()?.data
-                emit(Result.Success(body?.toProfileEntity() as ProfileEntity))
+                val data = mutableListOf<ProfileEntity>()
+                body?.forEach { data.add(it.toProfileEntity()) }
+                emit(Result.Success(data))
+                Log.v("VIEWMODE_GET_USER", response.toString())
             }else{
+                Log.v("VIEWMODE_GET_USER", response.toString())
                 response.message()
+
             }
         }
     }
@@ -307,9 +327,7 @@ class RepositoryImplementation @Inject constructor(
 
 
     //belom diperbaiki
-    override suspend fun register(): Flow<Result<SementaraEntity, ResponseObjectWrapper<RegisterResponse>>> {
-        TODO("Not yet implemented")
-    }
+
 
 
 

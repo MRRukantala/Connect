@@ -20,14 +20,14 @@ class InfoUserViewModelTerbaru @Inject constructor(
     private val _state = MutableStateFlow<InfoUserViewModelState>(InfoUserViewModelState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<ProfileEntity?>(null)
+    private val _data = MutableStateFlow<List<ProfileEntity>?>(null)
     val data get() = _data
 
     private fun loading() {
         _state.value = InfoUserViewModelState.Loading()
     }
 
-    private fun success(infoUserEntity: ProfileEntity){
+    private fun success(infoUserEntity: List<ProfileEntity>){
         _state.value = InfoUserViewModelState.Success(infoUserEntity)
         _data.value = infoUserEntity
     }
@@ -57,6 +57,6 @@ sealed class InfoUserViewModelState {
     object Init : InfoUserViewModelState()
 
     data class Loading(val loading: Boolean = true) : InfoUserViewModelState()
-    data class Success(val infoUserEntity: ProfileEntity) : InfoUserViewModelState()
+    data class Success(val infoUserEntity: List<ProfileEntity>) : InfoUserViewModelState()
     data class Error(val response: ProfileEntity) : InfoUserViewModelState()
 }

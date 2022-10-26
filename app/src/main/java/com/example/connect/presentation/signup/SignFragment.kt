@@ -1,26 +1,61 @@
-package com.example.connect.presentation.signup.ui.login
+package com.example.connect.presentation.signup
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentSignBinding
+import com.example.connect.presentation.login.LoginState
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class SignFragment : Fragment() {
 
-//    private lateinit var signViewModel: LoginViewModel
+    //    private lateinit var signViewModel: LoginViewModel
     lateinit var binding: FragmentSignBinding
+    private val viewModel: RegisterViewModel by viewModels()
+
+    private lateinit var etNama: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var etPassword: EditText
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (s?.isEmpty() == true) {
+                viewModel.setAllFieldNull()
+            } else {
+                viewModel.setAllField(
+                    binding.username.text.toString(),
+                    binding.email.text.toString(),
+                    binding.password.text.toString()
+                )
+            }
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+
+            binding.login.isEnabled = true
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,30 +63,39 @@ class SignFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign, container, false)
+        binding = FragmentSignBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.apply {
             textView30.setOnClickListener {
-                findNavController().navigate(SignFragmentDirections.actionSignFragmentToKetentuanAppFragment())
+
             }
             back.backImage.setOnClickListener {
                 findNavController().popBackStack()
             }
-            lifecycleOwner = viewLifecycleOwner
+
+            etNama = username
+            etEmail = email
+            etPassword = password
+
         }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // signViewModel = ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
-//        signViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        observe()
+        listOf(etNama,etEmail, etPassword).forEach {
+            it.addTextChangedListener(textWatcher)
+        }
 
-        val usernameEditText = binding.username
-        val emailEditText = binding.email
-        val passwordEditText = binding.password
+        etNama.setText(viewModel.nama.value)
+        etEmail.setText(viewModel.email.value)
+        etPassword.setText(viewModel.password.value)
 
-        val loginButton = binding.login
-        val loadingProgressBar = binding.loading
+        viewModel.setLevel(0)
+        binding.login.setOnClickListener {
+            viewModel.register()
+        }
 
 //        signViewModel.loginFormState.observe(viewLifecycleOwner,
 //            Observer { loginFormState ->
@@ -133,10 +177,31 @@ class SignFragment : Fragment() {
 //        }
     }
 
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: RegisterState) {
+        when (state) {
+            is RegisterState.Loading -> {
+                Log.v("DATA", "loading")
+            }
+            is RegisterState.Success -> {
+                Log.v("DATA", "Sukses")
+
+
+
+            }
+        }
+
+    }
+
     private fun updateUiWithUser() {
         // TODO : initiate successful logged in experience
 //        val appContext = context?.applicationContext ?: return
-        findNavController().navigate(SignFragmentDirections.actionSignFragmentToVerifFragment())
+//        findNavController().navigate(com.example.connect.presentation.signup.ui.login.SignFragmentDirections.actionSignFragmentToVerifFragment())
 //        signViewModel.messageComplete()
         requireActivity().finish()
     }

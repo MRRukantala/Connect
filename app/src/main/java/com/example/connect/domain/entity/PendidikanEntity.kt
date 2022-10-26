@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class PendidikanEntity(
     val id: Int,
+    val jenjang:String,
     val jurusan: String,
     val instansi: String,
     val tahunMasuk: String,

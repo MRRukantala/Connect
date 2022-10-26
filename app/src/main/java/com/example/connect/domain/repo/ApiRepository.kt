@@ -14,6 +14,8 @@ interface ApiRepository {
     //diperbaiki
     suspend fun loginApi(loginRequest: LoginRequest): Flow<Result<LoginEntity, ResponseObjectWrapperSementara<LoginResponse>>>
 
+    suspend fun register(registerRequest: RegisterRequest): Flow<Result<RegisterEntity, ResponseObjectWrapper<RegisterResponse>>>
+
     suspend fun getAllAgenda(): Flow<Result<List<AgendaEntity>, ResponseListWrapper<AgendaResponse>>>
 
     suspend fun getAgendaByIdUser(id: Int): Flow<Result<List<AgendaEntity>, ResponseListWrapper<AgendaResponse>>>
@@ -32,7 +34,7 @@ interface ApiRepository {
 
     suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<LayananResponse>>>
 
-    suspend fun getProfile(id: Int): Flow<Result<ProfileEntity, ResponseObjectWrapper<ProfileResponse>>>
+    suspend fun getProfile(id: Int): Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>>
 
     suspend fun getAllProductByAdmin(id:Int): Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>
 
@@ -50,14 +52,6 @@ interface ApiRepository {
             Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>
 
     //belom diperbaiki
-    suspend fun register(): Flow<Result<SementaraEntity, ResponseObjectWrapper<RegisterResponse>>>
-
-
-
-
-
-
-
 
 
     suspend fun postPendidikan(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>>

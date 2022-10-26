@@ -21,7 +21,7 @@ data class PendidikanResponse(
 ) {
     fun toPendidikanEntity() = PendidikanEntity(
 
-        id?:0,jurusan.orEmpty(), instansi.orEmpty(),
+        id ?: 0, jenjang.orEmpty(), jurusan.orEmpty(), instansi.orEmpty(),
         tahunMasuk.orEmpty(), tahunKeluar.orEmpty()
 
     )

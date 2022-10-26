@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.PendidilanViewModelTerbaru" />
+            type="com.example.connect.presentation.main.ui.menu.info_pendidikan.info.InfoUserViewModelTerbaru" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,6 +17,7 @@
             android:id="@+id/lottieAnimationView"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:visibility="gone"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +34,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layoutMode="clipBounds"
             android:layout_width="match_parent"
-
+            listPendidikan="@{viewModel.data.get(0).listPendidikan}"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_list_my_pendidikan" />
 

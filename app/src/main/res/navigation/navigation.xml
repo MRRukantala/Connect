@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/signFragment"
-        android:name="com.example.connect.presentation.signup.ui.login.SignFragment"
+        android:name="com.example.connect.presentation.signup.SignFragment"
         android:label="fragment_sign"
         tools:layout="@layout/fragment_sign">
         <action
