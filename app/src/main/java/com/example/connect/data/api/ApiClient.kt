@@ -105,7 +105,7 @@ interface ApiClient {
     @GET("layanan/{id}")
     suspend fun getDetailLayanan(
         @Path("id") id: Int
-    ):Response<ResponseObjectWrapper<LayananResponse>>
+    ):Response<ResponseObjectWrapper<DetailArtikelResponse>>
 
     //product
 

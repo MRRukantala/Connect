@@ -152,7 +152,7 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<LayananResponse>>> {
+    override suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<DetailArtikelResponse>>> {
         return flow {
             val response = apiClient.getDetailLayanan(id)
             delay(800)

@@ -56,7 +56,7 @@ class UseCase @Inject constructor(
     }
 
     suspend fun getDetailLayanan(id:Int):
-    Flow<Result<LayananEntity, ResponseObjectWrapper<LayananResponse>>>{
+    Flow<Result<LayananEntity, ResponseObjectWrapper<DetailArtikelResponse>>>{
         return repository.getDetailLayanan(id)
     }
 

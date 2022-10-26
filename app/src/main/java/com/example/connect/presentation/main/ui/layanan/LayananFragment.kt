@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.FragmentNotificationsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -42,7 +43,7 @@ class LayananFragment : Fragment() {
 
         binding.recyclerView2.adapter = LayananAdapter(
             LayananAdapter.OnclickListener {
-//                viewModel.displayNewsDetails(it)
+                findNavController().navigate(LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment())
             }
         )
 
