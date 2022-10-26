@@ -1,21 +1,26 @@
 package com.example.connect.presentation.main.ui.product.resmi.resmi
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.connect.R
 import com.example.connect.databinding.FragmentStoreResmiBinding
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
+import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumState
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class StoreResmiFragment : Fragment() {
 
     lateinit var binding: FragmentStoreResmiBinding
+    private val viewModel: StoreResmiViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,14 +28,14 @@ class StoreResmiFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        binding = DataBindingUtil.inflate(
+        binding = FragmentStoreResmiBinding.inflate(
             inflater,
-            R.layout.fragment_store_resmi,
             container, false
         )
 
-        val application = requireNotNull(activity).application
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+
 
 //        val viewModelStoreResmiFragment =
 //            StoreResmiViewModelFactory(
@@ -54,6 +59,14 @@ class StoreResmiFragment : Fragment() {
             findNavController().navigate(StoreResmiFragmentDirections.actionStoreResmiFragmentToDashboardFragment())
         }
 
+        binding.recyclerView.adapter = ProductUmumAdapter(
+            ProductUmumAdapter.OnclickListener{
+                runCatching {
+                    findNavController().navigate(StoreResmiFragmentDirections.actionStoreResmiFragmentToDetailProductFragment())
+                }
+            }
+        )
+
 //        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
 //            if(null != it){
 //                this.findNavController().navigate(
@@ -64,6 +77,28 @@ class StoreResmiFragment : Fragment() {
 //        })
 
         return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getAllProductByAdmin()
+        observe()
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: StoreResmiState) {
+
+        when (state) {
+            is StoreResmiState.Loading -> {}
+            is StoreResmiState.Success -> {}
+        }
 
     }
 }

@@ -1,72 +1,50 @@
 package com.example.connect.presentation.main.ui.product.detail
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.liveData
 import androidx.navigation.fragment.findNavController
-import com.example.connect.R
-import com.example.connect.data.database.SavedProductDatabase
 import com.example.connect.databinding.DetailProductFragmentBinding
-import java.net.URLEncoder
+import com.example.connect.domain.entity.DetailProductEntity
+import com.example.connect.utilites.currency
+import com.example.connect.utilites.imagePost
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class DetailProductFragment : Fragment() {
 
     lateinit var binding: DetailProductFragmentBinding
+    private val viewModel: DetailProductViewModelTerbaru by viewModels()
 
-    @SuppressLint("ResourceAsColor")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val application = requireNotNull(activity).application
-
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.detail_product_fragment, container, false
+        binding = DetailProductFragmentBinding.inflate(
+            inflater, container, false
         )
 
-//        val productUmumProperty =
-//            DetailProductFragmentArgs.fromBundle(requireArguments()).selectedProductUmum
 
-        val id = requireActivity()
-            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-            .getInt("id", -1)
 
-        val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
-
-//        val viewModelFactory = DetailProductViewModelFactory(id, dataSource, productUmumProperty, application)
-
-//        val viewModel = ViewModelProvider(this, viewModelFactory).get(DetailProductViewModel::class.java)
-
-//        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
 
         binding.include7.backImage.setOnClickListener {
             findNavController().popBackStack()
         }
 
-//        binding.button2.setOnClickListener {
-//            val packageManager = requireActivity().packageManager
-//            val i = Intent(Intent.ACTION_VIEW)
-//
-//            val url = "http://api.whatsapp.com/send?phone=${productUmumProperty.wa}&text=" +
-//                    URLEncoder.encode("Halo saya ingin bertanya terkait produk ${productUmumProperty.nama_produk}")
-//            i.setPackage("com.whatsapp")
-//            i.data = Uri.parse(url)
-//
-//            if(i.resolveActivity(packageManager)!= null) {
-//                startActivity(i)
-//            }
-//        }
+
 
         binding.includ8.backImage.setOnClickListener {
             findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToKeranjangFragment())
@@ -76,21 +54,45 @@ class DetailProductFragment : Fragment() {
 //            findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(productUmumProperty.gambar))
 //        }
 
-//        viewModel.state.observe(viewLifecycleOwner, {
-//            when(it){
-//                AddProdukState.SUCCESS -> {
-//                    Toast.makeText(context, "Produk Berhasil Disimpan", Toast.LENGTH_SHORT).show()
-//                }
-//                AddProdukState.ERROR -> {
-//                    Toast.makeText(context, "Produkt Gagal Disimpan", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        })
-
-
 
         return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.detailProduct()
+        observe()
+
+//        binding.nama.text = viewModel.data.value[1].nama
+
+//        currency(binding.harga,viewModel.data.value[1].harga)
+//        imagePost(binding.image, viewModel.data.value[1].gambar)
+
+    }
+
+    private fun observe() {
+        viewModel.state.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleState(state: DetailProductState) {
+        when (state) {
+            is DetailProductState.Loading -> {
+                Log.v("Data", "Loading")
+            }
+
+            is DetailProductState.Success -> {
+                val data : DetailProductEntity = state.detailProductEntity.get(0)
+                binding.nama.text = data.nama
+                binding.deskripsi.text = data.deskripsi
+                currency(binding.harga, data.harga)
+                imagePost(binding.image, data.gambar)
+                Log.v("DATAAA", data.toString())
+
+            }
+        }
     }
 
 }

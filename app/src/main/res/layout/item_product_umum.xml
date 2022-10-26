@@ -55,7 +55,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nunito_sans"
                     android:maxLines="3"
-
+                    android:text="@{productModel.nama}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

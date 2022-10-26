@@ -11,18 +11,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.model.response.LoginResponse
 import com.example.connect.data.model.response.UserLogin
 import com.example.connect.databinding.FragmentSplashScreenBinding
+import com.example.connect.utilites.app.SharedPreferences
 import com.example.connect.utilites.isConnected
 import com.example.connect.utilites.toastConnection
-
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashScreenFragment : Fragment() {
     private lateinit var binding: FragmentSplashScreenBinding
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +38,24 @@ class SplashScreenFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_splash_screen, container, false)
 
+        val token = sharedPreferences.getToken()
+        if (token.isNotEmpty()) goToHome()
+
+
+
         Handler(Looper.getMainLooper()).postDelayed({
             checking()
         }, 3000)
 
 
+
         return binding.root
     }
+
+    private fun goToHome() {
+        findNavController().navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToMainAppActivity())
+    }
+
 
     private fun checking() {
         if (checkConnection()) {

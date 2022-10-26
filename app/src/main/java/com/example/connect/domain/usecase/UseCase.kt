@@ -104,6 +104,10 @@ class UseCase @Inject constructor(
         return repository.register(registerRequest)
     }
 
+    suspend fun detailProduct(id:Int): Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>>{
+        return repository.getDetailProduct(id)
+    }
+
 
     //belom diperbaiki
 

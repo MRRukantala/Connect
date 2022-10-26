@@ -51,6 +51,8 @@ interface ApiRepository {
     suspend fun updateMyProfile(profileRequest: ProfileRequest, id:Int, method:Map<String, String>):
             Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>
 
+    suspend fun getDetailProduct(id:Int):Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>>
+
     //belom diperbaiki
 
 

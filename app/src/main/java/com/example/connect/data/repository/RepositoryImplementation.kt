@@ -325,6 +325,26 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
+    override suspend fun getDetailProduct(id: Int): Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>> {
+        return flow {
+            val response = apiClient.getDetailProduct(id)
+            if (response.isSuccessful) {
+                delay(800)
+                val body = response.body()?.data
+                val data = mutableListOf<DetailProductEntity>()
+                body?.forEach {
+                    data.add(it.toDetailProductEntity())
+                }
+
+                Log.v("VIEWMODELDETAILPRODUCT", data.toString())
+                emit(Result.Success(data))
+
+            } else {
+                response.message()
+            }
+        }
+    }
+
 
     //belom diperbaiki
 

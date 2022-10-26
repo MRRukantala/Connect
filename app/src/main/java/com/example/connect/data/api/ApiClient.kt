@@ -136,6 +136,11 @@ interface ApiClient {
         @Path("id") id: Int
     ): Response<ResponseListWrapper<ProductResponse>>
 
+    @GET("produk-public/{id}")
+    suspend fun getDetailProduct(
+        @Path("id") id: Int
+    ):Response<ResponseListWrapperSementara<ProductResponse>>
+
 
 
 

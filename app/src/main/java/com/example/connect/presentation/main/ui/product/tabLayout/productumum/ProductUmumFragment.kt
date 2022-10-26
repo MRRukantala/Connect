@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.ProductUmumFragmentBinding
+import com.example.connect.presentation.main.ui.product.DashboardFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+
 @AndroidEntryPoint
 class ProductUmumFragment : Fragment() {
 
@@ -42,7 +45,9 @@ class ProductUmumFragment : Fragment() {
 
         binding.recyclerViewProductUmum.adapter = ProductUmumAdapter(
             ProductUmumAdapter.OnclickListener {
-//                viewModel.displayNewsDetails(it)
+                runCatching {
+                    findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment())
+                }
             }
         )
 
