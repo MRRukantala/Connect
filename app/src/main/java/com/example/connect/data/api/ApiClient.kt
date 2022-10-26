@@ -8,6 +8,8 @@ import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.request.PendidikanRequest
 import com.example.connect.data.model.request.RegisterRequest
 import com.example.connect.data.model.response.*
+import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
+import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
