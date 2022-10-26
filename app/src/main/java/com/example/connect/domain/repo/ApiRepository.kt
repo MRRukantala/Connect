@@ -6,7 +6,11 @@ import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
+import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
+import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import com.example.connect.domain.entity.*
+import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
+import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import kotlinx.coroutines.flow.Flow
 import com.example.connect.utilites.base.Result
 
@@ -41,6 +45,10 @@ interface ApiRepository {
     suspend fun getAllProductMarkOI(): Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>
 
     suspend fun getProductByIdUser(id:Int):Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>
+
+    suspend fun getAllPlaylist(): Flow<Result<List<PlaylistELearningEntity>, ResponseListWrapper<PlaylistElearningResponse>>>
+
+    suspend fun getAllVideoELearning(id: Int): Flow<Result<List<VideoELearningEntity>, ResponseListWrapper<VideoELearningResponse>>>
 
     suspend fun postAgenda(agendaRequest: AgendaRequest): Flow<Result<List<PostAgendaEntity>, ResponseListWrapper<AgendaResponse>>>
 

@@ -158,4 +158,14 @@ interface ApiClient {
         @Path("id") id: Int,
     ): Response<ResponseObjectWrapper<PendidikanResponse>>
 
+    // API PLAYLIST E LEARNING
+    @GET("playlist-elearning")
+    suspend fun getPlaylist(): Response<ResponseListWrapper<PlaylistElearningResponse>>
+
+    // API VIDEO E LEARNING
+    @GET("video-elearning")
+    suspend fun getVideoPlaylist(
+        @Path("id") id: Int
+    ): Response<ResponseListWrapper<VideoELearningResponse>>
+
 }

@@ -6,7 +6,11 @@ import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
+import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
+import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import com.example.connect.domain.entity.*
+import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
+import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import com.example.connect.domain.repo.ApiRepository
 import com.example.connect.utilites.base.Result
 import kotlinx.coroutines.flow.Flow
@@ -106,6 +110,14 @@ class UseCase @Inject constructor(
 
     suspend fun detailProduct(id:Int): Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>>{
         return repository.getDetailProduct(id)
+    }
+
+    suspend fun getAllPlaylist(): Flow<Result<List<PlaylistELearningEntity>, ResponseListWrapper<PlaylistElearningResponse>>> {
+        return repository.getAllPlaylist()
+    }
+
+    suspend fun getAllVideoELearning(id: Int): Flow<Result<List<VideoELearningEntity>, ResponseListWrapper<VideoELearningResponse>>> {
+        return repository.getAllVideoELearning(id)
     }
 
 

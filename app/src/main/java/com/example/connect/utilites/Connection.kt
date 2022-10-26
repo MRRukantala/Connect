@@ -1,6 +1,10 @@
 package com.example.connect.utilites
 
+import android.app.Fragment
+import android.app.FragmentManager
 import android.content.Context
+import android.icu.text.DateFormat.DAY
+import android.icu.text.DateTimePatternGenerator.DAY
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.widget.Toast
@@ -8,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import java.sql.Time
 import java.text.NumberFormat
 import java.util.*
 
@@ -67,8 +72,8 @@ fun rupiah(number: Int): String{
 }
 
 class TabAdapter(
-    list: ArrayList<Fragment>,
-    fragmentManager: FragmentManager,
+    list: ArrayList<androidx.fragment.app.Fragment>,
+    fragmentManager: androidx.fragment.app.FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
     private val fragmentList = list
@@ -76,14 +81,14 @@ class TabAdapter(
         return fragmentList.size
     }
 
-    override fun createFragment(position: Int): Fragment {
+    override fun createFragment(position: Int): androidx.fragment.app.Fragment {
         return fragmentList[position]
     }
 }
 
 class AdapterBottomMenuViewPager(
-    list: ArrayList<Fragment>,
-    fragmentManager: FragmentManager,
+    list: ArrayList<androidx.fragment.app.Fragment>,
+    fragmentManager: androidx.fragment.app.FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
@@ -93,7 +98,7 @@ class AdapterBottomMenuViewPager(
         return list.size
     }
 
-    override fun createFragment(position: Int): Fragment {
+    override fun createFragment(position: Int): androidx.fragment.app.Fragment {
         return list[position]
     }
 }
