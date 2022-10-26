@@ -19,6 +19,9 @@ class PendidikanAdapter(val onclickListener: OnclickListener) :
         ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: PendidikanEntity) {
             binding.binding = data
+            binding.imageButton3.setOnClickListener {
+                onclickListener.onClick(data)
+            }
             binding.executePendingBindings()
         }
     }
@@ -45,9 +48,9 @@ class PendidikanAdapter(val onclickListener: OnclickListener) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pendidikanItem = getItem(position)
         holder.bind(pendidikanItem)
-        holder.itemView.setOnClickListener {
-            onclickListener.onClick(pendidikanItem)
-        }
+//        holder.itemView.setOnClickListener {
+//            onclickListener.onClick(pendidikanItem)
+//        }
     }
 
     class OnclickListener(

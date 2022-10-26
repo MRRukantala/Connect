@@ -1,6 +1,7 @@
 package com.example.connect.data.model.response
 
 
+import com.example.connect.domain.entity.DetailProductEntity
 import com.example.connect.domain.entity.ProductEntity
 import com.google.gson.annotations.SerializedName
 
@@ -36,5 +37,16 @@ data class ProductResponse(
         harga ?: 0,
         gambar.orEmpty(),
         createdAt.orEmpty()
+    )
+
+    fun toDetailProductEntity() = DetailProductEntity(
+
+        id ?: 0,
+        deskripsi.orEmpty(),
+        namaProduk.orEmpty(),
+        harga ?: 0,
+        gambar.orEmpty(),
+        createdAt.orEmpty()
+
     )
 }

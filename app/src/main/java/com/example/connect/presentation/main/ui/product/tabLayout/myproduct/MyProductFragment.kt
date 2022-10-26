@@ -15,6 +15,7 @@ import com.example.connect.presentation.main.ui.product.DashboardFragmentDirecti
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+
 @AndroidEntryPoint
 class MyProductFragment : Fragment() {
 
@@ -59,11 +60,13 @@ class MyProductFragment : Fragment() {
 
         binding.recyclerViewMyProduk.adapter = MyProductAdapter(
             MyProductAdapter.OnclickListener {
-//                viewModel.displayNewsDetails(it)
+                runCatching {
+                    findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment())
+                }
             }
         )
 
-        binding.fabNews.setOnClickListener{
+        binding.fabNews.setOnClickListener {
             findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
         }
 //

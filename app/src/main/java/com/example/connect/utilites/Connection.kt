@@ -1,18 +1,11 @@
 package com.example.connect.utilites
 
-import android.app.Fragment
-import android.app.FragmentManager
 import android.content.Context
-import android.icu.text.DateFormat.DAY
-import android.icu.text.DateTimePatternGenerator.DAY
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import java.sql.Time
 import java.text.NumberFormat
 import java.util.*
 

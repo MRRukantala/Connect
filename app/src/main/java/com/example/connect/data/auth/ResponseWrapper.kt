@@ -8,6 +8,11 @@ data class ResponseListWrapper<T>(
     @SerializedName("data") val data: List<T>? = null
 )
 
+data class ResponseListWrapper2<T>(
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("data") val data: List<T>? = null
+)
+
 data class ResponseObjectWrapper<T>(
     @SerializedName("status") val status: Boolean,
     @SerializedName("message") val message: String,

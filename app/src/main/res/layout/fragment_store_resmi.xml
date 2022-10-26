@@ -4,6 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.connect.presentation.main.ui.product.resmi.resmi.StoreResmiViewModel" />
+
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,7 +56,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
-
+            listProductUmum="@{viewModel.data}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"

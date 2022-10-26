@@ -44,6 +44,8 @@ class DetailAgendaFragment : Fragment() {
 
         viewModel.detailAgenda(63)
 
+
+
         observe()
     }
 

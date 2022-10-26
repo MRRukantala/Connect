@@ -60,7 +60,7 @@ interface ApiClient {
     @GET("agenda-public/{id}")
     suspend fun getDetailAgenda(
         @Path("id") id: Int
-    ): Response<ResponseObjectWrapper<AgendaResponse>>
+    ):Response<ResponseObjectWrapper<AgendaResponse>>
 
     // API POST AGENDA
     @Multipart
@@ -107,7 +107,7 @@ interface ApiClient {
     @GET("layanan/{id}")
     suspend fun getDetailLayanan(
         @Path("id") id: Int
-    ): Response<ResponseObjectWrapper<LayananResponse>>
+    ):Response<ResponseObjectWrapper<DetailArtikelResponse>>
 
     //product
 
@@ -137,6 +137,13 @@ interface ApiClient {
     suspend fun getProductByIdUser(
         @Path("id") id: Int
     ): Response<ResponseListWrapper<ProductResponse>>
+
+    @GET("produk-public/{id}")
+    suspend fun getDetailProduct(
+        @Path("id") id: Int
+    ):Response<ResponseListWrapperSementara<ProductResponse>>
+
+
 
 
     //API POST PENDIDIKAN

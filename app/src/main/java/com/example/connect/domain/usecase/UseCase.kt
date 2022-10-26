@@ -40,72 +40,76 @@ class UseCase @Inject constructor(
     }
 
     suspend fun getAllKiriman():
-            Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
+    Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>>{
         return repository.getAllKiriman()
     }
 
-    suspend fun getKirimanByIdUser(id: Int):
-            Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
+    suspend fun getKirimanByIdUser(id:Int):
+    Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>{
         return repository.getKirimanByIdUser(id)
     }
 
-    suspend fun getDetailKiriman(id: Int):
-            Flow<Result<KirimanEntity, ResponseObjectWrapper<KirimanResponse>>> {
+    suspend fun getDetailKiriman(id:Int):
+    Flow<Result<KirimanEntity, ResponseObjectWrapper<KirimanResponse>>>{
         return repository.getDetailKiriman(id)
     }
 
     suspend fun getLayanan():
-            Flow<Result<List<LayananEntity>, ResponseListWrapper<LayananResponse>>> {
+    Flow<Result<List<LayananEntity>, ResponseListWrapper<LayananResponse>>>{
         return repository.getAllLayanan()
     }
 
-    suspend fun getDetailLayanan(id: Int):
-            Flow<Result<LayananEntity, ResponseObjectWrapper<LayananResponse>>> {
+    suspend fun getDetailLayanan(id:Int):
+    Flow<Result<LayananEntity, ResponseObjectWrapper<DetailArtikelResponse>>>{
         return repository.getDetailLayanan(id)
     }
 
-    suspend fun getProfile(id: Int):
-            Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>> {
+    suspend fun getProfile(id:Int):
+    Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>>{
         return repository.getProfile(id)
     }
 
-    suspend fun getProductByAdmin(id: Int):
-            Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>> {
+    suspend fun getProductByAdmin(id:Int):
+    Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>{
         return repository.getAllProductByAdmin(id)
     }
 
     suspend fun getAllProduct():
-            Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>> {
+    Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>{
         return repository.getAllProductMarkOI()
     }
 
-    suspend fun getAllProductByUser(id: Int):
-            Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>> {
+    suspend fun getAllProductByUser(id:Int):
+    Flow<Result<List<ProductEntity>, ResponseListWrapper<ProductResponse>>>{
         return repository.getProductByIdUser(id)
     }
 
     suspend fun postAgenda(agendaRequest: AgendaRequest):
-            Flow<Result<List<PostAgendaEntity>, ResponseListWrapper<AgendaResponse>>> {
+    Flow<Result<List<PostAgendaEntity>, ResponseListWrapper<AgendaResponse>>>{
         return repository.postAgenda(agendaRequest)
     }
 
     suspend fun posKiriman(kirimanRequest: KirimanRequest):
-            Flow<Result<PostKirimanEntity, ResponseObjectWrapper<PostKirimanResponse>>> {
+    Flow<Result<PostKirimanEntity, ResponseObjectWrapper<PostKirimanResponse>>>{
         return repository.postKiriman(kirimanRequest)
     }
 
     suspend fun posProduct(productRequest: ProductRequest):
-            Flow<Result<List<PostProductEntity>, ResponseListWrapper<PostProductResponse>>> {
+    Flow<Result<List<PostProductEntity>, ResponseListWrapper<PostProductResponse>>>{
         return repository.postProduct(productRequest)
     }
 
-    suspend fun editProfile(profileRequest: ProfileRequest, id: Int, method: Map<String, String>):
-            Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>> {
+    suspend fun editProfile(profileRequest: ProfileRequest, id:Int, method:Map<String, String>):
+    Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>{
         return repository.updateMyProfile(profileRequest, id, method)
     }
 
     suspend fun register(registerRequest: RegisterRequest): Flow<Result<RegisterEntity, ResponseObjectWrapper<RegisterResponse>>> {
         return repository.register(registerRequest)
+    }
+
+    suspend fun detailProduct(id:Int): Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>>{
+        return repository.getDetailProduct(id)
     }
 
     suspend fun getAllPlaylist(): Flow<Result<List<PlaylistELearningEntity>, ResponseListWrapper<PlaylistElearningResponse>>> {

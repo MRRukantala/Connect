@@ -36,7 +36,7 @@ interface ApiRepository {
 
     suspend fun getAllLayanan(): Flow<Result<List<LayananEntity>, ResponseListWrapper<LayananResponse>>>
 
-    suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<LayananResponse>>>
+    suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<DetailArtikelResponse>>>
 
     suspend fun getProfile(id: Int): Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>>
 
@@ -58,6 +58,8 @@ interface ApiRepository {
 
     suspend fun updateMyProfile(profileRequest: ProfileRequest, id:Int, method:Map<String, String>):
             Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>
+
+    suspend fun getDetailProduct(id:Int):Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>>
 
     //belom diperbaiki
 

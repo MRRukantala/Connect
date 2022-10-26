@@ -157,7 +157,7 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<LayananResponse>>> {
+    override suspend fun getDetailLayanan(id: Int): Flow<Result<LayananEntity, ResponseObjectWrapper<DetailArtikelResponse>>> {
         return flow {
             val response = apiClient.getDetailLayanan(id)
             delay(800)
@@ -352,6 +352,26 @@ class RepositoryImplementation @Inject constructor(
 
                 Log.v("VIEWMODEL EDIT PROFILE", response.toString())
 
+            }
+        }
+    }
+
+    override suspend fun getDetailProduct(id: Int): Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>> {
+        return flow {
+            val response = apiClient.getDetailProduct(id)
+            if (response.isSuccessful) {
+                delay(800)
+                val body = response.body()?.data
+                val data = mutableListOf<DetailProductEntity>()
+                body?.forEach {
+                    data.add(it.toDetailProductEntity())
+                }
+
+                Log.v("VIEWMODELDETAILPRODUCT", data.toString())
+                emit(Result.Success(data))
+
+            } else {
+                response.message()
             }
         }
     }

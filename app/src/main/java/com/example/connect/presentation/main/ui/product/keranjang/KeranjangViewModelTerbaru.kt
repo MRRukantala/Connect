@@ -34,21 +34,21 @@ class KeranjangViewModelTerbaru @Inject constructor(
         _state.value = KeranjangViewState.Error(detailProductEntity)
     }
 
-    fun register(){
-        viewModelScope.launch {
-            useCase.register()
-                .onStart { loading()
-
-                }.catch {
-
-                }.collect{ result ->
-                    when(result){
-                        is Result.Success -> success(result.data)
-                        is Result.Error -> { }
-                    }
-                }
-        }
-    }
+//    fun register(){
+//        viewModelScope.launch {
+//            useCase.register()
+//                .onStart { loading()
+//
+//                }.catch {
+//
+//                }.collect{ result ->
+//                    when(result){
+//                        is Result.Success -> success(result.data)
+//                        is Result.Error -> { }
+//                    }
+//                }
+//        }
+//    }
 }
 
 sealed class KeranjangViewState {
