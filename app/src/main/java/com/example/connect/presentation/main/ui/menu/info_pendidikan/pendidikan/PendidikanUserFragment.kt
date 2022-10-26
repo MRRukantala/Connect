@@ -55,7 +55,7 @@ class PendidikanUserFragment : Fragment() {
 
             PendidikanAdapter.OnclickListener{
                 runCatching {
-                    findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment())
+                    findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment())
                 }
             }
         )
