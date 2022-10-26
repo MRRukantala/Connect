@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.PendidikanUserFragmentBinding
 import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaState
+import com.example.connect.presentation.main.ui.menu.info_pendidikan.ContainerInfoDirections
 import com.example.connect.presentation.main.ui.menu.info_pendidikan.info.InfoUserViewModelState
 import com.example.connect.presentation.main.ui.menu.info_pendidikan.info.InfoUserViewModelTerbaru
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,12 +52,15 @@ class PendidikanUserFragment : Fragment() {
         observe()
 
         binding.rv.adapter = PendidikanAdapter(
+
             PendidikanAdapter.OnclickListener{
                 runCatching {
-
+                    findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment())
                 }
             }
         )
+
+
     }
 
     private fun observe() {
