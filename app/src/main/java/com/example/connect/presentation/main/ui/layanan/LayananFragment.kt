@@ -30,33 +30,11 @@ class LayananFragment : Fragment() {
             FragmentNotificationsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-
-//        val application = requireNotNull(activity).application
-//        val factory = LayananViewModelFactory(
-//            requireActivity()
-//                .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-//                .getString("token", "").toString(), application
-//        )
-
-//        val viewModel = ViewModelProvider(this, factory).get(LayananViewModel::class.java)
-//        binding.viewModel = viewModel
-
         binding.recyclerView2.adapter = LayananAdapter(
             LayananAdapter.OnclickListener {
                 findNavController().navigate(LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment())
             }
         )
-
-//        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
-//            if (null != it) {
-//                this.findNavController().navigate(
-//                    LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment(
-//                        it
-//                    )
-//                )
-//                viewModel.displayNewsDetailsCompelete()
-//            }
-//        })
 
         return binding.root
     }
