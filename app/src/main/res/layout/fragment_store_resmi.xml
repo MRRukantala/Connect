@@ -60,6 +60,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
             app:msv_viewState="content"
+            app:msv_animateViewChanges="true"
             app:msv_loadingView="@layout/shimmer_product_grid"
             app:msv_emptyView="@layout/empty_data">
 

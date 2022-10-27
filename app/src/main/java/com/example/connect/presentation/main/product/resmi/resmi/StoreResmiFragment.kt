@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.ui.product.resmi.resmi
+package com.example.connect.presentation.main.product.resmi.resmi
 
 import android.os.Bundle
 import android.view.LayoutInflater
