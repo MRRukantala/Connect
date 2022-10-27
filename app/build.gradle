@@ -8,7 +8,7 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 android {
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.example.connect"
@@ -46,6 +46,7 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.3.0"
     implementation("androidx.room:room-runtime:2.3.0")
+    testImplementation 'junit:junit:4.12'
     kapt ("androidx.room:room-compiler:2.3.0")
 
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -115,6 +116,9 @@ dependencies {
 
     // MultiState
     implementation  'com.github.Kennyc1012:MultiStateView:2.2.0'
+
+    // Youtube Player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
 
 
     // UCrop
