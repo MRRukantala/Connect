@@ -42,7 +42,6 @@
                 app:msv_loadingView="@layout/shimmer_detail_agenda_fragment"
                 app:msv_viewState="content"
                 >
-
                 <androidx.constraintlayout.widget.ConstraintLayout
 
                     android:layout_width="match_parent"
@@ -180,6 +179,9 @@
                     </androidx.cardview.widget.CardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.kennyc.view.MultiStateView>
+
+
 
 
         </androidx.core.widget.NestedScrollView>

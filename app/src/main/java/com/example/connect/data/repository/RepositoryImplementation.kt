@@ -186,6 +186,7 @@ class RepositoryImplementation @Inject constructor(
     override suspend fun getProfile(id: Int): Flow<Result<List<ProfileEntity>, ResponseListWrapper<ProfileResponse>>> {
         return flow {
             val response = apiClient.getProfile(id)
+            Log.v("VIEWMODE_GET_USER", response.toString())
             delay(800)
             if (response.isSuccessful) {
                 val body = response.body()?.data

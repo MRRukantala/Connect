@@ -10,11 +10,11 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.connect.databinding.MyNewsFragmentBinding
 import com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
-import com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+
 @AndroidEntryPoint
 class MyNewsFragment : Fragment() {
 

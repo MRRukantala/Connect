@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.ui.home.tablayout.news.detail
+package com.example.connect.presentation.main.home.tablayout.news.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.DetailNewsFragmentBinding
+import com.kennyc.view.MultiStateView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -33,7 +35,7 @@ class DetailNewsFragment : Fragment() {
 //        val viewModelFactory = DetailViewModelFactory(newProperty, application)
 
 
-        binding.viewModel = viewModel
+//        binding.viewModel = viewModel
 
         binding.include6.backImage.setOnClickListener {
             findNavController().popBackStack()

@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.product.ProdukFragment">
+        tools:context=".presentation.main.product.TokoFragment">
 
         <TextView
             android:id="@+id/textView23"
@@ -78,7 +78,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    listProductKhusus="@{viewModelDashboard.data}"
+                    listProductKhusus="@{viewModel.data}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

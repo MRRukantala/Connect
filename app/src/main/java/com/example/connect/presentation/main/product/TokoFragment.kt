@@ -13,12 +13,13 @@ import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProdu
 import com.example.connect.presentation.main.product.tabLayout.productumum.ProductUmumFragment
 import com.example.connect.utilites.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class ProdukFragment : Fragment() {
+class TokoFragment : Fragment() {
 
     lateinit var binding: FragmentTokoBinding
     private val viewModel: ProdukViewModel by viewModels()

@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.ui.menu.info_pendidikan.info
+package com.example.connect.presentation.main.menu.info_pendidikan.info
 
 import android.content.Context
 import android.content.Intent
@@ -11,12 +11,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.MainActivity
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
 import com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfoDirections
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
@@ -78,6 +80,7 @@ class InfoUserFragment : Fragment() {
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
     }
 
     private fun handleState(state: InfoUserViewModelState) {

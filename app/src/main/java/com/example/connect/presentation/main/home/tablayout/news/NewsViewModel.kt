@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.ui.home.tablayout.news
+package com.example.connect.presentation.main.home.tablayout.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

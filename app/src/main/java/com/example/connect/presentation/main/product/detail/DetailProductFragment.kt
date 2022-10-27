@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.ui.product.detail
+package com.example.connect.presentation.main.product.detail
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.DetailProductFragmentBinding
 import com.example.connect.domain.entity.DetailProductEntity
+import com.example.connect.presentation.main.product.detail.DetailProductState
+import com.example.connect.presentation.main.product.detail.DetailProductViewModel
 import com.example.connect.utilites.currency
 import com.example.connect.utilites.imagePost
 import com.kennyc.view.MultiStateView

@@ -1,6 +1,7 @@
-package com.example.connect.presentation.main.ui.product.tabLayout.myproduct
+package com.example.connect.presentation.main.product.tabLayout.myproduct
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.MyProductFragmentBinding
-import com.example.connect.presentation.main.ui.product.DashboardFragmentDirections
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -59,13 +58,7 @@ class MyProductFragment : Fragment() {
 //            })
 //        }
 
-        binding.recyclerViewMyProduk.adapter = MyProductAdapter(
-            MyProductAdapter.OnclickListener {
-                runCatching {
-//                    findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment())
-                }
-            }
-        )
+
 
         binding.fabNews.setOnClickListener {
 //            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
@@ -109,8 +102,18 @@ class MyProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getAllProductByUser(52)
+        binding.viewModel = viewModel
+
 
         observe()
+        binding.recyclerViewMyProduk.adapter = MyProductAdapter(
+            MyProductAdapter.OnclickListener {
+                runCatching {
+//                    findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment())
+                }
+            }
+        )
+        Log.v("DATAVIEWMODEL", viewModel.data.value.toString())
     }
 
     private fun observe() {
@@ -126,7 +129,7 @@ class MyProductFragment : Fragment() {
                 binding.msvListProduct.viewState = MultiStateView.ViewState.LOADING
             }
             is MyProductState.Success -> {
-                binding.recyclerViewMyProduk.isVisible = true
+                Log.v("DATA", state.myProductEntity.toString())
                 binding.msvListProduct.viewState =
                     if (state.myProductEntity.isEmpty()) MultiStateView.ViewState.EMPTY
                 else MultiStateView.ViewState.CONTENT

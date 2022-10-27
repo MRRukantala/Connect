@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.ui.product.tabLayout.productumum
+package com.example.connect.presentation.main.product.tabLayout.productumum
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.connect.databinding.ProductUmumFragmentBinding
-import com.example.connect.presentation.main.ui.product.DashboardFragmentDirections
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn

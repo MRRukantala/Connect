@@ -1,7 +1,6 @@
-package com.example.connect.presentation.main.ui.home.tablayout.agenda
+package com.example.connect.presentation.main.home.tablayout.agenda
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.AgendaFragmentBinding
-import com.example.connect.presentation.main.ui.home.HomeFragmentDirections
-import com.kennyc.view.MultiStateView
 import com.example.connect.presentation.main.home.HomeFragmentDirections
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

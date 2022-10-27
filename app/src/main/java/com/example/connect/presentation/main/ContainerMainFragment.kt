@@ -1,17 +1,13 @@
 package com.example.connect.presentation.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentMainAppBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +21,7 @@ class ContainerMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainAppBinding.inflate(inflater,  container, false)
+        binding = FragmentMainAppBinding.inflate(inflater, container, false)
         return binding.root
     }
 
