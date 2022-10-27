@@ -3,10 +3,12 @@ package com.example.connect.presentation.auth.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -32,6 +34,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     val viewModel: LoginViewModel by viewModels()
+
     private val authNavController: NavController? by lazy { activity?.findNavController(R.id.nav_host_fragment_authentication) }
     private val mainNavController: NavController? by lazy { activity?.findNavController(R.id.nav_host_fragment_main) }
 
@@ -53,9 +56,7 @@ class LoginFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable?) {
-
-            binding.login.isEnabled = true
-
+            binding.login.isEnabled = notEmptyField()
         }
     }
 
@@ -106,26 +107,31 @@ class LoginFragment : Fragment() {
             .launchIn(lifecycleScope)
     }
 
+    private fun notEmptyField() =
+        binding.editTextEmail.isNotEmpty() && binding.editTextPassword.isNotEmpty()
+
     private fun handleState(state: LoginState) {
         when (state) {
-            is LoginState.Loading -> {
-            }
+            is LoginState.Loading -> {}
             is LoginState.Success -> {
-                loginSuccessHandler(state.loginEntity)
+                loginSuccessHandler(state.loginEntity, state.loginEntity.token)
             }
             else -> {}
         }
     }
 
 
-
     private fun loginSuccessHandler(loginEntity: LoginEntity, token: String = "") {
-        if (loginEntity.token.isNotEmpty()) {
-            pref.saveToken(token)
-            mainNavController?.navigate(ContainerAuthFragmentDirections.actionContainerAuthFragmentToContainerMainFragment())
-        } else {
-            authNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToVerifFragment())
-        }
+        if (loginEntity.token.isNotEmpty()) toMain(token) else toVerify()
+    }
+
+    private fun toMain(token: String) {
+        pref.saveToken(token)
+        mainNavController?.navigate(ContainerAuthFragmentDirections.actionContainerAuthFragmentToContainerMainFragment())
+    }
+
+    private fun toVerify() {
+        authNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToVerifFragment())
     }
 
 }
