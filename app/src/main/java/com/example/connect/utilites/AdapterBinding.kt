@@ -14,9 +14,11 @@ import com.example.connect.R
 import com.example.connect.data.database.SaveProductData
 import com.example.connect.domain.entity.*
 import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
+import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import com.example.connect.presentation.main.home.tablayout.agenda.AgendaAdapter
 import com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
 import com.example.connect.presentation.main.layanan.PlaylistAdapter
+import com.example.connect.presentation.main.layanan.elearning.list.VideoELearningAdapter
 import com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.PendidikanAdapter
 import com.example.connect.presentation.main.product.ProductAdapter
 import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProductAdapter
@@ -32,6 +34,15 @@ fun bindRecyclerViewListPlaylist(
     data: List<PlaylistELearningEntity>?
 ) {
     val adapter = recyclerView.adapter as PlaylistAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listVideoELearning")
+fun bindRecyclerViewListVideoELearning(
+    recyclerView: RecyclerView,
+    data: List<VideoELearningEntity>?
+) {
+    val adapter = recyclerView.adapter as VideoELearningAdapter
     adapter.submitList(data)
 }
 
