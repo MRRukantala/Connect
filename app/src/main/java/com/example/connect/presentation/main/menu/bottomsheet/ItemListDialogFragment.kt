@@ -37,15 +37,15 @@ class ItemListDialogFragment : BottomSheetDialogFragment() {
         binding = FragmentItemListDialogListDialogBinding.inflate(inflater, container, false)
 
         binding.linearLayout1.setOnClickListener {
-            findNavController().navigate(ItemListDialogFragmentDirections.actionItemListDialogFragmentToSaranNKritikFragment())
+//            findNavController().navigate(ItemListDialogFragmentDirections.actionItemListDialogFragmentToSaranNKritikFragment())
         }
 
         binding!!.linearLayout2.setOnClickListener {
-            findNavController().navigate(ItemListDialogFragmentDirections.actionItemListDialogFragmentToKetentuanAppFragment2())
+//            findNavController().navigate(ItemListDialogFragmentDirections.actionItemListDialogFragmentToKetentuanAppFragment2())
         }
 
         binding!!.linearLayout3.setOnClickListener {
-            findNavController().navigate(ItemListDialogFragmentDirections.actionItemListDialogFragmentToAboutAppFragment())
+//            findNavController().navigate(ItemListDialogFragmentDirections.actionItemListDialogFragmentToAboutAppFragment())
         }
 
 

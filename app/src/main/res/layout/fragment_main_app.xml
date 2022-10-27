@@ -10,10 +10,9 @@
             type="com.example.connect.presentation.main.ContainerMainFragment" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context=".presentation.main.ContainerMainFragment">
 
         <androidx.fragment.app.FragmentContainerView
@@ -23,6 +22,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bnMenu"
+            app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/menu_navigation"
             tools:layout="@layout/fragment_home" />
 
@@ -32,7 +33,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_nav_menu" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

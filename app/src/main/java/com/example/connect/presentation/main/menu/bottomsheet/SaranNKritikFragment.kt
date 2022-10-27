@@ -30,7 +30,7 @@ class SaranNKritikFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.saran_n_kritik_fragment, container, false)
 
         binding.send.setOnClickListener {
-            findNavController().navigate(SaranNKritikFragmentDirections.actionSaranNKritikFragmentToSaranTerimaKasihFragment())
+//            findNavController().navigate(SaranNKritikFragmentDirections.actionSaranNKritikFragmentToSaranTerimaKasihFragment())
         }
 
         binding.include11.backImage.setOnClickListener {
