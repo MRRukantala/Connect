@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.ui.layanan.elearning.list.VideoELearningFragment">
+    tools:context=".presentation.main.layanan.elearning.list.VideoELearningFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

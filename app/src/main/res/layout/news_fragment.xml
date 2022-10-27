@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.home.tablayout.news.NewsViewModel" />
+            type="com.example.connect.presentation.main.home.tablayout.news.NewsViewModel" />
     </data>
 
 
@@ -15,9 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F5F5">
-
-
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

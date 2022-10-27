@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumViewModelTerbaru" />
+            type="com.example.connect.presentation.main.product.tabLayout.productumum.ProductUmumViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.ui.product.tabLayout.productumum.ProductUmumFragment">
+        tools:context=".presentation.main.product.tabLayout.productumum.ProductUmumFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView

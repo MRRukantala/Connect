@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/dp20"
         android:paddingRight="20dp"
-        tools:context=".presentation.menu.MenuFragment">
+        tools:context=".presentation.auth.boarding.MenuFragment">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"

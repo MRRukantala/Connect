@@ -8,7 +8,7 @@
 
         <variable
             name="agenda"
-            type="com.example.connect.presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaViewModelTerbaru" />
+            type="com.example.connect.presentation.main.home.tablayout.agenda.detail.DetailAgendaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:context=".presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
+                tools:context=".presentation.main.home.tablayout.agenda.detail.DetailAgendaFragment">
 
 
                 <androidx.cardview.widget.CardView

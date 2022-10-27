@@ -11,7 +11,7 @@
         android:paddingTop="@dimen/fragment_vertical_margin"
         android:paddingRight="@dimen/fragment_horizontal_margin"
         android:paddingBottom="@dimen/fragment_vertical_margin"
-        tools:context=".presentation.signup.SignFragment">
+        tools:context=".presentation.auth.signup.RegisterFragment">
 
         <include
             android:id="@+id/back"
@@ -312,10 +312,7 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/nunito_sans"
-            android:paddingStart="@dimen/dp12"
-            android:paddingTop="@dimen/dp12"
-            android:paddingEnd="@dimen/dp12"
-            android:paddingBottom="@dimen/dp12"
+            android:padding="@dimen/dp12"
             android:text="@string/syarat_penggunaan_kami"
             android:textColor="@color/color_primary"
             android:textSize="@dimen/sp12"
