@@ -5,6 +5,436 @@
     android:id="@+id/navigation_home"
     app:startDestination="@id/homeFragment">
 
+    <navigation
+        android:id="@+id/navigation_notifications"
+        app:startDestination="@id/notificationsFragment">
+
+        <fragment
+            android:id="@+id/notificationsFragment"
+            android:name="com.example.connect.presentation.main.layanan.LayananFragment"
+            android:label="fragment_notifications"
+            tools:layout="@layout/fragment_notifications">
+            <action
+                android:id="@+id/action_notificationsFragment_to_detailArtikelMarOIFragment"
+                app:destination="@id/detailArtikelMarOIFragment"
+                app:enterAnim="@android:anim/fade_in"
+                app:exitAnim="@android:anim/fade_out"
+                app:popEnterAnim="@android:anim/fade_in"
+                app:popExitAnim="@android:anim/fade_out" />
+        </fragment>
+        <fragment
+            android:id="@+id/detailArtikelMarOIFragment"
+            android:name="com.example.connect.presentation.main.layanan.detail_artikel.DetailArtikelMarOIFragment"
+            android:label="detail_artikel_mar_o_i_fragment"
+            tools:layout="@layout/detail_artikel_mar_o_i_fragment">
+            <!--        <argument-->
+            <!--            android:name="selectedArtikelMarkOI"-->
+            <!--            app:argType="com.example.connect.main.ui.layanan.DataLayanan" />-->
+            <action
+                android:id="@+id/action_detailArtikelMarOIFragment_to_imageOpener3"
+                app:destination="@id/imageOpener3" />
+        </fragment>
+        <fragment
+            android:id="@+id/imageOpener3"
+            android:name="com.example.connect.utilites.ImageOpener"
+            android:label="ImageOpener"
+            tools:layout="@layout/fragment_image_opener">
+            <argument
+                android:name="link"
+                app:argType="string" />
+        </fragment>
+    </navigation>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.connect.presentation.main.layanan.LayananFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications">
+        <action
+            android:id="@+id/action_notificationsFragment_to_detailArtikelMarOIFragment"
+            app:destination="@id/detailArtikelMarOIFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <action
+        android:id="@+id/action_notificationsFragment_to_detailArtikelMarOIFragment"
+        app:destination="@id/detailArtikelMarOIFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <fragment
+        android:id="@+id/detailArtikelMarOIFragment"
+        android:name="com.example.connect.presentation.main.layanan.detail_artikel.DetailArtikelMarOIFragment"
+        android:label="detail_artikel_mar_o_i_fragment"
+        tools:layout="@layout/detail_artikel_mar_o_i_fragment">
+        <!--        <argument-->
+        <!--            android:name="selectedArtikelMarkOI"-->
+        <!--            app:argType="com.example.connect.main.ui.layanan.DataLayanan" />-->
+        <action
+            android:id="@+id/action_detailArtikelMarOIFragment_to_imageOpener3"
+            app:destination="@id/imageOpener3" />
+    </fragment>
+    <action
+        android:id="@+id/action_detailArtikelMarOIFragment_to_imageOpener3"
+        app:destination="@id/imageOpener3" />
+    <fragment
+        android:id="@+id/imageOpener3"
+        android:name="com.example.connect.utilites.ImageOpener"
+        android:label="ImageOpener"
+        tools:layout="@layout/fragment_image_opener">
+        <argument
+            android:name="link"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/formPendidikanFragment"
+        android:name="com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
+        android:label="form_pendidikan_fragment"
+        tools:layout="@layout/form_pendidikan_fragment">
+        <!--        <argument-->
+        <!--            android:name="pendidikanSelected"-->
+        <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan"-->
+        <!--            app:nullable="true" />-->
+        <action
+            android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
+            app:destination="@id/containerInfoPendidikanFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/containerInfoPendidikanFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="data"
+            app:argType="com.example.connect.domain.entity.PendidikanEntity" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
+        app:destination="@id/containerInfoPendidikanFragment" />
+    <action
+        android:id="@+id/action_saranNKritikFragment_to_saranTerimaKasihFragment"
+        app:destination="@id/saranTerimaKasihFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <fragment
+        android:id="@+id/containerInfoPendidikanFragment"
+        android:name="com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfo"
+        android:label="ContainerInfoPendidikanFragment"
+        tools:layout="@layout/container_info_pendidikan_fragment">
+        <action
+            android:id="@+id/action_containerInfoPendidikanFragment_to_itemListDialogFragment"
+            app:destination="@id/itemListDialogFragment" />
+        <action
+            android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
+            app:destination="@id/editInfoUserFragment" />
+        <action
+
+            android:id="@+id/action_containerInfoPendidikanFragment_to_formPendidikanFragment"
+            app:destination="@id/formPendidikanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.example.connect.presentation.main.menu.about.AboutAppFragment"
+        android:label="about_app_fragment"
+        tools:layout="@layout/about_app_fragment" />
+    <fragment
+        android:id="@+id/ketentuanAppFragment2"
+        android:name="com.example.connect.presentation.auth.signup.KetentuanAppFragment"
+        android:label="KetentuanAppFragment"
+        tools:layout="@layout/fragment_ketentuan_app" />
+    <action
+        android:id="@+id/action_saranTerimaKasihFragment_to_containerInfoPendidikanFragment"
+        app:destination="@id/containerInfoPendidikanFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <action
+        android:id="@+id/action_itemListDialogFragment_to_ketentuanAppFragment2"
+        app:destination="@id/ketentuanAppFragment2"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <action
+        android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
+        app:destination="@id/containerInfoPendidikanFragment"
+        app:enterAnim="@android:anim/slide_in_left"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/slide_out_right"
+        app:popUpTo="@id/containerInfoPendidikanFragment"
+        app:popUpToInclusive="false" />
+    <dialog
+        android:id="@+id/itemListDialogFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.ItemListDialogFragment"
+        android:label="ItemListDialogFragment"
+        tools:layout="@layout/fragment_item_list_dialog_list_dialog">
+        <action
+            android:id="@+id/action_itemListDialogFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_itemListDialogFragment_to_ketentuanAppFragment2"
+            app:destination="@id/ketentuanAppFragment2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_itemListDialogFragment_to_saranNKritikFragment"
+            app:destination="@id/saranNKritikFragment" />
+    </dialog>
+    <action
+        android:id="@+id/action_containerInfoPendidikanFragment_to_itemListDialogFragment"
+        app:destination="@id/itemListDialogFragment" />
+    <action
+        android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
+        app:destination="@id/editInfoUserFragment" />
+    <action
+
+        android:id="@+id/action_containerInfoPendidikanFragment_to_formPendidikanFragment"
+        app:destination="@id/formPendidikanFragment" />
+    <fragment
+        android:id="@+id/saranTerimaKasihFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.terikamaishsaran.SaranTerimaKasihFragment"
+        android:label="SaranTerimaKasihFragment"
+        tools:layout="@layout/fragment_saran_terima_kasih">
+        <action
+            android:id="@+id/action_saranTerimaKasihFragment_to_containerInfoPendidikanFragment"
+            app:destination="@id/containerInfoPendidikanFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/editInfoUserFragment"
+        android:name="com.example.connect.presentation.main.menu.info_pendidikan.info.edit.EditInfoUserFragment"
+        android:label="EditInfoUserFragment"
+        tools:layout="@layout/edit_info_user_fragment">
+        <action
+            android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
+            app:destination="@id/containerInfoPendidikanFragment" />
+        <!--        <argument-->
+        <!--            android:name="DataHold"-->
+        <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->
+    </fragment>
+    <action
+        android:id="@+id/action_itemListDialogFragment_to_aboutAppFragment"
+        app:destination="@id/aboutAppFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <fragment
+        android:id="@+id/saranNKritikFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.SaranNKritikFragment"
+        android:label="saran_n_kritik_fragment"
+        tools:layout="@layout/saran_n_kritik_fragment">
+        <action
+            android:id="@+id/action_saranNKritikFragment_to_saranTerimaKasihFragment"
+            app:destination="@id/saranTerimaKasihFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <action
+        android:id="@+id/action_itemListDialogFragment_to_saranNKritikFragment"
+        app:destination="@id/saranNKritikFragment" />
+    <fragment
+        android:id="@+id/prosesAddMyProdukFragment"
+        android:name="com.example.connect.presentation.main.product.tabLayout.myproduct.add.ProsesAddMyProdukFragment"
+        android:label="ProsesAddMyProdukFragment"
+        tools:layout="@layout/fragment_proses_add_my_produk">
+        <action
+            android:id="@+id/action_prosesAddMyProdukFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_storeResmiFragment_to_dashboardFragment"
+        app:destination="@id/dashboardFragment"
+        app:enterAnim="@android:anim/slide_in_left"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/slide_out_right" />
+    <fragment
+        android:id="@+id/detailSavedProductFragment"
+        android:name="com.example.connect.presentation.main.product.keranjang.detail.DetailSavedProductFragment"
+        android:label="DetailSavedProductFragment"
+        tools:layout="@layout/detail_saved_product_fragment">
+        <argument
+            android:name="idSelectedSavedProduct"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_detailSavedProductFragment_to_imageOpener2"
+            app:destination="@id/imageOpener2" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.connect.presentation.main.product.ProdukFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_toko">
+        <action
+            android:id="@+id/action_dashboardFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_storeResmiFragment"
+            app:destination="@id/storeResmiFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addMyProdukFragment"
+            app:destination="@id/addMyProdukFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <action
+        android:id="@+id/action_dashboardFragment_to_addMyProdukFragment"
+        app:destination="@id/addMyProdukFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <action
+        android:id="@+id/action_dashboardFragment_to_storeResmiFragment"
+        app:destination="@id/storeResmiFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <action
+        android:id="@+id/action_detailProductFragment_to_keranjangFragment"
+        app:destination="@id/keranjangFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <action
+        android:id="@+id/action_detailSavedProductFragment_to_imageOpener2"
+        app:destination="@id/imageOpener2" />
+    <action
+        android:id="@+id/action_addMyProdukFragment_to_prosesAddMyProdukFragment"
+        app:destination="@id/prosesAddMyProdukFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <action
+        android:id="@+id/action_storeResmiFragment_to_detailProductFragment"
+        app:destination="@id/detailProductFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    <fragment
+        android:id="@+id/imageOpener2"
+        android:name="com.example.connect.utilites.ImageOpener"
+        android:label="ImageOpener">
+        <argument
+            android:name="link"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.example.connect.presentation.main.product.detail.DetailProductFragment"
+        android:label="detail_product_fragment"
+        tools:layout="@layout/detail_product_fragment">
+        <!--        <argument-->
+        <!--            android:name="selectedProductUmum"-->
+        <!--            app:argType="com.example.connect.main.ui.product.model.ProductModel" />-->
+        <action
+            android:id="@+id/action_detailProductFragment_to_keranjangFragment"
+            app:destination="@id/keranjangFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_imageOpener2"
+            app:destination="@id/imageOpener2" />
+    </fragment>
+    <fragment
+        android:id="@+id/keranjangFragment"
+        android:name="com.example.connect.presentation.main.product.keranjang.KeranjangFragment"
+        android:label="KeranjangFragment"
+        tools:layout="@layout/fragment_keranjang">
+        <action
+            android:id="@+id/action_keranjangFragment_to_detailSavedProductFragment"
+            app:destination="@id/detailSavedProductFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/keranjangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeResmiFragment"
+        android:name="com.example.connect.presentation.main.product.resmi.resmi.StoreResmiFragment"
+        android:label="StoreResmiFragment"
+        tools:layout="@layout/fragment_store_resmi">
+        <action
+            android:id="@+id/action_storeResmiFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_storeResmiFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMyProdukFragment"
+        android:name="com.example.connect.presentation.main.product.tabLayout.myproduct.add.AddMyProdukFragment"
+        android:label="AddMyProdukFragment"
+        tools:layout="@layout/add_my_produk_fragment">
+        <action
+            android:id="@+id/action_addMyProdukFragment_to_prosesAddMyProdukFragment"
+            app:destination="@id/prosesAddMyProdukFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <action
+        android:id="@+id/action_prosesAddMyProdukFragment_to_dashboardFragment"
+        app:destination="@id/dashboardFragment"
+        app:enterAnim="@android:anim/slide_in_left"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/slide_out_right"
+        app:popUpTo="@id/dashboardFragment"
+        app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.connect.presentation.main.home.HomeFragment"
@@ -108,9 +538,9 @@
         android:name="com.example.connect.presentation.main.home.tablayout.news.detail.DetailNewsFragment"
         android:label="DetailNewsFragment"
         tools:layout="@layout/detail_news_fragment">
-<!--        <argument-->
-<!--            android:name="selectedNews"-->
-<!--            app:argType="com.example.connect.main.ui.home.tablayout.news.model.Post" />-->
+        <!--        <argument-->
+        <!--            android:name="selectedNews"-->
+        <!--            app:argType="com.example.connect.main.ui.home.tablayout.news.model.Post" />-->
         <action
             android:id="@+id/action_detailNewsFragment_to_imageOpener"
             app:destination="@id/imageOpener" />
@@ -120,9 +550,9 @@
         android:name="com.example.connect.presentation.main.home.tablayout.agenda.detail.DetailAgendaFragment"
         android:label="detail_agenda_fragment"
         tools:layout="@layout/detail_agenda_fragment">
-<!--        <argument-->
-<!--            android:name="selectedAgenda"-->
-<!--            app:argType="com.example.connect.main.ui.home.tablayout.agenda.model.Agenda" />-->
+        <!--        <argument-->
+        <!--            android:name="selectedAgenda"-->
+        <!--            app:argType="com.example.connect.main.ui.home.tablayout.agenda.model.Agenda" />-->
         <action
             android:id="@+id/action_detailAgendaFragment_to_imageOpener"
             app:destination="@id/imageOpener" />
@@ -130,7 +560,8 @@
     <fragment
         android:id="@+id/loadingAddAgendaFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.agenda.add.LoadingAddAgendaFragment"
-        android:label="LoadingAddAgendaFragment">
+        android:label="LoadingAddAgendaFragment"
+        tools:layout="@layout/fragment_loading_add_agenda">
         <action
             android:id="@+id/action_loadingAddAgendaFragment_to_homeFragment"
             app:destination="@id/homeFragment"

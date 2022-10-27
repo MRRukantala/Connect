@@ -13,6 +13,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#DC3545</color>
     <color name="grey_cf">#CACCCF</color>
+    <color name="black_disable">#E0E0E0</color>
     <color name="blue_primary">#44599c</color>
     <color name="red_error">#B00020</color>
     <color name="red50">#A03B3B</color>

@@ -1,17 +1,13 @@
 package com.example.connect.presentation.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentMainAppBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,8 +34,8 @@ class ContainerMainFragment : Fragment() {
         NavigationUI.setupWithNavController(binding.bnMenu, nav.navController)
 
         nav.navController.addOnDestinationChangedListener { _, main, _ ->
-            when (main.id) {//R.id.Tok, R.id.settingFragment
-                R.id.homeFragment -> {
+            when (main.id) {
+                R.id.homeFragment, R.id.dashboardFragment, R.id.notificationsFragment, R.id.containerInfoPendidikanFragment -> {
                     showBottomNav()
                 }
                 else -> {
