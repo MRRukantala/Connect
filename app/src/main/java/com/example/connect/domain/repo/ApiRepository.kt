@@ -61,6 +61,8 @@ interface ApiRepository {
 
     suspend fun getDetailProduct(id:Int):Flow<Result<List<DetailProductEntity>, ResponseListWrapperSementara<ProductResponse>>>
 
+    suspend fun deletePendidikan(id:Int):Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>>
+
     //belom diperbaiki
 
 

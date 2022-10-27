@@ -156,9 +156,8 @@ interface ApiClient {
     // API DELETE PENDIDIKAN
     @DELETE("pendidikan/{id}")
     suspend fun deletePendidikan(
-        @Header("Authorization") authorization: String,
         @Path("id") id: Int,
-    ): Response<ResponseObjectWrapper<PendidikanResponse>>
+    ): Response<ResponseObjectWrapper<DeletePendidikanResponse>>
 
     // API PLAYLIST E LEARNING
     @GET("playlist-elearning")
