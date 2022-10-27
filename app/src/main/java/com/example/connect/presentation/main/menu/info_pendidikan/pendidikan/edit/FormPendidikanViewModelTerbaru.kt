@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.DeletePendidikanEntity
 import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.usecase.ProfileUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FormPendidikanViewModelTerbaru @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProfileUseCase
 ) : ViewModel() {
     private val _stateDelete = MutableStateFlow<DeleteState>(DeleteState.Init)
     val stateDelete get() = _stateDelete

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.connect.data.model.request.ProfileRequest
 import com.example.connect.domain.entity.EditProfleEntity
 import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.usecase.ProfileUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditInfoUserViewModel @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProfileUseCase
 ) : ViewModel() {
 
     private var _jenisKelamin = MutableLiveData<String?>()

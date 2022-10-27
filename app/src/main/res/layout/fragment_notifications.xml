@@ -65,12 +65,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPlaylist"
+                    listPlaylist="@{viewModel.dataPlaylist}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/textView9"
                     tools:itemCount="5"
-                    listPlaylist="@{viewModel.dataPlaylist}"
+                    tools:layout_editor_absoluteX="-16dp"
                     tools:listitem="@layout/item_playlist_e_learning" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

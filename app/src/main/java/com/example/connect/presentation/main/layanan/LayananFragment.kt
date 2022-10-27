@@ -1,6 +1,7 @@
 package com.example.connect.presentation.main.layanan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class LayananFragment : Fragment() {
         binding =
             FragmentNotificationsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+
         binding.recyclerView2.adapter = LayananAdapter(
             LayananAdapter.OnclickListener {
                 findNavController().navigate(LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment())
@@ -49,7 +50,9 @@ class LayananFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllLayanan()
         viewModel.getAllPlaylist()
+
         observe()
+        binding.viewModel = viewModel
     }
 
     private fun observe() {
@@ -71,8 +74,12 @@ class LayananFragment : Fragment() {
 
     private fun handleStatePlaylist(state: PlaylistState) {
         when (state) {
-            is PlaylistState.Loading -> {}
-            is PlaylistState.Success -> {}
+            is PlaylistState.Loading -> {
+                Log.v("DATA", "loading")
+            }
+            is PlaylistState.Success -> {
+                Log.v("DATA", state.layananEntity.toString())
+            }
             else -> {}
         }
     }

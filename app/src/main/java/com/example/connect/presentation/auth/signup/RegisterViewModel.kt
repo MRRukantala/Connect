@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.connect.data.model.request.RegisterRequest
 import com.example.connect.domain.entity.LoginEntity
 import com.example.connect.domain.entity.RegisterEntity
+import com.example.connect.domain.usecase.AuthUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: AuthUseCase
 ) : ViewModel() {
 
     private var _email = MutableLiveData<String?>()

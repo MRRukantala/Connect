@@ -12,7 +12,7 @@ import retrofit2.http.Path
 
 interface LayananApiClient {
     // API PLAYLIST E LEARNING
-    @GET("playlist-elearning")
+    @GET("playlist")
     suspend fun getPlaylist(): Response<ResponseListWrapper<PlaylistElearningResponse>>
 
     // API VIDEO E LEARNING

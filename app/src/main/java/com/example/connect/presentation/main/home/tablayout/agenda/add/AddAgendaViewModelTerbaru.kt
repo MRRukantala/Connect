@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.data.model.request.AgendaRequest
 import com.example.connect.domain.entity.PostAgendaEntity
+import com.example.connect.domain.usecase.HomeUseCase
+import com.example.connect.domain.usecase.ProfileUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +25,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddAgendaViewModelTerbaru @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProfileUseCase
 ):ViewModel() {
 
     private var _title = MutableLiveData<String?>()

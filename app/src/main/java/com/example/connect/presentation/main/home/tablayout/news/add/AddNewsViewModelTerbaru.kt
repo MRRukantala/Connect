@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.connect.data.model.request.KirimanRequest
 import com.example.connect.domain.entity.PostKirimanEntity
 import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.usecase.ProfileUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,9 +18,10 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
+
 @HiltViewModel
 class AddNewsViewModelTerbaru @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProfileUseCase
 ):ViewModel() {
     private var _konten = MutableLiveData<String?>()
     val konten: LiveData<String?> get() = _konten
