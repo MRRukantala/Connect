@@ -3,12 +3,14 @@ package com.example.connect
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.connect.presentation.auth.ContainerAuthFragmentDirections
 import com.example.connect.utilites.app.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Inject
-    lateinit var sharedPreferences:SharedPreferences
+    lateinit var sharedPreferences: SharedPreferences
 
     companion object {
         private const val STORAGE_PERMISSION_CODE = 101
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Connect)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if (sharedPreferences.getToken().isNotEmpty()) goToHome()
 
         checkPermission(
             arrayOf(
@@ -39,12 +42,10 @@ class MainActivity : AppCompatActivity() {
             ),
             STORAGE_PERMISSION_CODE
         )
-
-        if (sharedPreferences.getToken().isNotEmpty()) goToHome()
     }
 
     private fun goToHome() {
-
+        mainNavController.navigate(ContainerAuthFragmentDirections.actionContainerAuthFragmentToContainerMainFragment())
     }
 
 

@@ -34,8 +34,8 @@ class ContainerMainFragment : Fragment() {
         NavigationUI.setupWithNavController(binding.bnMenu, nav.navController)
 
         nav.navController.addOnDestinationChangedListener { _, main, _ ->
-            when (main.id) {//R.id.Tok, R.id.settingFragment
-                R.id.homeFragment -> {
+            when (main.id) {
+                R.id.homeFragment, R.id.dashboardFragment, R.id.notificationsFragment, R.id.containerInfoPendidikanFragment -> {
                     showBottomNav()
                 }
                 else -> {

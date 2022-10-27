@@ -16,7 +16,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.MainActivity
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
-import com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfoDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -57,11 +56,11 @@ class InfoUserFragment : Fragment() {
                 findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
             }
             button5.setOnClickListener {
-                findNavController().navigate(
-                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(
-
-                    )
-                )
+//                findNavController().navigate(
+////                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(
+////
+////                    )
+//                )
             }
             logout.setOnClickListener {
                 keluar()

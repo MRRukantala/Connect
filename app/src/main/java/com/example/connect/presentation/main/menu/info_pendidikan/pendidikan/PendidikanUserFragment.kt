@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
-import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.PendidikanUserFragmentBinding
-import com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfoDirections
 import com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModel
 import com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModelState
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,12 +49,12 @@ class PendidikanUserFragment : Fragment() {
 
             PendidikanAdapter.OnclickListener {
                 runCatching {
-                    findNavController().navigate(
-                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-                            it,
-                            1
-                        )
-                    )
+//                    findNavController().navigate(
+////                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
+////                            it,
+////                            1
+////                        )
+//                    )
                 }
             }
         )
@@ -79,12 +77,12 @@ class PendidikanUserFragment : Fragment() {
                 Log.v("PENDIDIKAN", state.infoUserEntity.get(0).listPendidikan.toString())
 
                 binding.fabNews.setOnClickListener {
-                    findNavController().navigate(
-                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-                            state.infoUserEntity.get(0).listPendidikan.get(0),
-                            0
-                        )
-                    )
+//                    findNavController().navigate(
+//                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
+//                            state.infoUserEntity.get(0).listPendidikan.get(0),
+//                            0
+//                        )
+//                    )
                 }
             }
 
