@@ -21,5 +21,6 @@ data class VideoELearningEntity(
     val judulVideo: String,
     val linkVideo: String,
     val dibuatPada: String,
-    val diupdatePada: String
+    val diupdatePada: String,
+    val playlist: PlaylistELearningEntity
 ): Parcelable

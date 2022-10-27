@@ -2,7 +2,6 @@ package com.example.connect.presentation.main.product.keranjang.detail
 
 import androidx.lifecycle.ViewModel
 import com.example.connect.domain.entity.SementaraEntity
-import com.example.connect.domain.usecase.UseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 

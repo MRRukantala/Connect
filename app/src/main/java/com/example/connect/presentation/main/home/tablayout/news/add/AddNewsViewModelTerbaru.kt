@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.connect.data.model.request.KirimanRequest
 import com.example.connect.domain.entity.PostKirimanEntity
 import com.example.connect.domain.entity.SementaraEntity
-import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

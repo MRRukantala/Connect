@@ -3,7 +3,6 @@ package com.example.connect.presentation.main.home.tablayout.agenda
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.AgendaEntity
-import com.example.connect.domain.usecase.UseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

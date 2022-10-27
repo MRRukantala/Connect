@@ -5,8 +5,8 @@ import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import com.google.gson.annotations.SerializedName
 
 data class PlaylistElearningResponse(
-    @SerializedName("id_playlist") val idPlaylist: Int? = 0,
-    @SerializedName("nama_playlist") val namaPlaylist: String? = "",
+    @SerializedName("id") val idPlaylist: Int? = 0,
+    @SerializedName("nama") val namaPlaylist: String? = "",
     @SerializedName("created_at") val dibuatPada: String? = "",
     @SerializedName("updated_at") val diubahPada: String? = ""
 ) {
@@ -19,12 +19,13 @@ data class PlaylistElearningResponse(
 }
 
 data class VideoELearningResponse(
-    @SerializedName("id_video") val idVideo: Int? = 0,
+    @SerializedName("id") val idVideo: Int? = 0,
     @SerializedName("id_playlist") val idPlaylist: Int? = 0,
-    @SerializedName("judul_video") val judulVideo: String? = "",
-    @SerializedName("link_video") val linkVideo: String? = "",
+    @SerializedName("judul") val judulVideo: String? = "",
+    @SerializedName("url") val linkVideo: String? = "",
     @SerializedName("created_at") val dibuatPada: String? = "",
-    @SerializedName("updated_at") val diubahPada: String? = ""
+    @SerializedName("updated_at") val diubahPada: String? = "",
+    @SerializedName("playlist") val playlist: PlaylistElearningResponse?
 ) {
     fun toVideoELearningEntity() = VideoELearningEntity(
         idVideo ?: 0,
@@ -32,6 +33,7 @@ data class VideoELearningResponse(
         judulVideo.orEmpty(),
         linkVideo.orEmpty(),
         dibuatPada.orEmpty(),
-        diubahPada.orEmpty()
+        diubahPada.orEmpty(),
+        playlist?.toPlaylistELearningEntity() ?: PlaylistELearningEntity(0, "", "", "")
     )
 }
