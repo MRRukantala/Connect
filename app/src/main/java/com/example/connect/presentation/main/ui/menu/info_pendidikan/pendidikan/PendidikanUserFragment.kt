@@ -55,10 +55,12 @@ class PendidikanUserFragment : Fragment() {
 
             PendidikanAdapter.OnclickListener{
                 runCatching {
-                    findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment())
+                    findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(it,1))
                 }
             }
         )
+
+
 
 
     }
@@ -76,6 +78,10 @@ class PendidikanUserFragment : Fragment() {
             }
             is InfoUserViewModelState.Success -> {
                 Log.v("PENDIDIKAN", state.infoUserEntity.get(0).listPendidikan.toString())
+
+                binding.fabNews.setOnClickListener {
+                    findNavController().navigate(ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(state.infoUserEntity.get(0).listPendidikan.get(0),0))
+                }
             }
 
         }

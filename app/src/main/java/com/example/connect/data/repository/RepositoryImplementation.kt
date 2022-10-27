@@ -37,6 +37,19 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
+    override suspend fun deletePendidikan(id: Int): Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>> {
+        return flow {
+            val response = apiClient.deletePendidikan(id)
+            delay(1500)
+            if (response.isSuccessful) {
+                val deletePendidikanEntity = response.body()?.data?.toDeletePendidikanEntity()
+                emit(Result.Success(deletePendidikanEntity!!))
+            } else {
+
+            }
+        }
+    }
+
     override suspend fun register(registerRequest: RegisterRequest): Flow<Result<RegisterEntity, ResponseObjectWrapper<RegisterResponse>>> {
         return flow {
             val response = apiClient.register(registerRequest)
@@ -375,6 +388,8 @@ class RepositoryImplementation @Inject constructor(
             }
         }
     }
+
+
 
 
     //belom diperbaiki

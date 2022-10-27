@@ -114,5 +114,11 @@
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/containerInfoPendidikanFragment"
             app:popUpToInclusive="false" />
+        <argument
+            android:name="data"
+            app:argType="com.example.connect.domain.entity.PendidikanEntity" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

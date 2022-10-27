@@ -120,6 +120,10 @@ class UseCase @Inject constructor(
         return repository.getAllVideoELearning(id)
     }
 
+    suspend fun deletePendidikan(id: Int): Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>>{
+        return repository.deletePendidikan(id)
+    }
+
 
     //belom diperbaiki
 
