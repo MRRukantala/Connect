@@ -2,11 +2,12 @@ package com.example.connect.presentation.main.product.keranjang
 
 import androidx.lifecycle.ViewModel
 import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.usecase.ProductUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 class KeranjangViewModelTerbaru @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProductUseCase
 ):ViewModel() {
     private val _state = MutableStateFlow<KeranjangViewState>(KeranjangViewState.Init)
     val state get() = _state

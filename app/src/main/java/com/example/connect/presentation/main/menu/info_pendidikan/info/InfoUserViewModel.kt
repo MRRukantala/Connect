@@ -3,6 +3,7 @@ package com.example.connect.presentation.main.menu.info_pendidikan.info
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.ProfileEntity
+import com.example.connect.domain.usecase.ProfileUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InfoUserViewModel @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProfileUseCase
 ):ViewModel() {
 
     private val _state = MutableStateFlow<InfoUserViewModelState>(InfoUserViewModelState.Init)

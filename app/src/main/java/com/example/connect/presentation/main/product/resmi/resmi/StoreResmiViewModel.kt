@@ -3,6 +3,7 @@ package com.example.connect.presentation.main.product.resmi.resmi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.ProductEntity
+import com.example.connect.domain.usecase.ProductUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StoreResmiViewModel @Inject constructor(
-    private val useCase: UseCase
+    private val useCase: ProductUseCase
 ):ViewModel() {
 
     private val _state = MutableStateFlow<StoreResmiState>(StoreResmiState.Init)
