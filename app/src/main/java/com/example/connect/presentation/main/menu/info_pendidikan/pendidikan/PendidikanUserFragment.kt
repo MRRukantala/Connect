@@ -29,7 +29,7 @@ class PendidikanUserFragment : Fragment() {
         binding =
             PendidikanUserFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-//        binding.viewModel = viewModel
+        binding.viewModel = viewModel
 
         binding.fabNews.setOnClickListener {
 

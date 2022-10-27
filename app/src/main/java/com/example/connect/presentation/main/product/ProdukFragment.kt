@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class TokoFragment : Fragment() {
+class ProdukFragment : Fragment() {
 
     lateinit var binding: FragmentTokoBinding
     private val viewModel: ProdukViewModel by viewModels()

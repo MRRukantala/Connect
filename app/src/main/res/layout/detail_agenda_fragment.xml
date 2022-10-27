@@ -36,6 +36,7 @@
                 android:id="@+id/msv_list_detail_agenda"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                app:msv_animateViewChanges="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:msv_emptyView="@layout/empty_data"

@@ -33,6 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/back"
+            app:msv_animateViewChanges="true"
             app:msv_emptyView="@layout/empty_data"
             app:msv_loadingView="@layout/shimmer_agenda_fragment"
             app:msv_viewState="content">
