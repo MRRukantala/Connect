@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/containerInfoPendidikanFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.info_pendidikan.ContainerInfo"
+        android:name="com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfo"
         android:label="ContainerInfoPendidikanFragment"
         tools:layout="@layout/container_info_pendidikan_fragment">
         <action
@@ -26,17 +26,17 @@
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.about.AboutAppFragment"
+        android:name="com.example.connect.presentation.main.menu.about.AboutAppFragment"
         android:label="about_app_fragment"
         tools:layout="@layout/about_app_fragment" />
     <fragment
         android:id="@+id/ketentuanAppFragment2"
-        android:name="com.example.connect.presentation.signup.KetentuanAppFragment"
+        android:name="com.example.connect.presentation.auth.signup.KetentuanAppFragment"
         android:label="KetentuanAppFragment"
         tools:layout="@layout/fragment_ketentuan_app" />
     <dialog
         android:id="@+id/itemListDialogFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.bottomsheet.ItemListDialogFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.ItemListDialogFragment"
         android:label="ItemListDialogFragment"
         tools:layout="@layout/fragment_item_list_dialog_list_dialog">
         <action
@@ -59,7 +59,7 @@
     </dialog>
     <fragment
         android:id="@+id/saranNKritikFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.bottomsheet.SaranNKritikFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.SaranNKritikFragment"
         android:label="saran_n_kritik_fragment"
         tools:layout="@layout/saran_n_kritik_fragment">
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/saranTerimaKasihFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.bottomsheet.terikamaishsaran.SaranTerimaKasihFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.terikamaishsaran.SaranTerimaKasihFragment"
         android:label="SaranTerimaKasihFragment"
         tools:layout="@layout/fragment_saran_terima_kasih">
         <action
@@ -86,7 +86,7 @@
     <fragment
         tools:layout="@layout/edit_info_user_fragment"
         android:id="@+id/editInfoUserFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.info_pendidikan.info.edit.EditInfoUserFragment"
+        android:name="com.example.connect.presentation.main.menu.info_pendidikan.info.edit.EditInfoUserFragment"
         android:label="EditInfoUserFragment" >
         <action
             android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
@@ -95,10 +95,10 @@
 <!--            android:name="DataHold"-->
 <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->
     </fragment>
-    <include app:graph="@navigation/navigation" />
+    <include app:graph="@navigation/auth_navigation" />
     <fragment
         android:id="@+id/formPendidikanFragment"
-        android:name="com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
+        android:name="com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
         android:label="form_pendidikan_fragment"
         tools:layout="@layout/form_pendidikan_fragment" >
 <!--        <argument-->

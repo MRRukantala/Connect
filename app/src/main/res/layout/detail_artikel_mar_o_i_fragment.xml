@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.layanan.detail_artikel.DetailArtikelMarOlViewModel" />
+            type="com.example.connect.presentation.main.layanan.detail_artikel.DetailArtikelMarOlViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.ui.layanan.detail_artikel.DetailArtikelMarOIFragment">
+        tools:context=".presentation.main.layanan.detail_artikel.DetailArtikelMarOIFragment">
 
         <include
             android:id="@+id/include4"

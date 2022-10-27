@@ -2,7 +2,6 @@ package com.example.connect.utilites
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.view.PixelCopy.request
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -14,11 +13,11 @@ import coil.request.ImageRequest
 import com.example.connect.R
 import com.example.connect.data.database.SaveProductData
 import com.example.connect.domain.entity.*
-import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaAdapter
-import com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
-import com.example.connect.presentation.main.ui.menu.info_pendidikan.pendidikan.PendidikanAdapter
-import com.example.connect.presentation.main.ui.product.ProductAdapter
-import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyProductAdapter
+import com.example.connect.presentation.main.home.tablayout.agenda.AgendaAdapter
+import com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
+import com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.PendidikanAdapter
+import com.example.connect.presentation.main.product.ProductAdapter
+import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProductAdapter
 import java.text.SimpleDateFormat
 
 const val GET_PATH_IMAGE = "https://megha.desa-pintar.com/markol/public/storage/"
@@ -29,7 +28,7 @@ fun bindRecyclerViewListPosts(
     data: List<KirimanEntity>?
 ) {
     val adapter =
-        recyclerView.adapter as com.example.connect.presentation.main.ui.home.tablayout.news.NewsAdapter
+        recyclerView.adapter as com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
     adapter.submitList(data)
 }
 
@@ -66,7 +65,7 @@ fun bindRecyclerViewListProductUmum(
     data: List<ProductEntity>?
 ) {
     val adapter =
-        recyclerView.adapter as com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
+        recyclerView.adapter as com.example.connect.presentation.main.product.tabLayout.productumum.ProductUmumAdapter
     adapter.submitList(data)
 }
 
@@ -85,7 +84,7 @@ fun bindRecyclerViewListLayanan(
     data: List<LayananEntity>?
 ) {
     val adapter =
-        recyclerView.adapter as com.example.connect.presentation.main.ui.layanan.LayananAdapter
+        recyclerView.adapter as com.example.connect.presentation.main.layanan.LayananAdapter
     adapter.submitList(data)
 }
 
@@ -104,7 +103,7 @@ fun bindRecyclerViewListKeranjang(
     data: List<SaveProductData>?
 ) {
     val adapter =
-        recyclerView.adapter as com.example.connect.presentation.main.ui.product.keranjang.Adapter
+        recyclerView.adapter as com.example.connect.presentation.main.product.keranjang.Adapter
     adapter.submitList(data)
 }
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.connect.presentation.auth.boarding.MenuFragment"
+        android:label="menu_fragment"
+        tools:layout="@layout/menu_fragment">
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_signFragment"
+            app:destination="@id/signFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_menuFragment_to_verifFragment"
+            app:destination="@id/verifFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.connect.presentation.auth.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_verifFragment"
+            app:destination="@id/verifFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signFragment"
+        android:name="com.example.connect.presentation.auth.signup.RegisterFragment"
+        android:label="fragment_sign"
+        tools:layout="@layout/fragment_sign">
+        <action
+            android:id="@+id/action_signFragment_to_ketentuanAppFragment"
+            app:destination="@id/ketentuanAppFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/signFragment" />
+        <action
+            android:id="@+id/action_signFragment_to_verifFragment"
+            app:destination="@id/verifFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ketentuanAppFragment"
+        android:name="com.example.connect.presentation.auth.signup.KetentuanAppFragment"
+        android:label="KetentuanAppFragment"
+        tools:layout="@layout/fragment_ketentuan_app" />
+    <fragment
+        android:id="@+id/verifFragment"
+        android:name="com.example.connect.presentation.auth.verify.VerifFragment"
+        android:label="VerifFragment"
+        tools:layout="@layout/fragment_verif" />
+
+</navigation>

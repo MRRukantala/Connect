@@ -5,16 +5,15 @@
 
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.home.tablayout.news.mynews.MyNewsViewModelTerbaru" />
+            type="com.example.connect.presentation.main.home.tablayout.news.mynews.MyNewsViewModel"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.ui.home.tablayout.news.mynews.MyNewsFragment">
+    tools:context=".presentation.main.home.tablayout.news.mynews.MyNewsFragment">
 
     <include
         android:id="@+id/back"

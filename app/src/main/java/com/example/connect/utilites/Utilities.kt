@@ -1,14 +1,14 @@
 //package com.example.connect.utilites
 //
-//import com.example.connect.presentation.login.data.model.UserResponse
-//import com.example.connect.presentation.main.ui.home.tablayout.agenda.model.AgendaResponse
-//import com.example.connect.presentation.main.ui.home.tablayout.news.add.AddedResponses
-//import com.example.connect.presentation.main.ui.home.tablayout.news.model.Post
-//import com.example.connect.presentation.main.ui.home.tablayout.news.model.PostResponse
-//import com.example.connect.presentation.main.ui.layanan.Layanan
-//import com.example.connect.presentation.main.ui.menu.info_pendidikan.MyData
-//import com.example.connect.presentation.main.ui.menu.info_pendidikan.message
-//import com.example.connect.presentation.main.ui.product.model.ProductResponse
+//import com.example.connect.presentation.auth.login.data.model.UserResponse
+//import com.example.connect.presentation.main.home.tablayout.agenda.model.AgendaResponse
+//import com.example.connect.presentation.main.home.tablayout.news.add.AddedResponses
+//import com.example.connect.presentation.main.home.tablayout.news.model.Post
+//import com.example.connect.presentation.main.home.tablayout.news.model.PostResponse
+//import com.example.connect.presentation.main.layanan.Layanan
+//import com.example.connect.presentation.main.menu.info_pendidikan.MyData
+//import com.example.connect.presentation.main.menu.info_pendidikan.message
+//import com.example.connect.presentation.main.product.model.ProductResponse
 //import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 //import com.squareup.moshi.Moshi
 //import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

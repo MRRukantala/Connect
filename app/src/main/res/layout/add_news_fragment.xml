@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.ui.home.tablayout.news.add.AddNewsFragment">
+        tools:context=".presentation.main.home.tablayout.news.add.AddNewsFragment">
 
         <include
             android:id="@+id/include3"

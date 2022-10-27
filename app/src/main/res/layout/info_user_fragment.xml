@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.menu.info_pendidikan.info.InfoUserViewModelTerbaru" />
+            type="com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModel" />
     </data>
 
 
@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".presentation.main.ui.menu.info_pendidikan.info.InfoUserFragment">
+            tools:context=".presentation.main.menu.info_pendidikan.info.InfoUserFragment">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleImageView2"
@@ -64,11 +64,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{viewModel.data.get(0).nim}"
                 android:fontFamily="@font/nunito_sans"
+                android:text="@{viewModel.data.get(0).nim}"
                 app:layout_constraintStart_toStartOf="@+id/textView35"
                 app:layout_constraintTop_toBottomOf="@+id/textView35"
-                tools:text="aaa"/>
+                tools:text="aaa" />
 
             <TextView
                 android:id="@+id/textView37"

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.menu.info_pendidikan.info.InfoUserViewModelTerbaru" />
+            type="com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +11,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.ui.menu.info_pendidikan.pendidikan.PendidikanUserFragment">
+        tools:context=".presentation.main.menu.info_pendidikan.pendidikan.PendidikanUserFragment">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"

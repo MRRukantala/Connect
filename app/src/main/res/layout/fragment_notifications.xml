@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.layanan.LayananViewModelTerbaru" />
+            type="com.example.connect.presentation.main.layanan.LayananViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/dp12"
-                tools:context=".presentation.main.ui.layanan.LayananFragment">
+                tools:context=".presentation.main.layanan.LayananFragment">
 
                 <TextView
                     android:id="@+id/textView33"

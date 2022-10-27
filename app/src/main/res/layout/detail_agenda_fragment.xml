@@ -8,7 +8,7 @@
 
         <variable
             name="agenda"
-            type="com.example.connect.presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaViewModelTerbaru" />
+            type="com.example.connect.presentation.main.home.tablayout.agenda.detail.DetailAgendaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -180,10 +180,6 @@
                     </androidx.cardview.widget.CardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.kennyc.view.MultiStateView>
-
-
 
 
         </androidx.core.widget.NestedScrollView>

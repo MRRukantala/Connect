@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.home.tablayout.agenda.myagenda.MyAgendaViewModel" />
+            type="com.example.connect.presentation.main.home.tablayout.agenda.myagenda.MyAgendaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.ui.home.tablayout.agenda.myagenda.MyAgendaFragment">
+        tools:context=".presentation.main.home.tablayout.agenda.myagenda.MyAgendaFragment">
 
 
         <include

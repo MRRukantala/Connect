@@ -3,27 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="containerMenuFragment"
+            type="com.example.connect.presentation.main.ContainerMainFragment" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".presentation.main.MainAppFragment">
+        tools:context=".presentation.main.ContainerMainFragment">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_con"
+            android:id="@+id/nav_host_fragment_menu"
+            app:defaultNavHost="true"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            tools:layout="@layout/fragment_home"
             android:layout_weight="1"
             app:navGraph="@navigation/mobile_navigation" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_view"
+            android:id="@+id/bnMenu"
+            app:labelVisibilityMode="labeled"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_nav_menu" />
-
-
     </LinearLayout>
 
 </layout>

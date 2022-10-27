@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/containerAuthFragment">
+
+    <fragment
+        android:id="@+id/containerAuthFragment"
+        android:name="com.example.connect.presentation.auth.ContainerAuthFragment"
+        android:label="ContainerAuthFragment"
+        tools:layout="@layout/fragment_container_auth">
+        <action
+            android:id="@+id/action_containerAuthFragment_to_containerMainFragment"
+            app:destination="@id/containerMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/containerMainFragment"
+        android:name="com.example.connect.presentation.main.ContainerMainFragment"
+        android:label="ContainerMainFragment"
+        tools:layout="@layout/fragment_main_app">
+        <action
+            android:id="@+id/action_containerMainFragment_to_containerAuthFragment2"
+            app:destination="@id/containerAuthFragment"
+            app:popUpTo="@id/containerMainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

@@ -3,17 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.product.resmi.resmi.StoreResmiViewModel" />
+            type="com.example.connect.presentation.main.product.resmi.resmi.StoreResmiViewModel" />
 
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.ui.product.resmi.resmi.StoreResmiFragment">
+        tools:context=".presentation.main.product.resmi.resmi.StoreResmiFragment">
 
         <include
             android:id="@+id/include10"

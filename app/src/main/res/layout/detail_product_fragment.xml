@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.connect.presentation.main.ui.product.detail.DetailProductViewModelTerbaru" />
+            type="com.example.connect.presentation.main.product.detail.DetailProductViewModel" />
 
     </data>
 
