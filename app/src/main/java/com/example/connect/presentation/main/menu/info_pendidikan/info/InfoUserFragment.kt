@@ -11,11 +11,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.MainActivity
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
@@ -77,6 +79,7 @@ class InfoUserFragment : Fragment() {
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
     }
 
     private fun handleState(state: InfoUserViewModelState) {

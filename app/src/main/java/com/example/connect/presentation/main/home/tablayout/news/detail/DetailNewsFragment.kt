@@ -10,10 +10,12 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.DetailNewsFragmentBinding
+import com.kennyc.view.MultiStateView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-
+@AndroidEntryPoint
 class DetailNewsFragment : Fragment() {
 
     lateinit var binding: DetailNewsFragmentBinding
@@ -22,7 +24,7 @@ class DetailNewsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
 //        val application = requireNotNull(activity).application
 
@@ -33,7 +35,7 @@ class DetailNewsFragment : Fragment() {
 //        val viewModelFactory = DetailViewModelFactory(newProperty, application)
 
 
-        binding.viewModel = viewModel
+//        binding.viewModel = viewModel
 
         binding.include6.backImage.setOnClickListener {
             findNavController().popBackStack()
@@ -60,8 +62,18 @@ class DetailNewsFragment : Fragment() {
 
     private fun handleState(state: DetailNewsState) {
         when(state){
-            is DetailNewsState.Loading ->{}
-            is DetailNewsState.Success ->{}
+            is DetailNewsState.Loading ->{
+                binding.apply {
+                    msvDetailBerita.viewState = MultiStateView.ViewState.LOADING
+                }
+            }
+            is DetailNewsState.Success ->{
+                binding.apply {
+                    msvDetailBerita.viewState = MultiStateView.ViewState.CONTENT
+                }
+
+
+            }
             else -> {}
         }
     }

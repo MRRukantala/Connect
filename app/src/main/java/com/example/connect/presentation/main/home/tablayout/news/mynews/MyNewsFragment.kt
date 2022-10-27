@@ -10,9 +10,11 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.connect.databinding.MyNewsFragmentBinding
 import com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+
 @AndroidEntryPoint
 class MyNewsFragment : Fragment() {
 
@@ -24,7 +26,7 @@ class MyNewsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = MyNewsFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -54,10 +56,20 @@ class MyNewsFragment : Fragment() {
     }
 
     private fun handleState(state: MyNewsState) {
+
         when(state){
             is MyNewsState.Loading ->{
+                binding.apply {
+                    msvListNews.viewState = MultiStateView.ViewState.LOADING
+                }
             }
-            is MyNewsState.Success ->{}
+            is MyNewsState.Success ->{
+                binding.apply {
+                    msvListNews.viewState =
+                        if (state.myNewsEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                        else MultiStateView.ViewState.CONTENT
+                }
+            }
             else -> {}
         }
 

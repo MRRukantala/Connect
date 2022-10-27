@@ -50,7 +50,7 @@ class UseCase @Inject constructor(
     }
 
     suspend fun getDetailKiriman(id:Int):
-    Flow<Result<KirimanEntity, ResponseObjectWrapper<KirimanResponse>>>{
+    Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>{
         return repository.getDetailKiriman(id)
     }
 

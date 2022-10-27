@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.connect.presentation.main.product.detail.DetailProductViewModel" />
@@ -44,98 +45,112 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include7">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.kennyc.view.MultiStateView
+                android:id="@+id/msv_detail_product"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/dp12"
-                android:layout_marginTop="@dimen/dp12"
-                android:layout_marginRight="@dimen/dp12"
-                tools:context=".presentation.main.product.detail.DetailProductFragment">
+                app:msv_viewState="content"
+                app:msv_loadingView="@layout/shimmer_detail_product_fragment"
+                app:msv_emptyView="@layout/empty_data"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:layout_marginRight="@dimen/dp12"
+                    tools:context=".presentation.main.ui.product.detail.DetailProductFragment">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView3"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        android:layout_marginTop="8dp"
-                        app:cardCornerRadius="@dimen/dp12"
+                        android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:id="@+id/image"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView3"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
+                            android:layout_height="400dp"
+                            android:layout_marginTop="8dp"
+                            app:cardCornerRadius="@dimen/dp12"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                            tools:src="@drawable/post" />
+                            <ImageView
+                                android:id="@+id/image"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
 
-                    </androidx.cardview.widget.CardView>
+                                tools:src="@drawable/post" />
 
-                    <TextView
-                        android:id="@+id/harga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/nunito_sans"
-                        android:textColor="@color/color_primary"
-                        android:textSize="@dimen/sp18"
-                        android:textStyle="bold"
+                        </androidx.cardview.widget.CardView>
 
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView3"
-                        tools:text="Rp. 900.000" />
+                        <TextView
+                            android:id="@+id/harga"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/nunito_sans"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/sp18"
+                            android:textStyle="bold"
+
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/cardView3"
+                            tools:text="Rp. 900.000" />
 
 
-                    <TextView
-                        android:id="@+id/nama"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/nunito_sans"
+                        <TextView
+                            android:id="@+id/nama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/nunito_sans"
 
-                        android:textColor="@color/content_and_title_color_post_and_agenda"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/harga"
-                        tools:text="Batik Nusantara Boutique Limited Edition" />
+                            android:textColor="@color/content_and_title_color_post_and_agenda"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/harga"
+                            tools:text="Batik Nusantara Boutique Limited Edition" />
 
-                    <TextView
-                        android:id="@+id/textView27"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/nunito_sans"
-                        android:text="Detail Produk"
-                        android:textColor="@color/content_and_title_color_post_and_agenda"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nama" />
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/nunito_sans"
+                            android:text="Detail Produk"
+                            android:textColor="@color/content_and_title_color_post_and_agenda"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nama" />
 
-                    <TextView
-                        android:id="@+id/deskripsi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/nunito_sans"
+                        <TextView
+                            android:id="@+id/deskripsi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/nunito_sans"
 
-                        android:textColor="@color/content_and_title_color_post_and_agenda"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView27"
-                        tools:text="@string/dummy_product_description" />
+                            android:textColor="@color/content_and_title_color_post_and_agenda"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView27"
+                            tools:text="@string/dummy_product_description" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.kennyc.view.MultiStateView>
+
+
 
         </androidx.core.widget.NestedScrollView>
 

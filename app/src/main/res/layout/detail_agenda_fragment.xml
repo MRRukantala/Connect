@@ -32,142 +32,157 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include6">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-
+            <com.kennyc.view.MultiStateView
+                android:id="@+id/msv_list_detail_agenda"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                app:msv_animateViewChanges="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:context=".presentation.main.home.tablayout.agenda.detail.DetailAgendaFragment">
+                app:msv_emptyView="@layout/empty_data"
+                app:msv_loadingView="@layout/shimmer_detail_agenda_fragment"
+                app:msv_viewState="content"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
 
-
-                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-
-                    app:cardCornerRadius="@dimen/dp12"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    tools:context=".presentation.main.ui.home.tablayout.agenda.detail.DetailAgendaFragment">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
 
+                        app:cardCornerRadius="@dimen/dp12"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cardView"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="400dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:layout_height="wrap_content">
 
-                            <ImageView
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardView"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                app:imageUrl="@{agenda.data.gambar}"
-                                tools:src="@drawable/post" />
+                                android:layout_height="400dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
-                        </androidx.cardview.widget.CardView>
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    app:imageUrl="@{agenda.data.gambar}"
+                                    tools:src="@drawable/post"
+                                    android:contentDescription="TODO" />
 
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:fontFamily="@font/nunito_sans"
-                            android:text="@{agenda.data.judul}"
-                            android:textColor="@color/content_and_title_color_post_and_agenda"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/cardView"
-                            tools:text="@string/agenda_title_dummy" />
+                            </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:fontFamily="@font/nunito_sans"
-                            android:text="@{agenda.data.konten}"
-                            android:textColor="@color/content_and_title_color_post_and_agenda"
-                            android:textSize="12sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/textView10"
-                            app:layout_constraintTop_toBottomOf="@+id/textView10"
-                            tools:text="@string/text_dummy_post" />
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="@{agenda.data.judul}"
+                                android:textColor="@color/content_and_title_color_post_and_agenda"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                                tools:text="@string/agenda_title_dummy" />
 
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:drawablePadding="12dp"
-                            android:fontFamily="@font/nunito_sans"
-                            android:gravity="center"
-                            android:text="@{agenda.data.tanggal}"
-                            android:textColor="@color/content_and_title_color_post_and_agenda"
-                            android:textSize="12sp"
-                            app:drawableLeftCompat="@drawable/ic_baseline_calendar_today_24"
-                            app:layout_constraintStart_toStartOf="@+id/textView11"
-                            app:layout_constraintTop_toBottomOf="@+id/textView11"
-                            tools:text="@string/time_agenda" />
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="16dp"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="@{agenda.data.konten}"
+                                android:textColor="@color/content_and_title_color_post_and_agenda"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/textView10"
+                                app:layout_constraintTop_toBottomOf="@+id/textView10"
+                                tools:text="@string/text_dummy_post" />
 
-
-                        <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="24dp"
-                            android:drawablePadding="12dp"
-                            android:fontFamily="@font/nunito_sans"
-                            android:gravity="center"
-                            android:text="@{agenda.data.waktu}"
-                            android:textColor="@color/content_and_title_color_post_and_agenda"
-                            android:textSize="12sp"
-                            app:drawableLeftCompat="@drawable/ic_baseline_access_time_24"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/textView12"
-                            app:layout_constraintTop_toBottomOf="@+id/textView12"
-                            tools:text="09 : 00" />
+                            <TextView
+                                android:id="@+id/textView12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:drawablePadding="12dp"
+                                android:fontFamily="@font/nunito_sans"
+                                android:gravity="center"
+                                android:text="@{agenda.data.tanggal}"
+                                android:textColor="@color/content_and_title_color_post_and_agenda"
+                                android:textSize="12sp"
+                                app:drawableLeftCompat="@drawable/ic_baseline_calendar_today_24"
+                                app:layout_constraintStart_toStartOf="@+id/textView11"
+                                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                                tools:text="@string/time_agenda" />
 
 
-                        <TextView
-                            android:id="@+id/textView14"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:drawableStart="@drawable/ic_baseline_place_24"
-                            android:drawablePadding="12dp"
-                            android:fontFamily="@font/nunito_sans"
-                            android:gravity="center"
-                            android:text="@{agenda.data.lokasi}"
-                            android:textColor="@color/content_and_title_color_post_and_agenda"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/textView12"
-                            tools:text="Universitas Negeri Malang" />
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="24dp"
+                                android:drawablePadding="12dp"
+                                android:fontFamily="@font/nunito_sans"
+                                android:gravity="center"
+                                android:text="@{agenda.data.waktu}"
+                                android:textColor="@color/content_and_title_color_post_and_agenda"
+                                android:textSize="12sp"
+                                app:drawableLeftCompat="@drawable/ic_baseline_access_time_24"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/textView12"
+                                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                                tools:text="09 : 00" />
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/textView14"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:drawableStart="@drawable/ic_baseline_place_24"
+                                android:drawablePadding="12dp"
+                                android:fontFamily="@font/nunito_sans"
+                                android:gravity="center"
+                                android:text="@{agenda.data.lokasi}"
+                                android:textColor="@color/content_and_title_color_post_and_agenda"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/textView12"
+                                tools:text="Universitas Negeri Malang" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.kennyc.view.MultiStateView>
+
+
 
 
         </androidx.core.widget.NestedScrollView>

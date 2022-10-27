@@ -21,7 +21,7 @@ class ContainerMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainAppBinding.inflate(inflater,  container, false)
+        binding = FragmentMainAppBinding.inflate(inflater, container, false)
         return binding.root
     }
 

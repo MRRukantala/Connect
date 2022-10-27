@@ -26,7 +26,7 @@ class FormPendidikanFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding =
             FormPendidikanFragmentBinding.inflate(inflater, container, false)

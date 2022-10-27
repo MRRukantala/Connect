@@ -14,7 +14,7 @@ import com.example.connect.presentation.main.home.tablayout.news.NewsFragment
 import com.example.connect.utilites.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home.*
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
@@ -62,9 +62,9 @@ class HomeFragment : Fragment() {
             popupMenu.setOnMenuItemClickListener {
                 val id = it.itemId
 
-                if(id == R.id.mynews){
+                if (id == R.id.mynews) {
                     findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMyNewsFragment())
-                } else if(id == R.id.myagenda){
+                } else if (id == R.id.myagenda) {
                     findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMyAgendaFragment())
                 }
                 false

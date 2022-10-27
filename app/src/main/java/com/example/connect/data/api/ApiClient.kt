@@ -88,7 +88,7 @@ interface ApiClient {
     @GET("api-kiriman/{id}")
     suspend fun getDetailKiriman(
         @Path("id") id: Int
-    ): Response<ResponseObjectWrapper<KirimanResponse>>
+    ): Response<ResponseListWrapper<KirimanResponse>>
 
     // API POST KIRIMAN
     @Multipart

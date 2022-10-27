@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 @HiltViewModel
 class DetailNewsViewModel @Inject constructor(
     val useCase: UseCase
@@ -26,7 +25,7 @@ class DetailNewsViewModel @Inject constructor(
         _state.value = DetailNewsState.Loading()
     }
 
-    private fun success(detailNewsEntity: KirimanEntity){
+    private fun success(detailNewsEntity: List<KirimanEntity>){
         _state.value = DetailNewsState.Success(detailNewsEntity)
     }
 
@@ -55,6 +54,6 @@ sealed class DetailNewsState {
     object Init : DetailNewsState()
 
     data class Loading(val loading: Boolean = true) : DetailNewsState()
-    data class Success(val detailNewsEntity: KirimanEntity) : DetailNewsState()
+    data class Success(val detailNewsEntity: List<KirimanEntity>) : DetailNewsState()
     data class Error(val response: KirimanEntity) : DetailNewsState()
 }

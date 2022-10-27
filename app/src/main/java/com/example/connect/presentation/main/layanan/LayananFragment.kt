@@ -24,7 +24,7 @@ class LayananFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding =
             FragmentNotificationsBinding.inflate(inflater, container, false)
