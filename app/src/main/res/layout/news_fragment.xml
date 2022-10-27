@@ -28,22 +28,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_news"
-                listMyNews="@{viewModel.data}"
+            <com.kennyc.view.MultiStateView
+                android:id="@+id/msv_list_news"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingStart="@dimen/dp8"
-                android:paddingEnd="@dimen/dp8"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/item_list_news" />
+                app:msv_loadingView="@layout/shimmer_my_news_fragment"
+                app:msv_viewState="content"
+                app:msv_emptyView="@layout/empty_data">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_news"
+                    listMyNews="@{viewModel.data}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dp8"
+                    android:paddingEnd="@dimen/dp8"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_list_news" />
+
+
+            </com.kennyc.view.MultiStateView>
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

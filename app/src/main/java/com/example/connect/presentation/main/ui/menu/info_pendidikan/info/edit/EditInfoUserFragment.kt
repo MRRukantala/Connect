@@ -75,7 +75,7 @@ class EditInfoUserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
 
         binding =
@@ -233,6 +233,7 @@ class EditInfoUserFragment : Fragment() {
                 Log.v("DATA", "Sukses")
                 Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
             }
+            else -> {}
         }
 
     }

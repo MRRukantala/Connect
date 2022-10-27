@@ -164,6 +164,7 @@ class AddNewsFragment : Fragment() {
                 Log.v("DATA", "Sukses")
                 Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
             }
+            else -> {}
         }
 
     }

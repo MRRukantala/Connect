@@ -11,6 +11,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.connect.databinding.MyAgendaFragmentBinding
 import com.example.connect.presentation.main.ui.home.tablayout.agenda.AgendaAdapter
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -24,7 +25,7 @@ class MyAgendaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = MyAgendaFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -56,10 +57,18 @@ class MyAgendaFragment : Fragment() {
     private fun handleState(state: AgendaByUserState) {
 
         when(state){
-            is AgendaByUserState.Loading ->{}
-            is AgendaByUserState.Success ->{
-                Log.v("DATA AGENDA", state.agendaEntity.toString())
+            is AgendaByUserState.Loading ->{
+                binding.apply {
+                    msvListAgenda.viewState = MultiStateView.ViewState.LOADING
+                }
             }
+            is AgendaByUserState.Success ->{
+                binding.apply {
+                    msvListAgenda.viewState =
+                        if (state.agendaEntity.isEmpty()) MultiStateView.ViewState.EMPTY else MultiStateView.ViewState.CONTENT
+                }
+            }
+            else -> {}
         }
 
     }

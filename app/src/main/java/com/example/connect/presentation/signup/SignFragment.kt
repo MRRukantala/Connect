@@ -194,6 +194,7 @@ class SignFragment : Fragment() {
 
 
             }
+            else -> {}
         }
 
     }

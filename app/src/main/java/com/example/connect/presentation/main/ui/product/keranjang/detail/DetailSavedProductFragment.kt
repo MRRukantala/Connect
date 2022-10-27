@@ -22,12 +22,11 @@ class DetailSavedProductFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        val application = requireNotNull(activity).application
-        val arguments = DetailSavedProductFragmentArgs.fromBundle(requireArguments())
 
-        val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
+
+//        val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
 //        val viewModelFactory = DetailSavedProductViewModelFactory(arguments.idSelectedSavedProduct, dataSource)
 
 //        val viewModel = ViewModelProvider(

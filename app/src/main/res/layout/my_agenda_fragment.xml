@@ -25,19 +25,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv"
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msv_list_agenda"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/item_list_news"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_marginTop="8dp"
-            listAgendas="@{viewModel.data}"
-            android:layout_marginBottom="@dimen/dp64"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/back" />
+            app:layout_constraintTop_toBottomOf="@+id/back"
+            app:msv_emptyView="@layout/empty_data"
+            app:msv_loadingView="@layout/shimmer_agenda_fragment"
+            app:msv_viewState="content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_list_agendas"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="8dp"
+                listAgendas="@{viewModel.data}"
+                android:layout_marginBottom="@dimen/dp64"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/back" />
+        </com.kennyc.view.MultiStateView>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

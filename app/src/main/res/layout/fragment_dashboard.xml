@@ -66,18 +66,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_kunjungi_toko">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                listProductKhusus="@{viewModelDashboard.data}"
+            <com.kennyc.view.MultiStateView
+                android:id="@+id/msv_list_product"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/item_product_khusus" />
+                app:msv_viewState="content"
+                app:msv_emptyView="@layout/empty_data"
+                app:msv_loadingView="@layout/shimmer_product">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    listProductKhusus="@{viewModelDashboard.data}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_product_khusus" />
+
+            </com.kennyc.view.MultiStateView>
+
+
 
 
             <androidx.cardview.widget.CardView
@@ -88,7 +103,7 @@
                 app:cardElevation="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+                app:layout_constraintTop_toBottomOf="@+id/msv_list_product">
 
 
                 <com.google.android.material.tabs.TabLayout

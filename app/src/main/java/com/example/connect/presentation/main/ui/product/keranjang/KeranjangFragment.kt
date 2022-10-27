@@ -22,7 +22,7 @@ class KeranjangFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: FragmentKeranjangBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_keranjang, container, false
         )
@@ -31,13 +31,11 @@ class KeranjangFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        val application = requireNotNull(this.activity).application
 
-        val id = requireActivity()
-            .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-            .getInt("id", -1)
 
-        val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
+
+
+//        val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
 
 //        val viewModelFactory = KeranjangViewModelFactory(id, dataSource, application)
 //

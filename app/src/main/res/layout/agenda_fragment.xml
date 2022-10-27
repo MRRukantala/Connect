@@ -53,29 +53,44 @@
 
         </LinearLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv"
-            listAgendas="@{viewModel.data}"
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msv_list_agenda"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:paddingStart="@dimen/dp8"
-            android:paddingEnd="@dimen/dp8"
-            android:paddingBottom="62dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_list_agendas" />
+            app:msv_emptyView="@layout/empty_data"
+            app:msv_loadingView="@layout/shimmer_agenda_fragment"
+            app:msv_viewState="content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv"
+                listAgendas="@{viewModel.data}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="@dimen/dp8"
+                android:paddingEnd="@dimen/dp8"
+                android:paddingBottom="62dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_list_agendas" />
+
+
+        </com.kennyc.view.MultiStateView>
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_agendas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="82dp"
             android:src="@drawable/pen"
             app:backgroundTint="@color/color_primary"

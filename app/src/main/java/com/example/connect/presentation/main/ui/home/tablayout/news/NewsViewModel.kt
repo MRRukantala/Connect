@@ -36,12 +36,12 @@ class NewsViewModel @Inject constructor(
     fun berita() {
         viewModelScope.launch {
             useCase.getAllKiriman()
-//                .onStart {
-//                    loading()
-//
-//                }.catch {
-//
-//                }
+                .onStart {
+                    loading()
+
+                }.catch {
+
+                }
                 .collect { result ->
                     when (result) {
                         is Result.Success -> success(result.data)

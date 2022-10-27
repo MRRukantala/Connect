@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.FragmentStoreResmiBinding
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumAdapter
-import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumState
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -25,7 +25,7 @@ class StoreResmiFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         binding = FragmentStoreResmiBinding.inflate(
@@ -60,7 +60,7 @@ class StoreResmiFragment : Fragment() {
         }
 
         binding.recyclerView.adapter = ProductUmumAdapter(
-            ProductUmumAdapter.OnclickListener{
+            ProductUmumAdapter.OnclickListener {
                 runCatching {
                     findNavController().navigate(StoreResmiFragmentDirections.actionStoreResmiFragmentToDetailProductFragment())
                 }
@@ -96,8 +96,15 @@ class StoreResmiFragment : Fragment() {
     private fun handleState(state: StoreResmiState) {
 
         when (state) {
-            is StoreResmiState.Loading -> {}
-            is StoreResmiState.Success -> {}
+            is StoreResmiState.Loading -> {
+                binding.msvListProduct.viewState = MultiStateView.ViewState.LOADING
+            }
+            is StoreResmiState.Success -> {
+                binding.msvListProduct.viewState =
+                    if (state.storeResmiEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                    else MultiStateView.ViewState.CONTENT
+            }
+            else -> {}
         }
 
     }

@@ -141,13 +141,13 @@ class RepositoryImplementation @Inject constructor(
         }
     }
 
-    override suspend fun getDetailKiriman(id: Int): Flow<Result<KirimanEntity, ResponseObjectWrapper<KirimanResponse>>> {
+    override suspend fun getDetailKiriman(id: Int): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
         return flow {
             val response = apiClient.getDetailKiriman(id)
             delay(800)
             if (response.isSuccessful) {
                 val body = response.body()?.data
-                emit(Result.Success(body?.toKirimanEntity() as KirimanEntity))
+//                emit(Result.Success(body?.toKirimanEntity() as KirimanEntity))
             } else {
                 response.message()
             }

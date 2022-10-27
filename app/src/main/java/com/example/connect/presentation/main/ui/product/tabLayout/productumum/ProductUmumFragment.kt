@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.ProductUmumFragmentBinding
 import com.example.connect.presentation.main.ui.product.DashboardFragmentDirections
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -24,7 +25,7 @@ class ProductUmumFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = ProductUmumFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -79,8 +80,15 @@ class ProductUmumFragment : Fragment() {
     private fun handleState(state: ProductUmumState) {
 
         when (state) {
-            is ProductUmumState.Loading -> {}
-            is ProductUmumState.Success -> {}
+            is ProductUmumState.Loading -> {
+                binding.msvListProduct.viewState = MultiStateView.ViewState.LOADING
+            }
+            is ProductUmumState.Success -> {
+                binding.msvListProduct.viewState =
+                    if (state.productUmumEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                else MultiStateView.ViewState.CONTENT
+            }
+            else -> {}
         }
 
     }

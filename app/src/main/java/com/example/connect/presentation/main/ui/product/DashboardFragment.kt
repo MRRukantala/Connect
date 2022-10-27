@@ -14,6 +14,7 @@ import com.example.connect.presentation.main.ui.product.tabLayout.myproduct.MyPr
 import com.example.connect.presentation.main.ui.product.tabLayout.productumum.ProductUmumFragment
 import com.example.connect.utilites.TabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -107,8 +108,19 @@ class DashboardFragment : Fragment() {
 
     private fun handleState(state: DashboardState) {
         when (state) {
-            is DashboardState.Loading -> {}
-            is DashboardState.Success -> {}
+            is DashboardState.Loading -> {
+                binding.apply {
+                    msvListProduct.viewState = MultiStateView.ViewState.LOADING
+                }
+            }
+            is DashboardState.Success -> {
+                binding.apply {
+                    msvListProduct.viewState =
+                        if (state.dashboardEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                        else MultiStateView.ViewState.CONTENT
+                }
+            }
+            else -> {}
         }
     }
 

@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentLoginBinding.inflate(
             inflater, container, false
@@ -112,6 +112,7 @@ class LoginFragment : Fragment() {
 
 
             }
+            else -> {}
         }
     }
 

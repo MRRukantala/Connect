@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.AgendaFragmentBinding
 import com.example.connect.presentation.main.ui.home.HomeFragmentDirections
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -25,7 +26,7 @@ class AgendaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AgendaFragmentBinding.inflate(inflater, container, false)
 
         binding.fabAgendas.setOnClickListener {
@@ -63,12 +64,18 @@ class AgendaFragment : Fragment() {
 
         when (state) {
             is AgendaState.Loading -> {
-                Log.v("AGENDA", "loading")
+                binding.apply {
+                    msvListAgenda.viewState = MultiStateView.ViewState.LOADING
+                }
             }
             is AgendaState.Success -> {
-                Log.v("AGENDA", state.agendaEntity.toString())
+                binding.apply {
+                    msvListAgenda.viewState =
+                        if (state.agendaEntity.isEmpty()) MultiStateView.ViewState.EMPTY else MultiStateView.ViewState.CONTENT
+                }
             }
 
+            else -> {}
         }
 
     }

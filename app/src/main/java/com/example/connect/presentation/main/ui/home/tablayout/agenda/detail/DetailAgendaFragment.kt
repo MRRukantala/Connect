@@ -10,6 +10,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.DetailAgendaFragmentBinding
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -22,7 +23,7 @@ class DetailAgendaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DetailAgendaFragmentBinding.inflate(inflater, container, false)
 
@@ -58,12 +59,20 @@ class DetailAgendaFragment : Fragment() {
     private fun handleState(state: DetailAgendaState) {
         when (state) {
             is DetailAgendaState.Loading -> {
+                binding.apply {
+                    msvListDetailAgenda.viewState = MultiStateView.ViewState.LOADING
+                }
 
             }
 
             is DetailAgendaState.Success -> {
 
+                binding.apply {
+                    msvListDetailAgenda.viewState = MultiStateView.ViewState.CONTENT
+                }
+
             }
+            else -> {}
         }
 
     }

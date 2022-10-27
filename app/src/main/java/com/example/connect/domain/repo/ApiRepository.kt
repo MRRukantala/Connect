@@ -32,7 +32,7 @@ interface ApiRepository {
         id: Int
     ): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>
 
-    suspend fun getDetailKiriman(id: Int): Flow<Result<KirimanEntity, ResponseObjectWrapper<KirimanResponse>>>
+    suspend fun getDetailKiriman(id: Int): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>
 
     suspend fun getAllLayanan(): Flow<Result<List<LayananEntity>, ResponseListWrapper<LayananResponse>>>
 

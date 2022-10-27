@@ -12,9 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.NewsFragmentBinding
 import com.example.connect.presentation.main.ui.home.HomeFragmentDirections
+import com.example.connect.presentation.main.ui.home.tablayout.news.add.AddNewsFragmentDirections
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+
 @AndroidEntryPoint
 class NewsFragment : Fragment() {
 
@@ -24,7 +27,7 @@ class NewsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = NewsFragmentBinding.inflate(inflater, container, false)
 
         binding.fabNews.setOnClickListener {
@@ -33,7 +36,6 @@ class NewsFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-
 
 
 //        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, Observer {
@@ -56,7 +58,7 @@ class NewsFragment : Fragment() {
 
         binding.rvNews.adapter = NewsAdapter(
             NewsAdapter.OnclickListener {
-
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNewsFragment())
             }
         )
     }
@@ -69,14 +71,23 @@ class NewsFragment : Fragment() {
 
     private fun HandleState(state: NewsState) {
 
-        when(state){
-//            is NewsState.Loading ->{
-//                Log.v("BERITA","LOADING")
-//
-//            }
-            is NewsState.Success ->{
-                Log.v("BERITA",state.kirimanEntity.toString())
+        when (state) {
+            is NewsState.Loading -> {
+                binding.apply {
+                    msvListNews.viewState = MultiStateView.ViewState.LOADING
+                }
+
             }
+            is NewsState.Success -> {
+                binding.apply {
+                    msvListNews.viewState =
+                        if (state.kirimanEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                        else MultiStateView.ViewState.CONTENT
+                }
+
+
+            }
+            else -> {}
         }
 
     }

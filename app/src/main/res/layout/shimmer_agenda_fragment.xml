@@ -12,14 +12,14 @@
 
         <include
             android:id="@+id/include1"
-            layout="@layout/shimmer_item_list_news"
+            layout="@layout/shimmer_item_list_agenda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp16" />
 
         <include
             android:id="@+id/include7"
-            layout="@layout/shimmer_item_list_news"
+            layout="@layout/shimmer_item_list_agenda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp16"

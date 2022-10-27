@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.liveData
 import androidx.navigation.fragment.findNavController
 import com.example.connect.databinding.DetailProductFragmentBinding
 import com.example.connect.domain.entity.DetailProductEntity
 import com.example.connect.utilites.currency
 import com.example.connect.utilites.imagePost
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -80,7 +80,7 @@ class DetailProductFragment : Fragment() {
     private fun handleState(state: DetailProductState) {
         when (state) {
             is DetailProductState.Loading -> {
-                Log.v("Data", "Loading")
+                binding.msvDetailProduct.viewState = MultiStateView.ViewState.LOADING
             }
 
             is DetailProductState.Success -> {
@@ -90,8 +90,10 @@ class DetailProductFragment : Fragment() {
                 currency(binding.harga, data.harga)
                 imagePost(binding.image, data.gambar)
                 Log.v("DATAAA", data.toString())
+                binding.msvDetailProduct.viewState = MultiStateView.ViewState.CONTENT
 
             }
+            else -> {}
         }
     }
 

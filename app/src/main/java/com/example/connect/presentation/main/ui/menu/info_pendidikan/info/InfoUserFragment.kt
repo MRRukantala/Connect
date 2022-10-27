@@ -96,13 +96,14 @@ class InfoUserFragment : Fragment() {
                 Log.v("DATA", "Sukses")
                 Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
             }
+            else -> {}
         }
 
     }
 
     private fun keluar() {
         requireActivity().getSharedPreferences("my_data_pref", Context.MODE_PRIVATE).edit().clear()
-            .commit()
+            .apply()
         SplashScreenFragmentDirections.actionSplashScreenFragmentToMenuFragment()
 //        SplashScreenFragmentDirections.actionSplashScreenFragmentToLoginFragment()
         toMainActivity()
