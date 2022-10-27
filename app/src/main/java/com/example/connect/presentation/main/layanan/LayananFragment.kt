@@ -36,20 +36,28 @@ class LayananFragment : Fragment() {
             }
         )
 
+        binding.rvPlaylist.adapter = PlaylistAdapter(
+            PlaylistAdapter.OnclickListener {
+
+            }
+        )
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllLayanan()
+        viewModel.getAllPlaylist()
         observe()
-
-
     }
 
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
+            .launchIn(lifecycleScope)
+        viewModel.statePlaylist.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleStatePlaylist(state) }
             .launchIn(lifecycleScope)
     }
 
@@ -57,6 +65,14 @@ class LayananFragment : Fragment() {
         when (state) {
             is LayananState.Loading -> {}
             is LayananState.Success -> {}
+            else -> {}
+        }
+    }
+
+    private fun handleStatePlaylist(state: PlaylistState) {
+        when (state) {
+            is PlaylistState.Loading -> {}
+            is PlaylistState.Success -> {}
             else -> {}
         }
     }

@@ -13,14 +13,27 @@ import coil.request.ImageRequest
 import com.example.connect.R
 import com.example.connect.data.database.SaveProductData
 import com.example.connect.domain.entity.*
+import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
 import com.example.connect.presentation.main.home.tablayout.agenda.AgendaAdapter
 import com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
+import com.example.connect.presentation.main.layanan.PlaylistAdapter
 import com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.PendidikanAdapter
 import com.example.connect.presentation.main.product.ProductAdapter
 import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProductAdapter
 import java.text.SimpleDateFormat
 
 const val GET_PATH_IMAGE = "https://megha.desa-pintar.com/markol/public/storage/"
+
+
+// Playlist
+@BindingAdapter("listPlaylist")
+fun bindRecyclerViewListPlaylist(
+    recyclerView: RecyclerView,
+    data: List<PlaylistELearningEntity>?
+) {
+    val adapter = recyclerView.adapter as PlaylistAdapter
+    adapter.submitList(data)
+}
 
 @BindingAdapter("listPosts")
 fun bindRecyclerViewListPosts(
