@@ -1,6 +1,5 @@
 package com.example.connect.presentation.main.home.tablayout.news.detail
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.domain.entity.KirimanEntity
@@ -13,46 +12,42 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 @HiltViewModel
 class DetailNewsViewModel @Inject constructor(
     val useCase: HomeUseCase
-):ViewModel() {
+) : ViewModel() {
     private val _state = MutableStateFlow<DetailNewsState>(DetailNewsState.Init)
     val state get() = _state
 
     private val _data = MutableStateFlow<List<KirimanEntity>>(mutableListOf())
-    val data:StateFlow<List<KirimanEntity>> get() = _data
+    val data: StateFlow<List<KirimanEntity>> get() = _data
 
     private fun loading() {
         _state.value = DetailNewsState.Loading()
     }
 
-    private fun success(detailNewsEntity: List<KirimanEntity>){
+    private fun success(detailNewsEntity: List<KirimanEntity>) {
         _state.value = DetailNewsState.Success(detailNewsEntity)
     }
 
-    private fun error(detailNewsEntity: KirimanEntity){
+    private fun error(detailNewsEntity: KirimanEntity) {
         _state.value = DetailNewsState.Error(detailNewsEntity)
     }
 
-    fun detailNews(id:Int){
+    fun detailNews(id: Int) {
         viewModelScope.launch {
             useCase.getDetailKiriman(id)
-//                .onStart { loading()
-//
-//                }.catch {
-//
-//                }
-                .collect{ result ->
-                    when(result){
+                .onStart {
+                    loading()
+                }.catch { }
+                .collect { result ->
+                    when (result) {
                         is Result.Success -> {
                             success(result.data)
                             _data.value = result.data
-
-                            Log.v("DATA DETAIL NEWS2", _data.value.toString())
-                            Log.v("DATA DETAIL NEWS3", data.value.toString())
                         }
-                        is Result.Error -> { }
+                        is Result.Error -> {}
                     }
                 }
         }
@@ -61,7 +56,6 @@ class DetailNewsViewModel @Inject constructor(
 
 sealed class DetailNewsState {
     object Init : DetailNewsState()
-
     data class Loading(val loading: Boolean = true) : DetailNewsState()
     data class Success(val detailNewsEntity: List<KirimanEntity>) : DetailNewsState()
     data class Error(val response: KirimanEntity) : DetailNewsState()

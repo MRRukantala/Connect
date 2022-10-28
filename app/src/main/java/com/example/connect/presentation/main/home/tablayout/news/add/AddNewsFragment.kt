@@ -5,6 +5,8 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
@@ -13,35 +15,38 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.connect.R
-import com.example.connect.databinding.AddNewsFragmentBinding
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.File
-import android.database.Cursor
-import android.net.Uri
-import android.widget.EditText
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.connect.R
+import com.example.connect.databinding.AddNewsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import java.lang.Exception
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 
 @AndroidEntryPoint
 class AddNewsFragment : Fragment() {
 
     lateinit var binding: AddNewsFragmentBinding
-    private val viewModel:AddNewsViewModelTerbaru by viewModels()
+    private val viewModel: AddNewsViewModelTerbaru by viewModels()
     private val REQUEST_CODE = 101
 
-    private lateinit var etKonten:EditText
+    private lateinit var etKonten: EditText
+
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -52,25 +57,21 @@ class AddNewsFragment : Fragment() {
             } else {
                 viewModel.setAllField(
                     binding.editText.text.toString()
-
                 )
             }
         }
 
         override fun afterTextChanged(s: Editable?) {
-
             binding.fabNews.isEnabled = true
-
         }
     }
-
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = AddNewsFragmentBinding.inflate(inflater , container, false)
+        binding = AddNewsFragmentBinding.inflate(inflater, container, false)
         viewModel.setAllFieldNull()
 
         binding.lifecycleOwner = viewLifecycleOwner
@@ -137,12 +138,6 @@ class AddNewsFragment : Fragment() {
         binding.fabNews.setOnClickListener {
             viewModel.postKiriman()
         }
-
-
-
-
-
-
     }
 
     private fun observe() {
@@ -152,14 +147,13 @@ class AddNewsFragment : Fragment() {
     }
 
     private fun handleState(state: PostNewsState) {
-        when(state){
+        when (state) {
             is PostNewsState.Loading -> {
-                Log.v("DATA", "loading")
-                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.VISIBLE
             }
             is PostNewsState.Success -> {
-                Log.v("DATA", "Sukses")
-                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+                mainNavigation?.navigateUp()
+                Toast.makeText(requireContext(), "SUKSES", Toast.LENGTH_LONG).show()
             }
             else -> {}
         }

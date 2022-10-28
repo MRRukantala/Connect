@@ -54,10 +54,9 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.berita()
         observe()
-        Log.v("Token", pref.getToken())
         binding.rvNews.adapter = NewsAdapter(
             NewsAdapter.OnclickListener {
-                mainNavigation?.navigate(HomeFragmentDirections.actionHomeFragmentToDetailNewsFragment())
+                mainNavigation?.navigate(HomeFragmentDirections.actionHomeFragmentToDetailNewsFragment(it.id))
             }
         )
     }

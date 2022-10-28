@@ -14,7 +14,7 @@ class NewsAdapter(val onclickListener: OnclickListener) :
     ) {
 
     inner class ViewHolder(
-        private var binding: ItemListNewsBinding,
+        private var binding: com.example.connect.databinding.ItemListNewsBinding,
 
         ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: KirimanEntity) {

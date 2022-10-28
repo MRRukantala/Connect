@@ -42,7 +42,6 @@ class MyAgendaViewModel @Inject constructor(
             useCase.getAgendaByIdUser(id)
                 .onStart {
                     loading()
-
                 }.catch {
 
                 }.collect { result ->
