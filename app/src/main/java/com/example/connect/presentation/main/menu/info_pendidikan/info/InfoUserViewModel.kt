@@ -37,11 +37,11 @@ class InfoUserViewModel @Inject constructor(
     fun getProfile(id:Int){
         viewModelScope.launch {
             useCase.getProfile(id)
-//                .onStart { loading()
-//
-//                }.catch {
-//
-//                }
+                .onStart { loading()
+
+                }.catch {
+
+                }
                 .collect{ result ->
                     when(result){
                         is Result.Success -> success(result.data)

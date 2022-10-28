@@ -1,7 +1,6 @@
 package com.example.connect.presentation.main.menu.info_pendidikan.pendidikan
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.lifecycle.flowWithLifecycle
 import com.example.connect.databinding.PendidikanUserFragmentBinding
 import com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModel
 import com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModelState
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
 
@@ -71,10 +71,13 @@ class PendidikanUserFragment : Fragment() {
 
         when (state) {
             is InfoUserViewModelState.Loading -> {
-                Log.v("PENDIDIKAN", "loading")
+                binding.msvPendidikan.viewState = MultiStateView.ViewState.LOADING
             }
             is InfoUserViewModelState.Success -> {
-                Log.v("PENDIDIKAN", state.infoUserEntity.get(0).listPendidikan.toString())
+//                Log.v("PENDIDIKAN", state.infoUserEntity.get(0).listPendidikan.toString())
+                binding.msvPendidikan.viewState =
+                    if (state.infoUserEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                    else MultiStateView.ViewState.CONTENT
 
                 binding.fabNews.setOnClickListener {
 //                    findNavController().navigate(

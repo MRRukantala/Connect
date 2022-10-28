@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
             type="com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.main.menu.info_pendidikan.pendidikan.PendidikanUserFragment">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieAnimationView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:visibility="gone"
-            android:layout_gravity="center"
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msv_pendidikan"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/empty" />
+            app:msv_viewState="content"
+            app:msv_loadingView="@layout/shimmer_pendidikan_fragment"
+            app:msv_emptyView="@layout/empty_data"
+            app:msv_animateViewChanges="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                listPendidikan="@{viewModel.data.get(0).listPendidikan}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutMode="clipBounds"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_list_my_pendidikan" />
+
+        </com.kennyc.view.MultiStateView>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layoutMode="clipBounds"
-            android:layout_width="match_parent"
-            listPendidikan="@{viewModel.data.get(0).listPendidikan}"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_list_my_pendidikan" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_news"

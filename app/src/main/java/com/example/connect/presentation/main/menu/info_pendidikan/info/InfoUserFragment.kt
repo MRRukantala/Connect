@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.connect.MainActivity
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -86,12 +87,10 @@ class InfoUserFragment : Fragment() {
 
         when (state) {
             is InfoUserViewModelState.Loading -> {
-                Log.v("DATA", "loading")
-                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+                binding.msvProfile.viewState = MultiStateView.ViewState.LOADING
             }
             is InfoUserViewModelState.Success -> {
-                Log.v("DATA", "Sukses")
-                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+                binding.msvProfile.viewState = MultiStateView.ViewState.CONTENT
             }
             else -> {}
         }
