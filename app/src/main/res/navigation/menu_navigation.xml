@@ -381,7 +381,6 @@
     </fragment>
     <fragment
         android:id="@+id/keranjangFragment"
-        android:name="com.example.connect.presentation.main.product.keranjang.KeranjangFragment"
         android:label="KeranjangFragment"
         tools:layout="@layout/fragment_keranjang">
         <action

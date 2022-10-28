@@ -1,13 +1,18 @@
 package com.example.connect.presentation.main.menu.info_pendidikan.pendidikan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.example.connect.R
 import com.example.connect.databinding.PendidikanUserFragmentBinding
+import com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfoDirections
 import com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModel
 import com.example.connect.presentation.main.menu.info_pendidikan.info.InfoUserViewModelState
 import com.kennyc.view.MultiStateView
@@ -20,6 +25,10 @@ class PendidikanUserFragment : Fragment() {
     lateinit var binding: PendidikanUserFragmentBinding
 
     private val viewModel: InfoUserViewModel by activityViewModels()
+
+    private val mainNavigation : NavController? by lazy{
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,15 +58,25 @@ class PendidikanUserFragment : Fragment() {
 
             PendidikanAdapter.OnclickListener {
                 runCatching {
-//                    findNavController().navigate(
-////                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-////                            it,
-////                            1
-////                        )
-//                    )
+                    mainNavigation?.navigate(
+                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
+                            it,
+                            1
+                        )
+                    )
                 }
             }
         )
+
+//        binding.fabNews.setOnClickListener {
+//            Log.v("CLICK", "click")
+//            mainNavigation?.navigate(
+//                ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
+//                    viewModel.data.value?.get(0)?.listPendidikan?.get(0),
+//                    2
+//                )
+//            )
+//        }
 
 
     }
@@ -75,18 +94,12 @@ class PendidikanUserFragment : Fragment() {
             }
             is InfoUserViewModelState.Success -> {
 //                Log.v("PENDIDIKAN", state.infoUserEntity.get(0).listPendidikan.toString())
+
                 binding.msvPendidikan.viewState =
                     if (state.infoUserEntity.isEmpty()) MultiStateView.ViewState.EMPTY
                     else MultiStateView.ViewState.CONTENT
 
-                binding.fabNews.setOnClickListener {
-//                    findNavController().navigate(
-//                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-//                            state.infoUserEntity.get(0).listPendidikan.get(0),
-//                            0
-//                        )
-//                    )
-                }
+
             }
 
             else -> {}
