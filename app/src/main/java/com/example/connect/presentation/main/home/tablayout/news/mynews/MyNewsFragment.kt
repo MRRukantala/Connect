@@ -41,6 +41,7 @@ class MyNewsFragment : Fragment() {
         binding = MyNewsFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        binding.back.backImage.setOnClickListener { mainNavigation?.navigateUp() }
 
         binding.rcv.adapter = NewsAdapter(
             NewsAdapter.OnclickListener {

@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.connect.presentation.main.home.tablayout.agenda.myagenda.MyAgendaViewModel" />
@@ -29,6 +30,7 @@
             android:id="@+id/msv_list_agenda"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,19 +42,17 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv"
+                listAgendas="@{viewModel.data}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_list_agendas"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:layout_marginTop="8dp"
-                listAgendas="@{viewModel.data}"
                 android:layout_marginBottom="@dimen/dp64"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/back" />
+                app:layout_constraintTop_toBottomOf="@+id/back"
+                tools:listitem="@layout/item_list_agendas" />
         </com.kennyc.view.MultiStateView>
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

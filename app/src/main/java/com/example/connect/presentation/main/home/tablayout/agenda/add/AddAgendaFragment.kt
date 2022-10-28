@@ -9,6 +9,8 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
@@ -23,6 +25,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentAddAgendaBinding
 import com.example.connect.utilites.DatePickerHelper
@@ -50,6 +54,10 @@ class AddAgendaFragment : Fragment() {
     private lateinit var etTitle: EditText
     private lateinit var etLokasi: EditText
     private lateinit var etKonten: EditText
+
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     var REQUEST_CODE = 101
 
@@ -168,12 +176,14 @@ class AddAgendaFragment : Fragment() {
 
         when (state) {
             is AddAgendaDataState.Loading -> {
-                Log.v("DATA", "loading")
-                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.VISIBLE
             }
             is AddAgendaDataState.Success -> {
-                Log.v("DATA", "Sukses")
-                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.GONE
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mainNavigation?.navigateUp()
+                }, 2000)
             }
             else -> {}
         }

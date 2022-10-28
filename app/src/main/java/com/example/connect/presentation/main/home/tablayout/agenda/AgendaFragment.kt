@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.example.connect.R
 import com.example.connect.databinding.AgendaFragmentBinding
 import com.example.connect.presentation.main.home.HomeFragmentDirections
 import com.kennyc.view.MultiStateView
@@ -22,6 +24,10 @@ class AgendaFragment : Fragment() {
     lateinit var binding: AgendaFragmentBinding
     private val viewModel: AgendaViewModel by viewModels()
 
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,19 +35,19 @@ class AgendaFragment : Fragment() {
         binding = AgendaFragmentBinding.inflate(inflater, container, false)
 
         binding.fabAgendas.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddAgendaFragment())
+            mainNavigation?.navigate(HomeFragmentDirections.actionHomeFragmentToAddAgendaFragment())
         }
 
         binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.agenda()
         binding.viewModel = viewModel
+
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.agenda()
         observe()
     }
 
@@ -52,9 +58,11 @@ class AgendaFragment : Fragment() {
 
         binding.rcv.adapter = AgendaAdapter(
             AgendaAdapter.OnclickListener {
-                runCatching {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailAgendaFragment())
-                }
+                mainNavigation?.navigate(
+                    HomeFragmentDirections.actionHomeFragmentToDetailAgendaFragment(
+                        it.id
+                    )
+                )
             }
         )
     }
@@ -73,7 +81,6 @@ class AgendaFragment : Fragment() {
                         if (state.agendaEntity.isEmpty()) MultiStateView.ViewState.EMPTY else MultiStateView.ViewState.CONTENT
                 }
             }
-
             else -> {}
         }
 

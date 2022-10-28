@@ -472,42 +472,12 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-        <action
-            android:id="@+id/action_addNewsFragment2_to_prosesAddingNewsFragment"
-            app:destination="@id/prosesAddingNewsFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addAgendaFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.agenda.add.AddAgendaFragment"
         android:label="fragment_add_agenda"
-        tools:layout="@layout/fragment_add_agenda">
-        <action
-            android:id="@+id/action_addAgendaFragment_to_loadingAddAgendaFragment"
-            app:destination="@id/loadingAddAgendaFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
-    <fragment
-        android:id="@+id/prosesAddingNewsFragment"
-        android:name="com.example.connect.presentation.main.home.tablayout.news.add.ProsesAddingNewsFragment"
-        android:label="fragment_proses_adding_news"
-        tools:layout="@layout/fragment_proses_adding_news">
-        <action
-            android:id="@+id/action_prosesAddingNewsFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_add_agenda"/>
     <fragment
         android:id="@+id/detailNewsFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.news.detail.DetailNewsFragment"
@@ -534,21 +504,9 @@
         <action
             android:id="@+id/action_detailAgendaFragment_to_imageOpener"
             app:destination="@id/imageOpener" />
-    </fragment>
-    <fragment
-        android:id="@+id/loadingAddAgendaFragment"
-        android:name="com.example.connect.presentation.main.home.tablayout.agenda.add.LoadingAddAgendaFragment"
-        android:label="LoadingAddAgendaFragment"
-        tools:layout="@layout/fragment_loading_add_agenda">
-        <action
-            android:id="@+id/action_loadingAddAgendaFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/imageOpener"
@@ -563,7 +521,15 @@
         android:id="@+id/myAgendaFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.agenda.myagenda.MyAgendaFragment"
         android:label="my_agenda_fragment"
-        tools:layout="@layout/my_agenda_fragment" />
+        tools:layout="@layout/my_agenda_fragment">
+        <action
+            android:id="@+id/action_myAgendaFragment_to_detailAgendaFragment"
+            app:destination="@id/detailAgendaFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/myNewsFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.news.mynews.MyNewsFragment"
