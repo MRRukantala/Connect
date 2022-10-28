@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -46,16 +47,14 @@ class FormPendidikanFragment : Fragment() {
         val dataPendidikan = arguments?.getParcelable<PendidikanEntity>("data")
         Log.v("Data", dataPendidikan.toString())
         observe()
-        if (arguments?.getInt("id") == 1){
-
+        if (arguments?.getInt("id") == 0){
+            binding.btnHapus.isVisible = false
+            binding.btnSimpan.text = "Tambahkan"
+        }else{
             binding.btnHapus.setOnClickListener {
                 viewModel.delete(dataPendidikan?.id!!)
             }
 
-
-        }else if (arguments?.getInt("id") == 2){
-            binding.btnHapus.isEnabled = false
-            binding.btnSimpan.text = "Tambahkan"
         }
 
 

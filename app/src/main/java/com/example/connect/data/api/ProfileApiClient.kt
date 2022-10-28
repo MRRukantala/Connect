@@ -2,6 +2,7 @@ package com.example.connect.data.api
 
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseObjectWrapper
+import com.example.connect.data.auth.ResponseObjectWrapperTanpaData
 import com.example.connect.data.model.request.PendidikanRequest
 import com.example.connect.data.model.response.*
 import okhttp3.MultipartBody
@@ -54,9 +55,8 @@ interface ProfileApiClient {
     //API POST PENDIDIKAN
     @POST("pendidikan")
     suspend fun postPendidikan(
-        @Header("Authorization") authorization: String,
         @Body pendidikanRequest: PendidikanRequest
-    ): Response<ResponseObjectWrapper<PendidikanResponse>>
+    ): Response<ResponseObjectWrapperTanpaData>
 
     // API DELETE PENDIDIKAN
     @DELETE("pendidikan/{id}")

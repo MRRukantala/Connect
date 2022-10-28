@@ -103,9 +103,6 @@
             app:popUpTo="@id/containerInfo"
             app:popUpToInclusive="false" />
         <argument
-            android:name="data"
-            app:argType="com.example.connect.domain.entity.PendidikanEntity" />
-        <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
@@ -203,6 +200,9 @@
         <action
             android:id="@+id/action_editInfoUserFragment_to_containerInfo"
             app:destination="@id/containerInfo" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
         <!--        <argument-->
         <!--            android:name="DataHold"-->
         <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->

@@ -19,3 +19,8 @@ data class ResponseObjectWrapper<T>(
     @SerializedName("data") val data: T? = null
 )
 
+data class ResponseObjectWrapperTanpaData(
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("message") val message: String,
+)
+

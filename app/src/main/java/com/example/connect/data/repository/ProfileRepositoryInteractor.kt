@@ -129,7 +129,7 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
     }
 
 
-    override suspend fun postPendidikan(): Flow<Result<SementaraEntity, ResponseObjectWrapper<ProfileResponse>>> {
+    override suspend fun postPendidikan(): Flow<Result<PendidikanEntity, ResponseObjectWrapper<ProfileResponse>>> {
         TODO("Not yet implemented")
     }
 
