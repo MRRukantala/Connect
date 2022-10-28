@@ -48,10 +48,10 @@ class InfoUserFragment : Fragment() {
 
         binding.apply {
             buttonAbout.setOnClickListener {
-                menuNavigation?.navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
+                menuNavigation?.navigate(R.id.action_containerInfo_to_itemListDialogFragment)
             }
             button5.setOnClickListener {
-                menuNavigation?.navigate(ContainerInfoDirections.actionEditInfoUserFragmentToContainerInfoPendidikanFragment())
+                menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment())
             }
             logout.setOnClickListener {
                 keluar()

@@ -5,8 +5,10 @@ import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.request.RegisterRequest
+import com.example.connect.data.model.response.BasicResponse
 import com.example.connect.data.model.response.LoginResponse
 import com.example.connect.data.model.response.RegisterResponse
+import com.example.connect.data.model.response.isNotSuccesfull
 import com.example.connect.domain.entity.LoginEntity
 import com.example.connect.domain.entity.RegisterEntity
 import com.example.connect.domain.repo.AuthApiRepository
@@ -19,14 +21,15 @@ import javax.inject.Inject
 class AuthRespositoryInteractor @Inject constructor(
     private val apiClient: AuthApiClient
 ) : AuthApiRepository{
-    override suspend fun loginApi(loginRequest: LoginRequest): Flow<Result<LoginEntity, ResponseObjectWrapperSementara<LoginResponse>>> {
+    override suspend fun loginApi(loginRequest: LoginRequest): Flow<Result<LoginEntity, BasicResponse>> {
         return flow {
+            delay(1000)
             val response = apiClient.loginAPI(loginRequest)
-            delay(800)
             if (response.isSuccessful) {
                 val loginEntity = response.body()?.data?.toLoginEntity()
                 emit(Result.Success(loginEntity!!))
             } else {
+                emit(Result.Error(isNotSuccesfull(response.errorBody()!!)))
             }
         }
     }

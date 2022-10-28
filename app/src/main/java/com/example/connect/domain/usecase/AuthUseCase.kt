@@ -4,6 +4,7 @@ import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.auth.ResponseObjectWrapperSementara
 import com.example.connect.data.model.request.LoginRequest
 import com.example.connect.data.model.request.RegisterRequest
+import com.example.connect.data.model.response.BasicResponse
 import com.example.connect.data.model.response.LoginResponse
 import com.example.connect.data.model.response.RegisterResponse
 import com.example.connect.domain.entity.LoginEntity
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 class AuthUseCase @Inject constructor(private val repository: AuthApiRepository) {
     suspend fun login(loginRequest: LoginRequest):
-            Flow<Result<LoginEntity, ResponseObjectWrapperSementara<LoginResponse>>> {
+            Flow<Result<LoginEntity, BasicResponse>> {
         return repository.loginApi(loginRequest)
     }
 

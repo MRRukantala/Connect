@@ -3,12 +3,11 @@ package com.example.connect.presentation.auth.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.view.isNotEmpty
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -18,7 +17,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentLoginBinding
-import com.example.connect.domain.entity.LoginEntity
 import com.example.connect.presentation.auth.ContainerAuthFragmentDirections
 import com.example.connect.utilites.app.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,7 +54,6 @@ class LoginFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable?) {
-            binding.login.isEnabled = notEmptyField()
         }
     }
 
@@ -72,7 +69,6 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModelLogin = viewModel
 
-
         binding.include2.backImage.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -86,7 +82,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         observe()
         listOf(etEmail, etPassword).forEach {
             it.addTextChangedListener(textWatcher)
@@ -98,8 +93,8 @@ class LoginFragment : Fragment() {
         binding.login.setOnClickListener {
             viewModel.login()
         }
-    }
 
+    }
 
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
@@ -107,31 +102,32 @@ class LoginFragment : Fragment() {
             .launchIn(lifecycleScope)
     }
 
-    private fun notEmptyField() =
-        binding.editTextEmail.isNotEmpty() && binding.editTextPassword.isNotEmpty()
-
     private fun handleState(state: LoginState) {
         when (state) {
-            is LoginState.Loading -> {}
+            is LoginState.Loading -> {
+                loading()
+            }
+            is LoginState.Error -> {
+                Toast.makeText(requireContext(), "${state.response.message}", Toast.LENGTH_LONG)
+                    .show()
+                binding.iLoading.root.visibility = View.GONE
+            }
             is LoginState.Success -> {
-                loginSuccessHandler(state.loginEntity, state.loginEntity.token)
+                pref.saveToken(
+                    state.loginEntity.token,
+                    state.loginEntity.user.level!!.toInt(),
+                    state.loginEntity.user.id!!
+                )
+                binding.iLoading.root.visibility = View.GONE
+                mainNavController?.navigate(ContainerAuthFragmentDirections.actionContainerAuthFragmentToContainerMainFragment())
             }
             else -> {}
         }
     }
 
-
-    private fun loginSuccessHandler(loginEntity: LoginEntity, token: String = "") {
-        if (loginEntity.token.isNotEmpty()) toMain(token) else toVerify()
+    private fun loading() {
+        binding.iLoading.root.visibility = View.VISIBLE
     }
 
-    private fun toMain(token: String) {
-        pref.saveToken(token)
-        mainNavController?.navigate(ContainerAuthFragmentDirections.actionContainerAuthFragmentToContainerMainFragment())
-    }
-
-    private fun toVerify() {
-        authNavController?.navigate(LoginFragmentDirections.actionLoginFragmentToVerifFragment())
-    }
 
 }

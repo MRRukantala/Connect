@@ -15,7 +15,6 @@
             app:destination="@id/loginFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/menuFragment" />
@@ -24,18 +23,8 @@
             app:destination="@id/signFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-        <action
-            android:id="@+id/action_menuFragment_to_verifFragment"
-            app:destination="@id/verifFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -47,10 +36,8 @@
             app:destination="@id/verifFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/menuFragment" />
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/signFragment"
@@ -71,12 +58,11 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/menuFragment" />
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/ketentuanAppFragment"
-        android:name="com.example.connect.presentation.auth.signup.KetentuanAppFragment"
+        android:name="com.example.connect.presentation.auth.KetentuanAppFragment"
         android:label="KetentuanAppFragment"
         tools:layout="@layout/fragment_ketentuan_app" />
     <fragment
