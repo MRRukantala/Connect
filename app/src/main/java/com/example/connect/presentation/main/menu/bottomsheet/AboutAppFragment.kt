@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.menu.about
+package com.example.connect.presentation.main.menu.bottomsheet
 
 import android.os.Bundle
 import android.view.LayoutInflater

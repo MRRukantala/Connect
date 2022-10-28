@@ -1,4 +1,4 @@
-package com.example.connect.presentation.main.menu.bottomsheet.terikamaishsaran
+package com.example.connect.presentation.main.menu.bottomsheet
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

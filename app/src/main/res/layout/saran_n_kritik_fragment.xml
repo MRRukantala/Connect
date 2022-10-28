@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
+            android:enabled="false"
             android:layout_marginEnd="24dp"
             android:hint="Tulis saran dan masukan di sini"
             android:textColor="@color/content_and_title_color_post_and_agenda"
@@ -48,6 +49,7 @@
 
         <Button
             android:id="@+id/send"
+            android:enabled="false"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +64,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/mohon_maaf_layanan_masih_kosong_n_dan_layanan_masih_dalam_pengembangan"
+            android:text="Fitur ini dalam Pengembangan"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

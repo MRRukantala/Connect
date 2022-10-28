@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
-        android:name="com.example.connect.presentation.main.menu.about.AboutAppFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.AboutAppFragment"
         android:label="about_app_fragment"
         tools:layout="@layout/about_app_fragment" />
     <fragment
@@ -184,7 +184,7 @@
         app:destination="@id/formPendidikanFragment" />
     <fragment
         android:id="@+id/saranTerimaKasihFragment"
-        android:name="com.example.connect.presentation.main.menu.bottomsheet.terikamaishsaran.SaranTerimaKasihFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.SaranTerimaKasihFragment"
         android:label="SaranTerimaKasihFragment"
         tools:layout="@layout/fragment_saran_terima_kasih">
         <action
