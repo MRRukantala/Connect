@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.example.connect.presentation.main.home.tablayout.news.detail.DetailNewsViewModel" />
+            name="data"
+            type="com.example.connect.domain.entity.KirimanEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,10 +63,12 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/circleImageView"
-                                imageProfile="@{viewModel.data.fotoUser}"
+                                imageProfile="@{data.fotoUser}"
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
                                 android:layout_margin="12dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:src="@drawable/avatar_1_raster" />
@@ -78,7 +80,7 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/nunito"
-                                android:text="@{viewModel.data.nama}"
+                                android:text="@{data.nama}"
                                 android:textColor="@color/content_and_title_color_post_and_agenda"
                                 app:layout_constraintStart_toEndOf="@+id/circleImageView"
                                 app:layout_constraintTop_toTopOf="@+id/circleImageView"
@@ -94,7 +96,7 @@
                                 app:layout_constraintStart_toEndOf="@+id/circleImageView"
                                 app:layout_constraintTop_toBottomOf="@+id/name_text_view"
                                 app:layout_constraintVertical_bias="0.35000000"
-                                app:time="@{viewModel.data.tglUpdate}"
+
                                 tools:text="@string/_21_april_2000" />
 
                             <TextView
@@ -103,7 +105,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="12dp"
                                 android:fontFamily="@font/nunito"
-                                android:text="@{viewModel.data.konten}"
+                                android:text="@{data.konten}"
                                 android:textColor="@color/content_and_title_color_post_and_agenda"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +127,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:scaleType="centerCrop"
-                                    app:imageUrl="@{viewModel.data.fotoKonten}"
+                                    app:imageUrl="@{data.fotoKonten}"
                                     tools:src="@drawable/post"
                                     android:contentDescription="TODO" />
 

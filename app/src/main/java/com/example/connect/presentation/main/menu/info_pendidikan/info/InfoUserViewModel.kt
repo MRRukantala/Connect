@@ -7,6 +7,8 @@ import com.example.connect.domain.usecase.ProfileUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -37,11 +39,11 @@ class InfoUserViewModel @Inject constructor(
     fun getProfile(id:Int){
         viewModelScope.launch {
             useCase.getProfile(id)
-//                .onStart { loading()
-//
-//                }.catch {
-//
-//                }
+                .onStart { loading()
+
+                }.catch {
+
+                }
                 .collect{ result ->
                     when(result){
                         is Result.Success -> success(result.data)

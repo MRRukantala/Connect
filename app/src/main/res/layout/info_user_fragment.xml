@@ -15,60 +15,68 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msv_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".presentation.main.menu.info_pendidikan.info.InfoUserFragment">
+            app:msv_viewState="content"
+            app:msv_animateViewChanges="true"
+            app:msv_loadingView="@layout/shimmer_info_user_fragment">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView2"
-                imageProfile="@{viewModel.data.get(0).foto}"
-                android:layout_width="84dp"
-                android:layout_height="84dp"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/avatar_1_raster" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".presentation.main.menu.info_pendidikan.info.InfoUserFragment">
 
-            <TextView
-                android:id="@+id/textView48"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/nunito_sans"
-                android:text="@{viewModel.data.get(0).name}"
-                android:textColor="@color/content_and_title_color_post_and_agenda"
-                android:textSize="@dimen/sp16"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/circleImageView2"
-                app:layout_constraintStart_toStartOf="@+id/circleImageView2"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView2"
-                tools:text="Rukantala" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView2"
+                    imageProfile="@{viewModel.data.get(0).foto}"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/avatar_1_raster" />
 
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/nunito_sans"
-                android:text="NIM"
-                android:textColor="@color/content_and_title_color_post_and_agenda"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView48" />
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="@{viewModel.data.get(0).name}"
+                    android:textColor="@color/content_and_title_color_post_and_agenda"
+                    android:textSize="@dimen/sp16"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/circleImageView2"
+                    app:layout_constraintStart_toStartOf="@+id/circleImageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/circleImageView2"
+                    tools:text="Rukantala" />
 
-            <TextView
-                android:id="@+id/textView36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nunito_sans"
-                android:text="@{viewModel.data.get(0).nim}"
-                app:layout_constraintStart_toStartOf="@+id/textView35"
-                app:layout_constraintTop_toBottomOf="@+id/textView35"
-                tools:text="aaa" />
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="NIM"
+                    android:textColor="@color/content_and_title_color_post_and_agenda"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="@{viewModel.data.get(0).nim}"
+                    app:layout_constraintStart_toStartOf="@+id/textView35"
+                    app:layout_constraintTop_toBottomOf="@+id/textView35"
+                    tools:text="aaa" />
 
             <TextView
                 android:id="@+id/textView37"
@@ -140,39 +148,39 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView41"
                 tools:text="@string/belum_ditambahkan" />
 
-            <TextView
-                android:id="@+id/textView43"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/nunito_sans"
-                android:text="Jenis Kelamin"
-                android:textColor="@color/content_and_title_color_post_and_agenda"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView35"
-                app:layout_constraintTop_toBottomOf="@+id/textView42" />
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nunito_sans"
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/content_and_title_color_post_and_agenda"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView35"
+                    app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
-            <TextView
-                android:id="@+id/textView44"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nunito_sans"
-                app:emptyornot="@{viewModel.data.get(0).jenisKelamin}"
-                app:layout_constraintStart_toStartOf="@+id/textView35"
-                app:layout_constraintTop_toBottomOf="@+id/textView43"
-                tools:text="@string/belum_ditambahkan" />
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nunito_sans"
+                    app:emptyornot="@{viewModel.data.get(0).jenisKelamin}"
+                    app:layout_constraintStart_toStartOf="@+id/textView35"
+                    app:layout_constraintTop_toBottomOf="@+id/textView43"
+                    tools:text="@string/belum_ditambahkan" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:drawableLeft="@drawable/ic_baseline_create_24"
-                android:text="@string/edit_informasi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView44" />
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:drawableLeft="@drawable/ic_baseline_create_24"
+                    android:text="@string/edit_informasi"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
             <Button
                 android:id="@+id/button_about"
@@ -203,6 +211,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/button_about" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.kennyc.view.MultiStateView>
+
+
     </androidx.core.widget.NestedScrollView>
 </layout>

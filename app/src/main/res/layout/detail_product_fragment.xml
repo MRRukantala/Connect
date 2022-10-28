@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:msv_viewState="content"
+                app:msv_animateViewChanges="true"
                 app:msv_loadingView="@layout/shimmer_detail_product_fragment"
                 app:msv_emptyView="@layout/empty_data"
                 >

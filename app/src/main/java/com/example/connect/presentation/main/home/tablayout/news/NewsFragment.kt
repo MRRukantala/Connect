@@ -9,9 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.connect.R
 import com.example.connect.databinding.NewsFragmentBinding
 import com.example.connect.presentation.main.home.HomeFragmentDirections
+import com.example.connect.presentation.main.home.tablayout.news.add.AddNewsFragmentDirections
 import com.example.connect.utilites.app.SharedPreferences
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +30,10 @@ class NewsFragment : Fragment() {
     lateinit var binding: NewsFragmentBinding
     private val viewModel: NewsViewModel by viewModels()
 
+    private val mainNavigation : NavController? by lazy{
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +41,7 @@ class NewsFragment : Fragment() {
         binding = NewsFragmentBinding.inflate(inflater, container, false)
 
         binding.fabNews.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddNewsFragment2())
+            mainNavigation?.navigate(HomeFragmentDirections.actionHomeFragmentToAddNewsFragment2())
         }
 
         binding.lifecycleOwner = viewLifecycleOwner
@@ -49,7 +57,7 @@ class NewsFragment : Fragment() {
         Log.v("Token", pref.getToken())
         binding.rvNews.adapter = NewsAdapter(
             NewsAdapter.OnclickListener {
-
+                mainNavigation?.navigate(HomeFragmentDirections.actionHomeFragmentToDetailNewsFragment())
             }
         )
     }

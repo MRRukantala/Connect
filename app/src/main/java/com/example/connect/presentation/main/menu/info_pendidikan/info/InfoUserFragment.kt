@@ -15,6 +15,7 @@ import com.example.connect.databinding.InfoUserFragmentBinding
 import com.example.connect.presentation.main.ContainerMainFragmentDirections
 import com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfoDirections
 import com.example.connect.utilites.app.SharedPreferences
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -76,8 +77,10 @@ class InfoUserFragment : Fragment() {
 
         when (state) {
             is InfoUserViewModelState.Loading -> {
+                binding.msvProfile.viewState = MultiStateView.ViewState.LOADING
             }
             is InfoUserViewModelState.Success -> {
+                binding.msvProfile.viewState = MultiStateView.ViewState.CONTENT
             }
             else -> {}
         }

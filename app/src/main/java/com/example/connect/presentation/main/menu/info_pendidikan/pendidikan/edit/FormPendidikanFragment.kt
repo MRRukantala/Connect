@@ -46,9 +46,18 @@ class FormPendidikanFragment : Fragment() {
         val dataPendidikan = arguments?.getParcelable<PendidikanEntity>("data")
         Log.v("Data", dataPendidikan.toString())
         observe()
-        binding.btnHapus.setOnClickListener {
-            viewModel.delete(dataPendidikan?.id!!)
+        if (arguments?.getInt("id") == 1){
+
+            binding.btnHapus.setOnClickListener {
+                viewModel.delete(dataPendidikan?.id!!)
+            }
+
+
+        }else if (arguments?.getInt("id") == 2){
+            binding.btnHapus.isEnabled = false
+            binding.btnSimpan.text = "Tambahkan"
         }
+
 
     }
 
