@@ -5,7 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/include"
@@ -37,17 +37,19 @@
             android:paddingStart="@dimen/dp24"
             android:paddingRight="24dp"
             android:paddingBottom="@dimen/dp24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView31">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".presentation.auth.signup.KetentuanAppFragment">
+                tools:context=".presentation.auth.KetentuanAppFragment">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/nunito_sans"
+                    android:scrollIndicators="end"
                     android:text="@string/content_pernyataan"
                     android:textColor="@color/content_and_title_color_post_and_agenda" />
 

@@ -78,74 +78,75 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView35"
                     tools:text="aaa" />
 
-                <TextView
-                    android:id="@+id/textView37"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="No Kontak"
-                    android:textColor="@color/content_and_title_color_post_and_agenda"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView36"
-                    app:layout_constraintTop_toBottomOf="@+id/textView36" />
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:text="No Kontak"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/content_and_title_color_post_and_agenda"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView35" />
 
-                <TextView
-                    android:id="@+id/textView38"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nunito_sans"
-                    app:emptyornot="@{viewModel.data.get(0).nomerHp}"
-                    app:layout_constraintStart_toStartOf="@+id/textView37"
-                    app:layout_constraintTop_toBottomOf="@+id/textView37"
-                    tools:text="@string/belum_ditambahkan" />
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_sans"
+                app:emptyornot="@{viewModel.data.get(0).nomerHp}"
+                app:layout_constraintEnd_toEndOf="@+id/textView37"
+                app:layout_constraintTop_toBottomOf="@+id/textView37"
+                tools:text="@string/belum_ditambahkan" />
 
-                <TextView
-                    android:id="@+id/textView39"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="@string/kota_tinggal_saat_ini"
-                    android:textColor="@color/content_and_title_color_post_and_agenda"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView38"
-                    app:layout_constraintTop_toBottomOf="@+id/textView38" />
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/kota_tinggal_saat_ini"
+                android:textColor="@color/content_and_title_color_post_and_agenda"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
-                <TextView
-                    android:id="@+id/textView40"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nunito_sans"
-                    app:emptyornot="@{viewModel.data.get(0).dommisili}"
-                    app:layout_constraintStart_toStartOf="@+id/textView37"
-                    app:layout_constraintTop_toBottomOf="@+id/textView39"
-                    tools:text="@string/belum_ditambahkan" />
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_sans"
+                app:emptyornot="@{viewModel.data.get(0).dommisili}"
+                app:layout_constraintStart_toStartOf="@+id/textView39"
+                app:layout_constraintTop_toBottomOf="@+id/textView39"
+                tools:text="@string/belum_ditambahkan" />
 
-                <TextView
-                    android:id="@+id/textView41"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="Tanggal Lahir"
-                    android:textColor="@color/content_and_title_color_post_and_agenda"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView35"
-                    app:layout_constraintTop_toBottomOf="@+id/textView40" />
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:text="Tanggal Lahir"
+                android:layout_marginEnd="@dimen/_16dp"
+                android:textColor="@color/content_and_title_color_post_and_agenda"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView39" />
 
-                <TextView
-                    android:id="@+id/textView42"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nunito_sans"
-                    app:emptyornot="@{viewModel.data.get(0).tglLahir}"
-                    app:layout_constraintStart_toStartOf="@+id/textView35"
-                    app:layout_constraintTop_toBottomOf="@+id/textView41"
-                    tools:text="@string/belum_ditambahkan" />
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_sans"
+                app:emptyornot="@{viewModel.data.get(0).tglLahir}"
+                app:layout_constraintEnd_toEndOf="@+id/textView41"
+                app:layout_constraintTop_toBottomOf="@+id/textView41"
+                tools:text="@string/belum_ditambahkan" />
 
                 <TextView
                     android:id="@+id/textView43"
@@ -181,35 +182,33 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
-                <Button
-                    android:id="@+id/button_about"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:backgroundTint="#DADADA"
-                    android:drawableLeft="@drawable/ic_baseline_error_24"
-                    android:text="@string/tentang"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button5" />
+            <Button
+                android:id="@+id/button_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#DADADA"
+                android:drawableLeft="@drawable/ic_baseline_error_24"
+                android:text="@string/tentang"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button5" />
 
 
-                <TextView
-                    android:id="@+id/logout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp12"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="48dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:padding="@dimen/dp12"
-                    android:text="Logout"
-                    android:textColor="@color/color_primary"
-                    android:textSize="@dimen/sp18"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_about" />
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_8dp"
+                android:fontFamily="@font/nunito_sans"
+                android:padding="@dimen/dp12"
+                android:text="Logout"
+                android:textColor="@color/color_primary"
+                android:textSize="@dimen/sp18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_about" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

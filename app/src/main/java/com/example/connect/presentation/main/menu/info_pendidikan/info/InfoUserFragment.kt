@@ -1,28 +1,39 @@
 package com.example.connect.presentation.main.menu.info_pendidikan.info
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.example.connect.MainActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.InfoUserFragmentBinding
+import com.example.connect.presentation.main.ContainerMainFragmentDirections
+import com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfoDirections
+import com.example.connect.utilites.app.SharedPreferences
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class InfoUserFragment : Fragment() {
+
+    @Inject
+    lateinit var pref: SharedPreferences
+
+    private val appNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_main)
+    }
+
+    private val menuNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     lateinit var binding: InfoUserFragmentBinding
     private val viewModel: InfoUserViewModel by activityViewModels()
@@ -33,35 +44,15 @@ class InfoUserFragment : Fragment() {
     ): View {
 
         binding = InfoUserFragmentBinding.inflate(inflater, container, false)
-
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-//        val application = requireNotNull(activity).application
-//        val factory =
-//            InfoUserViewModelFactory(
-//                requireActivity()
-//                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-//                    .getInt("id", -1),
-//                requireActivity()
-//                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-//                    .getString("token", "").toString(),
-//                application
-//            )
-//
-//        val viewModel = ViewModelProvider(this, factory).get(InfoUserViewModel::class.java)
-//        binding.viewModel = viewModel
-
         binding.apply {
             buttonAbout.setOnClickListener {
-                findNavController().navigate(R.id.action_containerInfoPendidikanFragment_to_itemListDialogFragment)
+                menuNavigation?.navigate(R.id.action_containerInfo_to_itemListDialogFragment)
             }
             button5.setOnClickListener {
-//                findNavController().navigate(
-////                    ContainerInfoDirections.actionContainerInfoPendidikanFragmentToEditInfoUserFragment(
-////
-////                    )
-//                )
+                menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment())
             }
             logout.setOnClickListener {
                 keluar()
@@ -72,8 +63,7 @@ class InfoUserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.getProfile(52)
+        viewModel.getProfile(pref.getIdUser())
         observe()
     }
 
@@ -98,16 +88,10 @@ class InfoUserFragment : Fragment() {
     }
 
     private fun keluar() {
-        requireActivity().getSharedPreferences("my_data_pref", Context.MODE_PRIVATE).edit().clear()
-            .commit()
-        toMainActivity()
-        requireActivity().finish()
+        pref.clear()
+        viewModelStore.clear()
+        if (pref.getToken().isEmpty()) {
+            appNavigation?.navigate(ContainerMainFragmentDirections.actionContainerMainFragmentToContainerAuthFragment2())
+        }
     }
-
-    fun toMainActivity() {
-        val intent = Intent(requireContext(), MainActivity::class.java)
-        startActivity(intent)
-    }
-
-
 }

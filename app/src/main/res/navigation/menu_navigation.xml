@@ -93,18 +93,14 @@
         android:name="com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.edit.FormPendidikanFragment"
         android:label="form_pendidikan_fragment"
         tools:layout="@layout/form_pendidikan_fragment">
-        <!--        <argument-->
-        <!--            android:name="pendidikanSelected"-->
-        <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubPendidikan"-->
-        <!--            app:nullable="true" />-->
         <action
-            android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
-            app:destination="@id/containerInfoPendidikanFragment"
+            android:id="@+id/action_formPendidikanFragment_to_containerInfo"
+            app:destination="@id/containerInfo"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/containerInfoPendidikanFragment"
+            app:popUpTo="@id/containerInfo"
             app:popUpToInclusive="false" />
         <argument
             android:name="data"
@@ -114,9 +110,6 @@
             app:argType="integer" />
     </fragment>
     <action
-        android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
-        app:destination="@id/containerInfoPendidikanFragment" />
-    <action
         android:id="@+id/action_saranNKritikFragment_to_saranTerimaKasihFragment"
         app:destination="@id/saranTerimaKasihFragment"
         app:enterAnim="@android:anim/fade_in"
@@ -124,38 +117,31 @@
         app:popEnterAnim="@android:anim/fade_in"
         app:popExitAnim="@android:anim/fade_out" />
     <fragment
-        android:id="@+id/containerInfoPendidikanFragment"
+        android:id="@+id/containerInfo"
         android:name="com.example.connect.presentation.main.menu.info_pendidikan.ContainerInfo"
         android:label="ContainerInfoPendidikanFragment"
         tools:layout="@layout/container_info_pendidikan_fragment">
         <action
-            android:id="@+id/action_containerInfoPendidikanFragment_to_itemListDialogFragment"
+            android:id="@+id/action_containerInfo_to_itemListDialogFragment"
             app:destination="@id/itemListDialogFragment" />
         <action
-            android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
+            android:id="@+id/action_containerInfo_to_editInfoUserFragment"
             app:destination="@id/editInfoUserFragment" />
         <action
 
-            android:id="@+id/action_containerInfoPendidikanFragment_to_formPendidikanFragment"
+            android:id="@+id/action_containerInfo_to_formPendidikanFragment"
             app:destination="@id/formPendidikanFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
-        android:name="com.example.connect.presentation.main.menu.about.AboutAppFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.AboutAppFragment"
         android:label="about_app_fragment"
         tools:layout="@layout/about_app_fragment" />
     <fragment
         android:id="@+id/ketentuanAppFragment2"
-        android:name="com.example.connect.presentation.auth.signup.KetentuanAppFragment"
+        android:name="com.example.connect.presentation.auth.KetentuanAppFragment"
         android:label="KetentuanAppFragment"
         tools:layout="@layout/fragment_ketentuan_app" />
-    <action
-        android:id="@+id/action_saranTerimaKasihFragment_to_containerInfoPendidikanFragment"
-        app:destination="@id/containerInfoPendidikanFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
     <action
         android:id="@+id/action_itemListDialogFragment_to_ketentuanAppFragment2"
         app:destination="@id/ketentuanAppFragment2"
@@ -163,15 +149,6 @@
         app:exitAnim="@android:anim/fade_out"
         app:popEnterAnim="@android:anim/fade_in"
         app:popExitAnim="@android:anim/fade_out" />
-    <action
-        android:id="@+id/action_formPendidikanFragment_to_containerInfoPendidikanFragment"
-        app:destination="@id/containerInfoPendidikanFragment"
-        app:enterAnim="@android:anim/slide_in_left"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/slide_out_right"
-        app:popUpTo="@id/containerInfoPendidikanFragment"
-        app:popUpToInclusive="false" />
     <dialog
         android:id="@+id/itemListDialogFragment"
         android:name="com.example.connect.presentation.main.menu.bottomsheet.ItemListDialogFragment"
@@ -196,23 +173,23 @@
             app:destination="@id/saranNKritikFragment" />
     </dialog>
     <action
-        android:id="@+id/action_containerInfoPendidikanFragment_to_itemListDialogFragment"
+        android:id="@+id/action_containerInfo_to_itemListDialogFragment"
         app:destination="@id/itemListDialogFragment" />
     <action
-        android:id="@+id/action_containerInfoPendidikanFragment_to_editInfoUserFragment"
+        android:id="@+id/action_containerInfo_to_editInfoUserFragment"
         app:destination="@id/editInfoUserFragment" />
     <action
 
-        android:id="@+id/action_containerInfoPendidikanFragment_to_formPendidikanFragment"
+        android:id="@+id/action_containerInfo_to_formPendidikanFragment"
         app:destination="@id/formPendidikanFragment" />
     <fragment
         android:id="@+id/saranTerimaKasihFragment"
-        android:name="com.example.connect.presentation.main.menu.bottomsheet.terikamaishsaran.SaranTerimaKasihFragment"
+        android:name="com.example.connect.presentation.main.menu.bottomsheet.SaranTerimaKasihFragment"
         android:label="SaranTerimaKasihFragment"
         tools:layout="@layout/fragment_saran_terima_kasih">
         <action
-            android:id="@+id/action_saranTerimaKasihFragment_to_containerInfoPendidikanFragment"
-            app:destination="@id/containerInfoPendidikanFragment"
+            android:id="@+id/action_saranTerimaKasihFragment_to_containerInfo"
+            app:destination="@id/containerInfo"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
@@ -224,8 +201,8 @@
         android:label="EditInfoUserFragment"
         tools:layout="@layout/edit_info_user_fragment">
         <action
-            android:id="@+id/action_editInfoUserFragment_to_containerInfoPendidikanFragment"
-            app:destination="@id/containerInfoPendidikanFragment" />
+            android:id="@+id/action_editInfoUserFragment_to_containerInfo"
+            app:destination="@id/containerInfo" />
         <!--        <argument-->
         <!--            android:name="DataHold"-->
         <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->
@@ -394,7 +371,6 @@
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"
-        android:name="com.example.connect.presentation.main.product.resmi.resmi.StoreResmiFragment"
         android:label="StoreResmiFragment"
         tools:layout="@layout/fragment_store_resmi">
         <action

@@ -3,6 +3,7 @@
 package com.example.connect.utilites.app
 
 import android.content.Context
+import android.os.Build.ID
 
 class SharedPreferences(private val context: Context) {
     companion object {
@@ -19,8 +20,10 @@ class SharedPreferences(private val context: Context) {
         put(ROLE_ID, roleId)
     }
 
-    fun saveToken(token: String) {
+    fun saveToken(token: String, roleId: Int, userId: Int) {
         put(PREF_TOKEN, token)
+        put(ROLE_ID, roleId)
+        put(USERID, userId)
     }
 
     fun getToken() = get(PREF_TOKEN, String::class.java)
@@ -56,6 +59,8 @@ class SharedPreferences(private val context: Context) {
     fun clear() {
         sharedPreference.edit().run {
             remove(PREF_TOKEN)
+            remove(ROLE_ID)
+            remove(USERID)
         }.apply()
     }
 }

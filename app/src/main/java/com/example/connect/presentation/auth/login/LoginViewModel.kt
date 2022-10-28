@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.data.model.request.LoginRequest
+import com.example.connect.domain.entity.BasicEntity
 import com.example.connect.domain.entity.LoginEntity
 import com.example.connect.domain.usecase.AuthUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val useCase: AuthUseCase
-):ViewModel() {
+) : ViewModel() {
 
     private var _email = MutableLiveData("")
     val email: LiveData<String?> get() = _email
@@ -53,38 +53,46 @@ class LoginViewModel @Inject constructor(
         setPassword(valuePassword)
     }
 
-    private val _state =  MutableStateFlow<LoginState>(LoginState.Init)
-    val state: Flow<LoginState> get() = _state
+    private val _state = MutableStateFlow<LoginState>(LoginState.Init)
+    val state get() = _state
 
     private fun loading() {
         _state.value = LoginState.Loading()
     }
 
-    private fun success(loginEntity: LoginEntity){
+    private fun success(loginEntity: LoginEntity) {
         _state.value = LoginState.Success(loginEntity)
     }
 
-    private fun error(loginEntity: LoginEntity){
-        _state.value = LoginState.Error(loginEntity)
+    private fun error(message: BasicEntity) {
+        _state.value = LoginState.Error(message)
     }
 
-    fun login(){
+    fun login() {
         val loginRequest = LoginRequest(
             _email.value.toString(), _password.value.toString()
         )
         viewModelScope.launch {
             useCase.login(loginRequest)
-                .onStart { loading()
+                .onStart {
+                    loading()
 
                 }.catch {
 
-                }.collect{ result ->
-                    when(result){
+                }.collect { result ->
+                    when (result) {
                         is Result.Success -> success(result.data)
-                        is Result.Error -> { }
+                        is Result.Error -> {
+                            error(result.response.toBasicEntity())
+                            _state.value = LoginState.Init
+                        }
                     }
                 }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
     }
 }
 
@@ -92,5 +100,5 @@ sealed class LoginState {
     object Init : LoginState()
     data class Loading(val loading: Boolean = true) : LoginState()
     data class Success(val loginEntity: LoginEntity) : LoginState()
-    data class Error(val response: LoginEntity) : LoginState()
+    data class Error(val response: BasicEntity) : LoginState()
 }

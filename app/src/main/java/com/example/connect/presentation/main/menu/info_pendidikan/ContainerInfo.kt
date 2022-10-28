@@ -34,6 +34,8 @@ class ContainerInfo : Fragment() {
             false
         )
 
+        binding.menu.include12.root.visibility = View.GONE
+
         val fragmentList = arrayListOf(
             InfoUserFragment(),
             PendidikanUserFragment()
@@ -53,7 +55,6 @@ class ContainerInfo : Fragment() {
         ) { tab, position ->
             tab.text = name[position]
         }.attach()
-
 
         return binding.root
     }

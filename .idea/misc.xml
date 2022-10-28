@@ -38,7 +38,6 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_admin_store.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_dashboard.xml" value="0.18" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_e_learning.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_home.xml" value="0.19655797101449277" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_image_opener.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.1234375" />
@@ -53,9 +52,8 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_sign.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_splash_screen.xml" value="0.13360507246376813" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_store_resmi.xml" value="0.20853080568720378" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_toko.xml" value="0.22" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_toko.xml" value="0.1" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_verif.xml" value="0.12083333333333333" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_video_e_learning.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_waiting.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/head_item_post.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/ic_download.xml" value="0.1234375" />
@@ -67,11 +65,9 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_purchase.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_save_product.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_service_admin.xml" value="0.20416666666666666" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_playlist_e_learning.xml" value="0.1" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_product_khusus.xml" value="0.33" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_product_umum.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_shimmer_personal_info.xml" value="0.1234375" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_video_e_elarning.xml" value="0.1" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/layout_default_empty.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/layout_field_photo_ktp.xml" value="0.33" />
@@ -88,25 +84,19 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/saran_n_kritik_fragment.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_agenda_fragment.xml" value="0.1453125" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_detail_agenda_fragment.xml" value="0.16" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_detail_artikel_mar_o_i_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_detail_news_fragment.xml" value="0.12" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_detail_product_fragment.xml" value="0.1" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_detail_saved_product_fragment.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_fragment_agenda.xml" value="0.16849148418491483" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_fragment_keranjang.xml" value="0.14990942028985507" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_fragment_store_resmi.xml" value="0.18" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_info_user_fragment.xml" value="0.18854166666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_agenda.xml" value="0.1" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_my_pendidikan.xml" value="0.18854166666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_news.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_save_product.xml" value="0.33" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_service_admin.xml" value="0.25" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_service_admin.xml" value="0.1" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_product_khusus.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_product_umum.xml" value="0.22" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_video_e_elarning.xml" value="0.22" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_layanan.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_my_news_fragment.xml" value="0.1171448087431694" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_pendidikan_fragment.xml" value="0.18854166666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_product.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_product_grid.xml" value="0.1331521739130435" />
         <entry key="..\:/Users/rafly/AndroidStudioProjects/Connect/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.19166666666666668" />
@@ -181,6 +171,29 @@
         <entry key="..\:/Users/rafly/AndroidStudioProjects/Connect/app/src/main/res/layout/saran_n_kritik_fragment.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/rafly/AndroidStudioProjects/Connect/app/src/main/res/menu/menu.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/rafly/AndroidStudioProjects/Connect/app/src/main/res/menu/menu_item.xml" value="0.1" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/about_app_fragment.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/agenda_fragment.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/container_info_pendidikan_fragment.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_container_auth.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_ketentuan_app.xml" value="0.1647921760391198" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_load.xml" value="0.1" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_loading.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_login.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_notifications.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_verif.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/fragment_video_e_learning.xml" value="0.13802083333333334" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/info_user_fragment.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/item_list_service_admin.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/item_playlist_e_learning.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/item_video_e_elarning.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/menu_fragment.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/news_fragment.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/pendidikan_user_fragment.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/layout/saran_n_kritik_fragment.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/rafly/StudioProjects/Connect/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17552083333333332" />
         <entry key="..\:/hasil free/Connect/app/src/main/res/layout/about_app_fragment.xml" value="0.17552083333333332" />
         <entry key="..\:/hasil free/Connect/app/src/main/res/layout/activity_main_app.xml" value="0.17552083333333332" />
         <entry key="..\:/hasil free/Connect/app/src/main/res/layout/add_my_produk_fragment.xml" value="0.22" />
