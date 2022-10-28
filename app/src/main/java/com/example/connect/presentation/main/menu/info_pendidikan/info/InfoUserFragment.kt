@@ -89,7 +89,6 @@ class InfoUserFragment : Fragment() {
 
     private fun keluar() {
         pref.clear()
-        viewModelStore.clear()
         if (pref.getToken().isEmpty()) {
             appNavigation?.navigate(ContainerMainFragmentDirections.actionContainerMainFragmentToContainerAuthFragment2())
         }

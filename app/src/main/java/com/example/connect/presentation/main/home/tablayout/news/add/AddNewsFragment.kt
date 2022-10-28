@@ -52,15 +52,12 @@ class AddNewsFragment : Fragment() {
             } else {
                 viewModel.setAllField(
                     binding.editText.text.toString()
-
                 )
             }
         }
 
         override fun afterTextChanged(s: Editable?) {
-
             binding.fabNews.isEnabled = true
-
         }
     }
 

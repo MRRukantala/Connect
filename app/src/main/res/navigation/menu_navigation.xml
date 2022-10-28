@@ -519,6 +519,9 @@
         <action
             android:id="@+id/action_detailNewsFragment_to_imageOpener"
             app:destination="@id/imageOpener" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/detailAgendaFragment"
@@ -565,5 +568,13 @@
         android:id="@+id/myNewsFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.news.mynews.MyNewsFragment"
         android:label="my_news_fragment"
-        tools:layout="@layout/my_news_fragment" />
+        tools:layout="@layout/my_news_fragment">
+        <action
+            android:id="@+id/action_myNewsFragment_to_detailNewsFragment"
+            app:destination="@id/detailNewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

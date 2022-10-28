@@ -58,12 +58,12 @@ class PendidikanUserFragment : Fragment() {
 
             PendidikanAdapter.OnclickListener {
                 runCatching {
-                    mainNavigation?.navigate(
-                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-                            it,
-                            1
-                        )
-                    )
+//                    mainNavigation?.navigate(
+//                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
+//                            it,
+//                            1
+//                        )
+//                    )
                 }
             }
         )

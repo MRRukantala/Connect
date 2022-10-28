@@ -1,6 +1,5 @@
 package com.example.connect.data.repository
 
-import android.util.Log
 import com.example.connect.data.api.HomeApiClient
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseListWrapperSementara
@@ -35,8 +34,8 @@ class HomeRepositoryInteractor @Inject constructor(
 
     override suspend fun getAgendaByIdUser(id: Int): Flow<Result<List<AgendaEntity>, ResponseListWrapper<AgendaResponse>>> {
         return flow {
-            val response = apiClient.getAgendaByIdUser(id)
             delay(800)
+            val response = apiClient.getAgendaByIdUser(id)
             if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<AgendaEntity>()
@@ -93,15 +92,13 @@ class HomeRepositoryInteractor @Inject constructor(
 
     override suspend fun getDetailKiriman(id: Int): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
         return flow {
-            val response = apiClient.getDetailKiriman(id)
-            Log.v("ViewModel", response.toString())
             delay(800)
+            val response = apiClient.getDetailKiriman(id)
             if (response.isSuccessful) {
                 val body = response.body()?.data
                 val data = mutableListOf<KirimanEntity>()
                 body?.forEach { data.add(it.toKirimanEntity()) }
                 emit(Result.Success(data))
-
             } else {
                 response.message()
             }
