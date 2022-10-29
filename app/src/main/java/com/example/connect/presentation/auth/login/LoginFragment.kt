@@ -14,7 +14,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentLoginBinding
 import com.example.connect.presentation.auth.ContainerAuthFragmentDirections
@@ -70,7 +69,7 @@ class LoginFragment : Fragment() {
         binding.viewModelLogin = viewModel
 
         binding.include2.backImage.setOnClickListener {
-            findNavController().navigateUp()
+            authNavController?.navigateUp()
         }
 
         etEmail = binding.editTextEmail.editText!!

@@ -83,7 +83,7 @@ class DetailProductViewModel @Inject constructor(
         )
         viewModelScope.launch(Dispatchers.IO) {
             useCaseKeranjang.insertData(saveProductDataEntity).collect {
-                it.insert(saveProductDataEntity)
+//                it.insert(saveProductDataEntity)
             }
 
 //            try {

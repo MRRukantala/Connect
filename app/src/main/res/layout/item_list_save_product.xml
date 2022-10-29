@@ -15,11 +15,10 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginHorizontal="@dimen/_16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="@dimen/dp12"
             app:cardElevation="@dimen/dp6"
@@ -69,8 +68,8 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginTop="@dimen/_4dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/nunito_sans"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     app:layout_constraintEnd_toEndOf="parent"

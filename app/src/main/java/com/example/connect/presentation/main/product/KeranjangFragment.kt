@@ -18,9 +18,11 @@ import com.example.connect.R
 import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.databinding.FragmentKeranjangBinding
 import com.example.connect.presentation.main.product.keranjang.Adapter
+import com.example.connect.presentation.main.product.keranjang.DeleteState
 import com.example.connect.presentation.main.product.keranjang.KeranjangViewModelTerbaru
 import com.example.connect.presentation.main.product.keranjang.KeranjangViewState
 import com.example.connect.utilites.app.SharedPreferences
+import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -64,7 +66,7 @@ class KeranjangFragment : Fragment() {
                 )
             },
             Adapter.OnClickListenerDelete {
-
+                viewModel.deleteData(it)
             },
             Adapter.OnClickCall {
                 toWa(it)
@@ -77,18 +79,35 @@ class KeranjangFragment : Fragment() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
             .launchIn(lifecycleScope)
+        viewModel.stateDelete.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleStateDelete(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleStateDelete(state: DeleteState) {
+
+        when (state) {
+            is DeleteState.Loading -> {
+                binding.msvKeranjang.viewState = MultiStateView.ViewState.LOADING
+            }
+            is DeleteState.Success -> {
+                viewModel.getDataById(pref.getIdUser())
+                binding.msvKeranjang.viewState = MultiStateView.ViewState.CONTENT
+            }
+            else -> {}
+        }
     }
 
     private fun handleState(state: KeranjangViewState) {
 
         when (state) {
             is KeranjangViewState.Loading -> {
-//                binding.msvListProduct.viewState = MultiStateView.ViewState.LOADING
+                binding.msvKeranjang.viewState = MultiStateView.ViewState.LOADING
             }
             is KeranjangViewState.Success -> {
-//                binding.msvListProduct.viewState =
-//                    if (state.storeResmiEntity.isEmpty()) MultiStateView.ViewState.EMPTY
-//                    else MultiStateView.ViewState.CONTENT
+                binding.msvKeranjang.viewState =
+                    if (state.keranjangEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                    else MultiStateView.ViewState.CONTENT
             }
             else -> {}
         }
