@@ -116,10 +116,27 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
         }
     }
 
+    override suspend fun putPendidikan(
+        pendidikanRequest: PendidikanRequest,
+        id: Int,
+        method: Map<String, String>
+    ): Flow<Result<PostPendidikanEntity, PostPendidikanResponse>> {
+        return flow {
+            val response = apiClient.putPendidikan(pendidikanRequest, id, method)
+            delay(1000)
+            if (response.isSuccessful) {
+                val postPendidikanEntity = response.body()?.toPostPendidikanEntity()
+                emit(Result.Success(postPendidikanEntity!!))
+            } else {
+
+            }
+        }
+    }
+
     override suspend fun deletePendidikan(id: Int): Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>> {
         return flow {
             val response = apiClient.deletePendidikan(id)
-            delay(1500)
+            delay(1000)
             if (response.isSuccessful) {
                 val deletePendidikanEntity = response.body()?.data?.toDeletePendidikanEntity()
                 emit(Result.Success(deletePendidikanEntity!!))

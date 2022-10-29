@@ -29,6 +29,7 @@ data class ProfileResponse(
 ){
     fun toProfileEntity() =
         ProfileEntity(
+            idUser?:0,
             name.orEmpty(),
             wa.orEmpty(),
             domisili.orEmpty(),

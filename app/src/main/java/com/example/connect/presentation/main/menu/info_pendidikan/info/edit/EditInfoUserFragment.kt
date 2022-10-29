@@ -22,7 +22,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.connect.R
 import com.example.connect.databinding.EditInfoUserFragmentBinding
 import com.example.connect.utilites.DatePickerHelper
@@ -49,6 +52,10 @@ class EditInfoUserFragment : Fragment() {
     private lateinit var etWa: EditText
     private lateinit var etDomisili: EditText
 
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
+
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -71,12 +78,12 @@ class EditInfoUserFragment : Fragment() {
         }
     }
 
+    private val args by navArgs<EditInfoUserFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
 
         binding =
             EditInfoUserFragmentBinding.inflate(inflater, container, false)
@@ -93,11 +100,6 @@ class EditInfoUserFragment : Fragment() {
 
         binding.circleImageView2.setOnClickListener {
             selectImageFromGallery()
-        }
-
-        binding.button5.setOnClickListener {
-
-
         }
 
         binding.rg.setOnCheckedChangeListener { radioGroup, i ->
@@ -124,8 +126,33 @@ class EditInfoUserFragment : Fragment() {
             etWa = editWa
         }
 
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        observe()
+        listOf(etNim, etWa, etDomisili).forEach {
+            it.addTextChangedListener(textWatcher)
+        }
+
+        etNim.setText(viewModel.nim.value)
+        etWa.setText(viewModel.wa.value)
+        etDomisili.setText(viewModel.domisili.value)
+        viewModel.setTglLahir(args.data?.tglLahir.toString())
+
+        binding.button5.setOnClickListener {
+            viewModel.editProfile(args.data?.id!!)
+        }
+
+        binding.data = args.data
+
+        if (args.data?.jenisKelamin == "Laki - Laki") {
+            binding.rl.isChecked = true
+        } else {
+            binding.rp.isChecked = true
+        }
     }
 
     private fun selectImageFromGallery() {
@@ -133,7 +160,6 @@ class EditInfoUserFragment : Fragment() {
         gallery.type = "image/*"
         startActivityForResult(gallery, REQUEST_CODE)
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -152,7 +178,6 @@ class EditInfoUserFragment : Fragment() {
             binding.circleImageView2.setImageURI(imageURI)
         }
     }
-
 
     private fun getRealPathFromURI(context: Context, contentUri: Uri): String? {
         var cursor: Cursor? = null
@@ -197,25 +222,6 @@ class EditInfoUserFragment : Fragment() {
             })
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        observe()
-        listOf(etNim, etWa, etDomisili).forEach {
-
-            it.addTextChangedListener(textWatcher)
-
-        }
-
-        etNim.setText(viewModel.nim.value)
-        etWa.setText(viewModel.wa.value)
-        etDomisili.setText(viewModel.domisili.value)
-
-        binding.button5.setOnClickListener {
-            viewModel.editProfile(52)
-        }
-    }
-
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
@@ -226,12 +232,12 @@ class EditInfoUserFragment : Fragment() {
 
         when (state) {
             is EditInfoUserState.Loading -> {
-                Log.v("DATA", "loading")
-                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+                binding.iLoading.root.visibility = View.VISIBLE
             }
             is EditInfoUserState.Success -> {
-                Log.v("DATA", "Sukses")
+                binding.iLoading.root.visibility = View.GONE
                 Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+                mainNavigation?.navigateUp()
             }
             else -> {}
         }

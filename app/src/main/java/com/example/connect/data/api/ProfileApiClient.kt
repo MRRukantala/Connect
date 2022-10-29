@@ -29,6 +29,13 @@ interface ProfileApiClient {
         @QueryMap _method: Map<String, String>
     ): Response<ResponseObjectWrapper<EditProfileResponse>>
 
+    @POST("pendidikan/{id}")
+    suspend fun putPendidikan(
+        @Body pendidikanRequest: PendidikanRequest,
+        @Path("id") id: Int,
+        @QueryMap _method: Map<String, String>
+        ): Response<PostPendidikanResponse>
+
     @Multipart
     @POST("agenda")
     suspend fun postAgenda(
@@ -50,12 +57,12 @@ interface ProfileApiClient {
     ): Response<ResponseObjectWrapper<PostKirimanResponse>>
 
 
-
     //API POST PENDIDIKAN
     @POST("pendidikan")
     suspend fun postPendidikan(
         @Body pendidikanRequest: PendidikanRequest
     ): Response<PostPendidikanResponse>
+
 
     // API DELETE PENDIDIKAN
     @DELETE("pendidikan/{id}")

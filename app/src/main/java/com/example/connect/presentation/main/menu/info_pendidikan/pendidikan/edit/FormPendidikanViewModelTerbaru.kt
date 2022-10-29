@@ -150,9 +150,6 @@ class FormPendidikanViewModelTerbaru @Inject constructor(
     private val _statePost = MutableStateFlow<PostState>(PostState.Init)
     val statePost get() = _statePost
 
-
-
-
     private fun loadingPost() {
         _statePost.value = PostState.LoadingPost()
     }
@@ -169,13 +166,47 @@ class FormPendidikanViewModelTerbaru @Inject constructor(
         viewModelScope.launch {
             useCase.postPendidikan(pendidikanRequest)
                 .onStart {
-                    loading()
+                    loadingPost()
 
                 }.catch {
 
                 }.collect { result ->
                     when (result) {
                         is Result.Success -> successPost(result.data)
+                        is Result.Error -> {}
+                    }
+                }
+        }
+    }
+
+    private val _statePut = MutableStateFlow<PutState>(PutState.Init)
+    val statePut get() = _statePut
+
+    private fun loadingPut() {
+        _statePut.value = PutState.LoadingPut()
+    }
+
+    private fun successPut(postPendidikanEntity: PostPendidikanEntity) {
+        _statePut.value = PutState.SuccessPut(postPendidikanEntity)
+    }
+
+    fun putPendidikan(id: Int) {
+        val pendidikanRequest = PendidikanRequest(
+            _instansi.value.toString(), _jenjang.value.toString(), _fakultas.value.toString(),
+            _jurusan.value.toString(), _tahunMasuk.value.toString(), _tahunKeluar.value.toString()
+        )
+        val _method: HashMap<String, String> = HashMap()
+        _method["_method"] = "PUT"
+        viewModelScope.launch {
+            useCase.putPendidikan(pendidikanRequest, id, _method)
+                .onStart {
+                    loadingPut()
+
+                }.catch {
+
+                }.collect { result ->
+                    when (result) {
+                        is Result.Success -> successPut(result.data)
                         is Result.Error -> {}
                     }
                 }
@@ -198,4 +229,11 @@ sealed class PostState{
     data class LoadingPost(val loading: Boolean = true) : PostState()
     data class SuccessPost(val postPendidikanEntity: PostPendidikanEntity) : PostState()
     data class ErrorPost(val response: SementaraEntity) : PostState()
+}
+
+sealed class PutState{
+    object Init: PutState()
+    data class LoadingPut(val loading: Boolean = true) : PutState()
+    data class SuccessPut(val postPendidikanEntity: PostPendidikanEntity) : PutState()
+    data class ErrorPut(val response: SementaraEntity) : PutState()
 }

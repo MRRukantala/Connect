@@ -15,11 +15,10 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="121dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="@dimen/dp12"
             app:cardElevation="@dimen/dp6"
@@ -111,7 +110,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </com.google.android.material.card.MaterialCardView>
 

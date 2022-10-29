@@ -65,8 +65,9 @@
             app:popUpTo="@id/containerInfo"
             app:popUpToInclusive="false" />
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="data"
+            app:argType="com.example.connect.domain.entity.PendidikanEntity"
+            app:nullable="true" />
     </fragment>
     <action
         android:id="@+id/action_saranNKritikFragment_to_saranTerimaKasihFragment"
@@ -135,9 +136,6 @@
         android:id="@+id/action_containerInfo_to_itemListDialogFragment"
         app:destination="@id/itemListDialogFragment" />
     <action
-        android:id="@+id/action_containerInfo_to_editInfoUserFragment"
-        app:destination="@id/editInfoUserFragment" />
-    <action
 
         android:id="@+id/action_containerInfo_to_formPendidikanFragment"
         app:destination="@id/formPendidikanFragment" />
@@ -163,8 +161,9 @@
             android:id="@+id/action_editInfoUserFragment_to_containerInfo"
             app:destination="@id/containerInfo" />
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="data"
+            app:argType="com.example.connect.domain.entity.ProfileEntity"
+            app:nullable="true" />
         <!--        <argument-->
         <!--            android:name="DataHold"-->
         <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->

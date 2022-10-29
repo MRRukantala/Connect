@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,11 +18,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.connect.R
 import com.example.connect.databinding.FormPendidikanFragmentBinding
 import com.example.connect.domain.entity.PendidikanEntity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.add_news_fragment.view.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -66,6 +65,8 @@ class FormPendidikanFragment : Fragment() {
         }
     }
 
+    private val args by navArgs<FormPendidikanFragmentArgs>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -87,40 +88,57 @@ class FormPendidikanFragment : Fragment() {
         etTahunMasuk = binding.tahunMasuk
         etTahunKeluar = binding.tahunLulus
 
-
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dataPendidikan = arguments?.getParcelable<PendidikanEntity>("data")
-        Log.v("Data", dataPendidikan.toString())
+
         listOf(
             etInstansi, etJenjang, etFakultas,
             etJurusan, etTahunMasuk, etTahunKeluar
-        )
+        ).forEach {
+            it.addTextChangedListener(textWatcher)
+        }
+
+        etInstansi.setText(viewModel.instansi.value)
+        etJenjang.setText(viewModel.jenjang.value)
+        etFakultas.setText(viewModel.fakultas.value)
+        etJurusan.setText(viewModel.jurusan.value)
+        etTahunMasuk.setText(viewModel.tahunMasuk.value)
+        etTahunKeluar.setText(viewModel.tahunKeluar.value)
         observe()
-        if (arguments?.getInt("id") == 0) {
+        if (args.data == null) {
             binding.btnHapus.isVisible = false
             binding.btnSimpan.text = "Tambahkan"
             binding.btnSimpan.isEnabled = true
             binding.btnSimpan.setOnClickListener {
                 viewModel.postPendidikan()
             }
+
         } else {
+            binding.btnSimpan.isEnabled = true
             binding.btnHapus.setOnClickListener {
-                viewModel.delete(dataPendidikan?.id!!)
+                viewModel.delete(args.data?.id!!)
             }
 
+            binding.btnSimpan.setOnClickListener {
+                viewModel.putPendidikan(args.data?.id!!)
+            }
+
+            binding.instansi.setText("${args.data?.instansi}")
+            binding.jenjang.setText("${args.data?.jenjang}")
+            binding.fakultas.setText("${args.data?.fakultas}")
+            binding.jurusan.setText("${args.data?.jurusan}")
+            binding.tahunMasuk.setText("${args.data?.tahunMasuk}")
+            binding.tahunLulus.setText("${args.data?.tahunLulus}")
+
         }
-
-
     }
 
     private fun observe() {
         viewModel.stateDelete.flowWithLifecycle(lifecycle)
-            .onEach { state -> handleState(state) }
+            .onEach { state -> deleteHandleState(state) }
             .launchIn(lifecycleScope)
 
         viewModel.statePost.flowWithLifecycle(lifecycle)
@@ -128,20 +146,44 @@ class FormPendidikanFragment : Fragment() {
                 postPendidikanHandleState(state)
             }
             .launchIn(lifecycleScope)
+
+        viewModel.statePut.flowWithLifecycle(lifecycle)
+            .onEach { state ->
+                putPendidikanHandleState(state)
+            }
+            .launchIn(lifecycleScope)
     }
 
-    private fun handleState(state: DeleteState) {
+    private fun putPendidikanHandleState(state: PutState) {
+
+        when (state) {
+            is PutState.LoadingPut -> Log.v("DATA", "Loading")
+
+            is PutState.SuccessPut -> {
+                Log.v("DATA", "Sukses")
+
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mainNavigation?.navigateUp()
+                }, 2000)
+            }
+
+            else -> {}
+        }
+
+    }
+
+    private fun deleteHandleState(state: DeleteState) {
 
         when (state) {
             is DeleteState.Loading -> Log.v("DATA", "Loading")
 
             is DeleteState.Success -> {
                 Log.v("DATA", "Sukses")
-                Toast.makeText(
-                    activity,
-                    "SUKSES HAPUS" + state.deletePendidikanEntity.instansi,
-                    Toast.LENGTH_LONG
-                ).show()
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mainNavigation?.navigateUp()
+                }, 2000)
             }
 
             else -> {}
@@ -154,11 +196,7 @@ class FormPendidikanFragment : Fragment() {
 
             is PostState.SuccessPost -> {
                 Log.v("DATA", "Sukses")
-                Toast.makeText(
-                    activity,
-                    "SUKSES HAPUS",
-                    Toast.LENGTH_LONG
-                ).show()
+
                 binding.iloadingsuccess.root.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({
                     mainNavigation?.navigateUp()
