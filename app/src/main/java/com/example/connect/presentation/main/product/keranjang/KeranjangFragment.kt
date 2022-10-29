@@ -1,31 +1,30 @@
 package com.example.connect.presentation.main.ui.product.keranjang
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.connect.R
 import com.example.connect.databinding.FragmentKeranjangBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KeranjangFragment : Fragment() {
+
+    private lateinit var binding: FragmentKeranjangBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentKeranjangBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_keranjang, container, false
+        binding = FragmentKeranjangBinding.inflate(
+            inflater, container, false
         )
 
         binding.include7.backImage.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigateUp()
         }
-
-
 
 
 //        val dataSource = SavedProductDatabase.getInstance(application).savedProductDao
@@ -38,7 +37,7 @@ class KeranjangFragment : Fragment() {
 //            ViewModelProvider(this, viewModelFactory).get(KeranjangViewModel::class.java)
 
 //        binding.binding = keranjangViewModel
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = viewLifecycleOwner
 
 
 //        val adapter = Adapter(Adapter.OnClickListener {
@@ -65,7 +64,6 @@ class KeranjangFragment : Fragment() {
 //                }
 //            }
 //        })
-
 
 
 //        keranjangViewModel.navigateToDetail.observe(viewLifecycleOwner, {

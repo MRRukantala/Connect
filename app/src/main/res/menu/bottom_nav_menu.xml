@@ -8,7 +8,7 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/produkFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_bag_24"
         android:title="@string/toko" />

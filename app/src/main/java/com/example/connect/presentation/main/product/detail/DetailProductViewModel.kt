@@ -31,16 +31,15 @@ class DetailProductViewModel @Inject constructor(
     private fun success(detailProductEntity: List<DetailProductEntity>){
         _state.value = DetailProductState.Success(detailProductEntity)
         _data.value = detailProductEntity
-        Log.v("DATA", "${_data}")
     }
 
     private fun error(detailProductEntity: SementaraEntity){
         _state.value = DetailProductState.Error(detailProductEntity)
     }
 
-    fun detailProduct(){
+    fun detailProduct(id: Int){
         viewModelScope.launch {
-            useCase.detailProduct(34)
+            useCase.detailProduct(id)
                 .onStart { loading()
 
                 }.catch {

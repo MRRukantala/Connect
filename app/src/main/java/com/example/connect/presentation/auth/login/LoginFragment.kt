@@ -93,7 +93,6 @@ class LoginFragment : Fragment() {
         binding.login.setOnClickListener {
             viewModel.login()
         }
-
     }
 
     private fun observe() {

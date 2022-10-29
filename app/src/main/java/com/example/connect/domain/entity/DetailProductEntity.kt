@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class DetailProductEntity (
     val id: Int,
+    val idUser: Int,
     val deskripsi:String,
     val nama: String,
     val harga: Int,

@@ -51,9 +51,6 @@ class StoreResmiViewModel @Inject constructor(
                 }
         }
     }
-
-
-
 }
 
 sealed class StoreResmiState {

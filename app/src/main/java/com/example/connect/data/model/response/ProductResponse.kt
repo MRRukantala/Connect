@@ -42,6 +42,7 @@ data class ProductResponse(
     fun toDetailProductEntity() = DetailProductEntity(
 
         id ?: 0,
+        idUser ?: 0,
         deskripsi.orEmpty(),
         namaProduk.orEmpty(),
         harga ?: 0,
