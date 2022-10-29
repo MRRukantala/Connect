@@ -57,10 +57,6 @@ class DetailProductFragment : Fragment() {
         binding.includ8.backImage.setOnClickListener {
             mainNavigation?.navigate(DetailProductFragmentDirections.actionDetailProductFragmentToKeranjangFragment())
         }
-
-
-
-
         return binding.root
 
     }
