@@ -34,14 +34,14 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/edit_info_user_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/empty_data.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/form_pendidikan_fragment.xml" value="0.25" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_add_agenda.xml" value="0.2248995983935743" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_add_agenda.xml" value="0.12" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_admin_store.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_dashboard.xml" value="0.18" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_home.xml" value="0.19655797101449277" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_image_opener.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.1234375" />
-        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_keranjang.xml" value="0.20416666666666666" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_keranjang.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_ketentuan_app.xml" value="0.16" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_login.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/fragment_main_app.xml" value="0.1234375" />
@@ -65,6 +65,7 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_purchase.xml" value="0.1234375" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_save_product.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_list_service_admin.xml" value="0.20416666666666666" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_playlist_e_learning.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_product_khusus.xml" value="0.33" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_product_umum.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/item_shimmer_personal_info.xml" value="0.1234375" />
@@ -94,6 +95,7 @@
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_news.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_save_product.xml" value="0.33" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_list_service_admin.xml" value="0.1" />
+        <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_playlist_e_learning.xml" value="0.20416666666666666" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_product_khusus.xml" value="0.25" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_item_product_umum.xml" value="0.22" />
         <entry key="..\:/ProjectBaru/app/src/main/res/layout/shimmer_my_news_fragment.xml" value="0.1171448087431694" />

@@ -72,6 +72,7 @@ class DetailProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.detailProduct(args.id)
         observe()
+        viewModel.inputKeranjang()
 
     }
 

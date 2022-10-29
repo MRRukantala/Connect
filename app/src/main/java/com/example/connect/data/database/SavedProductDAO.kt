@@ -10,19 +10,19 @@ import androidx.room.Update
 interface SavedProductDAO {
 
     @Insert
-    fun insert(savedProductData: SaveProductData)
+    fun insert(savedProductData: SaveProductDataEntity)
 
     @Update
-    fun update(savedProductData: SaveProductData)
+    fun update(savedProductData: SaveProductDataEntity)
 
     @Query("SELECT * FROM saved_product_data where idSaveProductData = :key")
-    fun get(key: Long): SaveProductData
+    fun get(key: Long): SaveProductDataEntity
 
     @Query("SELECT * FROM saved_product_data where id_user = :key ")
-    fun getByIdUser(key: Int): LiveData<List<SaveProductData>>
+    fun getByIdUser(key: Int): LiveData<List<SaveProductDataEntity>>
 
     @Query("SELECT * FROM saved_product_data WHERE idSaveProductData = :key")
-    fun getProductById(key: Long) : LiveData<SaveProductData>
+    fun getProductById(key: Long) : LiveData<SaveProductDataEntity>
 
     @Query("DELETE FROM saved_product_data WHERE idSaveProductData = :key")
     fun deleteItem(key: Long)

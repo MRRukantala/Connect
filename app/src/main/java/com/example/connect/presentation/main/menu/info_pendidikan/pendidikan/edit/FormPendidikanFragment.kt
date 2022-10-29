@@ -1,6 +1,8 @@
 package com.example.connect.presentation.main.menu.info_pendidikan.pendidikan.edit
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -31,8 +33,9 @@ class FormPendidikanFragment : Fragment() {
     lateinit var binding: FormPendidikanFragmentBinding
     private val viewModel: FormPendidikanViewModelTerbaru by viewModels()
 
-    private val authNavController: NavController? by lazy { activity?.findNavController(R.id.nav_host_fragment_authentication) }
-    private val mainNavController: NavController? by lazy { activity?.findNavController(R.id.nav_host_fragment_main) }
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
     private lateinit var etInstansi: EditText
     private lateinit var etJenjang: EditText
     private lateinit var etFakultas: EditText
@@ -156,6 +159,10 @@ class FormPendidikanFragment : Fragment() {
                     "SUKSES HAPUS",
                     Toast.LENGTH_LONG
                 ).show()
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mainNavigation?.navigateUp()
+                }, 2000)
             }
 
             is PostState.ErrorPost -> {}

@@ -60,10 +60,12 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
                 kirimanRequest.starImage,
                 kirimanRequest.content
             )
+            Log.v("VIEWMODEL", response.toString())
             delay(1000)
             if (response.isSuccessful) {
                 val postKirimanEntity = response.body()?.data?.toPostKirimanEntity()
                 emit(Result.Success(postKirimanEntity!!))
+
             } else {
             }
         }

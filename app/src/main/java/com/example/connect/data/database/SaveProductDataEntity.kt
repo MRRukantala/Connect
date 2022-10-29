@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "saved_product_data")
-data class SaveProductData(
+data class SaveProductDataEntity(
 
     @PrimaryKey(autoGenerate = true)
     val idSaveProductData: Long = 0L,
