@@ -1,6 +1,7 @@
 package com.example.connect.presentation.main.menu.info_pendidikan.info
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,7 @@ class InfoUserFragment : Fragment() {
             button5.setOnClickListener {
                 menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment())
             }
-            logout.setOnClickListener {
+            btnLogout.setOnClickListener {
                 keluar()
             }
         }
