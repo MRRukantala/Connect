@@ -60,21 +60,24 @@ class PendidikanUserFragment : Fragment() {
                 runCatching {
                     mainNavigation?.navigate(
                         ContainerInfoDirections.actionContainerInfoToFormPendidikanFragment(
-                           it.id
+                           it, it.id
 
                         )
                     )
                 }
             }
         )
+
         binding.fabNews.setOnClickListener {
             Log.v("CLICK", "click")
             mainNavigation?.navigate(
                 ContainerInfoDirections.actionContainerInfoToFormPendidikanFragment(
+                    null,
                     0
                 )
             )
         }
+
 
 
     }
@@ -96,6 +99,8 @@ class PendidikanUserFragment : Fragment() {
                 binding.msvPendidikan.viewState =
                     if (state.infoUserEntity.isEmpty()) MultiStateView.ViewState.EMPTY
                     else MultiStateView.ViewState.CONTENT
+
+
 
 
             }

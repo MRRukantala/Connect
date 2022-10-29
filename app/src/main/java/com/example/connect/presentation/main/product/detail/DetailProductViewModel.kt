@@ -66,14 +66,14 @@ class DetailProductViewModel @Inject constructor(
         val saveProductDataEntity = SaveProductDataEntity(
             0,
             _data.value[0].id,
-            "",
-            "",
-            "",
+            "obid",
+            "2",
+            "hahahahaha",
             _data.value[0].gambar,
             _data.value[0].harga,
             _data.value[0].nama,
             _data.value[0].deskripsi,
-            "",
+            "0817262662",
             0
 
         )

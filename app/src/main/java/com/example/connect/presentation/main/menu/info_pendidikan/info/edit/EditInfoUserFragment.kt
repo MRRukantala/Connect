@@ -23,6 +23,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.connect.R
 import com.example.connect.databinding.EditInfoUserFragmentBinding
 import com.example.connect.utilites.DatePickerHelper
@@ -70,6 +71,8 @@ class EditInfoUserFragment : Fragment() {
 
         }
     }
+
+    val args by navArgs<EditInfoUserFragmentArgs>()
 
 
     override fun onCreateView(
@@ -202,17 +205,25 @@ class EditInfoUserFragment : Fragment() {
 
         observe()
         listOf(etNim, etWa, etDomisili).forEach {
-
             it.addTextChangedListener(textWatcher)
-
         }
+
+
 
         etNim.setText(viewModel.nim.value)
         etWa.setText(viewModel.wa.value)
         etDomisili.setText(viewModel.domisili.value)
 
         binding.button5.setOnClickListener {
-            viewModel.editProfile(52)
+            viewModel.editProfile(args.data?.id!!)
+        }
+        Log.v("ID", args.data?.id.toString())
+        binding.data = args.data
+
+        if(args.data?.jenisKelamin == "Laki - Laki"){
+            binding.rl.isChecked = true
+        }else{
+            binding.rp.isChecked = true
         }
     }
 

@@ -21,8 +21,13 @@ interface ProfileApiRepository {
         profileRequest: ProfileRequest,
         id: Int,
         method: Map<String, String>
-    ):
-            Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>
+    ): Flow<Result<EditProfleEntity, ResponseObjectWrapper<EditProfileResponse>>>
+
+    suspend fun putPendidikan(
+        pendidikanRequest: PendidikanRequest,
+        id: Int,
+        method: Map<String, String>
+    ): Flow<Result<PostPendidikanEntity, PostPendidikanResponse>>
 
     suspend fun deletePendidikan(id: Int): Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>>
 

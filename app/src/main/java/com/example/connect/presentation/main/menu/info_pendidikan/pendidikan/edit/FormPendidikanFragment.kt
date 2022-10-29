@@ -19,9 +19,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.connect.R
 import com.example.connect.databinding.FormPendidikanFragmentBinding
 import com.example.connect.domain.entity.PendidikanEntity
+import com.example.connect.presentation.main.menu.info_pendidikan.info.edit.EditInfoUserFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.add_news_fragment.view.*
 import kotlinx.coroutines.flow.launchIn
@@ -66,6 +68,8 @@ class FormPendidikanFragment : Fragment() {
         }
     }
 
+    val args by navArgs<FormPendidikanFragmentArgs>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -99,7 +103,16 @@ class FormPendidikanFragment : Fragment() {
         listOf(
             etInstansi, etJenjang, etFakultas,
             etJurusan, etTahunMasuk, etTahunKeluar
-        )
+        ).forEach {
+            it.addTextChangedListener(textWatcher)
+        }
+
+        etInstansi.setText(viewModel.instansi.value)
+        etJenjang.setText(viewModel.jenjang.value)
+        etFakultas.setText(viewModel.fakultas.value)
+        etJurusan.setText(viewModel.jurusan.value)
+        etTahunMasuk.setText(viewModel.tahunMasuk.value)
+        etTahunKeluar.setText(viewModel.tahunKeluar.value)
         observe()
         if (arguments?.getInt("id") == 0) {
             binding.btnHapus.isVisible = false
@@ -108,10 +121,23 @@ class FormPendidikanFragment : Fragment() {
             binding.btnSimpan.setOnClickListener {
                 viewModel.postPendidikan()
             }
+
         } else {
+            binding.btnSimpan.isEnabled = true
             binding.btnHapus.setOnClickListener {
                 viewModel.delete(dataPendidikan?.id!!)
             }
+
+            binding.btnSimpan.setOnClickListener {
+                viewModel.putPendidikan(arguments?.getInt("id")!!)
+            }
+
+            binding.instansi.setText("${args.data?.instansi}")
+            binding.jenjang.setText("${args.data?.jenjang}")
+            binding.fakultas.setText("${args.data?.fakultas}")
+            binding.jurusan.setText("${args.data?.jurusan}")
+            binding.tahunMasuk.setText("${args.data?.tahunMasuk}")
+            binding.tahunLulus.setText("${args.data?.tahunLulus}")
 
         }
 
@@ -128,6 +154,35 @@ class FormPendidikanFragment : Fragment() {
                 postPendidikanHandleState(state)
             }
             .launchIn(lifecycleScope)
+        
+        viewModel.statePut.flowWithLifecycle(lifecycle)
+            .onEach { state ->
+                putPendidikanHandleState(state)
+            }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun putPendidikanHandleState(state: PutState) {
+
+        when (state) {
+            is PutState.LoadingPut -> Log.v("DATA", "Loading")
+
+            is PutState.SuccessPut -> {
+                Log.v("DATA", "Sukses")
+                Toast.makeText(
+                    activity,
+                    "SUKSES EDIT",
+                    Toast.LENGTH_LONG
+                ).show()
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mainNavigation?.navigateUp()
+                }, 2000)
+            }
+
+            else -> {}
+        }
+
     }
 
     private fun handleState(state: DeleteState) {

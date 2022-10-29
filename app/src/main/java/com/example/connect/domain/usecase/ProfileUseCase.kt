@@ -36,6 +36,15 @@ class ProfileUseCase @Inject constructor(private val repository: ProfileApiRepos
         return repository.updateMyProfile(profileRequest, id, method)
     }
 
+    suspend fun putPendidikan(
+        pendidikanRequest: PendidikanRequest,
+        id: Int,
+        method: Map<String, String>
+    ):
+            Flow<Result<PostPendidikanEntity, PostPendidikanResponse>> {
+        return repository.putPendidikan(pendidikanRequest, id, method)
+    }
+
     suspend fun deletePendidikan(id: Int): Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>> {
         return repository.deletePendidikan(id)
     }

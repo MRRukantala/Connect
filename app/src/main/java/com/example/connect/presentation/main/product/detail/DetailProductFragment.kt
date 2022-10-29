@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -72,7 +73,24 @@ class DetailProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.detailProduct(args.id)
         observe()
-//        viewModel.inputKeranjang()
+        viewModel.stateAddProduct.observe(viewLifecycleOwner, {
+            when(it){
+                AddProdukState.LOADING ->{
+                    Toast.makeText(context, "Produk Loading", Toast.LENGTH_SHORT).show()
+                }
+                AddProdukState.SUCCESS -> {
+                    Toast.makeText(context, "Produk Berhasil Disimpan", Toast.LENGTH_SHORT).show()
+                }
+                AddProdukState.ERROR -> {
+                    Toast.makeText(context, "Produkt Gagal Disimpan", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        })
+        binding.button3.setOnClickListener {
+            viewModel.inputKeranjang()
+        }
+
 
     }
 

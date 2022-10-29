@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
+    <data>
 
-<!--        <variable-->
-<!--            name="binding"-->
-<!--            type="com.example.connect.main.ui.menu.info_pendidikan.info.edit.EditInfoUserViewModel" />-->
-<!--    </data>-->
+        <variable
+            name="data"
+            type="com.example.connect.domain.entity.ProfileEntity" />
+    </data>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +55,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:padding="@dimen/dp12"
-
+                        imageUrl="@{data.foto}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -75,13 +75,13 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_nim"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp12"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito_sans"
                         android:inputType="number"
+                        android:text="@{data.nim}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView35"
                         tools:text="NIM" />
@@ -109,7 +109,7 @@
                         android:fontFamily="@font/nunito_sans"
                         android:inputType="phone"
                         android:hint="62+"
-                        android:text="@string/belum_ditambahkan"
+                        android:text="@{data.nomerHp}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
@@ -134,7 +134,7 @@
                         android:layout_marginStart="@dimen/dp12"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="@string/belum_ditambahkan"
+                        android:text="@{data.dommisili}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
@@ -162,7 +162,7 @@
                         android:paddingTop="@dimen/dp16"
                         android:paddingRight="@dimen/dp16"
                         android:paddingBottom="@dimen/dp16"
-                        android:text="@string/belum_ditambahkan"
+                        android:text="@{data.tglLahir}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 

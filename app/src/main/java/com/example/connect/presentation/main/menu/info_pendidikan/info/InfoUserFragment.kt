@@ -52,9 +52,7 @@ class InfoUserFragment : Fragment() {
             buttonAbout.setOnClickListener {
                 menuNavigation?.navigate(R.id.action_containerInfo_to_itemListDialogFragment)
             }
-            button5.setOnClickListener {
-                menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment(52))
-            }
+
             btnLogout.setOnClickListener {
                 keluar()
             }
@@ -82,6 +80,9 @@ class InfoUserFragment : Fragment() {
             }
             is InfoUserViewModelState.Success -> {
                 binding.msvProfile.viewState = MultiStateView.ViewState.CONTENT
+                binding.button5.setOnClickListener {
+                    menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment(state.infoUserEntity?.get(0)))
+                }
             }
             else -> {}
         }
