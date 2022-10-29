@@ -51,6 +51,7 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.berita()
         observe()
+
         binding.rvNews.adapter = NewsAdapter(
             NewsAdapter.OnclickListener {
                 mainNavigation?.navigate(

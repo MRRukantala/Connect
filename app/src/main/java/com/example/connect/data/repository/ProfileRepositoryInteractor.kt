@@ -24,7 +24,7 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
                 val body = response.body()?.data
                 val data = mutableListOf<ProfileEntity>()
                 body?.forEach { data.add(it.toProfileEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
                 response.message()
 
@@ -48,7 +48,7 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
                 val postAgendaEntity = response.body()?.data
                 val data = mutableListOf<PostAgendaEntity>()
                 postAgendaEntity?.forEach { data.add(it.toPosAgendaEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
             }
         }
@@ -60,7 +60,6 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
                 kirimanRequest.starImage,
                 kirimanRequest.content
             )
-            Log.v("VIEWMODEL", response.toString())
             delay(1000)
             if (response.isSuccessful) {
                 val postKirimanEntity = response.body()?.data?.toPostKirimanEntity()
@@ -84,7 +83,7 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
                 val postProductEntity = response.body()?.data
                 val data = mutableListOf<PostProductEntity>()
                 postProductEntity?.forEach { data.add(it.toPostProductEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
 
             }

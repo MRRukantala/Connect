@@ -38,7 +38,6 @@ class NewsViewModel @Inject constructor(
             useCase.getAllKiriman()
                 .onStart {
                     loading()
-
                 }.catch {
 
                 }

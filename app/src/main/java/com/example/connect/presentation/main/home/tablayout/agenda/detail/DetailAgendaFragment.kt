@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.connect.databinding.DetailAgendaFragmentBinding
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +21,7 @@ class DetailAgendaFragment : Fragment() {
 
     lateinit var binding: DetailAgendaFragmentBinding
     private val viewModel: DetailAgendaViewModel by viewModels()
+    private val args by navArgs<DetailAgendaFragmentArgs>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,10 +44,8 @@ class DetailAgendaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.detailAgenda(63)
-
-//        observe()
+        viewModel.detailAgenda(args.id)
+        observe()
     }
 
     private fun observe() {
@@ -64,7 +64,6 @@ class DetailAgendaFragment : Fragment() {
             }
 
             is DetailAgendaState.Success -> {
-
                 binding.apply {
                     msvListDetailAgenda.viewState = MultiStateView.ViewState.CONTENT
                 }
