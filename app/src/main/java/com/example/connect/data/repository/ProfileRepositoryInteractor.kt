@@ -1,12 +1,10 @@
 package com.example.connect.data.repository
 
+import android.util.Log
 import com.example.connect.data.api.ProfileApiClient
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseObjectWrapper
-import com.example.connect.data.model.request.AgendaRequest
-import com.example.connect.data.model.request.KirimanRequest
-import com.example.connect.data.model.request.ProductRequest
-import com.example.connect.data.model.request.ProfileRequest
+import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
 import com.example.connect.domain.entity.*
 import com.example.connect.domain.repo.ProfileApiRepository
@@ -128,9 +126,22 @@ class ProfileRepositoryInteractor @Inject constructor(private val apiClient: Pro
         }
     }
 
+    override suspend fun postPendidikan(pendidikanRequest: PendidikanRequest): Flow<Result<PostPendidikanEntity, PostPendidikanResponse>> {
+        return flow {
+            val response = apiClient.postPendidikan(pendidikanRequest)
+            Log.v("VIEWMODEL", response.toString())
+            delay(1000)
 
-    override suspend fun postPendidikan(): Flow<Result<PendidikanEntity, ResponseObjectWrapper<ProfileResponse>>> {
-        TODO("Not yet implemented")
+            if (response.isSuccessful) {
+                val postPendidikanEntity = response.body()?.toPostPendidikanEntity()
+                emit(Result.Success(postPendidikanEntity!!))
+
+            } else {
+
+            }
+        }
     }
+
+
 
 }

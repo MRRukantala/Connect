@@ -2,7 +2,6 @@ package com.example.connect.domain.repo
 
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseObjectWrapper
-import com.example.connect.data.auth.ResponseObjectWrapperTanpaData
 import com.example.connect.data.model.request.*
 import com.example.connect.data.model.response.*
 import com.example.connect.domain.entity.*
@@ -27,12 +26,9 @@ interface ProfileApiRepository {
 
     suspend fun deletePendidikan(id: Int): Flow<Result<DeletePendidikanEntity, ResponseObjectWrapper<DeletePendidikanResponse>>>
 
-    suspend fun postPendidikan(pendidikanRequest: PendidikanRequest): Flow<Result<PostPendidikanEntity, ResponseObjectWrapperTanpaData>>
+    suspend fun postPendidikan(pendidikanRequest: PendidikanRequest): Flow<Result<PostPendidikanEntity, PostPendidikanResponse>>
 
     //belom diperbaiki
-
-
-
 
 
 }

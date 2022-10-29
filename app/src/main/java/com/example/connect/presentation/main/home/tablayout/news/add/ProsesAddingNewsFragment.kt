@@ -19,16 +19,16 @@ class ProsesAddingNewsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(
                 inflater, R.layout.fragment_proses_adding_news, container, false
             )
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(ProsesAddingNewsFragmentDirections.actionProsesAddingNewsFragmentToHomeFragment())
-        }, 2000)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            findNavController().navigate(ProsesAddingNewsFragmentDirections.actionProsesAddingNewsFragmentToHomeFragment())
+//        }, 2000)
         return binding.root
     }
 

@@ -25,17 +25,17 @@ data class PostProductResponse(
     val updatedAt: String? = "",
     @SerializedName("created_at")
     val createdAt: String? = ""
-){
+) {
     fun toPostProductEntity() = PostProductEntity(
-        id?:0,
-        idUser?:0,
-        name?:"",
-        photo?:"",
-        gambar?:"",
-        harga?:0,
-        namaProduk?:"",
-        deskripsi?:"",
-        updatedAt?:"",
-        createdAt?:""
+        id ?: 0,
+        idUser ?: 0,
+        name.orEmpty(),
+        photo.orEmpty(),
+        gambar.orEmpty(),
+        harga ?: 0,
+        namaProduk.orEmpty(),
+        deskripsi.orEmpty(),
+        updatedAt.orEmpty(),
+        createdAt.orEmpty()
     )
 }
