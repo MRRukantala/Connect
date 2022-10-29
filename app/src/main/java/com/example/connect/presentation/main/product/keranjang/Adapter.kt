@@ -8,14 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.databinding.ItemListSaveProductBinding
 
-class Adapter(private val onClickListener: OnClickListener,
-              private val onClickDelete: OnClickListenerDelete,
-              private val onClickCall: OnClickCall
+class Adapter(
+    private val onClickListener: OnClickListener,
+    private val onClickDelete: OnClickListenerDelete,
+    private val onClickCall: OnClickCall
 ) :
-ListAdapter<SaveProductDataEntity, Adapter.ViewHolder>(DiffCallback){
+    ListAdapter<SaveProductDataEntity, Adapter.ViewHolder>(DiffCallback) {
 
-    object DiffCallback : DiffUtil.ItemCallback<SaveProductDataEntity>(){
-        override fun areItemsTheSame(oldItem: SaveProductDataEntity, newItem: SaveProductDataEntity): Boolean {
+    object DiffCallback : DiffUtil.ItemCallback<SaveProductDataEntity>() {
+        override fun areItemsTheSame(
+            oldItem: SaveProductDataEntity,
+            newItem: SaveProductDataEntity
+        ): Boolean {
             return oldItem.idSaveProductData == newItem.idSaveProductData
         }
 
@@ -28,30 +32,32 @@ ListAdapter<SaveProductDataEntity, Adapter.ViewHolder>(DiffCallback){
     }
 
 
-    class OnClickListener(val clickListener: (saveProductId: Long) -> Unit) {
-        fun onClick(SaveProductDataEntity: SaveProductDataEntity) = clickListener(SaveProductDataEntity.idSaveProductData)
+    class OnClickListener(val clickListener: (saveProductId: SaveProductDataEntity) -> Unit) {
+        fun onClick(SaveProductDataEntity: SaveProductDataEntity) =
+            clickListener(SaveProductDataEntity)
     }
 
     class OnClickListenerDelete(val clickListener: (saveProductId: Long) -> Unit) {
-        fun onClick(SaveProductDataEntity: SaveProductDataEntity) = clickListener(SaveProductDataEntity.idSaveProductData)
+        fun onClick(SaveProductDataEntity: SaveProductDataEntity) =
+            clickListener(SaveProductDataEntity.idSaveProductData)
     }
 
     class OnClickCall(val clickListener: (saveProductDataEntity: SaveProductDataEntity) -> Unit) {
-        fun onClick(SaveProductDataEntity: SaveProductDataEntity) = clickListener(SaveProductDataEntity)
+        fun onClick(SaveProductDataEntity: SaveProductDataEntity) =
+            clickListener(SaveProductDataEntity)
     }
 
 
-    class ViewHolder(private val binding : ItemListSaveProductBinding) : RecyclerView.ViewHolder(binding.root) {
-        val buttonDelete  = binding.imageButton3
-
+    class ViewHolder(private val binding: ItemListSaveProductBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val buttonDelete = binding.imageButton3
         val buttonCall = binding.call
 
-        fun bind(SaveProductDataEntity: SaveProductDataEntity){
-//            binding.viewModel = SaveProductData
+        fun bind(data: SaveProductDataEntity) {
+            binding.data = data
             binding.executePendingBindings()
         }
     }
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

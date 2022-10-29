@@ -5,7 +5,7 @@ import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.data.database.SavedProductDAO
 import javax.inject.Inject
 
-class DatabaseRepository @Inject constructor(
+class DatabaseRepository2 @Inject constructor(
     private val savedProductDAO: SavedProductDAO
 ) {
     fun insert(savedProductDataEntity: SaveProductDataEntity) {
@@ -22,10 +22,9 @@ class DatabaseRepository @Inject constructor(
         return savedProductDAO.get(key)
     }
 
-    fun getByIdUser(key:Int):LiveData<List<SaveProductDataEntity>>{
-        return savedProductDAO.getByIdUser(key)
-
-    }
+//    fun getByIdUser(key:Int):LiveData<List<SaveProductDataEntity>>{
+//        return savedProductDAO.getByIdUser(key)
+//    }
 
     fun getProductById(key:Long):LiveData<SaveProductDataEntity>{
         return savedProductDAO.getProductById(key)

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
+    <data>
 
-<!--        <variable-->
-<!--            name="viewModel"-->
-<!--            type="com.example.connect.main.ui.product.keranjang.detail.DetailSavedProductViewModel" />-->
-<!--    </data>-->
+        <variable
+            name="data"
+            type="com.example.connect.data.database.ItemKeranjangEntity" />
+    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +53,9 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView3"
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="400dp"
+                        tools:layout_height="400dp"
                         android:layout_marginTop="8dp"
                         app:cardCornerRadius="@dimen/dp12"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +66,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-
                             tools:src="@drawable/post" />
 
                     </androidx.cardview.widget.CardView>
@@ -90,7 +91,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito_sans"
-
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -110,11 +110,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/nunito_sans"
-
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView27"
@@ -150,8 +149,6 @@
                 android:textSize="@dimen/sp12"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button3"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

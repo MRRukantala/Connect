@@ -15,7 +15,6 @@ import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.domain.entity.*
 import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
 import com.example.connect.domain.entity.elearning.VideoELearningByIdEntity
-import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import com.example.connect.presentation.main.home.tablayout.agenda.AgendaAdapter
 import com.example.connect.presentation.main.home.tablayout.news.NewsAdapter
 import com.example.connect.presentation.main.layanan.PlaylistAdapter

@@ -213,8 +213,8 @@
         android:label="DetailSavedProductFragment"
         tools:layout="@layout/detail_saved_product_fragment">
         <argument
-            android:name="idSelectedSavedProduct"
-            app:argType="long" />
+            android:name="data"
+            app:argType="com.example.connect.data.database.ItemKeranjangEntity" />
         <action
             android:id="@+id/action_detailSavedProductFragment_to_imageOpener2"
             app:destination="@id/imageOpener2" />
@@ -242,30 +242,6 @@
             android:id="@+id/action_produkFragment_to_storeResmiFragment"
             app:destination="@id/storeResmiFragment" />
     </fragment>
-    <action
-        android:id="@+id/action_produkFragment_to_addMyProdukFragment"
-        app:destination="@id/addMyProdukFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
-    <action
-        android:id="@+id/action_detailProductFragment_to_keranjangFragment"
-        app:destination="@id/keranjangFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
-    <action
-        android:id="@+id/action_detailSavedProductFragment_to_imageOpener2"
-        app:destination="@id/imageOpener2" />
-    <action
-        android:id="@+id/action_addMyProdukFragment_to_prosesAddMyProdukFragment"
-        app:destination="@id/prosesAddMyProdukFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
     <fragment
         android:id="@+id/imageOpener2"
         android:name="com.example.connect.presentation.ImageOpener"
@@ -298,7 +274,7 @@
     </fragment>
     <fragment
         android:id="@+id/keranjangFragment"
-        android:name="com.example.connect.presentation.main.product.keranjang."
+        android:name="com.example.connect.presentation.main.product.KeranjangFragment"
         android:label="KeranjangFragment"
         tools:layout="@layout/fragment_keranjang">
         <action
@@ -307,8 +283,7 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/keranjangFragment" />
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"

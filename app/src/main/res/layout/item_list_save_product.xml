@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="viewModel"-->
-<!--            type="com.example.connect.database.SaveProductData" />-->
-<!--    </data>-->
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.connect.data.database.SaveProductDataEntity" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,22 +43,22 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
+                        imageUrl="@{data.gambar}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-
-                        android:src="@drawable/post" />
+                        tools:src="@drawable/post" />
 
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/textView49"
                     android:layout_width="0dp"
-
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/nunito_sans"
+                    android:text="@{data.nama_produk}"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -69,26 +70,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-
+                    android:layout_marginTop="@dimen/_4dp"
                     android:fontFamily="@font/nunito_sans"
                     android:textColor="@color/content_and_title_color_post_and_agenda"
-                    app:layout_constraintBottom_toBottomOf="@+id/cardView11"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView49"
-                    tools:text="Rp10.000" />
-
-                <TextView
-                    android:id="@+id/textView50"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView49"
-                    tools:text="S1" />
-
+                    tools:text="Rp10.000" />
 
                 <ImageButton
                     android:id="@+id/imageButton3"
@@ -111,13 +99,13 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:text="Hubungi Penjual"
+                    android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageButton3"
                     app:layout_constraintTop_toTopOf="@+id/imageButton3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </com.google.android.material.card.MaterialCardView>
 

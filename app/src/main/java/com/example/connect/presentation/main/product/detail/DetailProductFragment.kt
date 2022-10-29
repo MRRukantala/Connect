@@ -59,6 +59,8 @@ class DetailProductFragment : Fragment() {
             mainNavigation?.navigate(DetailProductFragmentDirections.actionDetailProductFragmentToKeranjangFragment())
         }
 
+
+
 //        binding.cardView3.setOnClickListener {
 //            findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(productUmumProperty.gambar))
 //        }
@@ -72,6 +74,9 @@ class DetailProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.detailProduct(args.id)
         observe()
+        binding.button3.setOnClickListener {
+            viewModel.inputKeranjang()
+        }
 //        viewModel.inputKeranjang()
 
     }
