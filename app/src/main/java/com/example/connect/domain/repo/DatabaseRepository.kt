@@ -9,5 +9,6 @@ import javax.inject.Inject
 
 interface DatabaseRepository  {
     suspend fun getDataKeranjangByIdUser(id: Int): Flow<Result<List<SaveProductDataEntity>, List<SaveProductDataEntity>>>
-    suspend fun insertData(data: SaveProductDataEntity): Flow<SavedProductDAO>
+    suspend fun insertData(data: SaveProductDataEntity): Flow<Result<String, String>>
+    suspend fun deleteData(id: Long): Flow<Result<String, String>>
 }

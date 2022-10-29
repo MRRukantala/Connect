@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.data.database.SaveProductDataEntity
-import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.KeranjangUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,6 +21,9 @@ class KeranjangViewModelTerbaru @Inject constructor(
     private val _state = MutableStateFlow<KeranjangViewState>(KeranjangViewState.Init)
     val state get() = _state
 
+    private val _stateDelete = MutableStateFlow<DeleteState>(DeleteState.Init)
+    val stateDelete get() = _stateDelete
+
     private val _data = MutableStateFlow<List<SaveProductDataEntity>>(mutableListOf())
     val data get() = _data
 
@@ -34,6 +36,10 @@ class KeranjangViewModelTerbaru @Inject constructor(
         _data.value = data
     }
 
+    private fun successDelete(data: String) {
+        _stateDelete.value = DeleteState.Success(data)
+    }
+
     private fun error(data: List<SaveProductDataEntity>) {
         _state.value = KeranjangViewState.Error(data)
     }
@@ -41,18 +47,36 @@ class KeranjangViewModelTerbaru @Inject constructor(
     fun getDataById(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             case.getDataKeranjangByIdUser(id).onStart {
-            }.catch {
                 loading()
-            }.collect {
-                    result ->
-                when(result){
+            }.catch {
+
+            }.collect { result ->
+                when (result) {
                     is Result.Success -> {
                         success(result.data)
+                        _stateDelete.value = DeleteState.Init
                     }
-                    is Result.Error -> { }
+                    is Result.Error -> {}
                 }
             }
 
+        }
+    }
+
+    fun deleteData(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            case.deleteData(id.toLong()).onStart {
+
+            }.catch {
+
+            }.collect { result ->
+                when (result) {
+                    is Result.Success -> {
+                        successDelete(result.data)
+                    }
+                    is Result.Error -> {}
+                }
+            }
         }
     }
 }
@@ -63,4 +87,12 @@ sealed class KeranjangViewState {
     data class Loading(val loading: Boolean = true) : KeranjangViewState()
     data class Success(val keranjangEntity: List<SaveProductDataEntity>) : KeranjangViewState()
     data class Error(val response: List<SaveProductDataEntity>) : KeranjangViewState()
+}
+
+sealed class DeleteState {
+    object Init : DeleteState()
+
+    data class Loading(val loading: Boolean = true) : DeleteState()
+    data class Success(val data: String) : DeleteState()
+    data class Error(val response: String) : DeleteState()
 }

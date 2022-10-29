@@ -19,9 +19,17 @@ class KeranjangRepositoryInteractor @Inject constructor(private val dao: SavedPr
         }
     }
 
-    override suspend fun insertData(data: SaveProductDataEntity): Flow<SavedProductDAO> {
+    override suspend fun insertData(data: SaveProductDataEntity): Flow<Result<String, String>> {
         return flow {
             dao.insert(data)
+            emit(Result.Success("Berhasil"))
+        }
+    }
+
+    override suspend fun deleteData(id: Long): Flow<Result<String, String>> {
+        return flow {
+            dao.deleteItem(id)
+            emit(Result.Success("Berhasil"))
         }
     }
 
