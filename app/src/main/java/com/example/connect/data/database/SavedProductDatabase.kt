@@ -3,7 +3,7 @@ package com.example.connect.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database(entities = [SaveProductData::class], version = 1, exportSchema = false)
+@Database(entities = [SaveProductDataEntity::class], version = 1, exportSchema = false)
 abstract class SavedProductDatabase : RoomDatabase() {
 
     abstract val savedProductDao: SavedProductDAO

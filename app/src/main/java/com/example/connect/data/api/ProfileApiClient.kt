@@ -54,9 +54,8 @@ interface ProfileApiClient {
     //API POST PENDIDIKAN
     @POST("pendidikan")
     suspend fun postPendidikan(
-        @Header("Authorization") authorization: String,
         @Body pendidikanRequest: PendidikanRequest
-    ): Response<ResponseObjectWrapper<PendidikanResponse>>
+    ): Response<PostPendidikanResponse>
 
     // API DELETE PENDIDIKAN
     @DELETE("pendidikan/{id}")

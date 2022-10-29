@@ -53,7 +53,7 @@ class InfoUserFragment : Fragment() {
                 menuNavigation?.navigate(R.id.action_containerInfo_to_itemListDialogFragment)
             }
             button5.setOnClickListener {
-                menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment())
+                menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment(52))
             }
             btnLogout.setOnClickListener {
                 keluar()

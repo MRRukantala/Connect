@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class BasicEntity(
+data class PostPendidikanEntity(
     val status: Boolean?,
     val message: String?
 ) : Parcelable

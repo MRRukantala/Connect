@@ -5,23 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.connect.data.database.SaveProductData
+import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.databinding.ItemListSaveProductBinding
 
 class Adapter(private val onClickListener: OnClickListener,
               private val onClickDelete: OnClickListenerDelete,
               private val onClickCall: OnClickCall
 ) :
-ListAdapter<SaveProductData, Adapter.ViewHolder>(DiffCallback){
+ListAdapter<SaveProductDataEntity, Adapter.ViewHolder>(DiffCallback){
 
-    object DiffCallback : DiffUtil.ItemCallback<SaveProductData>(){
-        override fun areItemsTheSame(oldItem: SaveProductData, newItem: SaveProductData): Boolean {
+    object DiffCallback : DiffUtil.ItemCallback<SaveProductDataEntity>(){
+        override fun areItemsTheSame(oldItem: SaveProductDataEntity, newItem: SaveProductDataEntity): Boolean {
             return oldItem.idSaveProductData == newItem.idSaveProductData
         }
 
         override fun areContentsTheSame(
-            oldItem: SaveProductData,
-            newItem: SaveProductData
+            oldItem: SaveProductDataEntity,
+            newItem: SaveProductDataEntity
         ): Boolean {
             return oldItem == newItem
         }
@@ -29,15 +29,15 @@ ListAdapter<SaveProductData, Adapter.ViewHolder>(DiffCallback){
 
 
     class OnClickListener(val clickListener: (saveProductId: Long) -> Unit) {
-        fun onClick(SaveProductData: SaveProductData) = clickListener(SaveProductData.idSaveProductData)
+        fun onClick(SaveProductDataEntity: SaveProductDataEntity) = clickListener(SaveProductDataEntity.idSaveProductData)
     }
 
     class OnClickListenerDelete(val clickListener: (saveProductId: Long) -> Unit) {
-        fun onClick(SaveProductData: SaveProductData) = clickListener(SaveProductData.idSaveProductData)
+        fun onClick(SaveProductDataEntity: SaveProductDataEntity) = clickListener(SaveProductDataEntity.idSaveProductData)
     }
 
-    class OnClickCall(val clickListener: (saveProductData: SaveProductData) -> Unit) {
-        fun onClick(SaveProductData: SaveProductData) = clickListener(SaveProductData)
+    class OnClickCall(val clickListener: (saveProductDataEntity: SaveProductDataEntity) -> Unit) {
+        fun onClick(SaveProductDataEntity: SaveProductDataEntity) = clickListener(SaveProductDataEntity)
     }
 
 
@@ -46,7 +46,7 @@ ListAdapter<SaveProductData, Adapter.ViewHolder>(DiffCallback){
 
         val buttonCall = binding.call
 
-        fun bind(SaveProductData: SaveProductData){
+        fun bind(SaveProductDataEntity: SaveProductDataEntity){
 //            binding.viewModel = SaveProductData
             binding.executePendingBindings()
         }

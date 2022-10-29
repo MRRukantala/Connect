@@ -58,25 +58,23 @@ class PendidikanUserFragment : Fragment() {
 
             PendidikanAdapter.OnclickListener {
                 runCatching {
-//                    mainNavigation?.navigate(
-//                        ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-//                            it,
-//                            1
-//                        )
-//                    )
+                    mainNavigation?.navigate(
+                        ContainerInfoDirections.actionContainerInfoToFormPendidikanFragment(
+                           it.id
+
+                        )
+                    )
                 }
             }
         )
-
-//        binding.fabNews.setOnClickListener {
-//            Log.v("CLICK", "click")
-//            mainNavigation?.navigate(
-//                ContainerInfoDirections.actionContainerInfoPendidikanFragmentToFormPendidikanFragment(
-//                    viewModel.data.value?.get(0)?.listPendidikan?.get(0),
-//                    2
-//                )
-//            )
-//        }
+        binding.fabNews.setOnClickListener {
+            Log.v("CLICK", "click")
+            mainNavigation?.navigate(
+                ContainerInfoDirections.actionContainerInfoToFormPendidikanFragment(
+                    0
+                )
+            )
+        }
 
 
     }

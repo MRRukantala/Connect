@@ -1,5 +1,6 @@
 package com.example.connect.data.auth
 
+import com.example.connect.domain.entity.BasicEntity
 import com.google.gson.annotations.SerializedName
 
 data class ResponseListWrapper<T>(
@@ -18,4 +19,6 @@ data class ResponseObjectWrapper<T>(
     @SerializedName("message") val message: String,
     @SerializedName("data") val data: T? = null
 )
+
+
 

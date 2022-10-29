@@ -1,6 +1,7 @@
 package com.example.connect.presentation.main.product.keranjang
 
 import androidx.lifecycle.ViewModel
+import com.example.connect.data.repository.DatabaseRepository
 import com.example.connect.domain.entity.SementaraEntity
 import com.example.connect.domain.usecase.ProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class KeranjangViewModelTerbaru @Inject constructor(
-    private val useCase: ProductUseCase
+    private val repository: DatabaseRepository
 ):ViewModel() {
     private val _state = MutableStateFlow<KeranjangViewState>(KeranjangViewState.Init)
     val state get() = _state

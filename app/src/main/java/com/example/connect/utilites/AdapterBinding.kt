@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.ImageRequest
 import com.example.connect.R
-import com.example.connect.data.database.SaveProductData
+import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.domain.entity.*
 import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
 import com.example.connect.domain.entity.elearning.VideoELearningByIdEntity
@@ -125,7 +125,7 @@ fun bindRecyclerViewListLayanan(
 @BindingAdapter("listKeranjang")
 fun bindRecyclerViewListKeranjang(
     recyclerView: RecyclerView,
-    data: List<SaveProductData>?
+    data: List<SaveProductDataEntity>?
 ) {
     val adapter =
         recyclerView.adapter as com.example.connect.presentation.main.product.keranjang.Adapter

@@ -2,7 +2,7 @@ package com.example.connect.data.api
 
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseListWrapperSementara
-import com.example.connect.data.model.response.PostProductResponse
+import com.example.connect.data.model.response.PostPendidikanResponse
 import com.example.connect.data.model.response.ProductResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

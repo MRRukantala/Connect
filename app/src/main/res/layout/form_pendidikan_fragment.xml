@@ -17,6 +17,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <include
+            android:id="@+id/iloadingsuccess"
+            android:visibility="gone"
+            layout="@layout/fragment_loading_add_agenda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            android:id="@+id/iloading"
+            android:visibility="gone"
+            layout="@layout/fragment_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <Button
             android:id="@+id/btn_simpan"
             android:layout_width="wrap_content"
@@ -35,7 +49,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/red"
+
             android:text="@string/hapus_informasi"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -71,7 +85,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout2"
+                    android:id="@+id/textIntansi"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,7 +108,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout3"
+                    android:id="@+id/textJenjang"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,7 +119,7 @@
                     android:labelFor="@id/jenjang"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                    app:layout_constraintTop_toBottomOf="@+id/textIntansi">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/jenjang"
@@ -116,7 +130,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout6"
+                    android:id="@+id/textFakultas"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,7 +141,7 @@
                     android:labelFor="@id/fakultas"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+                    app:layout_constraintTop_toBottomOf="@+id/textJenjang">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/fakultas"
@@ -139,7 +153,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout7"
+                    android:id="@+id/textJurusan"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,7 +164,7 @@
                     android:labelFor="@id/jurusan"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+                    app:layout_constraintTop_toBottomOf="@+id/textFakultas">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/jurusan"
@@ -162,7 +176,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout4"
+                    android:id="@+id/textTahunMasuk"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -173,7 +187,7 @@
                     android:labelFor="@id/tahun_masuk"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+                    app:layout_constraintTop_toBottomOf="@+id/textJurusan">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tahun_masuk"
@@ -186,7 +200,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout5"
+                    android:id="@+id/textTahunLulus"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -198,7 +212,7 @@
                     android:labelFor="@id/tahun_lulus"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+                    app:layout_constraintTop_toBottomOf="@+id/textTahunMasuk">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tahun_lulus"
@@ -212,6 +226,8 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
