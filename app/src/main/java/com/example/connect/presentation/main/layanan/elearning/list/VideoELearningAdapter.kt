@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemVideoEElarningBinding
-import com.example.connect.domain.entity.elearning.VideoELearningEntity
+import com.example.connect.domain.entity.elearning.VideoELearningByIdEntity
 
 class VideoELearningAdapter(val onclickListener: OnclickListener) :
-    ListAdapter<VideoELearningEntity, VideoELearningAdapter.ViewHolder>(
+    ListAdapter<VideoELearningByIdEntity, VideoELearningAdapter.ViewHolder>(
         DiffCallback
     ) {
 
@@ -17,19 +17,19 @@ class VideoELearningAdapter(val onclickListener: OnclickListener) :
         private var binding: ItemVideoEElarningBinding,
 
         ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: VideoELearningEntity) {
+        fun bind(data: VideoELearningByIdEntity) {
             binding.data = data
             binding.executePendingBindings()
         }
     }
 
-    object DiffCallback : DiffUtil.ItemCallback<VideoELearningEntity>() {
-        override fun areItemsTheSame(oldItem: VideoELearningEntity, newItem: VideoELearningEntity) =
+    object DiffCallback : DiffUtil.ItemCallback<VideoELearningByIdEntity>() {
+        override fun areItemsTheSame(oldItem: VideoELearningByIdEntity, newItem: VideoELearningByIdEntity) =
             oldItem.idVideo == newItem.idVideo
 
         override fun areContentsTheSame(
-            oldItem: VideoELearningEntity,
-            newItem: VideoELearningEntity
+            oldItem: VideoELearningByIdEntity,
+            newItem: VideoELearningByIdEntity
         ) =
             oldItem.idVideo == newItem.idVideo
     }
@@ -54,9 +54,9 @@ class VideoELearningAdapter(val onclickListener: OnclickListener) :
     }
 
     class OnclickListener(
-        val clickListener: (entity: VideoELearningEntity) ->
+        val clickListener: (entity: VideoELearningByIdEntity) ->
         Unit
     ) {
-        fun onClick(entity: VideoELearningEntity) = clickListener(entity)
+        fun onClick(entity: VideoELearningByIdEntity) = clickListener(entity)
     }
 }

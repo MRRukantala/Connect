@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,19 +10,45 @@
             type="com.example.connect.presentation.main.layanan.elearning.list.VideoELearningViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.main.layanan.elearning.list.VideoELearningFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvVideoELearning"
-            listVideoELearning="@{viewModel.data}"
+        <include
+            android:id="@+id/include4"
+            layout="@layout/component_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kennyc.view.MultiStateView
+            android:id="@+id/msvListVideo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_video_e_elarning" />
+            android:layout_height="@dimen/_0dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include4"
+            app:msv_animateViewChanges="true"
+            app:msv_emptyView="@layout/empty_data"
+            app:msv_loadingView="@layout/shimmer_list_video_by_playlist"
+            app:msv_viewState="content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVideoELearning"
+                listVideoELearning="@{viewModel.data.videos}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include4"
+                tools:listitem="@layout/item_video_e_elarning" />
+
+        </com.kennyc.view.MultiStateView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

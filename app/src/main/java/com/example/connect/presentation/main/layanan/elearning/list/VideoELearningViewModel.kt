@@ -1,8 +1,9 @@
 package com.example.connect.presentation.main.layanan.elearning.list
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.connect.domain.entity.elearning.VideoELearningEntity
+import com.example.connect.domain.entity.elearning.PlaylistELearningByIdEntity
 import com.example.connect.domain.usecase.LayananUseCase
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,26 +20,30 @@ class VideoELearningViewModel @Inject constructor(
     private val _state = MutableStateFlow<VideoELearningState>(VideoELearningState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<List<VideoELearningEntity>>(mutableListOf())
+    private val _data = MutableStateFlow<PlaylistELearningByIdEntity>(
+        PlaylistELearningByIdEntity(
+            0, "", "", "", mutableListOf()
+        )
+    )
     val data get() = _data
 
     private fun loading() {
         _state.value = VideoELearningState.Loading()
     }
 
-    private fun success(videoElearningEntity: List<VideoELearningEntity>) {
+    private fun success(videoElearningEntity: PlaylistELearningByIdEntity) {
         _state.value = VideoELearningState.Success(videoElearningEntity)
         _data.value = videoElearningEntity
 
     }
 
-    private fun error(videoElearningEntity: List<VideoELearningEntity>) {
+    private fun error(videoElearningEntity: PlaylistELearningByIdEntity) {
         _state.value = VideoELearningState.Error(videoElearningEntity)
     }
 
     fun getAllVideo(id: Int) {
         viewModelScope.launch {
-            useCase.getAllVideoELearning(id)
+            useCase.getPlaylistById(id)
                 .onStart {
                     loading()
 
@@ -46,7 +51,9 @@ class VideoELearningViewModel @Inject constructor(
 
                 }.collect { result ->
                     when (result) {
-                        is Result.Success -> success(result.data)
+                        is Result.Success -> {
+                            success(result.data)
+                        }
                         is Result.Error -> {}
                     }
                 }
@@ -57,6 +64,8 @@ class VideoELearningViewModel @Inject constructor(
 sealed class VideoELearningState {
     object Init : VideoELearningState()
     data class Loading(val loading: Boolean = true) : VideoELearningState()
-    data class Success(val videoElearningEntity: List<VideoELearningEntity>) : VideoELearningState()
-    data class Error(val response: List<VideoELearningEntity>) : VideoELearningState()
+    data class Success(val videoElearningEntity: PlaylistELearningByIdEntity) :
+        VideoELearningState()
+
+    data class Error(val response: PlaylistELearningByIdEntity) : VideoELearningState()
 }

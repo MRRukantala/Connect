@@ -35,6 +35,7 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <com.kennyc.view.MultiStateView
                     android:id="@+id/msv_list_layanan"
                     android:layout_width="match_parent"
@@ -44,9 +45,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView33"
                     app:msv_animateViewChanges="true"
-                    app:msv_viewState="content"
+                    app:msv_emptyView="@layout/empty_data"
                     app:msv_loadingView="@layout/shimmer_layanan"
-                    app:msv_emptyView="@layout/empty_data">
+                    app:msv_viewState="content">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView2"
@@ -65,7 +66,6 @@
                 </com.kennyc.view.MultiStateView>
 
 
-
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
@@ -79,22 +79,30 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/msv_list_layanan" />
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvPlaylist"
-                    listPlaylist="@{viewModel.dataPlaylist}"
+                <com.kennyc.view.MultiStateView
+                    android:id="@+id/msvPlaylist"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="4dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    tools:itemCount="5"
-                    tools:layout_editor_absoluteX="-16dp"
-                    tools:listitem="@layout/item_playlist_e_learning" />
+                    app:msv_animateViewChanges="true"
+                    app:msv_emptyView="@layout/empty_data"
+                    app:msv_loadingView="@layout/shimmer_list_playlist"
+                    app:msv_viewState="content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvPlaylist"
+                        listPlaylist="@{viewModel.dataPlaylist}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="5"
+                        tools:layout_editor_absoluteX="-16dp"
+                        tools:listitem="@layout/item_playlist_e_learning" />
+                </com.kennyc.view.MultiStateView>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
         </androidx.core.widget.NestedScrollView>

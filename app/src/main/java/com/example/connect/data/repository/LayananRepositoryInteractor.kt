@@ -1,14 +1,15 @@
 package com.example.connect.data.repository
 
-import android.util.Log
 import com.example.connect.data.api.LayananApiClient
 import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.model.response.DetailArtikelResponse
 import com.example.connect.data.model.response.LayananResponse
+import com.example.connect.data.model.response.elearning.PlaylistElearningByIdResponse
 import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
 import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import com.example.connect.domain.entity.LayananEntity
+import com.example.connect.domain.entity.elearning.PlaylistELearningByIdEntity
 import com.example.connect.domain.entity.elearning.PlaylistELearningEntity
 import com.example.connect.domain.entity.elearning.VideoELearningEntity
 import com.example.connect.domain.repo.LayananApiRepository
@@ -56,6 +57,19 @@ class LayananRepositoryInteractor @Inject constructor(private val apiClient: Lay
                 val data = mutableListOf<PlaylistELearningEntity>()
                 body?.forEach { data.add(it.toPlaylistELearningEntity()) }
                 emit(Result.Success(data))
+            } else {
+
+            }
+        }
+    }
+
+    override suspend fun getPlaylistById(id: Int): Flow<Result<PlaylistELearningByIdEntity, ResponseObjectWrapper<PlaylistElearningByIdResponse>>> {
+        return flow {
+            val response = apiClient.getPlaylist(id)
+            delay(800)
+            if (response.isSuccessful) {
+                val data = response.body()?.data
+                emit(Result.Success(data?.toPlaylistELearningByIdEntity() as PlaylistELearningByIdEntity))
             } else {
 
             }
