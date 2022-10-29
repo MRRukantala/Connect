@@ -32,7 +32,7 @@ data class PlaylistElearningByIdResponse(
         namaPlaylist.orEmpty(),
         dibuatPada.orEmpty(),
         diubahPada.orEmpty(),
-        videos?.map { it.toVideoELearningByIdEntity() } ?: mutableListOf()
+        videos?.map { it.toVideoELearningByIdEntity() }?.reversed() ?: mutableListOf()
     )
 }
 

@@ -29,7 +29,7 @@ class LayananRepositoryInteractor @Inject constructor(private val apiClient: Lay
                 val body = response.body()?.data
                 val data = mutableListOf<LayananEntity>()
                 body?.forEach { data.add(it.toLayananEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
             }
         }
@@ -56,7 +56,7 @@ class LayananRepositoryInteractor @Inject constructor(private val apiClient: Lay
                 val body = response.body()?.data
                 val data = mutableListOf<PlaylistELearningEntity>()
                 body?.forEach { data.add(it.toPlaylistELearningEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
 
             }
@@ -84,7 +84,7 @@ class LayananRepositoryInteractor @Inject constructor(private val apiClient: Lay
                 val body = response.body()?.data
                 val data = mutableListOf<VideoELearningEntity>()
                 body?.forEach { data.add(it.toVideoELearningEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
 
             }

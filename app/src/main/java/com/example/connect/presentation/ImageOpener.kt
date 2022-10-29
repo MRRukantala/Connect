@@ -34,6 +34,7 @@ class ImageOpener : Fragment() {
             R.layout.fragment_image_opener, container, false
         )
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.item = args.link
 
         binding.include.backImage.setOnClickListener {
             mainNavigation?.navigateUp()

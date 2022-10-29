@@ -23,7 +23,7 @@ class StoreRepositoryInteractor @Inject constructor(private val apiClient: Produ
                 val body = response.body()?.data
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
 
             }
@@ -38,7 +38,7 @@ class StoreRepositoryInteractor @Inject constructor(private val apiClient: Produ
                 val body = response.body()?.data
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
 
             }
@@ -53,7 +53,7 @@ class StoreRepositoryInteractor @Inject constructor(private val apiClient: Produ
                 val body = response.body()?.data
                 val data = mutableListOf<ProductEntity>()
                 body?.forEach { data.add(it.toProductEntity()) }
-                emit(Result.Success(data))
+                emit(Result.Success(data.reversed()))
             } else {
             }
         }

@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.connect.R
 import com.example.connect.databinding.DetailAgendaFragmentBinding
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +23,11 @@ class DetailAgendaFragment : Fragment() {
 
     lateinit var binding: DetailAgendaFragmentBinding
     private val viewModel: DetailAgendaViewModel by viewModels()
+
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
+    private val args by navArgs<DetailAgendaFragmentArgs>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,21 +39,17 @@ class DetailAgendaFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.include6.backImage.setOnClickListener {
-            findNavController().popBackStack()
+            mainNavigation?.navigateUp()
         }
 
-        binding.cardView.setOnClickListener {
 
-        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.detailAgenda(63)
-
-//        observe()
+        viewModel.detailAgenda(args.id)
+        observe()
     }
 
     private fun observe() {
@@ -64,9 +68,15 @@ class DetailAgendaFragment : Fragment() {
             }
 
             is DetailAgendaState.Success -> {
-
                 binding.apply {
                     msvListDetailAgenda.viewState = MultiStateView.ViewState.CONTENT
+                    binding.cardView.setOnClickListener {
+                        mainNavigation?.navigate(
+                            DetailAgendaFragmentDirections.actionDetailAgendaFragmentToImageOpener(
+                                state.detailAgendaEntity.gambar
+                            )
+                        )
+                    }
                 }
 
             }

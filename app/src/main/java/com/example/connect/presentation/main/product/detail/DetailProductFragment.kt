@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -20,7 +19,6 @@ import com.example.connect.utilites.currency
 import com.example.connect.utilites.imagePost
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.detail_product_fragment.view.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -59,14 +57,6 @@ class DetailProductFragment : Fragment() {
         binding.includ8.backImage.setOnClickListener {
             mainNavigation?.navigate(DetailProductFragmentDirections.actionDetailProductFragmentToKeranjangFragment())
         }
-
-
-
-//        binding.cardView3.setOnClickListener {
-//            findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(productUmumProperty.gambar))
-//        }
-
-
         return binding.root
 
     }
@@ -102,13 +92,21 @@ class DetailProductFragment : Fragment() {
                 currency(binding.harga, data.harga)
                 imagePost(binding.image, data.gambar)
                 binding.msvDetailProduct.viewState = MultiStateView.ViewState.CONTENT
+
+                binding.cardView3.setOnClickListener {
+                    mainNavigation?.navigate(
+                        DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(
+                            state.detailProductEntity.get(0).gambar
+                        )
+                    )
+                }
             }
             else -> {}
         }
     }
 
     private fun checkData(get: DetailProductEntity) {
-        if (get.idUser ==  pref.getIdUser()) {
+        if (get.idUser == pref.getIdUser()) {
             binding.constraintLayout.visibility = View.GONE
         }
     }

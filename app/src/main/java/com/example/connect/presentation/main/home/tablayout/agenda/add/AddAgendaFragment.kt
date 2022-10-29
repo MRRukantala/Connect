@@ -147,7 +147,7 @@ class AddAgendaFragment : Fragment() {
         etKonten.setText(viewModel.konten.value)
         etLokasi.setText(viewModel.lokasi.value)
 
-        viewModel.setStatus("1")
+        viewModel.setStatus("2")
         Log.v("TOKEN", pref.getToken())
 
         binding.cancelImagePost.setOnClickListener {
