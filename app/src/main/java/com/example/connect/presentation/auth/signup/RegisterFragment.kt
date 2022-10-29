@@ -7,19 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentSignBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_sign.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -51,9 +47,7 @@ class RegisterFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable?) {
-
             binding.login.isEnabled = true
-
         }
     }
 
@@ -91,7 +85,6 @@ class RegisterFragment : Fragment() {
         etNama.setText(viewModel.nama.value)
         etEmail.setText(viewModel.email.value)
         etPassword.setText(viewModel.password.value)
-
         viewModel.setLevel(0)
         binding.login.setOnClickListener {
             viewModel.register()
@@ -107,9 +100,11 @@ class RegisterFragment : Fragment() {
     private fun handleState(state: RegisterState) {
         when (state) {
             is RegisterState.Loading -> {
+                binding.iloading.root.visibility = View.VISIBLE
             }
             is RegisterState.Success -> {
-
+                binding.iloading.root.visibility = View.VISIBLE
+                authNavController?.navigate(RegisterFragmentDirections.actionSignFragmentToVerifFragment())
             }
             else -> {}
         }

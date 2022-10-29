@@ -3,6 +3,7 @@ package com.example.connect.presentation.main.product
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,6 +88,7 @@ class KeranjangFragment : Fragment() {
                 binding.msvKeranjang.viewState = MultiStateView.ViewState.LOADING
             }
             is KeranjangViewState.Success -> {
+                Log.v("DATA", "SUKSES ${state.keranjangEntity}")
                 binding.msvKeranjang.viewState =
                     if (state.keranjangEntity.isEmpty()) MultiStateView.ViewState.EMPTY
                     else MultiStateView.ViewState.CONTENT
