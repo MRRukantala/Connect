@@ -48,9 +48,6 @@ class PendidikanAdapter(val onclickListener: OnclickListener) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pendidikanItem = getItem(position)
         holder.bind(pendidikanItem)
-//        holder.itemView.setOnClickListener {
-//            onclickListener.onClick(pendidikanItem)
-//        }
     }
 
     class OnclickListener(

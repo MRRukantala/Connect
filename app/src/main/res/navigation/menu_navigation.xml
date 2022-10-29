@@ -68,9 +68,6 @@
             android:name="data"
             app:argType="com.example.connect.domain.entity.PendidikanEntity"
             app:nullable="true" />
-        <argument
-            android:name="id"
-            app:argType="integer" />
     </fragment>
     <action
         android:id="@+id/action_saranNKritikFragment_to_saranTerimaKasihFragment"

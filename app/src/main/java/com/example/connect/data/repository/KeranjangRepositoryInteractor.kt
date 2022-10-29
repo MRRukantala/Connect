@@ -1,6 +1,5 @@
 package com.example.connect.data.repository
 
-import android.util.Log
 import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.data.database.SavedProductDAO
 import com.example.connect.domain.repo.DatabaseRepository
@@ -20,7 +19,7 @@ class KeranjangRepositoryInteractor @Inject constructor(private val dao: SavedPr
 
     override suspend fun insertData(data: SaveProductDataEntity): Flow<SavedProductDAO> {
         return flow {
-           dao.insert(data)
+            dao.insert(data)
         }
     }
 

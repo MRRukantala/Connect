@@ -1,7 +1,6 @@
 package com.example.connect.presentation.main.menu.info_pendidikan.info
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -81,7 +80,11 @@ class InfoUserFragment : Fragment() {
             is InfoUserViewModelState.Success -> {
                 binding.msvProfile.viewState = MultiStateView.ViewState.CONTENT
                 binding.button5.setOnClickListener {
-                    menuNavigation?.navigate(ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment(state.infoUserEntity?.get(0)))
+                    menuNavigation?.navigate(
+                        ContainerInfoDirections.actionContainerInfoToEditInfoUserFragment(
+                            state.infoUserEntity?.get(0)
+                        )
+                    )
                 }
             }
             else -> {}
