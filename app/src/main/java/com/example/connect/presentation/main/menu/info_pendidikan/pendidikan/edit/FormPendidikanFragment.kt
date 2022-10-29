@@ -157,11 +157,14 @@ class FormPendidikanFragment : Fragment() {
     private fun putPendidikanHandleState(state: PutState) {
 
         when (state) {
-            is PutState.LoadingPut -> Log.v("DATA", "Loading")
+            is PutState.LoadingPut -> {
+                binding.iloading.root.visibility = View.VISIBLE
+            }
 
             is PutState.SuccessPut -> {
-                Log.v("DATA", "Sukses")
 
+                binding.iloading.root.visibility = View.GONE
+                binding.iloadingsuccess.textView21.text = "Pendidikan Berhasil Diedit"
                 binding.iloadingsuccess.root.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({
                     mainNavigation?.navigateUp()
@@ -176,10 +179,11 @@ class FormPendidikanFragment : Fragment() {
     private fun deleteHandleState(state: DeleteState) {
 
         when (state) {
-            is DeleteState.Loading -> Log.v("DATA", "Loading")
+            is DeleteState.Loading -> binding.iloading.root.visibility = View.VISIBLE
 
             is DeleteState.Success -> {
-                Log.v("DATA", "Sukses")
+                binding.iloading.root.visibility = View.GONE
+                binding.iloadingsuccess.textView21.text = "Pendidikan Berhasil Dihapus"
                 binding.iloadingsuccess.root.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({
                     mainNavigation?.navigateUp()
@@ -192,11 +196,13 @@ class FormPendidikanFragment : Fragment() {
 
     private fun postPendidikanHandleState(state: PostState) {
         when (state) {
-            is PostState.LoadingPost -> Log.v("DATA", "LOADING")
+            is PostState.LoadingPost -> binding.iloading.root.visibility = View.VISIBLE
 
             is PostState.SuccessPost -> {
                 Log.v("DATA", "Sukses")
 
+                binding.iloading.root.visibility = View.GONE
+                binding.iloadingsuccess.textView21.text = "Pendidikan Berhasil Ditambah"
                 binding.iloadingsuccess.root.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({
                     mainNavigation?.navigateUp()
