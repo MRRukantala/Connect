@@ -60,6 +60,8 @@ class DetailProductFragment : Fragment() {
             mainNavigation?.navigate(DetailProductFragmentDirections.actionDetailProductFragmentToKeranjangFragment())
         }
 
+
+
 //        binding.cardView3.setOnClickListener {
 //            findNavController().navigate(DetailProductFragmentDirections.actionDetailProductFragmentToImageOpener2(productUmumProperty.gambar))
 //        }
@@ -73,24 +75,10 @@ class DetailProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.detailProduct(args.id)
         observe()
-        viewModel.stateAddProduct.observe(viewLifecycleOwner, {
-            when(it){
-                AddProdukState.LOADING ->{
-                    Toast.makeText(context, "Produk Loading", Toast.LENGTH_SHORT).show()
-                }
-                AddProdukState.SUCCESS -> {
-                    Toast.makeText(context, "Produk Berhasil Disimpan", Toast.LENGTH_SHORT).show()
-                }
-                AddProdukState.ERROR -> {
-                    Toast.makeText(context, "Produkt Gagal Disimpan", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        })
         binding.button3.setOnClickListener {
             viewModel.inputKeranjang()
         }
-
+//        viewModel.inputKeranjang()
 
     }
 

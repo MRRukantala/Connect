@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.connect.data.database.SaveProductDataEntity
-import com.example.connect.data.repository.DatabaseRepository
 import com.example.connect.domain.entity.DetailProductEntity
 import com.example.connect.domain.entity.SementaraEntity
+import com.example.connect.domain.usecase.KeranjangUseCase
 import com.example.connect.domain.usecase.ProductUseCase
+import com.example.connect.utilites.app.SharedPreferences
 import com.example.connect.utilites.base.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +18,15 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 @HiltViewModel
 class DetailProductViewModel @Inject constructor(
     private val useCase: ProductUseCase,
-    private val repository: DatabaseRepository
-):ViewModel() {
+    private val useCaseKeranjang: KeranjangUseCase
+) : ViewModel() {
+
+    @Inject
+    lateinit var pref: SharedPreferences
 
     private val _state = MutableStateFlow<DetailProductState>(DetailProductState.Init)
     val state get() = _state
@@ -34,67 +39,70 @@ class DetailProductViewModel @Inject constructor(
         _state.value = DetailProductState.Loading()
     }
 
-    private fun success(detailProductEntity: List<DetailProductEntity>){
+    private fun success(detailProductEntity: List<DetailProductEntity>) {
         _state.value = DetailProductState.Success(detailProductEntity)
         _data.value = detailProductEntity
     }
 
-    private fun error(detailProductEntity: SementaraEntity){
+    private fun error(detailProductEntity: SementaraEntity) {
         _state.value = DetailProductState.Error(detailProductEntity)
     }
 
-    fun detailProduct(id: Int){
+    fun detailProduct(id: Int) {
         viewModelScope.launch {
             useCase.detailProduct(id)
-                .onStart { loading()
+                .onStart {
+                    loading()
 
                 }.catch {
 
-                }.collect{ result ->
-                    when(result){
+                }.collect { result ->
+                    when (result) {
                         is Result.Success -> {
                             success(result.data)
                             Log.v("VIEWMODEL", _data.value.toString())
                         }
-                        is Result.Error -> { }
+                        is Result.Error -> {}
                     }
                 }
         }
     }
+
     val stateAddProduct = MutableLiveData<AddProdukState>()
-    fun inputKeranjang(){
+    fun inputKeranjang() {
         val saveProductDataEntity = SaveProductDataEntity(
             0,
             _data.value[0].id,
-            "obid",
-            "2",
-            "hahahahaha",
+            "Raf",
             _data.value[0].gambar,
             _data.value[0].harga,
             _data.value[0].nama,
             _data.value[0].deskripsi,
-            "0817262662",
-            0
-
+            "",
+            pref.getIdUser()
         )
         viewModelScope.launch(Dispatchers.IO) {
-
-            try {
-                repository.insert(saveProductDataEntity)
-                stateAddProduct.postValue(AddProdukState.SUCCESS)
-            } catch (e: Exception) {
-                stateAddProduct.postValue(AddProdukState.ERROR)
-                Log.v(
-                    "DetailProductViewModel",
-                    e.message.toString()
-                )
+            useCaseKeranjang.insertData(saveProductDataEntity).collect {
+                it.insert(saveProductDataEntity)
             }
+
+//            try {
+//                repository.insert(saveProductDataEntity)
+//                stateAddProduct.postValue(AddProdukState.SUCCESS)
+//            } catch (e: Exception) {
+//                stateAddProduct.postValue(AddProdukState.ERROR)
+//                Log.v(
+//                    "DetailProductViewModel",
+//                    e.message.toString()
+//                )
+//            }
 
 
         }
     }
 
 }
+
 sealed class DetailProductState {
     object Init : DetailProductState()
 

@@ -1,6 +1,7 @@
 package com.example.connect.data.database
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -19,7 +20,7 @@ interface SavedProductDAO {
     fun get(key: Long): SaveProductDataEntity
 
     @Query("SELECT * FROM saved_product_data where id_user = :key ")
-    fun getByIdUser(key: Int): LiveData<List<SaveProductDataEntity>>
+    fun getByIdUser(key: Int): List<SaveProductDataEntity>
 
     @Query("SELECT * FROM saved_product_data WHERE idSaveProductData = :key")
     fun getProductById(key: Long) : LiveData<SaveProductDataEntity>

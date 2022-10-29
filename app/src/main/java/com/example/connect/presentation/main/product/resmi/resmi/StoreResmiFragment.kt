@@ -83,6 +83,5 @@ class StoreResmiFragment : Fragment() {
             }
             else -> {}
         }
-
     }
 }
