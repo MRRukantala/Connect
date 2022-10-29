@@ -83,14 +83,25 @@
         tools:layout="@layout/container_info_pendidikan_fragment">
         <action
             android:id="@+id/action_containerInfo_to_itemListDialogFragment"
-            app:destination="@id/itemListDialogFragment" />
+            app:destination="@id/itemListDialogFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
         <action
             android:id="@+id/action_containerInfo_to_editInfoUserFragment"
-            app:destination="@id/editInfoUserFragment" />
+            app:destination="@id/editInfoUserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
         <action
-
             android:id="@+id/action_containerInfo_to_formPendidikanFragment"
-            app:destination="@id/formPendidikanFragment" />
+            app:destination="@id/formPendidikanFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
