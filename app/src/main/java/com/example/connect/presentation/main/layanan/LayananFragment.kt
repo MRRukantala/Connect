@@ -1,7 +1,6 @@
 package com.example.connect.presentation.main.layanan
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.example.connect.R
 import com.example.connect.databinding.FragmentNotificationsBinding
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +22,10 @@ class LayananFragment : Fragment() {
 
     lateinit var binding: FragmentNotificationsBinding
     private val viewModel: LayananViewModel by viewModels()
+
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,13 +39,21 @@ class LayananFragment : Fragment() {
 
         binding.recyclerView2.adapter = LayananAdapter(
             LayananAdapter.OnclickListener {
-                findNavController().navigate(LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment())
+                mainNavigation?.navigate(
+                    LayananFragmentDirections.actionNotificationsFragmentToDetailArtikelMarOIFragment(
+                        it.id
+                    )
+                )
             }
         )
 
         binding.rvPlaylist.adapter = PlaylistAdapter(
             PlaylistAdapter.OnclickListener {
-
+                mainNavigation?.navigate(
+                    LayananFragmentDirections.actionNotificationsFragmentToVideoELearningFragment(
+                        it.idPlaylist
+                    )
+                )
             }
         )
 
@@ -51,7 +64,6 @@ class LayananFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllLayanan()
         viewModel.getAllPlaylist()
-
         observe()
         binding.viewModel = viewModel
     }
@@ -82,10 +94,12 @@ class LayananFragment : Fragment() {
     private fun handleStatePlaylist(state: PlaylistState) {
         when (state) {
             is PlaylistState.Loading -> {
-                Log.v("DATA", "loading")
+                binding.msvPlaylist.viewState = MultiStateView.ViewState.LOADING
             }
             is PlaylistState.Success -> {
-                Log.v("DATA", state.layananEntity.toString())
+                binding.msvPlaylist.viewState =
+                    if (state.layananEntity.isEmpty()) MultiStateView.ViewState.EMPTY
+                    else MultiStateView.ViewState.CONTENT
             }
             else -> {}
         }

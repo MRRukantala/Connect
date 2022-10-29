@@ -4,6 +4,7 @@ import com.example.connect.data.auth.ResponseListWrapper
 import com.example.connect.data.auth.ResponseObjectWrapper
 import com.example.connect.data.model.response.DetailArtikelResponse
 import com.example.connect.data.model.response.LayananResponse
+import com.example.connect.data.model.response.elearning.PlaylistElearningByIdResponse
 import com.example.connect.data.model.response.elearning.PlaylistElearningResponse
 import com.example.connect.data.model.response.elearning.VideoELearningResponse
 import retrofit2.Response
@@ -15,8 +16,12 @@ interface LayananApiClient {
     @GET("playlist")
     suspend fun getPlaylist(): Response<ResponseListWrapper<PlaylistElearningResponse>>
 
+    // API PLAYLIST E LEARNING By ID
+    @GET("playlist/{id}")
+    suspend fun getPlaylist(@Path("id") id: Int): Response<ResponseObjectWrapper<PlaylistElearningByIdResponse>>
+
     // API VIDEO E LEARNING
-    @GET("video-elearning")
+    @GET("video/{id}")
     suspend fun getVideoPlaylist(
         @Path("id") id: Int
     ): Response<ResponseListWrapper<VideoELearningResponse>>
@@ -30,5 +35,5 @@ interface LayananApiClient {
     @GET("layanan/{id}")
     suspend fun getDetailLayanan(
         @Path("id") id: Int
-    ):Response<ResponseObjectWrapper<DetailArtikelResponse>>
+    ): Response<ResponseObjectWrapper<DetailArtikelResponse>>
 }

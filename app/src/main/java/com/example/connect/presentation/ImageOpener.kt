@@ -1,43 +1,43 @@
-package com.example.connect.utilites
+package com.example.connect.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.connect.R
 import com.example.connect.databinding.FragmentImageOpenerBinding
+import com.example.connect.utilites.imagePost
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class ImageOpener : Fragment() {
 
     lateinit var binding: FragmentImageOpenerBinding
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
+    val args by navArgs<ImageOpenerArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val application = requireNotNull(activity).application
-
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_image_opener, container, false
         )
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.include.backImage.setOnClickListener {
-            findNavController().popBackStack()
+            mainNavigation?.navigateUp()
         }
-
-        val newProperty = ImageOpenerArgs.fromBundle(requireArguments()).link
-
-//        binding.binding = ViewModelProvider(
-//            this,
-//            ImageOpenerViewModelFactory(newProperty, application)
-//        ).get(ImageOpenerViewModel::class.java)
 
 
         return binding.root
