@@ -20,19 +20,19 @@ class MyNewsViewModel @Inject constructor(
     private val _state = MutableStateFlow<MyNewsState>(MyNewsState.Init)
     val state get() = _state
 
-    private val _data = MutableStateFlow<List<KirimanEntity>>(mutableListOf())
+    private val _data = MutableStateFlow<ArrayList<KirimanEntity>>(arrayListOf())
     val data get() = _data
 
     private fun loading() {
         _state.value = MyNewsState.Loading()
     }
 
-    private fun success(myNewsEntity: List<KirimanEntity>){
+    private fun success(myNewsEntity: ArrayList<KirimanEntity>){
         _state.value = MyNewsState.Success(myNewsEntity)
         _data.value = myNewsEntity
     }
 
-    private fun error(myNewsEntity: List<KirimanEntity>){
+    private fun error(myNewsEntity: ArrayList<KirimanEntity>){
         _state.value = MyNewsState.Error(myNewsEntity)
     }
 
@@ -58,6 +58,6 @@ sealed class MyNewsState {
     object Init : MyNewsState()
 
     data class Loading(val loading: Boolean = true) : MyNewsState()
-    data class Success(val myNewsEntity: List<KirimanEntity>) : MyNewsState()
-    data class Error(val response: List<KirimanEntity>) : MyNewsState()
+    data class Success(val myNewsEntity: ArrayList<KirimanEntity>) : MyNewsState()
+    data class Error(val response: ArrayList<KirimanEntity>) : MyNewsState()
 }

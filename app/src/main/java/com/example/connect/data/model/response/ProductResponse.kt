@@ -43,10 +43,12 @@ data class ProductResponse(
 
         id ?: 0,
         idUser ?: 0,
+        name.orEmpty(),
         deskripsi.orEmpty(),
         namaProduk.orEmpty(),
         harga ?: 0,
         gambar.orEmpty(),
+        wa.orEmpty(),
         createdAt.orEmpty()
 
     )

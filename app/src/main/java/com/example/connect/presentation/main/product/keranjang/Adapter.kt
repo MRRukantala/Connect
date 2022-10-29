@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.data.database.SaveProductDataEntity
 import com.example.connect.databinding.ItemListSaveProductBinding
+import com.example.connect.utilites.rupiah
 
 class Adapter(
     private val onClickListener: OnClickListener,
@@ -55,6 +56,7 @@ class Adapter(
 
         fun bind(data: SaveProductDataEntity) {
             binding.data = data
+            binding.tvHarga.text = rupiah(data.harga)
             binding.executePendingBindings()
         }
     }

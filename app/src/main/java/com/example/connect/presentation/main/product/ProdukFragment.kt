@@ -5,35 +5,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.connect.R
-import com.example.connect.databinding.FragmentHomeBinding
 import com.example.connect.databinding.FragmentTokoBinding
-import com.example.connect.presentation.main.product.ProdukViewModel
 import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProductFragment
+import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProductViewModel
 import com.example.connect.presentation.main.product.tabLayout.productumum.ProductUmumFragment
+import com.example.connect.presentation.main.product.tabLayout.productumum.ProductUmumViewModel
 import com.example.connect.utilites.TabAdapter
+import com.example.connect.utilites.app.SharedPreferences
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kennyc.view.MultiStateView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProdukFragment : Fragment() {
 
-    private var _binding:  FragmentTokoBinding? = null
+    private var _binding: FragmentTokoBinding? = null
 
     private val binding get() = _binding!!
     private val viewModel: ProdukViewModel by viewModels()
+    private val viewModelMyProduk: MyProductViewModel by activityViewModels()
+    private val viewModelProdukPublik: ProductUmumViewModel by activityViewModels()
 
     private val mainNavigation: NavController? by lazy {
         activity?.findNavController(R.id.nav_host_fragment_menu)
     }
+
+    @Inject
+    lateinit var pref: SharedPreferences
 
     val name = arrayOf(
         "Produk Publik",
@@ -74,7 +82,11 @@ class ProdukFragment : Fragment() {
 
         binding.recyclerView.adapter = ProductAdapter(
             ProductAdapter.OnclickListener {
-                mainNavigation?.navigate(ProdukFragmentDirections.actionProdukFragmentToDetailProductFragment(it.id))
+                mainNavigation?.navigate(
+                    ProdukFragmentDirections.actionProdukFragmentToDetailProductFragment(
+                        it.id
+                    )
+                )
             }
         )
 
@@ -84,6 +96,8 @@ class ProdukFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.productByViewModel(1)
+        viewModelMyProduk.getAllProductByUser(pref.getIdUser())
+        viewModelProdukPublik.getAllProduct()
         binding.tvKunjungiToko.setOnClickListener {
             mainNavigation?.navigate(ProdukFragmentDirections.actionProdukFragmentToStoreResmiFragment())
         }

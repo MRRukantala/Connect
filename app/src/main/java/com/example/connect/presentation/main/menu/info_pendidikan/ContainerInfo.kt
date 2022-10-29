@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.connect.R
 import com.example.connect.databinding.ContainerInfoPendidikanFragmentBinding
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import javax.inject.Inject
 @AndroidEntryPoint
 class ContainerInfo : Fragment() {
-    private val viewModel: InfoUserViewModel by viewModels()
+    private val viewModel: InfoUserViewModel by activityViewModels()
 
     @Inject
     lateinit var preferences: SharedPreferences
@@ -70,5 +71,8 @@ class ContainerInfo : Fragment() {
         return binding.root
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getProfile(preferences.getIdUser())
+    }
 }

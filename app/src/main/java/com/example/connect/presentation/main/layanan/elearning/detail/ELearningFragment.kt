@@ -10,9 +10,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.connect.R
 import com.example.connect.databinding.FragmentELearningBinding
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,17 +34,6 @@ class ELearningFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val youtubePlayer = binding.yv
-        lifecycle.addObserver(youtubePlayer)
-
-        youtubePlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                super.onReady(youTubePlayer)
-                val videoId = "HqZX551WrIU"
-                youTubePlayer.loadOrCueVideo(lifecycle, videoId, 0F)
-                youTubePlayer.play()
-            }
-        })
 
     }
 

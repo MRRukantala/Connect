@@ -65,6 +65,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            imageUrl="@{data.gambarProduct}"
                             android:scaleType="centerCrop"
                             tools:src="@drawable/post" />
 
@@ -79,7 +80,6 @@
                         android:textColor="@color/color_primary"
                         android:textSize="@dimen/sp18"
                         android:textStyle="bold"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cardView3"
                         tools:text="Rp. 900.000" />
@@ -93,6 +93,7 @@
                         android:fontFamily="@font/nunito_sans"
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         android:textStyle="bold"
+                        android:text="@{data.namaProduct}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView25"
                         tools:text="Batik Nusantara Boutique Limited Edition" />
@@ -113,6 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:text="@{data.deskripsi}"
                         android:fontFamily="@font/nunito_sans"
                         android:textColor="@color/content_and_title_color_post_and_agenda"
                         app:layout_constraintStart_toStartOf="parent"

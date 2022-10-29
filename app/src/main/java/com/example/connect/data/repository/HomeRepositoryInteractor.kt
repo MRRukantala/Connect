@@ -59,13 +59,13 @@ class HomeRepositoryInteractor @Inject constructor(
         }
     }
 
-    override suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
+    override suspend fun getAllKiriman(): Flow<Result<ArrayList<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
         return flow {
             val response = apiClient.getAllKiriman()
             delay(800)
             if (response.isSuccessful) {
                 val body = response.body()?.data
-                val data = mutableListOf<KirimanEntity>()
+                val data = arrayListOf<KirimanEntity>()
                 body?.forEach {
                     data.add(it.toKirimanEntity())
                 }
@@ -76,13 +76,13 @@ class HomeRepositoryInteractor @Inject constructor(
         }
     }
 
-    override suspend fun getKirimanByIdUser(id: Int): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
+    override suspend fun getKirimanByIdUser(id: Int): Flow<Result<ArrayList<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
         return flow {
             val response = apiClient.getKirimanByIdUser(id)
             delay(800)
             if (response.isSuccessful) {
                 val body = response.body()?.data
-                val data = mutableListOf<KirimanEntity>()
+                val data = arrayListOf<KirimanEntity>()
                 body?.forEach { data.add(it.toKirimanEntity()) }
                 emit(Result.Success(data))
             } else {

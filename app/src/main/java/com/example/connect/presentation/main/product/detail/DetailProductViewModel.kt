@@ -1,6 +1,7 @@
 package com.example.connect.presentation.main.product.detail
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,6 +32,9 @@ class DetailProductViewModel @Inject constructor(
     private val _state = MutableStateFlow<DetailProductState>(DetailProductState.Init)
     val state get() = _state
 
+    private val _stateKeranjang = MutableStateFlow<AddKeranjang>(AddKeranjang.Init)
+    val stateKeranjang get() = _stateKeranjang
+
     private val _data = MutableStateFlow<List<DetailProductEntity>>(mutableListOf())
     val data get() = _data
 
@@ -60,7 +64,6 @@ class DetailProductViewModel @Inject constructor(
                     when (result) {
                         is Result.Success -> {
                             success(result.data)
-                            Log.v("VIEWMODEL", _data.value.toString())
                         }
                         is Result.Error -> {}
                     }
@@ -73,31 +76,31 @@ class DetailProductViewModel @Inject constructor(
         val saveProductDataEntity = SaveProductDataEntity(
             0,
             _data.value[0].id,
-            "Raf",
+            _data.value[0].namaUmkm,
             _data.value[0].gambar,
             _data.value[0].harga,
             _data.value[0].nama,
             _data.value[0].deskripsi,
-            "",
+            _data.value[0].wa,
             pref.getIdUser()
         )
         viewModelScope.launch(Dispatchers.IO) {
-            useCaseKeranjang.insertData(saveProductDataEntity).collect {
-//                it.insert(saveProductDataEntity)
+            useCaseKeranjang.insertData(saveProductDataEntity)
+                .onStart {
+
+                }.catch {
+
+                }
+                .collect {
+                    when (it) {
+                        is Result.Success -> {
+                            _stateKeranjang.value = AddKeranjang.Success(it.data)
+                        }
+                        is Result.Error -> {
+
+                        }
+                    }
             }
-
-//            try {
-//                repository.insert(saveProductDataEntity)
-//                stateAddProduct.postValue(AddProdukState.SUCCESS)
-//            } catch (e: Exception) {
-//                stateAddProduct.postValue(AddProdukState.ERROR)
-//                Log.v(
-//                    "DetailProductViewModel",
-//                    e.message.toString()
-//                )
-//            }
-
-
         }
     }
 
@@ -109,6 +112,13 @@ sealed class DetailProductState {
     data class Loading(val loading: Boolean = true) : DetailProductState()
     data class Success(val detailProductEntity: List<DetailProductEntity>) : DetailProductState()
     data class Error(val response: SementaraEntity) : DetailProductState()
+}
+
+sealed class AddKeranjang {
+    object Init : AddKeranjang()
+
+    data class Loading(val loading: Boolean = true) : AddKeranjang()
+    data class Success(val data: String) : AddKeranjang()
 }
 
 enum class AddProdukState { SUCCESS, LOADING, ERROR }

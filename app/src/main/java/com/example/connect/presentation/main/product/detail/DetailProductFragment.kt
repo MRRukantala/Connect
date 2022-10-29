@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -68,14 +69,25 @@ class DetailProductFragment : Fragment() {
         binding.button3.setOnClickListener {
             viewModel.inputKeranjang()
         }
-//        viewModel.inputKeranjang()
-
     }
 
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
             .onEach { state -> handleState(state) }
             .launchIn(lifecycleScope)
+        viewModel.stateKeranjang.flowWithLifecycle(lifecycle)
+            .onEach { state -> handleStateKeranjang(state) }
+            .launchIn(lifecycleScope)
+    }
+
+    private fun handleStateKeranjang(state: AddKeranjang) {
+        when (state) {
+            is AddKeranjang.Loading -> {}
+            is AddKeranjang.Success -> {
+                Toast.makeText(requireContext(), "Berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+            }
+            else -> {}
+        }
     }
 
     private fun handleState(state: DetailProductState) {

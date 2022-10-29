@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.FragmentHomeBinding
@@ -22,8 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val viewModelNews: NewsViewModel by viewModels()
-    private val viewModelAgenda: AgendaViewModel by viewModels()
+    private val viewModelNews: NewsViewModel by activityViewModels()
+    private val viewModelAgenda: AgendaViewModel by activityViewModels()
 
     private val binding get() = _binding!!
 
@@ -52,8 +52,7 @@ class HomeFragment : Fragment() {
         val adapter = TabAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
 
         viewPager.adapter = adapter
-        viewModelNews.berita()
-        viewModelAgenda.agenda()
+
 
         TabLayoutMediator(
             tabLayout,
@@ -81,6 +80,12 @@ class HomeFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModelNews.berita()
+        viewModelAgenda.agenda()
     }
 
     override fun onDestroyView() {

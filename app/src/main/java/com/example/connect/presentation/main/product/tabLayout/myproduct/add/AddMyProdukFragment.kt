@@ -22,7 +22,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.AddMyProdukFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,21 +33,21 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.lang.Exception
+
 @AndroidEntryPoint
 class AddMyProdukFragment : Fragment() {
 
     lateinit var binding: AddMyProdukFragmentBinding
-    private val viewModel:AddMyProductViewModel by viewModels()
+    private val viewModel: AddMyProductViewModel by viewModels()
     private val REQUEST_CODE = 101
 
-    private lateinit var etNama:EditText
-    private lateinit var etHarga:EditText
-    private lateinit var etDeskripsi:EditText
+    private lateinit var etNama: EditText
+    private lateinit var etHarga: EditText
+    private lateinit var etDeskripsi: EditText
 
-//    private val viewModel : AddMyProdukViewModel by lazy {
-//        ViewModelProvider(this).get(AddMyProdukViewModel::class.java)
-//    }
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -56,8 +57,7 @@ class AddMyProdukFragment : Fragment() {
                 viewModel.setAllFieldNull()
             } else {
                 viewModel.setAllField(
-                    binding.harga.text.toString()
-                    ,
+                    binding.harga.text.toString(),
                     binding.Detail.text.toString(),
                     binding.namaProduk.text.toString()
 
@@ -81,7 +81,7 @@ class AddMyProdukFragment : Fragment() {
         binding =
             AddMyProdukFragmentBinding.inflate(inflater, container, false)
         binding.include3.backImage.setOnClickListener {
-            findNavController().popBackStack()
+            mainNavigation?.navigateUp()
         }
 
         viewModel.setAllFieldNull()
@@ -104,7 +104,7 @@ class AddMyProdukFragment : Fragment() {
             }
         }
 
-        with(binding){
+        with(binding) {
             etNama = namaProduk
             etDeskripsi = Detail
             etHarga = harga
@@ -121,7 +121,7 @@ class AddMyProdukFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 
             var imageURI = data?.data
 
@@ -154,6 +154,7 @@ class AddMyProdukFragment : Fragment() {
             }
         }
     }
+
     private fun getRealPathFromURI(context: Context, contentUri: Uri): String? {
         var cursor: Cursor? = null
         return try {
@@ -206,17 +207,15 @@ class AddMyProdukFragment : Fragment() {
 
     private fun handleState(state: AddMyProductState) {
 
-        when(state){
+        when (state) {
             is AddMyProductState.Loading -> {
-                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.VISIBLE
             }
             is AddMyProductState.Success -> {
-                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.GONE
+                mainNavigation?.popBackStack()
             }
             else -> {}
         }
-
     }
-
-
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,7 +24,7 @@ import kotlinx.coroutines.flow.onEach
 class AgendaFragment : Fragment() {
 
     lateinit var binding: AgendaFragmentBinding
-    private val viewModel: AgendaViewModel by viewModels()
+    private val viewModel: AgendaViewModel by activityViewModels()
 
     private val mainNavigation: NavController? by lazy {
         activity?.findNavController(R.id.nav_host_fragment_menu)
