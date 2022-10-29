@@ -30,7 +30,7 @@
             android:layout_width="120dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="2dp"
             android:src="@drawable/logo2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include10"
@@ -41,7 +41,6 @@
             android:id="@+id/textView52"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="24dp"
             android:fontFamily="@font/nunito_sans"
             android:text="MarkOI Store"
@@ -56,20 +55,20 @@
             android:id="@+id/msv_list_product"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:msv_viewState="content"
             app:msv_animateViewChanges="true"
+            app:msv_emptyView="@layout/empty_data"
             app:msv_loadingView="@layout/shimmer_product_grid"
-            app:msv_emptyView="@layout/empty_data">
+            app:msv_viewState="content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 listProductUmum="@{viewModel.data}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

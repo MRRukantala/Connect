@@ -8,7 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.example.connect.R
+import com.example.connect.databinding.FragmentHomeBinding
 import com.example.connect.databinding.FragmentTokoBinding
+import com.example.connect.presentation.main.product.ProdukViewModel
 import com.example.connect.presentation.main.product.tabLayout.myproduct.MyProductFragment
 import com.example.connect.presentation.main.product.tabLayout.productumum.ProductUmumFragment
 import com.example.connect.utilites.TabAdapter
@@ -21,8 +26,14 @@ import kotlinx.coroutines.flow.onEach
 @AndroidEntryPoint
 class ProdukFragment : Fragment() {
 
-    lateinit var binding: FragmentTokoBinding
+    private var _binding:  FragmentTokoBinding? = null
+
+    private val binding get() = _binding!!
     private val viewModel: ProdukViewModel by viewModels()
+
+    private val mainNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
     val name = arrayOf(
         "Produk Publik",
@@ -34,10 +45,11 @@ class ProdukFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTokoBinding.inflate(
+        _binding = FragmentTokoBinding.inflate(
             inflater,
             container, false
         )
+        val root: View = binding.root
 
         val fragmentList = arrayListOf(
             ProductUmumFragment(),
@@ -57,45 +69,24 @@ class ProdukFragment : Fragment() {
             tab.text = name[position]
         }.attach()
 
-        val application = requireNotNull(activity).application
         binding.lifecycleOwner = viewLifecycleOwner
-
-//        val viewModelDashboard =
-//            ProductViewModelFactory(
-//                requireActivity()
-//                    .getSharedPreferences("my_data_pref", Context.MODE_PRIVATE)
-//                    .getString("token", "").toString(), application
-//            )
-//        val viewModel =
-//            ViewModelProvider(this, viewModelDashboard).get(DashboardViewModel::class.java)
         binding.viewModel = viewModel
 
         binding.recyclerView.adapter = ProductAdapter(
             ProductAdapter.OnclickListener {
-//                viewModel.displayNewsDetails(it)
+                mainNavigation?.navigate(ProdukFragmentDirections.actionProdukFragmentToDetailProductFragment(it.id))
             }
         )
 
-//        viewModel.navigatedToSelectedNews.observe(viewLifecycleOwner, {
-//            if (null != it) {
-//                this.findNavController().navigate(
-//                    DashboardFragmentDirections.actionDashboardFragmentToDetailProductFragment(it)
-//                )
-//                viewModel.displayNewsDetailsCompelete()
-//            }
-//        })
-
-        binding.tvKunjungiToko.setOnClickListener {
-//            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToStoreResmiFragment())
-        }
-
-        return binding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.productByViewModel(2)
+        viewModel.productByViewModel(1)
+        binding.tvKunjungiToko.setOnClickListener {
+            mainNavigation?.navigate(ProdukFragmentDirections.actionProdukFragmentToStoreResmiFragment())
+        }
         observe()
     }
 
@@ -122,6 +113,5 @@ class ProdukFragment : Fragment() {
             else -> {}
         }
     }
-
 }
 

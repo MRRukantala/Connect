@@ -35,7 +35,7 @@ class ContainerMainFragment : Fragment() {
 
         nav.navController.addOnDestinationChangedListener { _, main, _ ->
             when (main.id) {
-                R.id.homeFragment, R.id.dashboardFragment, R.id.notificationsFragment, R.id.containerInfo -> {
+                R.id.homeFragment, R.id.produkFragment, R.id.notificationsFragment, R.id.containerInfo -> {
                     showBottomNav()
                 }
                 else -> {

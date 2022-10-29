@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_home"
+    android:id="@+id/menu_navigation"
     app:startDestination="@id/homeFragment">
 
     <navigation
@@ -236,22 +236,15 @@
         android:label="ProsesAddMyProdukFragment"
         tools:layout="@layout/fragment_proses_add_my_produk">
         <action
-            android:id="@+id/action_prosesAddMyProdukFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment"
+            android:id="@+id/action_prosesAddMyProdukFragment_to_produkFragment"
+            app:destination="@id/produkFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/dashboardFragment"
+            app:popUpTo="@id/produkFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <action
-        android:id="@+id/action_storeResmiFragment_to_dashboardFragment"
-        app:destination="@id/dashboardFragment"
-        app:enterAnim="@android:anim/slide_in_left"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/slide_out_right" />
     <fragment
         android:id="@+id/detailSavedProductFragment"
         android:name="com.example.connect.presentation.main.product.keranjang.detail.DetailSavedProductFragment"
@@ -265,42 +258,31 @@
             app:destination="@id/imageOpener2" />
     </fragment>
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/produkFragment"
         android:name="com.example.connect.presentation.main.product.ProdukFragment"
-        android:label="fragment_dashboard"
+        android:label="fragment_produk"
         tools:layout="@layout/fragment_toko">
         <action
-            android:id="@+id/action_dashboardFragment_to_detailProductFragment"
+            android:id="@+id/action_produkFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
         <action
-            android:id="@+id/action_dashboardFragment_to_storeResmiFragment"
-            app:destination="@id/storeResmiFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_addMyProdukFragment"
+            android:id="@+id/action_produkFragment_to_addMyProdukFragment"
             app:destination="@id/addMyProdukFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_produkFragment_to_storeResmiFragment"
+            app:destination="@id/storeResmiFragment" />
     </fragment>
     <action
-        android:id="@+id/action_dashboardFragment_to_addMyProdukFragment"
+        android:id="@+id/action_produkFragment_to_addMyProdukFragment"
         app:destination="@id/addMyProdukFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
-    <action
-        android:id="@+id/action_dashboardFragment_to_storeResmiFragment"
-        app:destination="@id/storeResmiFragment"
         app:enterAnim="@android:anim/fade_in"
         app:exitAnim="@android:anim/fade_out"
         app:popEnterAnim="@android:anim/fade_in"
@@ -318,13 +300,6 @@
     <action
         android:id="@+id/action_addMyProdukFragment_to_prosesAddMyProdukFragment"
         app:destination="@id/prosesAddMyProdukFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
-    <action
-        android:id="@+id/action_storeResmiFragment_to_detailProductFragment"
-        app:destination="@id/detailProductFragment"
         app:enterAnim="@android:anim/fade_in"
         app:exitAnim="@android:anim/fade_out"
         app:popEnterAnim="@android:anim/fade_in"
@@ -355,10 +330,14 @@
         <action
             android:id="@+id/action_detailProductFragment_to_imageOpener2"
             app:destination="@id/imageOpener2" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/keranjangFragment"
         android:label="KeranjangFragment"
+        android:name="com.example.connect.presentation.main.product.keranjang."
         tools:layout="@layout/fragment_keranjang">
         <action
             android:id="@+id/action_keranjangFragment_to_detailSavedProductFragment"
@@ -371,6 +350,7 @@
     </fragment>
     <fragment
         android:id="@+id/storeResmiFragment"
+        android:name="com.example.connect.presentation.main.product.resmi.resmi.StoreResmiFragment"
         android:label="StoreResmiFragment"
         tools:layout="@layout/fragment_store_resmi">
         <action
@@ -380,13 +360,6 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-        <action
-            android:id="@+id/action_storeResmiFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addMyProdukFragment"
@@ -401,15 +374,6 @@
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
     </fragment>
-    <action
-        android:id="@+id/action_prosesAddMyProdukFragment_to_dashboardFragment"
-        app:destination="@id/dashboardFragment"
-        app:enterAnim="@android:anim/slide_in_left"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/slide_out_right"
-        app:popUpTo="@id/dashboardFragment"
-        app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.connect.presentation.main.home.HomeFragment"
@@ -477,7 +441,7 @@
         android:id="@+id/addAgendaFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.agenda.add.AddAgendaFragment"
         android:label="fragment_add_agenda"
-        tools:layout="@layout/fragment_add_agenda"/>
+        tools:layout="@layout/fragment_add_agenda" />
     <fragment
         android:id="@+id/detailNewsFragment"
         android:name="com.example.connect.presentation.main.home.tablayout.news.detail.DetailNewsFragment"
