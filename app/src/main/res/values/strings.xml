@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MarkOL</string>
+    <string name="app_name">Megha</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_app">MainAppActivity</string>
@@ -20,7 +20,7 @@
     <string name="todo">TODO</string>
     <color name="black1">#424242</color>
     <string name="label_error">Terjadi Kesalahan</string>
-    <string name="daftarkan_diri_anda_dan_gabung_dengan_connect_sekarang_juga">Daftarkan diri Anda dan gabung dengan MarkOI sekarang juga!</string>
+    <string name="daftarkan_diri_anda_dan_gabung_dengan_connect_sekarang_juga">Daftarkan diri Anda dan gabung dengan Megha sekarang juga!</string>
     <string name="sudah_punya_akun">Sudah punya akun? </string>
     <string name="buat_akun">Buat Akun</string>
     <string name="email">Email</string>
@@ -83,7 +83,7 @@
     <string name="lokasi_kegiatan">Lokasi Kegiatan</string>
     <string name="connect_sedang_memverifikasi_agenda_anda_kami_akan_beri_tahu_anda_jika_verifikasi_selesai">Connect sedang memverifikasi agenda Anda, kami akan beri tahu Anda jika verifikasi selesai.</string>
     <string name="dummy_title_product">Tanaman Obat Keluarga Sumatera (1 Lusin)</string>
-    <string name="toko_resmi">Toko MarkOI</string>
+    <string name="toko_resmi">Toko Megha</string>
     <string name="rekomendasi_kami">Rekomendasi Kami</string>
     <string name="dummy_product_description">Lorem eu interdum suspendisse convallis. Accumsan egestas orci faucibus nullam gravida. Ut faucibus suspendisse aliquam consequat ut. Nec sit dui arcu tristique vel non sapien. \n \n
 
@@ -93,7 +93,7 @@
         Viverra integer turpis nibh nam lectus porttitor mauris. Elementum sed aliquet pretium mus dolor velit arcu pretium. Elit vestibulum orci, tristique accumsan vehicula lacinia ac euismod. Pretium mattis tortor mauris semper sed ac nisl nec integer. Ac quis nunc tempor semper massa, viverra fames. \n
 
         Fringilla sapien libero mollis fringilla amet aliquam sagittis vestibulum, ac. Justo quam phasellus amet pellentesque at in maecenas pellentesque.</string>
-    <string name="name_app">MarkOI</string>
+    <string name="name_app">Megha</string>
     <string name="syarat_penggunaan_kami">Syarat Penggunaan kami</string>
     <string name="email_form_message">Email Error</string>
     <string name="tambahkan_gambar">Tambahkan Gambar</string>
