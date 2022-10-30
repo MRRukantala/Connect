@@ -87,21 +87,21 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"/>
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_containerInfo_to_editInfoUserFragment"
             app:destination="@id/editInfoUserFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"/>
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_containerInfo_to_formPendidikanFragment"
             app:destination="@id/formPendidikanFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"/>
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
@@ -147,7 +147,6 @@
         android:id="@+id/action_containerInfo_to_itemListDialogFragment"
         app:destination="@id/itemListDialogFragment" />
     <action
-
         android:id="@+id/action_containerInfo_to_formPendidikanFragment"
         app:destination="@id/formPendidikanFragment" />
     <fragment
@@ -170,14 +169,15 @@
         tools:layout="@layout/edit_info_user_fragment">
         <action
             android:id="@+id/action_editInfoUserFragment_to_containerInfo"
-            app:destination="@id/containerInfo" />
+            app:destination="@id/containerInfo"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="data"
             app:argType="com.example.connect.domain.entity.ProfileEntity"
             app:nullable="true" />
-        <!--        <argument-->
-        <!--            android:name="DataHold"-->
-        <!--            app:argType="com.example.connect.main.ui.menu.info_pendidikan.MySubData" />-->
     </fragment>
     <action
         android:id="@+id/action_itemListDialogFragment_to_aboutAppFragment"
@@ -203,21 +203,6 @@
         android:id="@+id/action_itemListDialogFragment_to_saranNKritikFragment"
         app:destination="@id/saranNKritikFragment" />
     <fragment
-        android:id="@+id/prosesAddMyProdukFragment"
-        android:name="com.example.connect.presentation.main.product.tabLayout.myproduct.add.ProsesAddMyProdukFragment"
-        android:label="ProsesAddMyProdukFragment"
-        tools:layout="@layout/fragment_proses_add_my_produk">
-        <action
-            android:id="@+id/action_prosesAddMyProdukFragment_to_produkFragment"
-            app:destination="@id/produkFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/produkFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
         android:id="@+id/detailSavedProductFragment"
         android:name="com.example.connect.presentation.main.product.keranjang.detail.DetailSavedProductFragment"
         android:label="DetailSavedProductFragment"
@@ -227,7 +212,11 @@
             app:argType="com.example.connect.data.database.ItemKeranjangEntity" />
         <action
             android:id="@+id/action_detailSavedProductFragment_to_imageOpener2"
-            app:destination="@id/imageOpener2" />
+            app:destination="@id/imageOpener2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/produkFragment"
@@ -250,7 +239,11 @@
             app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_produkFragment_to_storeResmiFragment"
-            app:destination="@id/storeResmiFragment" />
+            app:destination="@id/storeResmiFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/imageOpener2"
@@ -265,9 +258,6 @@
         android:name="com.example.connect.presentation.main.product.detail.DetailProductFragment"
         android:label="detail_product_fragment"
         tools:layout="@layout/detail_product_fragment">
-        <!--        <argument-->
-        <!--            android:name="selectedProductUmum"-->
-        <!--            app:argType="com.example.connect.main.ui.product.model.ProductModel" />-->
         <action
             android:id="@+id/action_detailProductFragment_to_keranjangFragment"
             app:destination="@id/keranjangFragment"
@@ -277,7 +267,11 @@
             app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_detailProductFragment_to_imageOpener2"
-            app:destination="@id/imageOpener2" />
+            app:destination="@id/imageOpener2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="id"
             app:argType="integer" />
@@ -313,13 +307,6 @@
         android:name="com.example.connect.presentation.main.product.tabLayout.myproduct.add.AddMyProdukFragment"
         android:label="AddMyProdukFragment"
         tools:layout="@layout/add_my_produk_fragment">
-        <action
-            android:id="@+id/action_addMyProdukFragment_to_prosesAddMyProdukFragment"
-            app:destination="@id/prosesAddMyProdukFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -394,12 +381,13 @@
         android:name="com.example.connect.presentation.main.home.tablayout.news.detail.DetailNewsFragment"
         android:label="DetailNewsFragment"
         tools:layout="@layout/detail_news_fragment">
-        <!--        <argument-->
-        <!--            android:name="selectedNews"-->
-        <!--            app:argType="com.example.connect.main.ui.home.tablayout.news.model.Post" />-->
         <action
             android:id="@+id/action_detailNewsFragment_to_imageOpener"
-            app:destination="@id/imageOpener" />
+            app:destination="@id/imageOpener"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="id"
             app:argType="integer" />
@@ -409,12 +397,13 @@
         android:name="com.example.connect.presentation.main.home.tablayout.agenda.detail.DetailAgendaFragment"
         android:label="detail_agenda_fragment"
         tools:layout="@layout/detail_agenda_fragment">
-        <!--        <argument-->
-        <!--            android:name="selectedAgenda"-->
-        <!--            app:argType="com.example.connect.main.ui.home.tablayout.agenda.model.Agenda" />-->
         <action
             android:id="@+id/action_detailAgendaFragment_to_imageOpener"
-            app:destination="@id/imageOpener" />
+            app:destination="@id/imageOpener"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="id"
             app:argType="integer" />
@@ -464,27 +453,19 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_videoELearningFragment_to_videoActivity"
-            app:destination="@id/videoActivity" />
-        <!--        <action-->
-<!--            android:id="@+id/action_videoELearningFragment_to_ELearningFragment"-->
-<!--            app:destination="@id/ELearningFragment"-->
-<!--            app:enterAnim="@android:anim/fade_in"-->
-<!--            app:exitAnim="@android:anim/fade_out"-->
-<!--            app:popEnterAnim="@android:anim/fade_in"-->
-<!--            app:popExitAnim="@android:anim/fade_out" />-->
+            app:destination="@id/videoActivity"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <activity
         android:id="@+id/videoActivity"
         android:name="com.example.connect.presentation.main.layanan.elearning.detail.VideoActivity"
         android:label="activity_video"
-        tools:layout="@layout/activity_video" />
-    <!--    <activity-->
-<!--        android:id="@+id/ELearningFragment"-->
-<!--        android:name="com.example.connect.presentation.main.layanan.elearning.detail.ELearningActivity"-->
-<!--        android:label="ELearningFragment"-->
-<!--        tools:layout="@layout/fragment_e_learning">-->
-<!--        <argument-->
-<!--            android:name="id"-->
-<!--            app:argType="integer" />-->
-<!--    </activity>-->
+        tools:layout="@layout/activity_video" >
+        <argument
+            android:name="data"
+            app:argType="com.example.connect.domain.entity.elearning.VideoELearningByIdEntity" />
+    </activity>
 </navigation>

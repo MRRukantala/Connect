@@ -42,7 +42,11 @@ class VideoELearningFragment : Fragment() {
         }
         binding.rvVideoELearning.adapter = VideoELearningAdapter(
             VideoELearningAdapter.OnclickListener {
-                mainNavigation?.navigate(VideoELearningFragmentDirections.actionVideoELearningFragmentToVideoActivity())
+                mainNavigation?.navigate(
+                    VideoELearningFragmentDirections.actionVideoELearningFragmentToVideoActivity(
+                        it
+                    )
+                )
             }
         )
         return binding.root

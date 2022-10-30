@@ -156,6 +156,21 @@ fun imagePost(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+@BindingAdapter("thumbnail")
+fun thumbnail(imgView: ImageView, imgUrl: String?) {
+    val videoId = imgUrl?.substringAfter("/watch?v=")?.substringBefore("&")
+    imgUrl?.let {
+        val imageUrl = ImageRequest.Builder(imgView.context)
+            .data("https://i.ytimg.com/vi/${videoId}/0.jpg")
+            .allowHardware(false)
+            .build()
+        imgView.load("${imageUrl.data}") {
+            placeholder(R.drawable.loading_animation)
+            this.error(R.drawable.ic_broken_image)
+        }
+    }
+}
+
 @BindingAdapter("imageProfile")
 fun imageProfile(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
