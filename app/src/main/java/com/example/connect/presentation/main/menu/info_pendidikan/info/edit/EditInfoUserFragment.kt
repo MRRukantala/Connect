@@ -8,6 +8,8 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
@@ -232,12 +234,15 @@ class EditInfoUserFragment : Fragment() {
 
         when (state) {
             is EditInfoUserState.Loading -> {
-                binding.iLoading.root.visibility = View.VISIBLE
+                binding.iloading.root.visibility = View.VISIBLE
             }
             is EditInfoUserState.Success -> {
-                binding.iLoading.root.visibility = View.GONE
-                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
-                mainNavigation?.navigateUp()
+                binding.iloading.root.visibility = View.GONE
+                binding.iloadingsuccess.textView21.text = "Profil Berhasil Diedit"
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mainNavigation?.navigateUp()
+                }, 2000)
             }
             else -> {}
         }

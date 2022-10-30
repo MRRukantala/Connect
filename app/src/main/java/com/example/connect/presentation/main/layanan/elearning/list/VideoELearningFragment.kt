@@ -1,7 +1,6 @@
 package com.example.connect.presentation.main.layanan.elearning.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,11 +42,7 @@ class VideoELearningFragment : Fragment() {
         }
         binding.rvVideoELearning.adapter = VideoELearningAdapter(
             VideoELearningAdapter.OnclickListener {
-                mainNavigation?.navigate(
-                    VideoELearningFragmentDirections.actionVideoELearningFragmentToELearningFragment(
-                        it.idVideo
-                    )
-                )
+                mainNavigation?.navigate(VideoELearningFragmentDirections.actionVideoELearningFragmentToVideoActivity())
             }
         )
         return binding.root

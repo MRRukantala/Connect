@@ -1,7 +1,5 @@
 package com.example.connect.presentation.main.home.tablayout.news
 
-import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemListNewsBinding
 import com.example.connect.domain.entity.KirimanEntity
-import okhttp3.internal.notifyAll
+import com.example.connect.utilites.enums.ConverterDate
+import com.example.connect.utilites.ui.date.convertUTC2TimeTo2
 
 class NewsAdapter(val onclickListener: OnclickListener) :
     ListAdapter<KirimanEntity, NewsAdapter.ViewHolder>(
@@ -20,9 +19,9 @@ class NewsAdapter(val onclickListener: OnclickListener) :
         private var binding: com.example.connect.databinding.ItemListNewsBinding,
 
         ) : RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("NotifyDataSetChanged")
         fun bind(data: KirimanEntity) {
             binding.post = data
+            binding.datePost.text = data.tglUpdate.convertUTC2TimeTo2(ConverterDate.FULL_DATE)
             binding.executePendingBindings()
         }
     }
