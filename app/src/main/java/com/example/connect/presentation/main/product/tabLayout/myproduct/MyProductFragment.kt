@@ -42,7 +42,7 @@ class MyProductFragment : Fragment() {
         binding = MyProductFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.fabNews.setOnClickListener {
-//            findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToAddMyProdukFragment())
+            mainNavigation?.navigate(ProdukFragmentDirections.actionProdukFragmentToAddMyProdukFragment())
         }
 
 //

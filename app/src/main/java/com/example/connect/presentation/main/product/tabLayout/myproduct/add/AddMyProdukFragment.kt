@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
@@ -22,6 +24,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.connect.R
 import com.example.connect.databinding.AddMyProdukFragmentBinding
@@ -43,6 +47,10 @@ class AddMyProdukFragment : Fragment() {
     private lateinit var etNama:EditText
     private lateinit var etHarga:EditText
     private lateinit var etDeskripsi:EditText
+
+    private val menuNavigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_fragment_menu)
+    }
 
 //    private val viewModel : AddMyProdukViewModel by lazy {
 //        ViewModelProvider(this).get(AddMyProdukViewModel::class.java)
@@ -208,10 +216,15 @@ class AddMyProdukFragment : Fragment() {
 
         when(state){
             is AddMyProductState.Loading -> {
-                Toast.makeText(activity, "LOADING", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.VISIBLE
             }
             is AddMyProductState.Success -> {
-                Toast.makeText(activity, "SUKSES", Toast.LENGTH_LONG).show()
+                binding.iloading.root.visibility = View.GONE
+                binding.iloadingsuccess.textView21.text = "Product Berhasil Ditambah"
+                binding.iloadingsuccess.root.visibility = View.VISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    menuNavigation?.navigateUp()
+                }, 2000)
             }
             else -> {}
         }

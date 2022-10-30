@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemListNewsBinding
 import com.example.connect.domain.entity.KirimanEntity
+import com.example.connect.utilites.enums.ConverterDate
+import com.example.connect.utilites.ui.date.convertUTC2TimeTo2
 
 class NewsAdapter(val onclickListener: OnclickListener) :
     ListAdapter<KirimanEntity, NewsAdapter.ViewHolder>(
@@ -19,6 +21,7 @@ class NewsAdapter(val onclickListener: OnclickListener) :
         ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: KirimanEntity) {
             binding.post = data
+            binding.datePost.text = data.tglUpdate.convertUTC2TimeTo2(ConverterDate.FULL_DATE)
             binding.executePendingBindings()
         }
     }

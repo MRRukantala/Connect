@@ -463,20 +463,28 @@
             android:name="id"
             app:argType="integer" />
         <action
-            android:id="@+id/action_videoELearningFragment_to_ELearningFragment"
-            app:destination="@id/ELearningFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            android:id="@+id/action_videoELearningFragment_to_videoActivity"
+            app:destination="@id/videoActivity" />
+        <!--        <action-->
+<!--            android:id="@+id/action_videoELearningFragment_to_ELearningFragment"-->
+<!--            app:destination="@id/ELearningFragment"-->
+<!--            app:enterAnim="@android:anim/fade_in"-->
+<!--            app:exitAnim="@android:anim/fade_out"-->
+<!--            app:popEnterAnim="@android:anim/fade_in"-->
+<!--            app:popExitAnim="@android:anim/fade_out" />-->
     </fragment>
-    <fragment
-        android:id="@+id/ELearningFragment"
-        android:name="com.example.connect.presentation.main.layanan.elearning.detail.ELearningFragment"
-        android:label="ELearningFragment"
-        tools:layout="@layout/fragment_e_learning">
-        <argument
-            android:name="id"
-            app:argType="integer" />
-    </fragment>
+    <activity
+        android:id="@+id/videoActivity"
+        android:name="com.example.connect.presentation.main.layanan.elearning.detail.VideoActivity"
+        android:label="activity_video"
+        tools:layout="@layout/activity_video" />
+    <!--    <activity-->
+<!--        android:id="@+id/ELearningFragment"-->
+<!--        android:name="com.example.connect.presentation.main.layanan.elearning.detail.ELearningActivity"-->
+<!--        android:label="ELearningFragment"-->
+<!--        tools:layout="@layout/fragment_e_learning">-->
+<!--        <argument-->
+<!--            android:name="id"-->
+<!--            app:argType="integer" />-->
+<!--    </activity>-->
 </navigation>

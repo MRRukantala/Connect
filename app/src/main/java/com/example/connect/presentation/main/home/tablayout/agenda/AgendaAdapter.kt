@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connect.databinding.ItemListAgendasBinding
 import com.example.connect.domain.entity.AgendaEntity
+import com.example.connect.utilites.enums.ConverterDate
+import com.example.connect.utilites.ui.date.convertTimeToListNotif
+import com.example.connect.utilites.ui.date.convertUTC2TimeTo2
 
 class AgendaAdapter(val onclickListener: OnclickListener) :
     ListAdapter<AgendaEntity, AgendaAdapter.ViewHolder>(
@@ -20,6 +23,7 @@ class AgendaAdapter(val onclickListener: OnclickListener) :
         fun bind(data: AgendaEntity) {
             binding.agenda = data
             binding.executePendingBindings()
+            binding.textView12.text = data.tanggal.convertUTC2TimeTo2(ConverterDate.FULL_DATE)
         }
     }
 
