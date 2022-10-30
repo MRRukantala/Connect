@@ -25,10 +25,10 @@ class ProductAdapter(val onclickListener: OnclickListener) :
 
     object DiffCallback : DiffUtil.ItemCallback<ProductEntity>() {
         override fun areItemsTheSame(oldItem: ProductEntity, newItem: ProductEntity) =
-            oldItem.id == newItem.id
+            oldItem == newItem
 
         override fun areContentsTheSame(oldItem: ProductEntity, newItem: ProductEntity) =
-            oldItem.id == newItem.id
+            oldItem == newItem
     }
 
 

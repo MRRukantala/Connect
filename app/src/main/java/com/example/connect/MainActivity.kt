@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         Navigation.findNavController(this, R.id.nav_host_fragment_main)
     }
 
+
+
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 

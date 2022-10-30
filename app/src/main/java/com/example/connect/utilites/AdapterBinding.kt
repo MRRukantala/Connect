@@ -134,10 +134,11 @@ fun bindRecyclerViewListKeranjang(
 @BindingAdapter("listMyNews")
 fun bindRecyclerViewMyNews(
     recyclerView: RecyclerView,
-    data: List<KirimanEntity>?
+    data: ArrayList<KirimanEntity>?
 ) {
     val adapter = recyclerView.adapter as NewsAdapter
     adapter.submitList(data)
+    adapter.notifyDataSetChanged()
 }
 
 

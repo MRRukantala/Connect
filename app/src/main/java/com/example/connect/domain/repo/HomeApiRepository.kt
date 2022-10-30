@@ -17,11 +17,11 @@ interface HomeApiRepository {
 
     suspend fun getDetailAgenda(id: Int): Flow<Result<AgendaEntity, ResponseObjectWrapper<AgendaResponse>>>
 
-    suspend fun getAllKiriman(): Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>>
+    suspend fun getAllKiriman(): Flow<Result<ArrayList<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>>
 
     suspend fun getKirimanByIdUser(
         id: Int
-    ): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>
+    ): Flow<Result<ArrayList<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>
 
     suspend fun getDetailKiriman(id: Int): Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>>
 }

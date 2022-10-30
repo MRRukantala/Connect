@@ -152,7 +152,7 @@ class AddNewsFragment : Fragment() {
                 binding.iloading.root.visibility = View.VISIBLE
             }
             is PostNewsState.Success -> {
-                mainNavigation?.navigateUp()
+                mainNavigation?.popBackStack()
                 Toast.makeText(requireContext(), "SUKSES", Toast.LENGTH_LONG).show()
             }
             else -> {}

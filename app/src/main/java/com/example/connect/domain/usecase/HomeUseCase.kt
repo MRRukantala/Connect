@@ -30,12 +30,12 @@ class HomeUseCase @Inject constructor(private val repository: HomeApiRepository)
     }
 
     suspend fun getAllKiriman():
-            Flow<Result<List<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
+            Flow<Result<ArrayList<KirimanEntity>, ResponseListWrapperSementara<KirimanResponse>>> {
         return repository.getAllKiriman()
     }
 
     suspend fun getKirimanByIdUser(id: Int):
-            Flow<Result<List<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
+            Flow<Result<ArrayList<KirimanEntity>, ResponseListWrapper<KirimanResponse>>> {
         return repository.getKirimanByIdUser(id)
     }
 

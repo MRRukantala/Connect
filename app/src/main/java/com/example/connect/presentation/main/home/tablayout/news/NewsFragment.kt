@@ -1,10 +1,12 @@
 package com.example.connect.presentation.main.home.tablayout.news
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -24,8 +26,8 @@ import javax.inject.Inject
 class NewsFragment : Fragment() {
     @Inject
     lateinit var pref: SharedPreferences
-    lateinit var binding: NewsFragmentBinding
-    private val viewModel: NewsViewModel by viewModels()
+    var binding: NewsFragmentBinding? = null
+    private val viewModel: NewsViewModel by activityViewModels()
 
     private val mainNavigation: NavController? by lazy {
         activity?.findNavController(R.id.nav_host_fragment_menu)
@@ -37,14 +39,14 @@ class NewsFragment : Fragment() {
     ): View {
         binding = NewsFragmentBinding.inflate(inflater, container, false)
 
-        binding.fabNews.setOnClickListener {
+        binding?.fabNews?.setOnClickListener {
             mainNavigation?.navigate(HomeFragmentDirections.actionHomeFragmentToAddNewsFragment2())
         }
 
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+        binding?.lifecycleOwner = viewLifecycleOwner
+        binding?.viewModel = viewModel
 
-        return binding.root
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,7 +54,7 @@ class NewsFragment : Fragment() {
         viewModel.berita()
         observe()
 
-        binding.rvNews.adapter = NewsAdapter(
+        binding?.rvNews?.adapter = NewsAdapter(
             NewsAdapter.OnclickListener {
                 mainNavigation?.navigate(
                     HomeFragmentDirections.actionHomeFragmentToDetailNewsFragment(
@@ -62,6 +64,12 @@ class NewsFragment : Fragment() {
             }
         )
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
 
     private fun observe() {
         viewModel.state.flowWithLifecycle(lifecycle)
@@ -73,13 +81,13 @@ class NewsFragment : Fragment() {
 
         when (state) {
             is NewsState.Loading -> {
-                binding.apply {
+                binding?.apply {
                     msvListNews.viewState = MultiStateView.ViewState.LOADING
                 }
 
             }
             is NewsState.Success -> {
-                binding.apply {
+                binding?.apply {
                     msvListNews.viewState =
                         if (state.kirimanEntity.isEmpty()) MultiStateView.ViewState.EMPTY
                         else MultiStateView.ViewState.CONTENT
